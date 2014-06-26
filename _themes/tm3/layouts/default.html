@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html class="no-js" id="" lang="en">
+    <head>
+        <!-- Meta -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{ _site_name }}{{ if segment_1 }} – {{ title }}{{ endif }}</title>
+
+        <!-- Styles -->
+        {{ theme:css tag="true" }}
+
+        <!-- Favicon -->
+        <link rel="shortcut icon" type="image/png" href="{{ theme:img src="favicon.png" }}">
+    </head>
+    <body>
+        {{ data:index }}
+    </body>
+</html>

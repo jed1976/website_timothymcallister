@@ -1,0 +1,10 @@
+title: Quote Author
+
+hide: true
+
+fields:
+  source:
+    type: text
+
+include:
+  - hidden

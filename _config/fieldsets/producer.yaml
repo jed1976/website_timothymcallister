@@ -1,0 +1,11 @@
+title: Producer
+
+hide: true
+
+fields:
+  url:
+    required: false
+    type: text
+
+include:
+  - hidden

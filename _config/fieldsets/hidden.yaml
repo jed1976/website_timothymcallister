@@ -1,0 +1,13 @@
+title: Hidden
+
+hide: true
+
+fields:
+  slug:
+    hide: true
+
+  order:
+    hide: true
+
+  content:
+    type: hidden

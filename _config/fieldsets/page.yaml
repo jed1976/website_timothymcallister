@@ -1,0 +1,11 @@
+title: Standard Page
+
+fields:
+  slug:
+    hide: true
+
+  content:
+    display: Content
+    height: 500
+    required: false
+    type: markitup

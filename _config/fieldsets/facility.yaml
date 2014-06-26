@@ -1,0 +1,14 @@
+title: Facility
+
+hide: true
+
+fields:
+  url:
+    type: text
+
+  location:
+    display: Location
+    type: location
+
+include:
+  - hidden

@@ -1,0 +1,25 @@
+title: Recording
+
+fields:
+  date:
+    hide: true
+
+  slug:
+    hide: true
+
+  content:
+    display: Description
+    height: 100
+    required: false
+    default:
+    type: markitup
+
+  producer:
+    content:
+      folder: producers
+      show_hidden: true
+      type: entries
+    display: Producer
+    max_items: 1
+    required: false
+    type: suggest
