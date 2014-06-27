@@ -1,12 +1,24 @@
 <?php
 
 /**
+ * DB_Cache Class
+ * This dummy class is needed to extract some 'rel' data types from ExpressionEngine
+ * @author  Joe Dakroub <joe.dakroub@me.com>
+ * @version 1.0
+ */
+class DB_Cache
+{
+    function __constructor()
+    {
+        return $this;
+    }
+}
+
+/**
  * Plugin_data
  * Data conversion plugin for www.timothymcallister.com
  * @author  Joe Dakroub <joe.dakroub@me.com>
  * @version 1.0
- *
- *
  */
 
 class Plugin_data extends Plugin
@@ -16,21 +28,34 @@ class Plugin_data extends Plugin
 
     const NUMBER_FORMAT = '%s%s/_%02s.%s.md';
 
+    const VISIBLE_NUMBER_FORMAT = '%s%s/%02s.%s.md';
+
     const INDEX = '08';
 
+    const REGEX_BRACKET = '/\[\d+\]\s+/';
+
+    public $invalidCharacters = array('!', ':', '/', '(', ')', '"', '\'', ',', '.', '?');
+
+    public $invalidHTML = array('<B>', '</B>', '<I>', '</I>', '**', '&#8217;');
+
+    public $markdownReplacements = array('**', '**', '*', '*', '', '\'');
+
+
+
     public $data = array(
-        // 'biography'
+        // 'biography',
         // 'composers',
         // 'compositions',
         // 'conductors',
-        'contact'
+        // 'contact',
         // 'ensembles',
         // 'facilities',
         // 'instruments',
         // 'performers',
         // 'producers',
-        // 'quote-authors'
-        // 'quotes'
+        // 'quote-authors',
+        'quotes',
+        //'recordings'
     );
 
     public $meta = array(
@@ -38,6 +63,8 @@ class Plugin_data extends Plugin
         'version'    => '1.0.0',
         'author'     => 'Joe Dakroub'
     );
+
+    public $skipFiles = array('fields.yaml', 'page.md');
 
 
     public function index()
@@ -61,13 +88,34 @@ class Plugin_data extends Plugin
         $this->db = null;
     }
 
+    private function emptyDirectory($directory)
+    {
+        // $files = scandir($directory);
+
+        // foreach ($files as $file)
+        // {
+        //     if (!in_array($file, $this->skipFiles) && is_file($directory.'/'.$file))
+        //         unlink($directory.'/'.$file);
+        // }
+    }
+
+    private function removeBrackets($string)
+    {
+        return preg_replace(self::REGEX_BRACKET, '', $string);
+    }
+
+    private function createSlug($string)
+    {
+        return Slug::make(str_replace($this->invalidCharacters, '', $string));
+    }
+
     private function createBiography()
     {
         $data = $this->db->query('select exp_weblog_titles.title, exp_weblog_data.* from exp_weblog_data left join exp_weblog_titles on exp_weblog_titles.entry_id = exp_weblog_data.entry_id where exp_weblog_data.weblog_id = 36 order by exp_weblog_titles.title');
 
         foreach ($data as $row)
         {
-            $biography_parts = explode("\n", str_replace(array('<B>', '</B>', '<I>', '</I>', '&#8217;'), array('**', '**', '*', '*', '\''), $row['field_id_79']));
+            $biography_parts = explode("\n", str_replace($this->invalidHTML, $this->markdownReplacements, $row['field_id_79']));
             $biography = '';
 
             foreach ($biography_parts as $biography_sentence)
@@ -89,6 +137,7 @@ EOD;
             $entityDir = sprintf('_content/%s-%s', '01', 'biography');
             $filename = 'page.md';
             $dir = sprintf('%s/%s', $entityDir, $filename);
+            $this->emptyDirectory($entityDir);
             file_put_contents($dir, $content);
         }
     }
@@ -108,8 +157,9 @@ title: {$row['title']}
 EOD;
 
             $entityDir = sprintf('_%s-%s', self::INDEX, 'composers');
-            $filename = Slug::make($row['title']);
+            $filename = $this->createSlug($row['title']);
             $dir = sprintf(self::NUMBER_FORMAT, self::CONTENT_DIR, $entityDir, $iterator, $filename);
+            $this->emptyDirectory($entityDir);
             file_put_contents($dir, $content);
             $iterator++;
         }
@@ -122,7 +172,7 @@ EOD;
 
         foreach ($data as $row)
         {
-            $composer = Slug::make(preg_replace('/\[\d+\]\s+/', '', $row['field_id_54']));
+            $composer = $this->createSlug($this->removeBrackets($row['field_id_54']));
             $premier = $row['field_id_58'] == 'y' ? 1 : 0;
             $audio_excerpts_array = unserialize($row['field_id_63']);
             $audio_excerpts = '';
@@ -149,9 +199,10 @@ audio_excerpts: $audio_excerpts
 EOD;
 
             $entityDir = sprintf('_%s-%s', self::INDEX, 'compositions');
-            $filename = str_replace('\'', '', Slug::make(html_entity_decode(str_replace(array('!', ':', '/', '(', ')', '"', '\'', ',', '.', '?'), '', $row['title']))));
+            $filename = $this->createSlug(html_entity_decode(str_replace($this->invalidCharacters, '', $row['title'])));
 
             $dir = sprintf(self::NUMBER_FORMAT, self::CONTENT_DIR, $entityDir, $iterator, $filename);
+            $this->emptyDirectory($entityDir);
             file_put_contents($dir, $content);
             $iterator++;
         }
@@ -172,8 +223,9 @@ title: {$row['title']}
 EOD;
 
             $entityDir = sprintf('_%s-%s', self::INDEX, 'conductors');
-            $filename = Slug::make($row['title']);
+            $filename = $this->createSlug($row['title']);
             $dir = sprintf(self::NUMBER_FORMAT, self::CONTENT_DIR, $entityDir, $iterator, $filename);
+            $this->emptyDirectory($entityDir);
             file_put_contents($dir, $content);
             $iterator++;
         }
@@ -212,6 +264,7 @@ EOD;
             $entityDir = sprintf('_content/%s-%s', '06', 'contact');
             $filename = 'page.md';
             $dir = sprintf('%s/%s', $entityDir, $filename);
+            $this->emptyDirectory($entityDir);
             file_put_contents($dir, trim($content));
         }
     }
@@ -231,8 +284,9 @@ title: {$row['title']}
 EOD;
 
             $entityDir = sprintf('_%s-%s', self::INDEX, 'ensembles');
-            $filename = Slug::make($row['title']);
+            $filename = $this->createSlug($row['title']);
             $dir = sprintf(self::NUMBER_FORMAT, self::CONTENT_DIR, $entityDir, $iterator, $filename);
+            $this->emptyDirectory($entityDir);
             file_put_contents($dir, $content);
             $iterator++;
         }
@@ -258,8 +312,9 @@ location:
 EOD;
 
             $entityDir = sprintf('_%s-%s', self::INDEX, 'facilities');
-            $filename = Slug::make($row['title']);
+            $filename = $this->createSlug($row['title']);
             $dir = sprintf(self::NUMBER_FORMAT, self::CONTENT_DIR, $entityDir, $iterator, $filename);
+            $this->emptyDirectory($entityDir);
             file_put_contents($dir, $content);
             $iterator++;
         }
@@ -280,8 +335,9 @@ title: {$row['title']}
 EOD;
 
             $entityDir = sprintf('_%s-%s', self::INDEX, 'instruments');
-            $filename = Slug::make($row['title']);
+            $filename = $this->createSlug($row['title']);
             $dir = sprintf(self::NUMBER_FORMAT, self::CONTENT_DIR, $entityDir, $iterator, $filename);
+            $this->emptyDirectory($entityDir);
             file_put_contents($dir, $content);
             $iterator++;
         }
@@ -294,7 +350,7 @@ EOD;
 
         foreach ($data as $row)
         {
-            $instrument = Slug::make(preg_replace('/\[\d+\]\s+/', '', $row['field_id_59']));
+            $instrument = $this->createSlug($this->removeBrackets($row['field_id_59']));
 
             if ($instrument == 'saxophone')
                 $instrument = 'saxophones';
@@ -308,8 +364,9 @@ instrument: /instruments/$instrument
 EOD;
 
             $entityDir = sprintf('_%s-%s', self::INDEX, 'performers');
-            $filename = Slug::make($row['title']);
+            $filename = $this->createSlug($row['title']);
             $dir = sprintf(self::NUMBER_FORMAT, self::CONTENT_DIR, $entityDir, $iterator, $filename);
+            $this->emptyDirectory($entityDir);
             file_put_contents($dir, $content);
             $iterator++;
         }
@@ -331,8 +388,9 @@ url: {$row['field_id_64']}
 EOD;
 
             $entityDir = sprintf('_%s-%s', self::INDEX, 'producers');
-            $filename = Slug::make($row['title']);
+            $filename = $this->createSlug($row['title']);
             $dir = sprintf(self::NUMBER_FORMAT, self::CONTENT_DIR, $entityDir, $iterator, $filename);
+            $this->emptyDirectory($entityDir);
             file_put_contents($dir, $content);
             $iterator++;
         }
@@ -340,21 +398,42 @@ EOD;
 
     private function createQuoteauthors()
     {
-        $data = $this->db->query('select exp_weblog_titles.title from exp_weblog_data left join exp_weblog_titles on exp_weblog_titles.entry_id = exp_weblog_data.entry_id where exp_weblog_data.weblog_id = 31 order by exp_weblog_titles.title');
+        $data = $this->db->query('select exp_weblog_titles.title, exp_weblog_data.* from exp_weblog_data left join exp_weblog_titles on exp_weblog_titles.entry_id = exp_weblog_data.entry_id where exp_weblog_data.weblog_id = 4 order by exp_weblog_titles.title');
         $iterator = 1;
+        $authors = array();
 
         foreach ($data as $row)
         {
+                $title = $row['title'];
+                $author_field = $this->removeBrackets($row['field_id_62']);
+
+                if ($author_field)
+                {
+                    $title = $author_field;
+
+                    if ($title == 'JeanMarie Londeix')
+                        $title = 'Jean-Marie Londeix';
+                }
+
+                $authors[] = $title;
+        }
+
+        $authors = array_unique($authors);
+        sort($authors);
+
+        foreach ($authors as $author)
+        {
 $content = <<<EOD
 ---
-title: {$row['title']}
+title: $author
 ---
 
 EOD;
 
             $entityDir = sprintf('_%s-%s', self::INDEX, 'quote-authors');
-            $filename = Slug::make($row['title']);
+            $filename = $this->createSlug($author);
             $dir = sprintf(self::NUMBER_FORMAT, self::CONTENT_DIR, $entityDir, $iterator, $filename);
+            $this->emptyDirectory($entityDir);
             file_put_contents($dir, $content);
             $iterator++;
         }
@@ -364,27 +443,193 @@ EOD;
     {
         $data = $this->db->query('select exp_weblog_titles.title, exp_weblog_data.* from exp_weblog_data left join exp_weblog_titles on exp_weblog_titles.entry_id = exp_weblog_data.entry_id where exp_weblog_data.weblog_id = 4 order by exp_weblog_titles.title');
         $iterator = 1;
+        $quotes = array();
 
         foreach ($data as $row)
         {
-            $row['field_id_62'] = preg_replace('/\[\d+\]\s+/', '', $row['field_id_62']);
-            $row['field_id_62'] = $row['field_id_62'] != '' ? $row['field_id_62'] : $row['title'];
-            $row['title'] = 'Quote ' . $iterator . ' - ' . $row['field_id_62'];
-            $slug = Slug::make($row['field_id_62']);
+            $row['field_id_62'] = $this->removeBrackets($row['field_id_62']);
 
+            if ($row['field_id_62'] == 'JeanMarie Londeix')
+                $row['field_id_62'] = 'Jean-Marie Londeix';
+
+            $row['field_id_62'] = $row['field_id_62'] != '' ? $row['field_id_62'] : $row['title'];
+            $row['title'] = $row['field_id_62'] . ' - ' . $row['entry_id'];
+            $slug = $this->createSlug($row['field_id_62']);
+
+            $quotes[] = array(
+                'name' => $row['field_id_62'],
+                'title' => $row['title'],
+                'quote' => $row['field_id_11'],
+                'author' => '/quote-authors/' . $slug,
+                'source' => $row['field_id_13']
+            );
+        }
+
+        function cmp($a, $b)
+        {
+            if ($a['name'] == $b['name'])
+                return 0;
+
+            return ($a['name'] < $b['name']) ? -1 : 1;
+        }
+
+        usort($quotes, 'cmp');
+
+        foreach ($quotes as $quote)
+        {
 $content = <<<EOD
 ---
-title: {$row['title']}
-quote: '{$row['field_id_11']}'
-author: /quote-authors/$slug
-source: {$row['field_id_13']}
+title: {$quote['title']}
+quote: '{$quote['quote']}'
+author: {$quote['author']}
+source: {$quote['source']}
 ---
 
 EOD;
 
+
             $entityDir = sprintf('_%s-%s', self::INDEX, 'quotes');
-            $filename = Slug::make($row['title']);
+            $filename = $this->createSlug($quote['title']);
             $dir = sprintf(self::NUMBER_FORMAT, self::CONTENT_DIR, $entityDir, $iterator, $filename);
+            $this->emptyDirectory($entityDir);
+            file_put_contents($dir, $content);
+            $iterator++;
+        }
+    }
+
+    private function createRecordings()
+    {
+        ini_set('unserialize_callback_func', 'test');
+
+        function test($className)
+        {
+            new $className();
+        }
+
+        $data = $this->db->query('select exp_weblog_titles.title, exp_relationships.rel_data as producer, exp_weblog_data.* from exp_weblog_data left join exp_weblog_titles on exp_weblog_data.entry_id = exp_weblog_titles.entry_id left join exp_relationships on exp_weblog_data.field_id_66 = exp_relationships.rel_id where exp_weblog_data.weblog_id = 33 order by exp_weblog_titles.title');
+        $iterator = 1;
+
+        foreach ($data as $row)
+        {
+            $title = $this->createSlug($row['title']);
+            $release_date = $row['field_id_65'] != 0 ? date('Y-m-d', $row['field_id_65']) : '';
+            $tribute = $row['field_id_77'] == 'y' ? 1 : 0;
+            $artwork = $row['field_id_68'] != '' ? '{{ _site_root }}assets/img/recordings/' . $title . '.jpg' : '';
+            $producer = $row['producer'] != '' ? unserialize($row['producer']) : '';
+            $performers = "\n  -\n";
+            $ensembles = "\n  -\n";
+            $conductors = "\n  -\n";
+            $tracks = "\n  -\n";
+            $quotes = "\n  -\n";
+
+            if ($producer != '')
+                $producer = '/producers/' . $this->createSlug($producer['query']->result[0]['title']);
+
+            $ensembles_array = $row['field_id_70'] != '' ? explode("\r", $row['field_id_70']) : '';
+            $conductors_array = $row['field_id_71'] != '' ? explode("\r", $row['field_id_71']) : '';
+            $tracks_array = $row['field_id_72'] != '' ? explode("\r", $row['field_id_72']) : '';
+            $performers_array = $row['field_id_73'] != '' ? explode("\r", $row['field_id_73']) : '';
+            $quotes_array = $row['field_id_75'] != '' ? explode("\r", $row['field_id_75']) : '';
+
+            if (is_array($ensembles_array))
+            {
+                $ensembles = '';
+
+                foreach ($ensembles_array as $ensemble)
+                {
+                    $ensembles .= "\n  -\n";
+                    $ensembles .= "    ensemble: /ensembles/" . $this->createSlug($this->removeBrackets($ensemble));
+                }
+            }
+            else
+                $ensembles .= "    ensemble: \"0\"";
+
+            if (is_array($conductors_array))
+            {
+                $conductors = '';
+
+                foreach ($conductors_array as $conductor)
+                {
+                    $conductors .= "\n  -\n";
+                    $conductors .= "    conductor: /conductors/" . $this->createSlug($this->removeBrackets($conductor));
+                }
+            }
+            else
+                $conductors .= "    conductor: \"0\"";
+
+            if (is_array($tracks_array))
+            {
+                $tracks = '';
+
+                foreach ($tracks_array as $track)
+                {
+                    $tracks .= "\n  -\n";
+                    $tracks .= "    track: /compositions/" . $this->createSlug($this->removeBrackets($track));
+                }
+            }
+            else
+                $tracks .= "    track: \"0\"";
+
+            if (is_array($performers_array))
+            {
+                $performers = '';
+
+                foreach ($performers_array as $performer)
+                {
+                    $performers .= "\n  -\n";
+                    $performers .= "    performer: /performers/" . $this->createSlug($this->removeBrackets($performer));
+                }
+            }
+            else
+                $performers .= "    performer: \"0\"";
+
+            if (is_array($quotes_array))
+            {
+                $quotes = '';
+
+                foreach ($quotes_array as $quote)
+                {
+                    $quotes .= "\n  -\n";
+                    preg_match('/\d+/', $quote, $rel_id);
+                    $rel_id = $rel_id[0];
+                    $rel_data = $this->db->query('select rel_child_id, rel_data from exp_relationships where rel_id = ' . $rel_id);
+                    $rel_row = $rel_data->fetch();
+                    $rel_data = unserialize($rel_row['rel_data']);
+                    $author = $this->removeBrackets($rel_data['query']->result[0]['field_id_62']);
+                    $quote_id = $rel_row['rel_child_id'];
+
+                    if ($author != '')
+                        $quote = $author;
+
+                    $quotes .= "    quote: /quotes/" . $this->createSlug($this->removeBrackets($quote)) . "-".$quote_id;
+                }
+            }
+            else
+                $quotes .= "    quote: \"0\"";
+
+            $description = str_replace($this->invalidHTML, $this->markdownReplacements, $row['field_id_74']);
+
+$content = <<<EOD
+---
+title: '{$row['title']}'
+release_date: $release_date
+producer: $producer
+catalog_number: {$row['field_id_67']}
+artwork: $artwork
+url: {$row['field_id_69']}
+tribute: "$tribute"
+performers: $performers
+ensembles: $ensembles
+conductors: $conductors
+tracks: $tracks
+quotes: $quotes
+---
+$description
+EOD;
+
+            $entityDir = sprintf('%s-%s', '02', 'recordings');
+            $filename = $title;
+            $dir = sprintf(self::VISIBLE_NUMBER_FORMAT, self::CONTENT_DIR, $entityDir, $iterator, $filename);
             file_put_contents($dir, $content);
             $iterator++;
         }
