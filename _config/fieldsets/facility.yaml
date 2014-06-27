@@ -4,6 +4,8 @@ hide: true
 
 fields:
   url:
+    display: URL
+    instructions: URL for the facility
     type: text
 
   location:

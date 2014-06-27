@@ -4,6 +4,8 @@ hide: true
 
 fields:
   url:
+    display: URL
+    instructions: URL of the production company
     required: false
     type: text
 

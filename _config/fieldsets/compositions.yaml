@@ -3,6 +3,10 @@ title: Compositions
 hide: true
 
 fields:
+  section_1:
+    display: Details
+    type: section
+
   premier:
     display: Premiere
     instructions: If you check the Premiere box, this piece will appear on the Premieres page.
@@ -12,6 +16,7 @@ fields:
     create: true
     max_items: 1
     options:
+      - ''
       - 2014
       - 2013
       - 2012
@@ -135,13 +140,18 @@ fields:
       folder: composers
       show_hidden: true
       type: entries
-    display: Composer(s)
+    display: Composer
     max_items: 1
-    required: true
+    options:
+      - ''
     type: suggest
 
+  section_2:
+    display: Excerpts
+    type: section
+
   audio_excerpts:
-    display: Audio Excerpts
+    display: ''
     fields:
       notes:
         display: Notes

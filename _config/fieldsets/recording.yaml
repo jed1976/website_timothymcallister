@@ -1,21 +1,30 @@
 title: Recording
 
 fields:
-  date:
-    hide: true
-
-  slug:
-    hide: true
-
   release_date:
     type: date
 
   content:
     display: Description
     height: 200
-    required: true
     default:
     type: markitup
+
+  tribute:
+    display: This event is a tribute to one composer
+    instructions: "If this performance is a tribute to the work of a specific composer, check this box. This ensures that when selecting compositions for the performance, the composer's name doesn't appear after each composition name."
+    type: checkbox
+
+  artwork:
+    allowed: [jpg]
+    destination: assets/img/recordings
+    display: Artwork
+    instructions: Artwork must be in JPG format
+    type: file
+
+  section_1:
+    display: Details
+    type: section
 
   producer:
     content:
@@ -24,77 +33,24 @@ fields:
       type: entries
     display: Producer
     max_items: 1
-    required: true
+    options:
+      - ''
     type: suggest
 
   catalog_number:
     type: text
-
-  artwork:
-    allowed: [jpg]
-    destination: assets/img/recordings
-    display: Artwork
-    instructions: Artwork must be in JPG format
-    required: true
-    type: file
 
   url:
     display: URL
     instructions: Provide a URL for the recording
     type: text
 
-  tribute:
-    display: This event is a tribute to one composer
-    instructions: "If this performance is a tribute to the work of a specific composer, check this box. This ensures that when selecting compositions for the performance, the composer's name doesn't appear after each composition name."
-    type: checkbox
-
-  performers:
-    fields:
-      performer:
-        content:
-          folder: performers
-          show_hidden: true
-          type: entries
-        display: ''
-        max_items: 1
-        options:
-          - ''
-        type: suggest
-    instructions: Choose the performers who performed on this album (if applicable)
-    type: grid
-
-  ensembles:
-    fields:
-      ensemble:
-        content:
-          folder: ensembles
-          show_hidden: true
-          type: entries
-        display: ''
-        max_items: 1
-        options:
-          - ''
-        type: suggest
-    instructions: Choose the ensembles who performed on this album (if applicable)
-    type: grid
-
-  conductors:
-    fields:
-      conductor:
-        content:
-          folder: conductors
-          show_hidden: true
-          type: entries
-        display: ''
-        max_items: 1
-        options:
-          - ''
-        type: suggest
-    instructions: Choose the conductors who performed on this album (if applicable)
-    type: grid
+  section_2:
+    display: Tracks
+    type: section
 
   tracks:
-    display: Tracks
+    display: ''
     fields:
       track:
         content:
@@ -107,6 +63,62 @@ fields:
           - ''
         type: suggest
     type: grid
+
+  section_3:
+    display: Performers
+    type: section
+
+  performers:
+    display: ''
+    fields:
+      performer:
+        content:
+          folder: performers
+          show_hidden: true
+          type: entries
+        display: 'Guest Performers'
+        instructions: Choose the performers who performed on this album (if applicable)
+        max_items: 1
+        options:
+          - ''
+        type: suggest
+    type: grid
+
+  ensembles:
+    display: ''
+    fields:
+      ensemble:
+        content:
+          folder: ensembles
+          show_hidden: true
+          type: entries
+        display: 'Ensembles'
+        instructions: Choose the ensembles who performed on this album (if applicable)
+        max_items: 1
+        options:
+          - ''
+        type: suggest
+    type: grid
+
+  conductors:
+    display: ''
+    fields:
+      conductor:
+        content:
+          folder: conductors
+          show_hidden: true
+          type: entries
+        display: 'Conductors'
+        instructions: Choose the conductors who performed on this album (if applicable)
+        max_items: 1
+        options:
+          - ''
+        type: suggest
+    type: grid
+
+  section_4:
+    display: Applause
+    type: section
 
   quotes:
     fields:

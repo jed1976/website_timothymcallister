@@ -161,7 +161,7 @@ translations:
   are_you_sure: Are you sure? This cannot be undone.
   access_denied: Access Denied
   enable_curl: cURL must be enabled to perform a security test.
-  
+
   # File-upload errors
   upload_error_ini_size: File upload failed. The file’s size is more than PHP’s configuration allows.
   upload_error_form_size: File upload failed. The file’s size is more than the `MAX_FILE_SIZE` on the form allows.

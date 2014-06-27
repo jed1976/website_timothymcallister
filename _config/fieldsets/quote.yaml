@@ -13,6 +13,8 @@ fields:
       type: entries
     display: Author
     max_items: 1
+    options:
+      - ''
     required: true
     type: suggest
 

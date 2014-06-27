@@ -34,7 +34,7 @@ class Plugin_data extends Plugin
 
     const REGEX_BRACKET = '/\[\d+\]\s+/';
 
-    public $invalidCharacters = array('!', ':', '/', '(', ')', '"', '\'', ',', '.', '?');
+    public $invalidCharacters = array('!', ':', '/', '(', ')', '"', '\'', ',', '.', '?', ';');
 
     public $invalidHTML = array('<B>', '</B>', '<I>', '</I>', '**', '&#8217;');
 
@@ -54,8 +54,9 @@ class Plugin_data extends Plugin
         // 'performers',
         // 'producers',
         // 'quote-authors',
-        'quotes',
-        //'recordings'
+        // 'quotes',
+        // 'recordings',
+        'schedule'
     );
 
     public $meta = array(
@@ -106,7 +107,7 @@ class Plugin_data extends Plugin
 
     private function createSlug($string)
     {
-        return Slug::make(str_replace($this->invalidCharacters, '', $string));
+        return Slug::make(str_replace($this->invalidCharacters, '', html_entity_decode($string)));
     }
 
     private function createBiography()
@@ -199,7 +200,7 @@ audio_excerpts: $audio_excerpts
 EOD;
 
             $entityDir = sprintf('_%s-%s', self::INDEX, 'compositions');
-            $filename = $this->createSlug(html_entity_decode(str_replace($this->invalidCharacters, '', $row['title'])));
+            $filename = $this->createSlug($row['title']);
 
             $dir = sprintf(self::NUMBER_FORMAT, self::CONTENT_DIR, $entityDir, $iterator, $filename);
             $this->emptyDirectory($entityDir);
@@ -301,7 +302,7 @@ EOD;
         {
 $content = <<<EOD
 ---
-title: {$row['title']}
+title: '{$row['title']}'
 url:
 location:
   name:
@@ -633,5 +634,10 @@ EOD;
             file_put_contents($dir, $content);
             $iterator++;
         }
+    }
+
+    private function createSchedule()
+    {
+
     }
 }
