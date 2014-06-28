@@ -23,7 +23,7 @@
     <div id="main">
       <div id="control-bar" class="clearfix">
         <ul class="pull-left">
-          <li id="statamic-logo">
+          <li id="logo">
             <a href="<?php echo $app->urlFor("dashboard"); ?>">Home</a>
           </li>
 

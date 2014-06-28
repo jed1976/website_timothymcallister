@@ -1,4 +1,4 @@
 ---
-_fieldset: page
+_fieldset: hidden
 title: Ensemble
 ---

@@ -44,8 +44,8 @@
               <?php endif; ?>
               <?php if ($type == 'date'): ?>
               <th><div class="header-inner"><?php echo Localization::fetch('date')?></div></th>
-              <?php elseif ($type == 'number' || $type == 'numeric'): ?>
-              <th><div class="header-inner"><?php echo Localization::fetch('number')?></div></th>
+              <?php //elseif ($type == 'number' || $type == 'numeric'): ?>
+              <!-- <th><div class="header-inner"><?php //echo Localization::fetch('number')?></div></th> -->
               <?php endif; ?>
             <th style="width:80px"><div class="header-inner"><?php echo Localization::fetch('status')?></div></th>
             <th style="width:40px"><div class="header-inner"><?php echo Localization::fetch('view')?></div></th>
@@ -92,8 +92,8 @@
                   echo Date::format(Config::getDateFormat('Y/m/d'), $entry['datestamp']);
                   ?>
               </td>
-            <?php elseif ($type == 'number'): ?>
-              <td><?php print $entry['numeric'] ?></td>
+            <?php //elseif ($type == 'number'): ?>
+              <!-- <td><?php //print $entry['numeric'] ?></td> -->
             <?php endif ?>
             <td class="margin status status-<?php print $status ?>">
               <span class="ss-icon">record</span><?php print ucwords($status) ?>

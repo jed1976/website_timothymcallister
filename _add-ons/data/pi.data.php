@@ -38,14 +38,14 @@ class Plugin_data extends Plugin
 
     public $invalidCharacters = array('!', ':', '/', '(', ')', '"', '\'', ',', '.', '?', ';');
 
-    public $invalidHTML = array('<B>', '</B>', '<I>', '</I>', '**', '&#8217;');
+    public $invalidHTML = array('**', '<B>', '</B>', '<I>', '</I>', '&#8217;');
 
-    public $markdownReplacements = array('**', '**', '*', '*', '', '\'');
+    public $markdownReplacements = array('', '**', '**', '*', '*', '\'');
 
 
 
     public $data = array(
-        // 'biography',
+        'biography',
         // 'composers',
         // 'compositions',
         // 'conductors',
@@ -172,6 +172,7 @@ class Plugin_data extends Plugin
             }
 
             $biography = trim($biography);
+
 
 $content = <<<EOD
 ---

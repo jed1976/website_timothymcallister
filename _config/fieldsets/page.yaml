@@ -5,7 +5,7 @@ fields:
     hide: true
 
   content:
-    display: Content
+    display: ''
     height: 500
     required: false
     type: markitup

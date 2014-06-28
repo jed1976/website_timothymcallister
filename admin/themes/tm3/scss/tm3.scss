@@ -12,25 +12,26 @@
 // Color Variables
 ///////////////////
 
-$textColor:    #1e3640;
-$olive: $textColor;
-$orange:   #9e5200;
-$red:      #bf1d2d;
-$yellow:   #debb42;
-$blue:     #2066d0;
-$lightTan: #edede7;
-$dark:     #61787e;
+$textColor:     #1e3640;
+$olive:         $textColor;
+$orange:        #9e5200;
+$red:           #be0000;
+$yellow:        #debb42;
+$blue:          #00698c;
+$light:         #eeeeee;
+$dark:          #535362;
+$lightGray:     #eeeeee;
 
 $defaultFont: 'Helvetica Neue', Arial, sans-serif;
 $defaultHeaderFont: 'Helvetica Neue', Arial, sans-serif;
 
-$inputBackground: lighten($lightTan, 3%);
-$borderColor: darken($lightTan, 10%);
-$buttonBackground: #8ab0bb;
+$inputBackground: lighten($light, 3%);
+$borderColor: darken($light, 10%);
+$buttonBackground: #00698c;
 
 $linkColor: lighten($dark, 5%);
 $linkHoverColor: darken($dark, 5%);
-$linkActiveColor: $orange;
+$linkActiveColor: $blue;
 
 ///////////////////
 // Imports
@@ -47,9 +48,9 @@ $linkActiveColor: $orange;
   @import 'vendor/picker/default.time';
 
 body {
-  background: $lightTan;
+  background: $lightGray;
   font-family: $defaultFont;
-  font-size:14px;
+  font-size: 14px;
   text-rendering: optimizeLegibility;
   // -webkit-font-smoothing: antialiased;
 }
@@ -113,10 +114,11 @@ h1, h2, h3, h4, h5, h6 {
   }
   #login-form {
     @include border-radius(4px);
-    @include gradient(#fff, lighten($lightTan, 15%));
+    @include gradient(#fff, lighten($light, 15%));
     box-shadow:0px 0px 15px rgba(0,0,0,.2);
     z-index:10;
     form {
+      margin-top: 50px;
       padding:25px;
     }
     .text {
@@ -221,15 +223,15 @@ h1, h2, h3, h4, h5, h6 {
         width:0;
         height:0;
         border: 6px solid transparent;
-        border-bottom-color: $lightTan;
+        border-bottom-color: $light;
       }
       &:before {
-        background: $lightTan;
+        background: $light;
       }
     }
   }
 
-  #statamic-logo a {
+  #logo a {
     font-family: $defaultHeaderFont;
     background: darken($dark, 23%);
     color: #fff;
@@ -253,6 +255,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .avatar {
+    @include border-radius(50px);
     margin: 12px 10px 0 0;
     float: left;
   }
@@ -268,7 +271,7 @@ h1, h2, h3, h4, h5, h6 {
 #screen, .section {
   @extend .clearfix;
   @include border-radius(3px);
-  border: 1px solid darken($lightTan, 10%);
+  border: 1px solid darken($light, 10%);
   box-shadow: 0 0 1px rgba(0,0,0,.1);
   background: #fff;
   margin: 30px 0;
@@ -382,7 +385,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .error-block {
   @include border-radius(4px);
-  @include gradient(#fff, lighten($lightTan, 15%));
+  @include gradient(#fff, lighten($light, 15%));
   box-shadow:0px 0px 15px rgba(0,0,0,.2);
   z-index:10;
   padding:25px;
@@ -475,8 +478,9 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .avatar {
+    @include border-radius(50px);
     float: left;
-    padding-right: 15px;
+    margin-right: 15px;
     display: block;
     height: 42px;
     width: 42px;
@@ -569,7 +573,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .ss-directup, .ss-dropdown {
-    @include gradient(#fff, $lightTan);
+    @include gradient(#fff, $light);
     border-right: 1px solid $borderColor;
     border-left: 1px solid $borderColor;
   }
@@ -579,7 +583,7 @@ h1, h2, h3, h4, h5, h6 {
     float: right;
   }
   .headerSortUp, .headerSortDown {
-    @include gradient(#fff, $lightTan);
+    @include gradient(#fff, $light);
     border-left: 1px solid $borderColor;
     border-right: 1px solid $borderColor;
   }
@@ -1314,7 +1318,7 @@ code textarea {
     .grid-add-row {
       @include border-box;
       @include border-radius(0);
-      @include gradient(#fff, $lightTan);
+      @include gradient(#fff, $light);
       display:block;
       width:100%;
       margin:0;
@@ -1366,9 +1370,9 @@ code textarea {
     @extend .clearfix;
     @include border-radius(3px);
     @include border-box;
-    @include gradient(#fff, lighten($lightTan, 5%));
-    border: 1px solid darken($lightTan, 10%);
-    box-shadow: 0 1px 1px darken($lightTan, 5%);
+    @include gradient(#fff, lighten($light, 5%));
+    border: 1px solid darken($light, 10%);
+    box-shadow: 0 1px 1px darken($light, 5%);
     clear:both;
     font-size:15px;
     position:relative;
@@ -1990,17 +1994,17 @@ code textarea {
 }
 
 .miu-dropzone {
-  background: $lightTan;
-  border: 2px dashed darken($lightTan, 20);
+  background: $light;
+  border: 2px dashed darken($light, 20);
   text-align: center;
   padding: 30px 0 25px;
   display: none;
 
   &.in {
-    border-color: darken($lightTan, 40);
+    border-color: darken($light, 40);
   }
   &.hover {
-    background: darken($lightTan, 5);
+    background: darken($light, 5);
     color: white;
   }
   &.done {
@@ -2011,13 +2015,13 @@ code textarea {
     .ss-icon { display: block; }
   }
 
-  b { color: darken($lightTan, 20); }
+  b { color: darken($light, 20); }
 
   .ss-icon {
     font-size: 25px;
     display: inline-block;
     vertical-align: middle;
-    color: darken($lightTan, 20);
+    color: darken($light, 20);
   }
 }
 

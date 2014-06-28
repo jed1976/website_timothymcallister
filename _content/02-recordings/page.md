@@ -1,5 +1,5 @@
 ---
-_fieldset: recording
+_fieldset: hidden
 title: Recordings
 _template: recordings
 ---

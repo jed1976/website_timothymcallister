@@ -15,8 +15,7 @@
   margin-left: 20px;
 }
 .container {
-  width: 940px;
-  margin: 0 auto;
+  margin: 0 10px;
 }
 .span12 {
   width: 940px;
@@ -175,9 +174,9 @@
   .container-fluid {
     padding: 0;
   }
-  .container {
-    width: auto;
-  }
+  // .container {
+  //   width: auto;
+  // }
   .row-fluid {
     width: 100%;
   }
@@ -209,9 +208,9 @@
     float: left;
     margin-left: 20px;
   }
-  .container {
-    width: 724px;
-  }
+  // .container {
+  //   width: 724px;
+  // }
   .span12 {
     width: 724px;
   }
@@ -377,9 +376,9 @@
     float: left;
     margin-left: 30px;
   }
-  .container {
-    width: 1170px;
-  }
+  // .container {
+  //   width: 1170px;
+  // }
   .span12 {
     width: 1170px;
   }

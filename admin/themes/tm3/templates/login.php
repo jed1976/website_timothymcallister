@@ -1,6 +1,5 @@
 <div id="login-wrapper">
 
-  <div class="logo">&#xf003;</div>
   <div id="login-form">
 
     <form method="post" action="<?php print $app->urlFor('login'); ?>">
