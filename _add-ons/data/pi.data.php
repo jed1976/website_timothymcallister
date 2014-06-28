@@ -38,14 +38,14 @@ class Plugin_data extends Plugin
 
     public $invalidCharacters = array('!', ':', '/', '(', ')', '"', '\'', ',', '.', '?', ';');
 
-    public $invalidHTML = array('**', '<B>', '</B>', '<I>', '</I>', '&#8217;');
+    public $invalidHTML = array('**', '<B>', '</B>', '<b>', '</b>', '<I>', '</I>', '<i>', '</i>', '&#8217;');
 
-    public $markdownReplacements = array('', '**', '**', '*', '*', '\'');
+    public $markdownReplacements = array('', '**', '**', '**', '**', '*', '*', '*', '*', '\'');
 
 
 
     public $data = array(
-        'biography',
+        // 'biography',
         // 'composers',
         // 'compositions',
         // 'conductors',
@@ -57,7 +57,7 @@ class Plugin_data extends Plugin
         // 'producers',
         // 'quote-authors',
         // 'quotes',
-        // 'recordings',
+         'recordings',
         //'schedule'
     );
 
@@ -89,17 +89,6 @@ class Plugin_data extends Plugin
         }
 
         $this->db = null;
-    }
-
-    private function emptyDirectory($directory)
-    {
-        // $files = scandir($directory);
-
-        // foreach ($files as $file)
-        // {
-        //     if (!in_array($file, $this->skipFiles) && is_file($directory.'/'.$file))
-        //         unlink($directory.'/'.$file);
-        // }
     }
 
     private function removeBrackets($string)
@@ -185,7 +174,6 @@ EOD;
             $entityDir = sprintf('_content/%s-%s', '01', 'biography');
             $filename = 'page.md';
             $dir = sprintf('%s/%s', $entityDir, $filename);
-            $this->emptyDirectory($entityDir);
             file_put_contents($dir, $content);
         }
     }
@@ -208,7 +196,6 @@ EOD;
             $entityDir = sprintf('_%s-%s', self::INDEX, 'composers');
             $filename = $this->createSlug($row['title']);
             $dir = sprintf(self::NUMBER_FORMAT, self::CONTENT_DIR, $entityDir, $iterator, $filename);
-            $this->emptyDirectory($entityDir);
             file_put_contents($dir, $content);
             $iterator++;
         }
@@ -266,7 +253,6 @@ EOD;
             $filename = $this->createSlug($row['title']);
 
             $dir = sprintf(self::NUMBER_FORMAT, self::CONTENT_DIR, $entityDir, $iterator, $filename);
-            $this->emptyDirectory($entityDir);
             file_put_contents($dir, $content);
             $iterator++;
         }
@@ -289,7 +275,6 @@ EOD;
             $entityDir = sprintf('_%s-%s', self::INDEX, 'conductors');
             $filename = $this->createSlug($row['title']);
             $dir = sprintf(self::NUMBER_FORMAT, self::CONTENT_DIR, $entityDir, $iterator, $filename);
-            $this->emptyDirectory($entityDir);
             file_put_contents($dir, $content);
             $iterator++;
         }
@@ -328,7 +313,6 @@ EOD;
             $entityDir = sprintf('_content/%s-%s', '06', 'contact');
             $filename = 'page.md';
             $dir = sprintf('%s/%s', $entityDir, $filename);
-            $this->emptyDirectory($entityDir);
             file_put_contents($dir, trim($content));
         }
     }
@@ -350,7 +334,6 @@ EOD;
             $entityDir = sprintf('_%s-%s', self::INDEX, 'ensembles');
             $filename = $this->createSlug($row['title']);
             $dir = sprintf(self::NUMBER_FORMAT, self::CONTENT_DIR, $entityDir, $iterator, $filename);
-            $this->emptyDirectory($entityDir);
             file_put_contents($dir, $content);
             $iterator++;
         }
@@ -378,7 +361,6 @@ EOD;
             $entityDir = sprintf('_%s-%s', self::INDEX, 'facilities');
             $filename = $this->createSlug($row['title']);
             $dir = sprintf(self::NUMBER_FORMAT, self::CONTENT_DIR, $entityDir, $iterator, $filename);
-            $this->emptyDirectory($entityDir);
             file_put_contents($dir, $content);
             $iterator++;
         }
@@ -401,7 +383,6 @@ EOD;
             $entityDir = sprintf('_%s-%s', self::INDEX, 'instruments');
             $filename = $this->createSlug($row['title']);
             $dir = sprintf(self::NUMBER_FORMAT, self::CONTENT_DIR, $entityDir, $iterator, $filename);
-            $this->emptyDirectory($entityDir);
             file_put_contents($dir, $content);
             $iterator++;
         }
@@ -430,7 +411,6 @@ EOD;
             $entityDir = sprintf('_%s-%s', self::INDEX, 'performers');
             $filename = $this->createSlug($row['title']);
             $dir = sprintf(self::NUMBER_FORMAT, self::CONTENT_DIR, $entityDir, $iterator, $filename);
-            $this->emptyDirectory($entityDir);
             file_put_contents($dir, $content);
             $iterator++;
         }
@@ -454,7 +434,6 @@ EOD;
             $entityDir = sprintf('_%s-%s', self::INDEX, 'producers');
             $filename = $this->createSlug($row['title']);
             $dir = sprintf(self::NUMBER_FORMAT, self::CONTENT_DIR, $entityDir, $iterator, $filename);
-            $this->emptyDirectory($entityDir);
             file_put_contents($dir, $content);
             $iterator++;
         }
@@ -497,7 +476,6 @@ EOD;
             $entityDir = sprintf('_%s-%s', self::INDEX, 'quote-authors');
             $filename = $this->createSlug($author);
             $dir = sprintf(self::NUMBER_FORMAT, self::CONTENT_DIR, $entityDir, $iterator, $filename);
-            $this->emptyDirectory($entityDir);
             file_put_contents($dir, $content);
             $iterator++;
         }
@@ -555,7 +533,6 @@ EOD;
             $entityDir = sprintf('_%s-%s', self::INDEX, 'quotes');
             $filename = $this->createSlug($quote['title']);
             $dir = sprintf(self::NUMBER_FORMAT, self::CONTENT_DIR, $entityDir, $iterator, $filename);
-            $this->emptyDirectory($entityDir);
             file_put_contents($dir, $content);
             $iterator++;
         }
@@ -802,9 +779,6 @@ conductors: $conductors
 ---
 $description
 EOD;
-
-            #echo '<pre>'.$content.'</pre>';
-            #echo '<hr />';
 
             $entityDir = sprintf('%s-%s', '05', 'schedule');
             $filename = $this->createSlug($row['title']);

@@ -73,7 +73,7 @@ _enable_smartypants: true
 _theme_cache_bust: false
 
 # Specify where to save transformed images
-_transform_destination: false
+_transform_destination: assets/img/transforms
 
 # allow the use of PHP in Statamic templates
 _allow_php: false
@@ -177,7 +177,7 @@ _admin_start_page: pages
 _enable_add_top_level_page: false
 
 # Enable/Disable the ability to add new child pages via the CP
-_enable_add_child_page: true
+_enable_add_child_page: false
 
 # Enable/Disable the ability to delete pages via the CP
 _enable_delete_page: false
