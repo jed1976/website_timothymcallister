@@ -23,6 +23,11 @@ class DB_Cache
 
 class Plugin_data extends Plugin
 {
+    public $meta = array(
+        'name'       => 'Data Conversion',
+        'version'    => '1.0.0',
+        'author'     => 'Joe Dakroub'
+    );
 
     const CONTENT_DIR = '_content/';
 
@@ -34,15 +39,15 @@ class Plugin_data extends Plugin
 
     const REGEX_BRACKET = '/\[\d+\]\s+/';
 
-    const DATE_OFFSET = '-5 hours';
+    // Original timezone of the server the imported data resided on was America/Chicago
+    // Using America/Detroit puts the event dates 5 hours ahead
+    const DATE_OFFSET = '-5 hours'; // This may need to change based on the server the app is deployed to
 
     public $invalidCharacters = array('!', ':', '/', '(', ')', '"', '\'', ',', '.', '?', ';');
 
     public $invalidHTML = array('**', '<B>', '</B>', '<b>', '</b>', '<I>', '</I>', '<i>', '</i>', '&#8217;');
 
     public $markdownReplacements = array('', '**', '**', '**', '**', '*', '*', '*', '*', '\'');
-
-
 
     public $data = array(
         // 'biography',
@@ -57,17 +62,9 @@ class Plugin_data extends Plugin
         // 'producers',
         // 'quote-authors',
         // 'quotes',
-         'recordings',
-        //'schedule'
+        // 'recordings',
+        'schedule'
     );
-
-    public $meta = array(
-        'name'       => 'Data Conversion',
-        'version'    => '1.0.0',
-        'author'     => 'Joe Dakroub'
-    );
-
-    public $skipFiles = array('fields.yaml', 'page.md');
 
 
     public function index()
