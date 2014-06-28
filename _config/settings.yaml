@@ -153,7 +153,7 @@ _admin_enabled: true
 
 # Change the folder name for your admin directory.
 # You can also rename your admin.php file anything you want
-_admin_path: tmsys
+_admin_path: tm3
 
 # Folder name of your desired control panel theme
 _admin_theme: tm3

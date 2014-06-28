@@ -19,7 +19,7 @@ $red:           #be0000;
 $yellow:        #debb42;
 $blue:          #00698c;
 $light:         #eeeeee;
-$dark:          #535362;
+$dark:          #1C1F26;
 $lightGray:     #eeeeee;
 
 $defaultFont: 'Helvetica Neue', Arial, sans-serif;
@@ -95,19 +95,8 @@ h1, h2, h3, h4, h5, h6 {
 ///////////////////
 
 #login {
-  background: url('../img/big-blur.jpg') no-repeat center center fixed;
-   -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  .logo {
-    color: rgba(0,0,0,.3);
-    font-family: "StatamicIcons";
-    font-size: 80px;
-    margin-bottom:25px;
-    padding-top: 100px;
-    text-align: center;
-  }
+  background: $dark;
+
   #login-wrapper {
     width:280px;
     margin: 0 auto;
@@ -169,7 +158,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #control-bar {
-  background: darken($dark, 20%);
+  background: $dark;
   display:block;
   position:relative;
   height: 52px;
@@ -192,7 +181,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   a {
-    color: lighten($dark, 5%);
+    color: $light;
     display:block;
     font-size: 12px;
     font-weight: 500;
