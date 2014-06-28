@@ -34,6 +34,8 @@ class Plugin_data extends Plugin
 
     const REGEX_BRACKET = '/\[\d+\]\s+/';
 
+    const DATE_OFFSET = '-5 hours';
+
     public $invalidCharacters = array('!', ':', '/', '(', ')', '"', '\'', ',', '.', '?', ';');
 
     public $invalidHTML = array('<B>', '</B>', '<I>', '</I>', '**', '&#8217;');
@@ -56,7 +58,7 @@ class Plugin_data extends Plugin
         // 'quote-authors',
         // 'quotes',
         // 'recordings',
-        'schedule'
+        //'schedule'
     );
 
     public $meta = array(
@@ -107,6 +109,50 @@ class Plugin_data extends Plugin
 
     private function createSlug($string)
     {
+        // Special cases
+        switch ($string)
+        {
+            case "Alexander Glazunov\rTimothy McAllister":
+                $string = 'Alexander Glazunov';
+                break;
+
+            case 'ChiaYu Hsu':
+                $string = 'Chia-Yu Hsu';
+                break;
+
+            case 'Emiliano Pardo-Tristan':
+                $string = 'Emiliano Pardo-Tristan';
+                break;
+
+            case 'Gabriel Piern233':
+                $string = 'Gabriel Pierne';
+                break;
+
+            case 'G233rard Grisey':
+                $string = 'Gerard Grisey';
+                break;
+
+            case 'Heitor VillaLobos':
+                $string = 'Heitor Villa-Lobos';
+                break;
+
+            case "Johannes Brahms\rPeter Saiano":
+                $string = 'Johannes Brahms';
+                break;
+
+            case 'MingHsiu Yen':
+                $string = 'Ming-Hsiu Yen';
+                break;
+
+            case "Modest Mussorgsky\rMaurice Ravel":
+                $string = 'Modest Mussorgsky';
+                break;
+
+            case "Robert Schumann\rFred Hemke":
+                $string = 'Robert Schumann';
+                break;
+        }
+
         return Slug::make(str_replace($this->invalidCharacters, '', html_entity_decode($string)));
     }
 
@@ -150,9 +196,10 @@ EOD;
 
         foreach ($data as $row)
         {
+            $title = html_entity_decode($row['title']);
 $content = <<<EOD
 ---
-title: {$row['title']}
+title: $title
 ---
 
 EOD;
@@ -173,7 +220,22 @@ EOD;
 
         foreach ($data as $row)
         {
-            $composer = $this->createSlug($this->removeBrackets($row['field_id_54']));
+            $composer = $this->removeBrackets($row['field_id_54']);
+
+            // Special cases
+            switch ($row['title'])
+            {
+                case 'Crossroads Songs':
+                case 'Fire Hose Reel':
+                    $composer = 'Evan Chambers';
+                    break;
+
+                case 'Ludus No. 2':
+                    $composer = 'Emiliano Pardo-Tristan';
+                    break;
+            }
+
+            $composer = $this->createSlug($composer);
             $premier = $row['field_id_58'] == 'y' ? 1 : 0;
             $audio_excerpts_array = unserialize($row['field_id_63']);
             $audio_excerpts = '';
@@ -513,6 +575,7 @@ EOD;
         foreach ($data as $row)
         {
             $title = $this->createSlug($row['title']);
+            $row['field_id_65'] = strtotime(self::DATE_OFFSET, $row['field_id_65']);
             $release_date = $row['field_id_65'] != 0 ? date('Y-m-d', $row['field_id_65']) : '';
             $tribute = $row['field_id_77'] == 'y' ? 1 : 0;
             $artwork = $row['field_id_68'] != '' ? '{{ _site_root }}assets/img/recordings/' . $title . '.jpg' : '';
@@ -638,6 +701,115 @@ EOD;
 
     private function createSchedule()
     {
+        ini_set('unserialize_callback_func', 'test');
 
+        function test($className)
+        {
+            new $className();
+        }
+
+        $data = $this->db->query('select exp_weblog_titles.title, exp_weblog_titles.entry_date, exp_weblog_data.* from exp_weblog_data left join exp_weblog_titles on exp_weblog_data.entry_id = exp_weblog_titles.entry_id where exp_weblog_data.weblog_id = 7 order by exp_weblog_titles.entry_date DESC');
+        $iterator = 1;
+
+        foreach ($data as $row)
+        {
+            $title = $row['title'];
+            $tribute = $row['field_id_46'] == 'y' ? 1 : 0;
+            $row['entry_date'] = strtotime(self::DATE_OFFSET, $row['entry_date']);
+            $event_date = $row['entry_date'] != 0 ? date('Y-m-d', $row['entry_date']) : '';
+            $event_time = $row['entry_date'] != 0 ? date('h:i A', $row['entry_date']) : '';
+            $location = '/facilities/' . $this->createSlug($this->removeBrackets($row['field_id_37']));
+            $url = $row['field_id_15'];
+            $ticket_information_url = $row['field_id_42'];
+            $guest_performers = "\n  -\n";
+            $ensembles = "\n  -\n";
+            $conductors = "\n  -\n";
+            $program = "\n  -\n";
+
+            $guest_performers_array = $row['field_id_73'] != '' ? explode("\r", $row['field_id_73']) : '';
+            $ensembles_array = $row['field_id_70'] != '' ? explode("\r", $row['field_id_70']) : '';
+            $conductors_array = $row['field_id_71'] != '' ? explode("\r", $row['field_id_71']) : '';
+            $program_array = $row['field_id_72'] != '' ? explode("\r", $row['field_id_72']) : '';
+
+            if (is_array($ensembles_array))
+            {
+                $ensembles = '';
+
+                foreach ($ensembles_array as $ensemble)
+                {
+                    $ensembles .= "\n  -\n";
+                    $ensembles .= "    ensemble: /ensembles/" . $this->createSlug($this->removeBrackets($ensemble));
+                }
+            }
+            else
+                $ensembles .= "    ensemble: \"0\"";
+
+            if (is_array($conductors_array))
+            {
+                $conductors = '';
+
+                foreach ($conductors_array as $conductor)
+                {
+                    $conductors .= "\n  -\n";
+                    $conductors .= "    conductor: /conductors/" . $this->createSlug($this->removeBrackets($conductor));
+                }
+            }
+            else
+                $conductors .= "    conductor: \"0\"";
+
+            if (is_array($program_array))
+            {
+                $program = '';
+
+                foreach ($program_array as $composition)
+                {
+                    $program .= "\n  -\n";
+                    $program .= "    composition: /compositions/" . $this->createSlug($this->removeBrackets($composition));
+                }
+            }
+            else
+                $program .= "    composition: \"0\"";
+
+            if (is_array($guest_performers_array))
+            {
+                $guest_performers = '';
+
+                foreach ($guest_performers_array as $guest_performer)
+                {
+                    $guest_performers .= "\n  -\n";
+                    $guest_performers .= "    guest_performer: /performers/" . $this->createSlug($this->removeBrackets($guest_performer));
+                }
+            }
+            else
+                $guest_performers .= "    guest_performer: \"0\"";
+
+            $description = str_replace($this->invalidHTML, $this->markdownReplacements, $row['field_id_74']);
+
+$content = <<<EOD
+---
+title: '$title'
+tribute: "$tribute"
+event_date: $event_date
+event_time: $event_time
+location: $location
+url: $url
+ticket_information_url: $ticket_information_url
+program: $program
+guest_performers: $guest_performers
+ensembles: $ensembles
+conductors: $conductors
+---
+$description
+EOD;
+
+            #echo '<pre>'.$content.'</pre>';
+            #echo '<hr />';
+
+            $entityDir = sprintf('%s-%s', '05', 'schedule');
+            $filename = $this->createSlug($row['title']);
+            $dir = sprintf(self::VISIBLE_NUMBER_FORMAT, self::CONTENT_DIR, $entityDir, $iterator, $filename);
+            file_put_contents($dir, $content);
+            $iterator++;
+        }
     }
 }

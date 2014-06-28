@@ -40,8 +40,8 @@ fields:
     display: Event URL
     type: text
 
-  ticket_information:
-    display: Ticket Information
+  ticket_information_url:
+    display: Ticket Information URL
     type: text
 
   section_2:
@@ -67,7 +67,7 @@ fields:
   guest_performers:
     display: ''
     fields:
-      composition:
+      guest_performer:
         content:
           folder: performers
           show_hidden: true

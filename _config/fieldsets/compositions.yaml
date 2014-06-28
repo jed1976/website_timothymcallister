@@ -155,14 +155,12 @@ fields:
     fields:
       notes:
         display: Notes
-        required: true
         type: text
 
       file:
         allowed: [mp3, aac, wav, aiff]
         destination: assets/audio
         display: File
-        required: true
         type: file
 
     instructions: 'Here you can upload audio excerpts and provide notes such as "Movement 2: Mango Café". This information will help populate the Performances page, once you assign a composition to a performance. You may upload as many tracks as you wish, however, please keep the excepts around 30 seconds and in MP3 format.'
