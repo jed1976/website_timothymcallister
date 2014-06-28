@@ -153,7 +153,7 @@ _admin_enabled: true
 
 # Change the folder name for your admin directory.
 # You can also rename your admin.php file anything you want
-_admin_path: admin
+_admin_path: tmsys
 
 # Folder name of your desired control panel theme
 _admin_theme: tm3
@@ -162,11 +162,11 @@ _admin_theme: tm3
 _admin_nav:
   dashboard: false
   pages:     true
-  members:   true
-  account:   true
-  system:    true
-  logs:      true
-  help:      true
+  members:   false
+  account:   false
+  system:    false
+  logs:      false
+  help:      false
   view_site: true
   logout:    true
 
@@ -174,13 +174,13 @@ _admin_nav:
 _admin_start_page: pages
 
 # Enable/Disable the ability to add new top level pages via the CP
-_enable_add_top_level_page: true
+_enable_add_top_level_page: false
 
 # Enable/Disable the ability to add new child pages via the CP
 _enable_add_child_page: true
 
 # Enable/Disable the ability to delete pages via the CP
-_enable_delete_page: true
+_enable_delete_page: false
 
 # plain english works just fine here.
 _cookies.lifetime: 1 day

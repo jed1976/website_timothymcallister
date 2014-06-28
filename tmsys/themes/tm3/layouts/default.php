@@ -23,10 +23,6 @@
     <div id="main">
       <div id="control-bar" class="clearfix">
         <ul class="pull-left">
-          <li id="logo">
-            <a href="<?php echo $app->urlFor("dashboard"); ?>">Home</a>
-          </li>
-
           <?php if (CP_Helper::show_page('dashboard', false)): ?>
           <li id="item-content">
             <a href="<?php echo $app->urlFor("dashboard"); ?>"<?php if ($route === "dashboard"):?> class="active"<?php endif ?>>
@@ -116,7 +112,7 @@
   </div>
 </div>
 <div id="footer">
-  <!-- <a href="http://statamic.com">Statamic</a> --> v<?php print STATAMIC_VERSION ?>
+  v<?php print STATAMIC_VERSION ?>
   <span id="version-check">
   <?php if (Pattern::isValidUUID($app->config['_license_key'])): ?>
 
