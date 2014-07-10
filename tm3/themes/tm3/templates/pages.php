@@ -1,15 +1,3 @@
-<div id="subnav">
-  <ul>
-    <li><a href="<?php echo $app->urlFor("pages"); ?>" class="active"><?php echo Localization::fetch('pages') ?></a></li>
-    <li class="separator">&nbsp;</li>
-    <?php foreach($listings as $listing): ?>
-      <?php if (CP_Helper::is_page_visible($listing)): ?>
-        <li><a href="entries?path=<?php echo $listing['slug']?>"><?php echo $listing['title'] ?></a></li>
-      <?php endif ?>
-    <?php endforeach ?>
-  </ul>
-</div>
-
 <div class="container">
 
   <div id="status-bar">

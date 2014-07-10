@@ -1,13 +1,3 @@
-<div id="subnav">
-  <ul>
-    <li><a href="<?php echo $app->urlFor("pages"); ?>">Pages</a></li>
-    <li class="separator">&nbsp;</li>
-    <?php foreach($listings as $listing): ?>
-      <li><a href="entries?path=<?php echo $listing['slug']?>" <?php if ($listing['slug'] === $path): ?> class="active" <?php endif ?>><?php echo $listing['title'] ?></a></li>
-    <?php endforeach ?>
-  </ul>
-</div>
-
 <div class="container">
 
   <div id="status-bar">
