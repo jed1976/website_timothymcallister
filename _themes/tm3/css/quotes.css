@@ -1,0 +1,61 @@
+.quotes
+{
+    bottom: 20px;
+    left: 20px;
+    position: absolute;
+    right: 20px;
+}
+
+.quote
+{
+    bottom: 0;
+    color: #fff;
+    font-weight: 300;
+    left: 0;
+    margin: 0;
+    position: absolute;
+    right: 0;
+}
+
+.quote blockquote
+{
+    font-size: 1.25rem;
+    margin: 0;
+}
+
+.quote figcaption
+{
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-top: 20px;
+    text-align: right;
+    text-transform: uppercase;
+}
+
+.quote cite
+{
+    display: block;
+    font-style: normal;
+    font-weight: normal;
+    letter-spacing: 1px;
+    text-transform: none;
+}
+
+.quote blockquote, .quote figcaption { font-family: 'museo-slab'; }
+
+.quote:first-child { opacity: 1; }
+
+.js .quote { opacity: 0; }
+
+@media (min-width: 768px)
+{
+    .quote blockquote { font-size: 1.5rem; }
+    .quotes { left: 60px; right: 60px; }
+}
+
+@media (min-width: 1024px)
+{
+    .quote blockquote { font-size: 1.75rem; }
+    .quotes { left: 100px; right: 100px; }
+}

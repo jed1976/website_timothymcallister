@@ -1,7 +1,7 @@
 ---
-_fieldset: contact
+page:id: contact
 title: Contact
-addresses: 
+addresses:
   -
       name: Dr. Timothy McAllister
       organization: Northwestern University
@@ -20,4 +20,5 @@ addresses:
       state: MI
       zip_code: 49643
       email: mcallitp@gmail.com
+_fieldset: contact
 ---

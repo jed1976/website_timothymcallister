@@ -1,0 +1,45 @@
+.js body,
+.quote
+{
+
+    -webkit-transition: opacity 1s ease-in;
+    -moz-transition: opacity 1s ease-in;
+    -ms-transition: opacity 1s ease-in;
+    -o-transition: opacity 1s ease-in;
+    transition: opacity 1s ease-in;
+    opacity: 0;
+}
+
+input[type=text],
+#menu,
+#menu li,
+#year-selector-wrapper a:hover,
+.button
+{
+    -moz-transition: all 0.25s ease-in;
+    -ms-transition: all 0.25s ease-in;
+    -o-transition: all 0.25s ease-in;
+    -webkit-transition: all 0.25s ease-in;
+    transition: all 0.25s ease-in;
+}
+
+#logo,
+#menu-toggle
+{
+    opacity: 1;
+    -moz-transition-property: background, opacity;
+    -moz-transition-duration: 0.25s;
+    -moz-transition-timing-function: ease-in;
+    -ms-transition-property: background, opacity;
+    -ms-transition-duration: 0.25s;
+    -ms-transition-timing-function: ease-in;
+    -o-transition-property: background, opacity;
+    -o-transition-duration: 0.25s;
+    -o-transition-timing-function: ease-in;
+    -webkit-transition-property: background, opacity;
+    -webkit-transition-duration: 0.25s;
+    -webkit-transition-timing-function: ease-in;
+    transition-property: background, opacity;
+    transition-duration: 0.25s;
+    transition-timing-function: ease-in;
+}

@@ -1,0 +1,33 @@
+.button
+{
+    background-color: transparent;
+    border-color: #ccc;
+    border-radius: 0;
+    border-style: solid;
+    border-width: 1px;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 700;
+    letter-spacing: 0.2rem;
+    padding: 10px 20px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+.button, .button:link, .button:visited { color: #222; }
+.button:hover { background-color: #222; color: #fff; text-decoration: none; }
+.button.expand { display: block; width: 100%; }
+.button.xx-small { font-size: 60%; }
+.button.x-small { font-size: 70%; }
+.button.small { font-size: 85%; }
+.button.medium { font-size: 100%; }
+.button.large { font-size: 110%; }
+.button.x-large { font-size: 120%; }
+.button.xx-large { font-size: 130%; }
+.button.pad { margin: 20px 0; }
+
+@media (min-width: 768px)
+{
+    .button { width: auto; }
+}

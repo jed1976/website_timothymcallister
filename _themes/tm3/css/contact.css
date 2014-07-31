@@ -1,0 +1,75 @@
+#school,
+#summer
+{
+    background-size: cover;
+    position: relative;
+}
+
+#school
+{
+    background-image: url('../img/school.jpg');
+    background-position: center right;
+    margin-bottom: 20px;
+}
+
+#summer
+{
+    background-image: url('../img/summer.jpg');
+    background-position: top center;
+}
+
+.card
+{
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+}
+
+.vcard
+{
+    margin: 20px 0 0 0;
+    padding: 0;
+}
+
+.vcard dt,
+.vcard dd
+{
+    margin: 0;
+    padding: 0;
+}
+
+.vcard .email
+{
+    font-weight: 700;
+    -ms-word-break: break-all;
+    word-break: break-all;
+    word-break: break-word;
+}
+
+@media (min-width: 768px)
+{
+    .js #school,
+    .js #summer
+    {
+        bottom: 0;
+        left: 0;
+        margin: 0;
+        position: fixed;
+        right: 0;
+        top: 0;
+        width: 49%;
+    }
+
+    .js #summer
+    {
+        left: auto;
+        right: 0;
+    }
+
+    .js .card
+    {
+        left: 0;
+        right: 0;
+    }
+}

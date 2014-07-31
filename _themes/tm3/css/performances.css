@@ -1,0 +1,82 @@
+.hero
+{
+    background-image: url(../img/tim-3.jpg);
+    background-position: center left;
+}
+
+#year-selector-wrapper ol
+{
+    list-style: none;
+    margin: 30px;
+    overflow: hidden;
+    padding: 0;
+}
+
+#year-selector-wrapper li
+{
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    float: left;
+    margin: 2px;
+}
+
+#year-selector-wrapper a
+{
+    display: block;
+    padding: 30px;
+}
+
+#year-selector-wrapper a:hover
+{
+    background-color: #a42836;
+    color: #fff;
+}
+
+.js #year-selector-wrapper
+{
+    margin: 30px 0;
+    position: relative;
+    width: 100%;
+}
+
+.js #year-selector
+{
+    background-color: #fff;
+    border-color: rgba(0, 0, 0, 0.1);
+    border-radius: 0;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 5px 10px;
+    width: 100%;
+    -webkit-appearance: none;
+}
+
+.js #year-selector-wrapper::before
+{
+    bottom: 0;
+    font-size: 28px;
+    line-height: 44px;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+    width: 44px;
+}
+
+.negative { margin-bottom: -30px }
+
+@media (min-width: 768px)
+{
+    .js #year-selector-wrapper
+    {
+        margin: 0;
+        position: absolute;
+        right: 10px;
+        top: 20px;
+        width: 100px;
+        z-index: 1;
+    }
+
+    .js #year-selector { border: 0; }
+}

@@ -1,0 +1,81 @@
+@font-face
+{
+    font-family: 'icons';
+    src:url('../fonts/icons.eot');
+    src:url('../fonts/icons.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/icons.woff') format('woff'),
+        url('../fonts/icons.svg?#icons') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body,
+html,
+.gm-style
+{
+    font-family: 'brandon-grotesque', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+    font-weight: 400;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+}
+
+body
+{
+    color: #222;
+    font-size: 1.4rem;
+    line-height: 1.57142857142857; /* 22px / 14px; (line-height / base) */
+}
+
+html
+{
+    font-size: 75%; /* 12px; 1.0rem = 12px */
+    line-height: 1.5; /* 21px */
+}
+
+a { text-decoration: none; }
+h1, h2, h3, h4, h5, h6 { line-height: 1.5; margin: 0 0 0.5rem 0; }
+h1 { font-size: 2.15rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.78rem; }
+h4 { font-size: 1.6rem; }
+h5 { font-size: 1.4rem; font-weight: 400; }
+h6 { font-size: 1rem; font-weight: 400; }
+p { margin-bottom: 2rem; }
+em { font-weight: 400; }
+strong { font-weight: 700; }
+
+.link,
+.link:link,
+.link:visited,
+.gm-style-iw .link,
+.gm-style-iw .link:link,
+.gm-style-iw .link:visited { color: #b0120a; }
+
+.aside
+{
+    background-color: #333;
+    color: #fff;
+}
+
+.style-1
+{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    font-weight: 400;
+    letter-spacing: 0.25rem;
+    margin-bottom: 20px;
+    margin-left: -20px;
+    margin-right: -20px;
+    padding: 0 20px 10px 20px;
+    text-transform: uppercase;
+}
+
+@media (min-width: 768px)
+{
+    html {  font-size: 75%; } /* 12px */
+}
+
+@media (min-width: 1024px)
+{
+    html {  font-size: 81.25%; } /* 14px */
+}

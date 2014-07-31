@@ -1,17 +1,25 @@
 <!DOCTYPE html>
-<html class="no-js" id="" lang="en">
+<html class="no-js" dir="ltr" id="{{ page_id }}" lang="en">
     <head>
-        <!-- Meta -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{{ _site_name }}{{ if segment_1 }} – {{ title }}{{ endif }}</title>
 
         <!-- Styles -->
         {{ theme:css tag="true" }}
+        <!-- <link href="assets/css/index.css" rel="stylesheet" type="text/css"> -->
 
-        <!-- Favicon -->
-        <link rel="shortcut icon" type="image/png" href="{{ theme:img src="favicon.png" }}">
+        {{ theme:partial src="meta" }}
+        {{ theme:partial src="tiles" }}
+
+        {{ theme:partial src="no-js" }}
+        {{ theme:partial src="typekit" }}
+        {{ theme:partial src="favicons" }}
     </head>
     <body>
+        {{ theme:partial src="header" }}
+
+        {{ layout_content }}
+
+        <!-- Scripts -->
+        {{ theme:js tag="true" }}
     </body>
 </html>

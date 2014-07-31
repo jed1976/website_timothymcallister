@@ -1,0 +1,84 @@
+#current-recording-overlay,
+#next-recording-overlay
+{
+    background-repeat: no-repeat;
+    background-size: cover;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 0;
+}
+
+#recordings-list li,
+#live-performances ul
+{
+    margin: 0 0 40px 0;
+    padding: 0;
+    list-style: none;
+    position: relative;
+    z-index: 1;
+}
+
+#live-performances li
+{
+    display: block;
+    font-size: 80%;
+    height: auto;
+    margin: 0;
+    padding: 0 10px 0 0;
+    position: relative;
+    vertical-align: top;
+    width: 100%;
+}
+
+#recordings-list img
+{
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: block;
+    margin-bottom: 20px;
+}
+
+.js.screen-size-0 #content,
+.js.screen-size-1 #content
+{
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+}
+
+#content { padding: 60px 0 0 0; }
+#next-recording-overlay { opacity: 0; }
+#recordings-list { padding: 0; }
+#recordings-list .recording { margin-bottom: 90px; }
+#recordings-list li:last-child { margin-bottom: 0; }
+#recordings-list li:last-of-type, #live-performances li:last-of-type { margin-bottom: 0; }
+.js #live-performances li .sample.button { position: static; }
+.js .sample[href] { display: none; }
+.js div.iScrollVerticalScrollbar.iScrollLoneScrollbar { right: 2px !important; width: 3px !important; }
+.js div.iScrollIndicator { border-color: rgba(255, 255, 255, 0.15) !important; }
+
+@media (min-width: 768px)
+{
+    .js #live-performances li
+    {
+        display: inline-block;
+        min-height: 160px;
+        margin-bottom: 0;
+        margin-right: -4px;
+        padding-right: 20px;
+        width: 33%;
+    }
+
+    .js #live-performances li .sample.button
+    {
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: 20px;
+        width: auto;
+    }
+}

@@ -1,0 +1,37 @@
+.hero
+{
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 425px;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.hero::before,
+.overlay::before
+{
+    background-color: rgba(0, 0, 0, 0.4);
+    bottom: 0;
+    content: '';
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 0;
+}
+
+.fixed.hero::before,
+.fixed.overlay::before
+{
+    height: 100%;
+    position: fixed;
+}
+
+img { max-width: 100%; }
+#map-canvas img { max-width: none; }
+
+@media (min-width: 768px)
+{
+    .hero { min-height: 600px; }
+}

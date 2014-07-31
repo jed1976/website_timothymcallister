@@ -1,0 +1,27 @@
+[data-icon]::before
+{
+    font-family: 'icons';
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    speak: none;
+    text-transform: none;
+    vertical-align: middle;
+}
+
+[data-icon=pen]::before { content: "\e601"; }
+[data-icon=calendar]::before { content: "\e602"; }
+[data-icon=quartet]::before { content: "\e603"; }
+[data-icon=meeting]::before { content: "\e604"; }
+[data-icon=music-conductor]::before { content: "\e606"; }
+[data-icon=news]::before { content: "\e608"; }
+[data-icon=saxophone]::before { content: "\e609"; }
+[data-icon=user]::before { content: "\e60a"; }
+[data-icon=twitter]::before { content: "\e616"; }
+[data-icon=facebook]::before { content: "\e617"; }
+[data-icon=clock]::before { content: "\e619"; }
+[data-icon=globe]::before { content: "\e61a"; }
+[data-icon=ensemble]::before { content: "\e61b"; }
+[data-icon=ticket]::before { content: "\e61c"; }
+[data-icon=down-arrow]::before { content: "\e613"; }
+[data-icon=audio-wave]::before { content: "\e60f"; }
