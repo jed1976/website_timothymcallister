@@ -4,6 +4,17 @@ fields:
   addresses:
     display: Addresses
     fields:
+      artwork:
+        allowed: [jpg]
+        destination: assets/img/contact
+        display: Artwork
+        instructions: Artwork must be in JPG format
+        type: file
+
+      heading:
+        display: Heading
+        type: text
+
       name:
         display: Name
         type: text

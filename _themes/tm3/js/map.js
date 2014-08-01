@@ -27,7 +27,8 @@ var initialize = function() {
         var eventEl, coordinates, marker, title;
 
         [].forEach.call(performanceList.querySelectorAll('.h-event'), function(el) {
-            title = el.querySelector('.p-location .p-name').innerHTML,
+            title = el.querySelector('.p-location .p-name');
+            title = title ? title.innerHTML : '';
             coordinates = new google.maps.LatLng(el.dataset.latitude, el.dataset.longitude);
             marker = new google.maps.Marker({
                 animation: google.maps.Animation.DROP,

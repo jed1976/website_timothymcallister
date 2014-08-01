@@ -1,22 +1,12 @@
-#school,
-#summer
+.hero
 {
+    background-position: top center;
     background-size: cover;
+    margin-bottom: 20px;
     position: relative;
 }
 
-#school
-{
-    background-image: url('../img/school.jpg');
-    background-position: center right;
-    margin-bottom: 20px;
-}
-
-#summer
-{
-    background-image: url('../img/summer.jpg');
-    background-position: top center;
-}
+.col-1-2:last-of-type .hero { margin-bottom: 0; }
 
 .card
 {
@@ -49,22 +39,19 @@
 
 @media (min-width: 768px)
 {
-    .js #school,
-    .js #summer
+    .js .hero
     {
-        bottom: 0;
-        left: 0;
+        height: 100%;
         margin: 0;
-        position: fixed;
-        right: 0;
+        position: relative;
         top: 0;
-        width: 49%;
+        width: 100%;
     }
 
-    .js #summer
+    .js #location-2
     {
-        left: auto;
-        right: 0;
+    /*    left: auto;
+        right: 0;*/
     }
 
     .js .card

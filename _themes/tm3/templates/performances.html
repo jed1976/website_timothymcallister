@@ -1,0 +1,46 @@
+<div class="hero">
+    <div class="quotes">
+        <figure class="quote">
+            <blockquote>&ldquo;[John] Adams wrote the concerto for saxophone virtuoso Tim McAllister, who played it Friday with consummate polish and verve&rdquo;</blockquote>
+            <figcaption>Charles Downey <cite>The Classical Review (Sept 2013)</cite></figcaption>
+        </figure>
+
+        <figure class="quote">
+            <blockquote>&ldquo;Mr. McAllister 'has a singing legato matched with excellent and fluent technique...a superior performer.'&rdquo;</blockquote>
+            <figcaption>Philip Farkas <cite>Legendary Hornist, Former Principal Horn, Chicago Symphony</cite></figcaption>
+        </figure>
+
+        <figure class="quote">
+            <blockquote>&ldquo;Timothy McAllister is both an agile soloist, easily surmounting any technical hurdles, and an expressive, communicative musician able to plumb the depths or scale the heights of these contemporary composers’ inspirations. His fellow musicians are equally accomplished; these renditions are finely honed collaborations between talented peers.&rdquo;</blockquote>
+            <figcaption>R. Schulslaper <cite>FANFARE Magazine</cite></figcaption>
+        </figure>
+
+        <figure class="quote">
+            <blockquote>&ldquo;Soloist Timothy McAllister proved brilliantly up to the enormous demands — vast spreads of pitches, disjunct lines that wanted to be as lyrical as possible and some dazzling scurries.&rdquo;</blockquote>
+            <figcaption>Scott Cantrell <cite>The Dallas Morning News (4/25/12)</cite></figcaption>
+        </figure>
+
+        <figure class="quote">
+            <blockquote>&ldquo;Mr. Adams took inspiration from the virtuoso technique of Mr. McAllister...one of the foremost saxophonists of his generation&rdquo;</blockquote>
+            <figcaption>William Robin <cite>The New York Times (Sept. 2013)</cite></figcaption>
+        </figure>
+    </div>
+</div>
+
+<section id="content">
+    <div class="grid-pad">
+        <h2 class="style-1">Performances</h2>
+
+        <div data-icon="down-arrow" id="year-selector-wrapper">
+            <ol>
+                {{ entries:listing folder="performances" group_by_date="Y" show_future="true" show_hidden="true" }}
+                {{ if grouped_date }}
+                <li><a class="link" href="?year={{ grouped_date }}">{{ grouped_date }}</a></li>
+                {{ endif }}
+                {{ /entries:listing }}
+            </ol>
+        </div>
+
+        {{ theme:partial src="performances" limit="0" since="January 1st, { get:year|2014 }" until="December 31th, { get:year|2014 }" }}
+    </div>
+</section>

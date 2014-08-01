@@ -16,10 +16,16 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('year-selector').addEventListener('change', function(event) {
         var target = event.target;
 
-        //yearIndicator.innerHTML = target.options[target.selectedIndex].getAttribute('value');
+        window.location.href = '?year=' + target.options[target.selectedIndex].getAttribute('value');
+
         target.blur();
     });
 
+    var queryString = window.location.search;
+    queryString = queryString.substring(1);
+
+    var year = queryString.replace('year=', '') || new Date().getFullYear();
+
     // @TODO Set date based on URL
-    document.getElementById('year-selector').value = new Date().getFullYear();
+    document.getElementById('year-selector').value = year;
 });

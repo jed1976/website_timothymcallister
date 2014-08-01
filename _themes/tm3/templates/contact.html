@@ -1,0 +1,26 @@
+<section id="content">
+    <div class="grid">
+        {{ addresses }}
+        <div class="col-1-2">
+            <div class="hero" id="location-{{ index }}" style="background-image: url({{ artwork }});">
+                <div class="card grid-pad">
+                    <h2 class="style-1">{{ heading }}</h2>
+
+                    <dl class="vcard" id="hcard-{{ name|slugify }}">
+                        <dt class="fn"><strong>{{ name }}</strong></dt>
+                        <dd class="org">
+                            <div class="organization-name">{{ organization }}</div>
+                            <div class="organization-unit">{{ unit }}</div>
+                        </dd>
+                        <dd class="adr">
+                            <div class="street-address">{{ address }}</div>
+                            <span class="locality">{{ city }}</span>, <span class="region">{{ state }}</span>, <span class="postal-code">{{ zip_code }}</span>
+                        </dd>
+                        <dd><a class="email link" href="mailto:{{ email }}">{{ email }}</a></dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        {{ /addresses }}
+    </div>
+</section>

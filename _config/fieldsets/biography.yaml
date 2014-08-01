@@ -1,0 +1,26 @@
+title: Biography
+
+hide: true
+
+fields:
+  content:
+    type: markitup
+
+  pdfs:
+    display: ''
+    fields:
+      label:
+        type: text
+
+      pdf:
+        allowed: [pdf]
+        destination: assets/pdf
+        display: Biography File
+        instructions: PDF Format only
+        type: file
+
+    min_rows: 1
+    type: grid
+
+include:
+  - hidden

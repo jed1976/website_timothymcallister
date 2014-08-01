@@ -6,4 +6,5 @@ page_js: performances
 page_stylesheet: performances
 title: Performances
 _fieldset: hidden
+_template: performances
 ---

@@ -189,7 +189,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (target.getAttribute('href') === null) return;
 
-        if (target.hasClass('u-url') || target.hasClass('email')) return;
+        if (target.hasClass('u-url') ||
+            target.hasClass('email') ||
+            target.hasClass('download')) return;
 
         event.preventDefault();
 
