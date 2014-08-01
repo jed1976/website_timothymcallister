@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html class="no-js" dir="ltr" id="{{ page_id }}" lang="en">
     <head>
-        <title>{{ _site_name }}{{ if segment_1 }} – {{ title }}{{ endif }}</title>
-
         <!-- Styles -->
         {{ theme:css tag="true" }}
-        <!-- <link href="assets/css/index.css" rel="stylesheet" type="text/css"> -->
-
-        {{ theme:partial src="meta" }}
-        {{ theme:partial src="tiles" }}
+        {{ if map_js }}{{ theme:css src="map" tag="true" }}{{ endif }}
+        {{ if page_stylesheet }}{{ theme:css src="{ page_stylesheet }" tag="true" }}{{ endif }}
 
         {{ theme:partial src="no-js" }}
+
         {{ theme:partial src="typekit" }}
+
+        {{ theme:partial src="meta" }}
+
         {{ theme:partial src="favicons" }}
+
+        <title>{{ _site_name }}{{ if segment_1 }} – {{ title }}{{ endif }}</title>
     </head>
     <body>
         {{ theme:partial src="header" }}
@@ -21,5 +23,7 @@
 
         <!-- Scripts -->
         {{ theme:js tag="true" }}
+        {{ if map_js }}{{ theme:js src="map" tag="true" }}{{ endif }}
+        {{ if page_js }}{{ theme:js src="{ page_js }" tag="true" }}{{ endif }}
     </body>
 </html>

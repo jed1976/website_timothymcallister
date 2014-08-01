@@ -26,9 +26,6 @@
           <tr>
             <th class="checkbox-col"></th>
               <th><div class="header-inner"><?php echo Localization::fetch('title')?></div></th>
-              <?php if (isset($entry['event_date'])): ?>
-              <th style="width:20%"><div class="header-inner">Event Date</div></th>
-              <?php endif; ?>
               <?php if (isset($entry['composer'])): ?>
               <th style="width:20%">Composer</th>
               <?php endif; ?>
@@ -36,6 +33,9 @@
               <th><div class="header-inner"><?php echo Localization::fetch('date')?></div></th>
               <?php //elseif ($type == 'number' || $type == 'numeric'): ?>
               <!-- <th><div class="header-inner"><?php //echo Localization::fetch('number')?></div></th> -->
+              <?php endif; ?>
+              <?php if (isset($entry['event_time'])): ?>
+              <th style="width:20%">Time</th>
               <?php endif; ?>
             <th style="width:80px"><div class="header-inner"><?php echo Localization::fetch('status')?></div></th>
             <th style="width:40px"><div class="header-inner"><?php echo Localization::fetch('view')?></div></th>
@@ -68,15 +68,7 @@
             </td>
             <?php endif; ?>
 
-            <?php if (isset($entry['event_date'])): ?>
-            <td data-fulldate="<?php echo $entry['event_date']; ?>">
-              <?php
-                  echo Date::format(Config::getDateFormat('Y/m/d'), $entry['event_date']) . ' ' . Date::format('h:i A', $entry['event_time']);
-                  ?>
-            </td>
-          <?php endif; ?>
-
-            <?php if ($type == 'date'): ?>
+            <?php if ($type == 'date' && isset($entry['datestamp'])): ?>
               <td data-fulldate="<?php echo $entry['datestamp']; ?>">
                   <?php
                   echo Date::format(Config::getDateFormat('Y/m/d'), $entry['datestamp']);
@@ -85,6 +77,13 @@
             <?php //elseif ($type == 'number'): ?>
               <!-- <td><?php //print $entry['numeric'] ?></td> -->
             <?php endif ?>
+          <?php if (isset($entry['event_time'])): ?>
+            <td data-fulldate="<?php echo $entry['event_time']; ?>">
+              <?php
+                  echo Date::format('h:i A', $entry['event_time']);
+                  ?>
+            </td>
+          <?php endif; ?>
             <td class="margin status status-<?php print $status ?>">
               <span class="ss-icon">record</span><?php print ucwords($status) ?>
             </td>

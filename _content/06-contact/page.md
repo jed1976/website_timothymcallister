@@ -1,5 +1,7 @@
 ---
-page:id: contact
+page_icon: meeting
+page_id: contact
+page_stylesheet: contact
 title: Contact
 addresses:
   -

@@ -1,30 +1,42 @@
 <div class="grid">
     <div class="col-1-3">
-        <a href="recordings.html" title="Visit Publisher site for more information about this recording"><img alt="" src="{{ theme:img src="" }}"></a>
+        {{ if recording_url }}<a href="{{ recording_url }}" title="{{ publisher_title }}">{{ endif }}
+        <img alt="{{ title }}" src="{{ theme:img src="recordings/{{ slug }}.jpg" }}">
+        {{ if recording_url }}</a>{{ endif }}
     </div>
     <div class="col-2-3">
-        <h3>{TITLE}</h3>
+        <h3>{{ title }}</h3>
 
-        {DESCRIPTION}
+        {{ description }}
 
         <table class="detail-table">
             <tbody>
+                {{ if producer }}
                 <tr>
                     <th>Produced By</th>
-                    <td>Nonesuch Records</td>
+                    {{ entries:listing conditions="url:{producer}" folder="producers" limit="1" show_hidden="true" }}
+                    <td>{{ title }}</td>
+                    {{ /entries:listing }}
                 </tr>
+                {{ endif }}
+                {{ if release_date }}
                 <tr>
                     <th>Release Date</th>
-                    <td>May 6, 2014</td>
+                    <td>{{ release_date format="{{ global_date_format }}" }}</td>
                 </tr>
+                {{ endif }}
+                {{ if catalog_number }}
                 <tr>
                     <th>Catalog Number</th>
-                    <td>541356</td>
+                    <td>{{ catalog_number }}</td>
                 </tr>
+                {{ endif }}
+                {{ if recording_url }}
                 <tr>
                     <th>Website</th>
-                    <td><a class="link" href="" title="Visit Publisher site for more information about this recording">Visit Site</a></td>
+                    <td><a class="link" href="{{ recording_url }}" title="{{ publisher_title }}">Visit Site</a></td>
                 </tr>
+                {{ endif }}
             </tbody>
         </table>
     </div>

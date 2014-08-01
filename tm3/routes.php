@@ -671,6 +671,8 @@ $admin_app->post('/publish', function() use ($admin_app) {
       $fields_data = $fs->get_data();
       $field_settings = $fields_data['fields'];
     }
+  } elseif (count($data['field']) >= 1) {
+    $field_settings = $data['fields'];
   }
 
   /*
@@ -1146,11 +1148,12 @@ $admin_app->get('/publish', function() use ($admin_app) {
 
         }
       } else {
-        if (isset($data['_fieldset'])) {
-          $fs = Statamic_Fieldset::load($data['_fieldset']);
+        $fieldset = array_get($data, '_fieldset', Config::get('default_fieldset'));
+        if ($fieldset) {
+          $fs = Statamic_Fieldset::load($fieldset);
           $fields_data = $fs->get_data();
-          $data['fields'] = isset($fields_data['fields']) ? $fields_data['fields'] : array();
-          $data['fieldset'] = $data['_fieldset'];
+          $data['fields'] = array_get($fields_data, 'fields', array());
+          $data['fieldset'] = $fieldset;
         }
         $data['type'] = 'none';
       }

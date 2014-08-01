@@ -1,30 +1,57 @@
-<li class="h-event" data-latitude="{{LAT}}" data-longitude="{{LONG}}">
+<article class="h-event" data-latitude="{{ latitude }}" data-longitude="{{ longitude }}">
     <span class="calendar">
-        <time class="dt-start" datetime="2014-07-16 20:00">{{MONTH}} <span class="day">{{DAY}}</span> <span class="year">{{YEAR}}</span></time>
+        <time class="dt-start" datetime="{{ datestamp }} {{ event_time }}">{{ datestamp format="M" }} <span class="day">{{ datestamp format="j" }}</span> <span class="year">{{ datestamp format="Y" }}</span></time>
     </span>
 
-    <h4 class="p-name">{{TITLE}}</h4>
+    <h4 class="p-name">{{ title }}</h4>
 
+    {{ if location }}
     <h5 class="p-location">
-        <a class="p-name u-url link" href="{{URL}}">{{LOCATION}}</a>
+        <a class="p-name u-url link" href="http://www.google.com/maps/place/{{ location|urlencode }}/@{{ latitude }},{{ longitude }},17z">{{ location }}</a>
     </h5>
+    {{ endif }}
 
+    {{ if content }}
     <div class="p-summary scrollable">
-        {{SUMMARY}}
+        {{ content }}
     </div>
+    {{ endif }}
 
     <table class="p-description detail-table">
+        {{ if conductors }}
+        {{ entries:listing folder="conductors" conditions="url:{conductor}" show_hidden="yes" }}
+        {{ if conductor }}
+        <tr>
+            <th>Conductors</th>
+            <td>{{ conductor }}</td>
+        </tr>
+        {{ endif }}
+        {{ /entries:listing }}
+        {{ endif }}
+
+        {{ if ensembles }}
+        {{ entries:listing folder="ensembles" conditions="url:{ensemble}" show_hidden="yes" }}
+        {{ if ensemble }}
         <tr>
             <th>Ensemble</th>
-            <td>Chicago Symphony Orchestra</td>
+            <td>{{ ensemble }}</td>
         </tr>
+        {{ endif }}
+        {{ /entries:listing }}
+        {{ endif }}
+
+        {{ if event_time }}
         <tr>
             <th>Time</th>
-            <td><time class="dt-start" datetime="2014-07-17 20:00">8:00 PM</time></td>
+            <td><time class="dt-start" datetime="{{ datestamp }} {{ event_time }}">{{ event_time }}</time></td>
         </tr>
+        {{ endif }}
+
+        {{ if performance_url }}
         <tr>
             <th>Website</th>
-            <td><a class="u-url link" href="http://ravinia.org/ShowDetails/Index?id=745" title="Visit this site for more details">Visit Site</a></td>
+            <td><a class="u-url link" href="{{ performance_url }}">Visit Site</a></td>
         </tr>
+        {{ endif }}
     </table>
-</li>
+</article>

@@ -3,14 +3,20 @@ title: Facility
 hide: true
 
 fields:
-  url:
-    display: URL
-    instructions: URL for the facility
+  address:
+    instructions: Type the name of the facility to get an autocompleted list of options
     type: text
 
-  location:
-    display: Location
-    type: location
+  latitude:
+    display: Latitude
+    type: hidden
+
+  longitude:
+    display: Longitude
+    type: hidden
+
+  jed:
+    type: google
 
 include:
   - hidden

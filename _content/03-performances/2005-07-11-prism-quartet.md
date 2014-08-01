@@ -1,0 +1,23 @@
+---
+title: 'PRISM Quartet'
+tribute: "0"
+datestamp: 2005-07-11
+event_time: 10:11 AM
+location: Chautauqua Institution
+latitude: 42.2100953
+longitude: -79.4667126
+performance_url: http://www.chautauqua-inst.org/chamber.html
+ticket_information_url: Works by Mackey, Bolcom, Larsen, and more.
+program: 
+  -
+    composition: "0"
+guest_performers: 
+  -
+    guest_performer: "0"
+ensembles: 
+  -
+    ensemble: "0"
+conductors: 
+  -
+    conductor: "0"
+---

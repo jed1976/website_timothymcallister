@@ -5,7 +5,7 @@ var initialize = function() {
     var activeClass = 'active',
         currentRow,
         markers = {},
-        icon = new google.maps.MarkerImage('assets/img/marker.png', null, null, null, new google.maps.Size(25, 45)),
+        icon = new google.maps.MarkerImage('/_themes/tm3/img/marker.png', null, null, null, new google.maps.Size(25, 45)),
         infoWindow = new google.maps.InfoWindow({
             maxWidth: 320
         }),
@@ -49,7 +49,7 @@ var initialize = function() {
     performanceList.addEventListener('click', function(event) {
         event.preventDefault();
 
-        var target = event.target.findParentNodeWithName('LI');
+        var target = event.target.findParentNodeWithName('ARTICLE');
 
         var performance = target,
             title = performance.querySelector('.p-location .p-name').innerHTML,

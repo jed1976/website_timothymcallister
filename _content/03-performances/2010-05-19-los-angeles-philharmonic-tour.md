@@ -1,0 +1,23 @@
+---
+title: 'Los Angeles Philharmonic Tour'
+tribute: "0"
+datestamp: 2010-05-19
+event_time: 08:00 PM
+location: Kimmel Center for the Performing Arts
+latitude: 39.952335
+longitude: -75.163789
+performance_url: http://www.kimmelcenter.org/cgi-bin/display_event.fcg?id=1B9CD2F1:33.64467;org_id=329;event_id=3361
+ticket_information_url: 
+program: 
+  -
+    composition: "0"
+guest_performers: 
+  -
+    guest_performer: "0"
+ensembles: 
+  -
+    ensemble: "0"
+conductors: 
+  -
+    conductor: "0"
+---

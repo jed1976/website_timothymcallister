@@ -1,5 +1,8 @@
 ---
+page_icon: user
 page_id: biography
+page_js: biography
+page_stylesheet: biography
 title: Biography
 _fieldset: page
 ---

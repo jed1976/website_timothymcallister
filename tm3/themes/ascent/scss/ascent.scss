@@ -1452,6 +1452,23 @@ code textarea {
       color:$textColor;
     }
   }
+
+  .toggle-children {
+    float: left;
+    border: 0;
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#FFF), to(#F8F8F6));
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    height: 50px;
+    padding: 0 10px;
+    color: #CCC;
+
+    &:hover {
+      color: #1E3640;
+    }
+    .ss-icon {
+      margin: 0;
+    }
+  }
 }
 
 .page-view, .page-add, .page-delete {

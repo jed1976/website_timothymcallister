@@ -673,5 +673,56 @@ $(function() {
       return string;
   }
 
-});
 
+  /////////////////////////////////////////
+  //
+  // Expandable Pages
+  //
+  /////////////////////////////////////////
+
+  function supportsLocalStorage() {
+    try {
+      return 'localStorage' in window && window['localStorage'] !== null;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  $(function(){
+    var hiddenPages = {};
+
+    // Hide previously closed nodes on load
+    if (supportsLocalStorage && localStorage['hiddenPages']) {
+      hiddenPages = JSON.parse(localStorage['hiddenPages']);
+      var tree = $('#page-tree');
+      _.each(hiddenPages, function(val, url) {
+        var node = tree.find('.page[data-url="'+url+'"]');
+        node.children('.subpages').hide();
+        node.find('.toggle-children .ss-icon').text('right')
+      });
+    }
+
+    // Toggle on click
+    $('.toggle-children').on('click', function() {
+      var btn      = $(this);
+      var page     = btn.closest('.page');
+      var url      = page.attr('data-url');
+      var icon     = btn.find('.ss-icon');
+      var hidden   = (icon.text() == 'right');
+      var iconText = (hidden) ? 'downright' : 'right';
+      icon.text(iconText);
+      $(this).parent().siblings('.subpages').toggle();
+
+      // Save state to local storage
+      if (supportsLocalStorage) {
+        if (!(url in hiddenPages)) {
+          hiddenPages[url] = true;
+        } else {
+          delete hiddenPages[url];
+        }
+        localStorage['hiddenPages'] = JSON.stringify(hiddenPages);
+      }
+    });
+  });
+
+});

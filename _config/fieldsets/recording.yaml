@@ -10,10 +10,10 @@ fields:
     default:
     type: markitup
 
-  tribute:
-    display: This event is a tribute to one composer
-    instructions: "If this performance is a tribute to the work of a specific composer, check this box. This ensures that when selecting compositions for the performance, the composer's name doesn't appear after each composition name."
-    type: checkbox
+  # tribute:
+  #   display: This event is a tribute to one composer
+  #   instructions: "If this performance is a tribute to the work of a specific composer, check this box. This ensures that when selecting compositions for the performance, the composer's name doesn't appear after each composition name."
+  #   type: checkbox
 
   artwork:
     allowed: [jpg]
@@ -40,7 +40,7 @@ fields:
   catalog_number:
     type: text
 
-  url:
+  recording_url:
     display: URL
     instructions: Provide a URL for the recording
     type: text
@@ -120,19 +120,19 @@ fields:
     display: Applause
     type: section
 
-  quotes:
-    fields:
-      quote:
-        content:
-          folder: quotes
-          show_hidden: true
-          type: entries
-        display: ''
-        max_items: 1
-        options:
-          - ''
-        type: suggest
-    type: grid
+  # quotes:
+  #   fields:
+  #     quote:
+  #       content:
+  #         folder: quotes
+  #         show_hidden: true
+  #         type: entries
+  #       display: ''
+  #       max_items: 1
+  #       options:
+  #         - ''
+  #       type: suggest
+  #   type: grid
 
 include:
  - hidden

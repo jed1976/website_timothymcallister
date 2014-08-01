@@ -1,0 +1,23 @@
+---
+title: 'Soloist with the St. Louis Symphony; John Adams' Saxophone Concerto'
+tribute: "0"
+datestamp: 2013-10-05
+event_time: 08:00 PM
+location: St. Louis
+latitude: 38.6270025
+longitude: -90.1994042
+performance_url: 
+ticket_information_url: 
+program: 
+  -
+    composition: "0"
+guest_performers: 
+  -
+    guest_performer: "0"
+ensembles: 
+  -
+    ensemble: "0"
+conductors: 
+  -
+    conductor: "0"
+---

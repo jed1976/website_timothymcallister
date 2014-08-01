@@ -2,6 +2,8 @@
     <div id="map-canvas"></div>
 
     <ol class="no-bullets scrollable" id="performance-list">
-        {{ theme:partial src="performance" }}
+        {{ entries:listing folder="performances" limit="{upcoming_performances_total}" show_hidden="true" show_future="true" since="Today" until="December 31, 2014" sort_by="datestamp" sort_dir="asc" }}
+        <li>{{ theme:partial src="performance" use_context="true" }}</li>
+        {{ /entries:listing }}
     </ol>
 </div>

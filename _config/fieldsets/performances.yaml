@@ -1,0 +1,121 @@
+title: Schedule
+
+fields:
+  content:
+    display: Description
+    height: 100
+    default:
+    type: markitup
+
+  # tribute:
+  #   display: This event is a tribute to one composer
+  #   instructions: "If this event is a tribute to the work of a specific composer, check this box. This ensures that when selecting compositions for the program, the composer's name doesn't appear after each composition name."
+  #   type: checkbox
+
+  section_1:
+    display: Details
+    type: section
+
+  # event_date:
+  #   display: Date
+  #   required: true
+  #   type: date
+
+  event_time:
+    display: Time
+    type: time
+
+  location:
+    instructions: Type the name of the facility to get an autocompleted list of options
+    required: true
+    type: text
+
+  latitude:
+    display: Latitude
+    type: hidden
+
+  longitude:
+    display: Longitude
+    type: hidden
+
+  google:
+    type: google
+
+  url:
+    display: Event URL
+    type: text
+
+  ticket_information_url:
+    display: Ticket Information URL
+    type: text
+
+  section_2:
+    display: Performers
+    type: section
+
+  # program:
+  #   display: ''
+  #   fields:
+  #     composition:
+  #       content:
+  #         folder: compositions
+  #         show_hidden: true
+  #         type: entries
+  #       display: 'Compositions'
+  #       instructions: Choose the compositions(s) you will perform on this event
+  #       max_items: 1
+  #       options:
+  #         - ''
+  #       type: suggest
+  #   type: grid
+
+  guest_performers:
+    display: ''
+    fields:
+      guest_performer:
+        content:
+          folder: performers
+          show_hidden: true
+          type: entries
+        display: 'Guest Performers'
+        instructions: Choose the guest performer(s) who will perform on this event
+        max_items: 1
+        options:
+          - ''
+        type: suggest
+    type: grid
+
+  ensembles:
+    display: ''
+    fields:
+      ensemble:
+        content:
+          folder: ensembles
+          show_hidden: true
+          type: entries
+        display: 'Ensembles'
+        instructions: Choose the ensemble(s) who will perform on this event
+        max_items: 1
+        options:
+          - ''
+        type: suggest
+    type: grid
+
+  conductors:
+    display: ''
+    fields:
+      conductor:
+        content:
+          folder: conductors
+          show_hidden: true
+          type: entries
+        display: 'Conductors'
+        instructions: Choose the conductor(s) who will perform on this event
+        max_items: 1
+        options:
+          - ''
+        type: suggest
+    type: grid
+
+include:
+ - hidden

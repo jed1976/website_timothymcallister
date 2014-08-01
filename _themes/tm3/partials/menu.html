@@ -1,12 +1,8 @@
 <aside id="menu">
     <ul>
-        <li><a href="biography.html"><span data-icon="user">Biography</span></a></li>
-        <li><a href="recordings.html"><span data-icon="audio-wave">Recordings</span></a></li>
-        <li><a href="performances.html"><span data-icon="calendar">Performances</span></a></li>
-        <li><a href="premieres.html"><span data-icon="music-conductor">Premieres</span></a></li>
-        <li><a href="press.html"><span data-icon="news">Press</span></a></li>
-        <li><a href="contact.html"><span data-icon="meeting">Contact</span></a></li>
-        <li><a href="news.html"><span data-icon="pen">News</span></a></li>
+        {{ nav from="/" include_content="true" max_depth="1" }}
+        <li><a href="{{ url }}"><span data-icon="{{ page_icon }}">{{ title }}</span></a></li>
+        {{ /nav }}
         <li><a href="{{ prism_url }}"><span data-icon="quartet">PRISM Quartet</span></a></li>
         <li><a href="{{ twitter_url }}"><span data-icon="twitter">Twitter</span></a></li>
         <li><a href="{{ facebook_url }}"><span data-icon="facebook">Facebook</span></a></li>

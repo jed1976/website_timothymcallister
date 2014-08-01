@@ -5,10 +5,12 @@
         <div class="col-2-3">
             <h2 class="style-1">Latest Release</h2>
 
-            {{ theme:partial src="recording" }}
+            {{ entries:listing folder="recordings" limit="1" show_hidden="true" sort_by="release_date" sort_dir="desc" }}
+            {{ theme:partial src="recording" use_context="true" }}
+            {{ /entries:listing }}
 
             <div class="grid-pad text-center">
-                <a class="button small" href="recordings.html">All Recordings</a>
+                <a class="button small" href="recordings/">All Recordings</a>
             </div>
         </div>
         <div class="col-1-3 aside">
@@ -25,10 +27,10 @@
     <div class="grid-pad">
         <h2 class="style-1">Upcoming Performances</h2>
 
-        {{ theme:partial src="performances" }}
+        {{ theme:partial src="performances" use_context="true" }}
 
         <div class="grid-pad text-center">
-            <a class="button small" href="performances.html">All Performances</a>
+            <a class="button small" href="performances/">All Performances</a>
         </div>
     </div>
 </section>

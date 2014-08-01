@@ -1,0 +1,23 @@
+---
+title: 'Soloist with World Youth Wind Symphony'
+tribute: "0"
+datestamp: 2009-07-25
+event_time: 08:00 PM
+location: 
+latitude: 0
+longitude: 0
+performance_url: 
+ticket_information_url: Tickets for non-Interlochen personnel and guests at Corson Auditorium Box Office
+program: 
+  -
+    composition: "0"
+guest_performers: 
+  -
+    guest_performer: "0"
+ensembles: 
+  -
+    ensemble: "0"
+conductors: 
+  -
+    conductor: "0"
+---

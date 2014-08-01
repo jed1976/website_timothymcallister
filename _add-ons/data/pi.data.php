@@ -15,13 +15,13 @@ class DB_Cache
 }
 
 /**
- * Plugin_data
+ * Plugin_Data
  * Data conversion plugin for www.timothymcallister.com
  * @author  Joe Dakroub <joe.dakroub@me.com>
  * @version 1.0
  */
 
-class Plugin_data extends Plugin
+class Plugin_Data extends Plugin
 {
     public $meta = array(
         'name'       => 'Data Conversion',
@@ -29,11 +29,15 @@ class Plugin_data extends Plugin
         'author'     => 'Joe Dakroub'
     );
 
+    const API_KEY = 'AIzaSyA2Kd093BDPlBJhWykIlVOEHamfG4_8WKo';
+
     const CONTENT_DIR = '_content/';
 
     const NUMBER_FORMAT = '%s%s/_%02s.%s.md';
 
     const VISIBLE_NUMBER_FORMAT = '%s%s/%02s.%s.md';
+
+    const VISIBLE_DATE_FORMAT = '%s%s/%02s-%s.md';
 
     const INDEX = '08';
 
@@ -59,11 +63,11 @@ class Plugin_data extends Plugin
         // 'facilities',
         // 'instruments',
         // 'performers',
+        'performances',
         // 'producers',
         // 'quote-authors',
         // 'quotes',
         // 'recordings',
-        'schedule'
     );
 
 
@@ -79,6 +83,8 @@ class Plugin_data extends Plugin
             die();
         }
 
+        set_time_limit(0);
+
         foreach ($this->data as $entity)
         {
             $method = 'create' . ucfirst(str_replace('-', '', $entity));
@@ -91,6 +97,91 @@ class Plugin_data extends Plugin
     private function removeBrackets($string)
     {
         return preg_replace(self::REGEX_BRACKET, '', $string);
+    }
+
+    private function getLocationData($location)
+    {
+        $location = $this->removeBrackets($location);
+        $return = array('location' => '', 'latitude' => 0, 'longitude' => 0);
+
+        if ($location == '')
+            return $return;
+
+        switch ($location)
+        {
+            case 'Bloomfield Hills, MI':
+                $location = 'Detroit Chamber Winds';
+            break;
+
+            case 'New World Symphony New Campus':
+                $location = 'New World Symphony';
+            break;
+
+            case 'The Icebox at Crane Arts':
+                $location = 'Crane Arts LLC';
+            break;
+
+            case 'Symphony Space - Leonard Nimoy Thalia':
+            case 'Symphony Space\'s Leonard Nimoy Thalia':
+                $location = 'Thalia Theatre Leonard Nimoy';
+            break;
+
+            case 'Ravinia Festival Pavilion':
+                $location = 'Ravinia Festival Administration';
+            break;
+
+            case 'SPACE':
+                $location = 'Evanston Space';
+            break;
+
+            case 'Chicago, IL':
+            case 'Chicago, Illinois':
+            case 'Chicago':
+            case 'Symphony Hall':
+                $location = 'Chicago Symphony Orchestra';
+            break;
+        }
+
+        // echo '<hr>';
+        // echo $location;
+
+        $location = urlencode($location);
+        $url = 'https://maps.googleapis.com/maps/api/place/autocomplete/json?sensor=false&input=' . $location . '&key=' . self::API_KEY;
+        $result = file_get_contents($url);
+        $data = json_decode($result, TRUE);
+
+        if ($data['status'] == 'OK')
+        {
+            $location = $data['predictions'][0]['terms'][0]['value'];
+            $description = $data['predictions'][0]['description'];
+            $url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' . urlencode($description) . '&key=' . self::API_KEY;
+            $result = file_get_contents($url);
+            $data = json_decode($result, TRUE);
+
+            if ($data['status'] == 'OK')
+            {
+                $coordinates = $data['results'][0]['geometry']['location'];
+                $return['location'] = $location;
+                $return['latitude'] = $coordinates['lat'];
+                $return['longitude'] = $coordinates['lng'];
+            }
+
+            // echo '<pre>';
+            // print_r($data);
+            // echo '</pre>';
+        }
+
+        // echo '<pre>';
+        // print_r($data);
+        // echo '</pre>';
+
+        // echo '<hr>';
+
+        // echo '<pre>';
+        // print_r($return);
+        // echo '</pre>';
+
+        return $return;
     }
 
     private function createSlug($string)
@@ -346,11 +437,9 @@ EOD;
 $content = <<<EOD
 ---
 title: '{$row['title']}'
-url:
-location:
-  name:
-  latitude: ""
-  longitude: ""
+address:
+latitude:
+longitude:
 ---
 
 EOD;
@@ -423,7 +512,7 @@ EOD;
 $content = <<<EOD
 ---
 title: {$row['title']}
-url: {$row['field_id_64']}
+producer_url: {$row['field_id_64']}
 ---
 
 EOD;
@@ -655,7 +744,7 @@ release_date: $release_date
 producer: $producer
 catalog_number: {$row['field_id_67']}
 artwork: $artwork
-url: {$row['field_id_69']}
+recording_url: {$row['field_id_69']}
 tribute: "$tribute"
 performers: $performers
 ensembles: $ensembles
@@ -674,7 +763,7 @@ EOD;
         }
     }
 
-    private function createSchedule()
+    private function createPerformances()
     {
         ini_set('unserialize_callback_func', 'test');
 
@@ -693,7 +782,6 @@ EOD;
             $row['entry_date'] = strtotime(self::DATE_OFFSET, $row['entry_date']);
             $event_date = $row['entry_date'] != 0 ? date('Y-m-d', $row['entry_date']) : '';
             $event_time = $row['entry_date'] != 0 ? date('h:i A', $row['entry_date']) : '';
-            $location = '/facilities/' . $this->createSlug($this->removeBrackets($row['field_id_37']));
             $url = $row['field_id_15'];
             $ticket_information_url = $row['field_id_42'];
             $guest_performers = "\n  -\n";
@@ -758,16 +846,30 @@ EOD;
             else
                 $guest_performers .= "    guest_performer: \"0\"";
 
-            $description = str_replace($this->invalidHTML, $this->markdownReplacements, $row['field_id_74']);
+            $description = str_replace($this->invalidHTML, $this->markdownReplacements, $row['field_id_18']);
+
+            $entityDir = sprintf('%s-%s', '03', 'performances');
+            $filename = $this->createSlug($row['title']);
+            $dir = sprintf(self::VISIBLE_DATE_FORMAT, self::CONTENT_DIR, $entityDir, $event_date, $filename);
+
+            if (file_exists($dir)) {
+                continue;
+            } else {
+                $locationData = $this->getLocationData($row['field_id_37']);
+                $location = $locationData['location'];
+                $latitude = $locationData['latitude'];
+                $longitude = $locationData['longitude'];
 
 $content = <<<EOD
 ---
 title: '$title'
 tribute: "$tribute"
-event_date: $event_date
-event_time: $event_time
+datestamp: $event_date
+time: $event_time
 location: $location
-url: $url
+latitude: $latitude
+longitude: $longitude
+performance_url: $url
 ticket_information_url: $ticket_information_url
 program: $program
 guest_performers: $guest_performers
@@ -777,11 +879,12 @@ conductors: $conductors
 $description
 EOD;
 
-            $entityDir = sprintf('%s-%s', '05', 'schedule');
-            $filename = $this->createSlug($row['title']);
-            $dir = sprintf(self::VISIBLE_NUMBER_FORMAT, self::CONTENT_DIR, $entityDir, $iterator, $filename);
-            file_put_contents($dir, $content);
-            $iterator++;
+
+                file_put_contents($dir, $content);
+                $iterator++;
+            }
         }
+
+        die();
     }
 }

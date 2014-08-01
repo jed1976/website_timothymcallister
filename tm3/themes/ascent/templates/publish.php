@@ -81,7 +81,7 @@
               }
             }
           }
-
+            
           if (isset($fields['title']['display'])) {
             $title_details['display'] = $fields['title']['display'];
           }
@@ -142,7 +142,7 @@
         <?php } ?>
 
         <?php elseif ($type == 'number'): ?>
-        <div class="input-block input-text input-number<?php if (array_get($fields, 'order:hide', false) === true):?> hidden<?php endif ?>" id="publish-order-number">
+        <div class="input-block input-text input-number" id="publish-order-number">
           <label for="publish-order-number"><?php echo Localization::fetch('order_number') ?></label>
           <input name="page[meta][publish-numeric]" type="text" class="text date input-4char"  tabindex="<?php print tabindex(); ?>" maxlength="4" id="publish-order-number" value="<?php print $numeric; ?>" />
         </div>

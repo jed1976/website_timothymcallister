@@ -1,0 +1,13 @@
+title: Social Link
+
+hide: true
+
+fields:
+  page_icon:
+    type: text
+
+  url:
+    type: text
+
+include:
+  - hidden

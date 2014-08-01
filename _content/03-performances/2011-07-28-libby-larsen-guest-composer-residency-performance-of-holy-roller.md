@@ -1,0 +1,29 @@
+---
+title: 'Libby Larsen Guest Composer Residency: Performance of Holy Roller'
+tribute: "0"
+datestamp: 2011-07-28
+event_time: 08:00 PM
+location: 
+latitude: 0
+longitude: 0
+performance_url: 
+ticket_information_url: 
+program: 
+  -
+    composition: "0"
+guest_performers: 
+  -
+    guest_performer: "0"
+ensembles: 
+  -
+    ensemble: "0"
+conductors: 
+  -
+    conductor: "0"
+---
+Holy Roller
+Timothy McAllister, alto saxophone
+Lucia Unrau, piano
+
+8pm, Dendrinos Chapel
+Free Admission
