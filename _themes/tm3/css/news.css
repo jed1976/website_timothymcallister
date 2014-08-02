@@ -21,9 +21,3 @@ time { font-weight: 200; }
     max-width: 960px;
     margin: 0 auto;
 }
-
-.hero
-{
-    background-image: url(../img/tim-5.jpg);
-    background-position: center center;
-}

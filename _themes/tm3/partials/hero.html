@@ -1,5 +1,12 @@
-<div class="hero">
+<div class="hero" style="background-image: url({{ artwork }}); background-position: {{ vertical_position }} {{ horizontal_position }};">
+    {{ if quotes }}
     <div class="quotes">
-
+        {{ quotes }}
+        {{ entries:listing conditions="url:{quote}" folder="quotes" limit="1" show_hidden="true" }}
+            {{ theme:partial src="quote" use_context="true" }}
+        {{ /entries:listing }}
+        {{ /quotes }}
     </div>
+    {{ theme:js src="quotes" tag="true" }}
+    {{ endif }}
 </div>

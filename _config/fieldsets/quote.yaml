@@ -3,26 +3,10 @@ title: Quote
 hide: true
 
 fields:
-  title:
-    instructions: The title is for informational purposes only. It does not display on the website.
-
-  author:
-    content:
-      folder: quote-authors
-      show_hidden: true
-      type: entries
-    display: Author
-    max_items: 1
-    options:
-      - ''
-    required: true
-    type: suggest
-
   source:
     type: text
 
-  quote:
-    required: true
+  content:
     type: markitup
 
 include:

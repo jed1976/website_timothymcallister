@@ -5,8 +5,8 @@ page_stylesheet: contact
 theme: dark
 title: Contact
 addresses:
-  - 
-    artwork: '{{ _site_root }}assets/img/contact/school.jpg'
+  -
+    artwork: '{{ _site_root }}assets/img/school.jpg'
     heading: School
     name: Dr. Timothy McAllister
     organization: Northwestern University
@@ -16,8 +16,8 @@ addresses:
     state: IL
     zip_code: "60208"
     email: timothy.mcallister@northwestern.edu
-  - 
-    artwork: '{{ _site_root }}assets/img/contact/summer.jpg'
+  -
+    artwork: '{{ _site_root }}assets/img/summer.jpg'
     heading: Summer
     name: Timothy McAllister
     organization: Interlochen Center for the Arts

@@ -1,9 +1,3 @@
-.hero
-{
-    background-image: url(../img/tim-4.jpg);
-    background-position: center left;
-}
-
 #legend [data-icon]::before
 {
     left: 10px;

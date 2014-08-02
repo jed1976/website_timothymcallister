@@ -1,0 +1,31 @@
+title: Artwork
+
+fields:
+  artwork_section:
+    display: Artwork
+    type: section
+
+  artwork:
+    allowed: [jpg]
+    destination: assets/img
+    display: ''
+    instructions: JPG format only
+    type: file
+
+  vertical_position:
+    default: top
+    display: Vertical
+    options:
+      top: Top
+      center: Center
+      bottom: Bottom
+    type: radio
+
+  horizontal_position:
+    default: left
+    display: Horizontal
+    options:
+      left: Left
+      center: Center
+      right: Right
+    type: radio

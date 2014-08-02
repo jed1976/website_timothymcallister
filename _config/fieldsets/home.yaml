@@ -1,0 +1,8 @@
+title: Homepage
+
+hide: true
+
+include:
+  - hidden
+  - artwork
+  - quotes

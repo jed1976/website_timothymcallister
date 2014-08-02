@@ -1,0 +1,71 @@
+title: Schedule
+
+fields:
+  content:
+    display: Description
+    height: 100
+    default:
+    type: markitup
+
+  section_1:
+    display: Details
+    type: section
+
+  event_time:
+    display: Time
+    type: time
+
+  location:
+    instructions: Type the name of the facility to get an autocompleted list of options
+    required: true
+    type: text
+
+  latitude:
+    display: Latitude
+    type: hidden
+
+  longitude:
+    display: Longitude
+    type: hidden
+
+  google:
+    type: google
+
+  url:
+    display: Event URL
+    type: text
+
+  ticket_information_url:
+    display: Ticket Information URL
+    type: text
+
+  section_2:
+    display: Performers
+    type: section
+
+  ensemble:
+    content:
+      folder: ensembles
+      show_hidden: true
+      type: entries
+    display: Ensemble
+    instructions: Choose the ensemble who will perform on this event
+    max_items: 1
+    options:
+      - ''
+    type: suggest
+
+  conductor:
+    content:
+      folder: conductors
+      show_hidden: true
+      type: entries
+    display: Conductor
+    instructions: Choose the conductor who will perform on this event
+    max_items: 1
+    options:
+      - ''
+    type: suggest
+
+include:
+ - hidden

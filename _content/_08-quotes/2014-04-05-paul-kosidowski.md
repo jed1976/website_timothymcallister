@@ -1,0 +1,5 @@
+---
+title: Paul Kosidowski
+source: Milwaukee Magazine (March 29, 2014)
+---
+The MSO paired the Eroica with a relatively new piece by John Adams, featuring saxophone virtuoso Timothy McAllister, for whom it was composed. It's a daunting, virtuosic piece of work, a half-hour long, two-movement piece that allows the soloist almost no rest for its duration...you could hear traces of great players throughout the piece: the lyricism of Stan Getz, the virtuosity of Charlie Parker, and the angles and odd rhythms of Thelonius Monk sidemen like Charlie Rouse and Johnny Griffin. Played in a "classical" style, however, the motifs blend together in a uniform tone, devoid of the soloist's signature sound. McAllister's signature sound, however, is gorgeous--smooth and liquid--very similar to a clarinet in the middle register, and only a touch meatier at the bottom and top. The musical ideas, thus, blended into a stream of musical ideas, cascading arpeggios, off-centered riffs and sweet jazzy arias. 

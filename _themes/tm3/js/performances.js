@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    window.createQuoteCarousel();
-
     var year,
         yearSelector = '<select id="year-selector">',
         yearSelectorWrapper = document.getElementById('year-selector-wrapper');

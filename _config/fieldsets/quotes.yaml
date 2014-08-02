@@ -1,0 +1,23 @@
+title: Quotes
+
+fields:
+  quotes_section:
+    display: Quotes
+    type: section
+
+  quotes:
+    display: ''
+    fields:
+      quote:
+        content:
+          folder: quotes
+          show_hidden: true
+          sort_dir: asc
+          label: content
+          type: entries
+        display: ''
+        max_items: 1
+        type: suggest
+
+    min_rows: 1
+    type: grid

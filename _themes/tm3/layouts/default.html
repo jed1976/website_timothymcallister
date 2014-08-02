@@ -3,7 +3,7 @@
     <head>
         <!-- Styles -->
         {{ theme:css tag="true" }}
-        {{ if map_js }}{{ theme:css src="map" tag="true" }}{{ endif }}
+        {{ if enable_map }}{{ theme:css src="map" tag="true" }}{{ endif }}
         {{ if page_stylesheet }}{{ theme:css src="{ page_stylesheet }" tag="true" }}{{ endif }}
 
         {{ theme:partial src="no-js" }}

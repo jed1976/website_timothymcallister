@@ -63,11 +63,11 @@ class Plugin_Data extends Plugin
         // 'live-performances'
         // 'performers',
         // 'performances',
-         'premieres'
+        //  'premieres'
         // 'premiere-categories'
         // 'producers',
         // 'quote-authors',
-        // 'quotes',
+         'quotes',
         // 'recordings',
     );
 
@@ -578,7 +578,7 @@ EOD;
 
     private function createQuotes()
     {
-        $data = $this->db->query('select exp_weblog_titles.title, exp_weblog_data.* from exp_weblog_data left join exp_weblog_titles on exp_weblog_titles.entry_id = exp_weblog_data.entry_id where exp_weblog_data.weblog_id = 4 order by exp_weblog_titles.title');
+        $data = $this->db->query('select exp_weblog_titles.title, exp_weblog_titles.entry_date, exp_weblog_data.* from exp_weblog_data left join exp_weblog_titles on exp_weblog_titles.entry_id = exp_weblog_data.entry_id where exp_weblog_data.weblog_id = 4 order by exp_weblog_titles.title');
         $iterator = 1;
         $quotes = array();
 
@@ -590,14 +590,14 @@ EOD;
                 $row['field_id_62'] = 'Jean-Marie Londeix';
 
             $row['field_id_62'] = $row['field_id_62'] != '' ? $row['field_id_62'] : $row['title'];
-            $row['title'] = $row['field_id_62'] . ' - ' . $row['entry_id'];
+            $row['title'] = $row['field_id_62'];
             $slug = $this->createSlug($row['field_id_62']);
 
             $quotes[] = array(
+                'datestamp' => date('Y-m-d', $row['entry_date']),
                 'name' => $row['field_id_62'],
                 'title' => $row['title'],
                 'quote' => $row['field_id_11'],
-                'author' => '/quote-authors/' . $slug,
                 'source' => $row['field_id_13']
             );
         }
@@ -617,20 +617,20 @@ EOD;
 $content = <<<EOD
 ---
 title: {$quote['title']}
-quote: '{$quote['quote']}'
-author: {$quote['author']}
 source: {$quote['source']}
 ---
-
+{$quote['quote']}
 EOD;
 
 
             $entityDir = sprintf('_%s-%s', self::INDEX, 'quotes');
             $filename = $this->createSlug($quote['title']);
-            $dir = sprintf(self::NUMBER_FORMAT, self::CONTENT_DIR, $entityDir, $iterator, $filename);
+            $dir = sprintf(self::VISIBLE_DATE_FORMAT, self::CONTENT_DIR, $entityDir, $quote['datestamp'], $filename);
             file_put_contents($dir, $content);
             $iterator++;
         }
+
+        die();
     }
 
     private function createRecordings()

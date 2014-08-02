@@ -1,10 +1,23 @@
 ---
 page_icon: music-conductor
 page_id: premieres
-page_js: premieres
 page_stylesheet: premieres
 theme: dark
 title: Premieres
-_fieldset: hidden
+artwork: '{{ _site_root }}assets/img/tim-premieres.jpg'
+_fieldset: premieres
 _template: premieres
+vertical_position: center
+horizontal_position: left
+quotes:
+  -
+    quote: /quotes/imagination-97
+  -
+    quote: /quotes/william-robin
+  -
+    quote: /quotes/fred-child
 ---
+
+
+
+
