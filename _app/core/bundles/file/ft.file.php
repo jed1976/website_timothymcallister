@@ -6,7 +6,7 @@ class Fieldtype_File extends Fieldtype
 		$html = "<div class='file-field-container'>";
 
 		if ($this->field_data) {
-		
+
 			$html .= "<div class='file-exists'>";
 
 			if (File::isImage(Path::fromAsset($this->field_data, true))) {
@@ -19,7 +19,7 @@ class Fieldtype_File extends Fieldtype
 			$html .= "</div>";
 
 		} else {
-			
+
 			$html .= "<div class='upload-file'>";
 			$html .= "<p><input type='file' name='{$this->fieldname}' tabindex='{$this->tabindex}' value='' /></p>";
 			$html .= "</div>";

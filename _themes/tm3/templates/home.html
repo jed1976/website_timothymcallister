@@ -5,7 +5,7 @@
         <div class="col-2-3">
             <h2 class="style-1">Latest Release</h2>
 
-            {{ entries:listing folder="recordings" limit="1" show_hidden="true" sort_by="release_date" sort_dir="desc" }}
+            {{ entries:listing folder="recordings" limit="1" show_hidden="true" show_samples="false" sort_by="datestamp" sort_dir="desc" }}
             {{ theme:partial src="recording" use_context="true" }}
             {{ /entries:listing }}
 
@@ -15,7 +15,9 @@
         </div>
         <div class="col-1-3 aside">
             <div class="grid-pad">
-                {{ theme:partial src="article" }}
+                {{ entries:listing folder="news" limit="1" sort_by="datestamp" sort_dir="desc" }}
+                {{ theme:partial src="article" use_context="true" }}
+                {{ /entries:listing }}
 
                 <div class="grid-pad text-center">
                     <a class="button light x-small" href="/news">Full Article</a>

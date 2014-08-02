@@ -16,11 +16,6 @@ fields:
     display: Details
     type: section
 
-  # event_date:
-  #   display: Date
-  #   required: true
-  #   type: date
-
   event_time:
     display: Time
     type: time
@@ -53,69 +48,29 @@ fields:
     display: Performers
     type: section
 
-  # program:
-  #   display: ''
-  #   fields:
-  #     composition:
-  #       content:
-  #         folder: compositions
-  #         show_hidden: true
-  #         type: entries
-  #       display: 'Compositions'
-  #       instructions: Choose the compositions(s) you will perform on this event
-  #       max_items: 1
-  #       options:
-  #         - ''
-  #       type: suggest
-  #   type: grid
+  ensemble:
+    content:
+      folder: ensembles
+      show_hidden: true
+      type: entries
+    display: Ensemble
+    instructions: Choose the ensemble who will perform on this event
+    max_items: 1
+    options:
+      - ''
+    type: suggest
 
-  guest_performers:
-    display: ''
-    fields:
-      guest_performer:
-        content:
-          folder: performers
-          show_hidden: true
-          type: entries
-        display: 'Guest Performers'
-        instructions: Choose the guest performer(s) who will perform on this event
-        max_items: 1
-        options:
-          - ''
-        type: suggest
-    type: grid
-
-  ensembles:
-    display: ''
-    fields:
-      ensemble:
-        content:
-          folder: ensembles
-          show_hidden: true
-          type: entries
-        display: 'Ensembles'
-        instructions: Choose the ensemble(s) who will perform on this event
-        max_items: 1
-        options:
-          - ''
-        type: suggest
-    type: grid
-
-  conductors:
-    display: ''
-    fields:
-      conductor:
-        content:
-          folder: conductors
-          show_hidden: true
-          type: entries
-        display: 'Conductors'
-        instructions: Choose the conductor(s) who will perform on this event
-        max_items: 1
-        options:
-          - ''
-        type: suggest
-    type: grid
+  conductor:
+    content:
+      folder: conductors
+      show_hidden: true
+      type: entries
+    display: Conductor
+    instructions: Choose the conductor who will perform on this event
+    max_items: 1
+    options:
+      - ''
+    type: suggest
 
 include:
  - hidden

@@ -1,5 +1,5 @@
 ---
-map_js: true
+enable_map: true
 page_id: index
 page_js: index
 page_stylesheet: index

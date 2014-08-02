@@ -1,0 +1,9 @@
+title: Article
+
+fields:
+  slug:
+    hide: true
+
+  content:
+    required: true
+    type: markitup

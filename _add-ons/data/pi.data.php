@@ -55,15 +55,16 @@ class Plugin_Data extends Plugin
 
     public $data = array(
         // 'biography',
-        // 'composers',
-        // 'compositions',
         // 'conductors',
         // 'contact',
         // 'ensembles',
         // 'facilities',
         // 'instruments',
+        // 'live-performances'
         // 'performers',
-        'performances',
+        // 'performances',
+         'premieres'
+        // 'premiere-categories'
         // 'producers',
         // 'quote-authors',
         // 'quotes',
@@ -266,86 +267,6 @@ EOD;
         }
     }
 
-    private function createComposers()
-    {
-        $data = $this->db->query('select exp_weblog_titles.title from exp_weblog_data left join exp_weblog_titles on exp_weblog_titles.entry_id = exp_weblog_data.entry_id where exp_weblog_data.weblog_id = 28 order by exp_weblog_titles.title');
-        $iterator = 1;
-
-        foreach ($data as $row)
-        {
-            $title = html_entity_decode($row['title']);
-$content = <<<EOD
----
-title: $title
----
-
-EOD;
-
-            $entityDir = sprintf('_%s-%s', self::INDEX, 'composers');
-            $filename = $this->createSlug($row['title']);
-            $dir = sprintf(self::NUMBER_FORMAT, self::CONTENT_DIR, $entityDir, $iterator, $filename);
-            file_put_contents($dir, $content);
-            $iterator++;
-        }
-    }
-
-    private function createCompositions()
-    {
-        $data = $this->db->query('select exp_weblog_titles.title, exp_weblog_data.* from exp_weblog_data left join exp_weblog_titles on exp_weblog_titles.entry_id = exp_weblog_data.entry_id where exp_weblog_data.weblog_id = 13 order by exp_weblog_titles.title');
-        $iterator = 1;
-
-        foreach ($data as $row)
-        {
-            $composer = $this->removeBrackets($row['field_id_54']);
-
-            // Special cases
-            switch ($row['title'])
-            {
-                case 'Crossroads Songs':
-                case 'Fire Hose Reel':
-                    $composer = 'Evan Chambers';
-                    break;
-
-                case 'Ludus No. 2':
-                    $composer = 'Emiliano Pardo-Tristan';
-                    break;
-            }
-
-            $composer = $this->createSlug($composer);
-            $premier = $row['field_id_58'] == 'y' ? 1 : 0;
-            $audio_excerpts_array = unserialize($row['field_id_63']);
-            $audio_excerpts = '';
-
-            if ($audio_excerpts_array)
-            {
-                foreach ($audio_excerpts_array as $audio_item)
-                {
-                    $audio_excerpts .= "\n  -";
-                    $audio_excerpts .= "\n    notes: " . $audio_item[1];
-                    $audio_excerpts .= "\n    file: '{{ _site_root }}assets/audio/" . $audio_item[2] . "'";
-                }
-            }
-
-$content = <<<EOD
----
-title: '{$row['title']}'
-premier: "$premier"
-year: {$row['field_id_44']}
-composer: /composers/$composer
-audio_excerpts: $audio_excerpts
----
-
-EOD;
-
-            $entityDir = sprintf('_%s-%s', self::INDEX, 'compositions');
-            $filename = $this->createSlug($row['title']);
-
-            $dir = sprintf(self::NUMBER_FORMAT, self::CONTENT_DIR, $entityDir, $iterator, $filename);
-            file_put_contents($dir, $content);
-            $iterator++;
-        }
-    }
-
     private function createConductors()
     {
         $data = $this->db->query('select exp_weblog_titles.title from exp_weblog_data left join exp_weblog_titles on exp_weblog_titles.entry_id = exp_weblog_data.entry_id where exp_weblog_data.weblog_id = 30 order by exp_weblog_titles.title');
@@ -502,6 +423,94 @@ EOD;
         }
     }
 
+    private function createPremierecategories()
+    {
+        $data = $this->db->query("select distinct exp_categories.cat_name from exp_weblog_data left join exp_weblog_titles on exp_weblog_titles.entry_id = exp_weblog_data.entry_id left join exp_category_posts on exp_category_posts.entry_id = exp_weblog_titles.entry_id left join exp_categories on exp_categories.cat_id = exp_category_posts.cat_id where exp_weblog_data.weblog_id = 13 and exp_weblog_data.field_id_58 = 'y' order by exp_weblog_titles.title");
+        $iterator = 1;
+        $icon = '';
+
+        foreach ($data as $row)
+        {
+            if ($row['cat_name'] == null)
+                continue;
+
+            switch ($iterator)
+            {
+                case 1:
+                    $icon = 'quartet';
+                break;
+
+                case 2:
+                    $icon = 'ensemble';
+                break;
+
+                case 3:
+                    $icon = 'saxophone';
+                break;
+            }
+
+$content = <<<EOD
+---
+title: '{$row['cat_name']}'
+icon: $icon
+---
+
+EOD;
+
+            $entityDir = sprintf('_%s-%s', self::INDEX, 'premiere-categories');
+            $filename = $this->createSlug($row['cat_name']);
+
+            $dir = sprintf(self::NUMBER_FORMAT, self::CONTENT_DIR, $entityDir, $iterator, $filename);
+            file_put_contents($dir, $content);
+            $iterator++;
+        }
+    }
+
+    private function createPremieres()
+    {
+        $data = $this->db->query("select exp_weblog_titles.title, exp_weblog_data.field_id_44, exp_weblog_data.field_id_54, exp_categories.cat_name from exp_weblog_data left join exp_weblog_titles on exp_weblog_titles.entry_id = exp_weblog_data.entry_id left join exp_category_posts on exp_category_posts.entry_id = exp_weblog_titles.entry_id left join exp_categories on exp_categories.cat_id = exp_category_posts.cat_id where exp_weblog_data.weblog_id = 13 and exp_weblog_data.field_id_58 = 'y' order by exp_weblog_titles.title");
+        $iterator = 1;
+
+        foreach ($data as $row)
+        {
+            // Special cases
+            switch ($row['title'])
+            {
+                case 'Crossroads Songs':
+                case 'Fire Hose Reel':
+                    $composer = 'Evan Chambers';
+                    break;
+
+                case 'Ludus No. 2':
+                    $composer = 'Emiliano Pardo-Tristan';
+                    break;
+            }
+
+            if ($row['cat_name'] == '')
+                $category = 'Saxophone Solo or Saxophone With Electronics, Piano or Orchestra';
+
+            $datestamp = $row['field_id_44'].'-01-01';
+            $composer = $this->removeBrackets($row['field_id_54']);
+            $category = '/premiere-categories/' . $this->createSlug($row['cat_name']);
+
+$content = <<<EOD
+---
+title: '{$row['title']}'
+composer: $composer
+category: $category
+---
+
+EOD;
+
+            $entityDir = sprintf('%s-%s', '04', 'premieres');
+            $filename = $this->createSlug($row['title']);
+
+            $dir = sprintf(self::VISIBLE_DATE_FORMAT, self::CONTENT_DIR, $entityDir, $datestamp, $filename);
+            file_put_contents($dir, $content);
+            $iterator++;
+        }
+    }
+
     private function createProducers()
     {
         $data = $this->db->query('select exp_weblog_titles.title, exp_weblog_data.* from exp_weblog_data left join exp_weblog_titles on exp_weblog_titles.entry_id = exp_weblog_data.entry_id where exp_weblog_data.weblog_id = 35 order by exp_weblog_titles.title');
@@ -633,131 +642,129 @@ EOD;
             new $className();
         }
 
-        $data = $this->db->query('select exp_weblog_titles.title, exp_relationships.rel_data as producer, exp_weblog_data.* from exp_weblog_data left join exp_weblog_titles on exp_weblog_data.entry_id = exp_weblog_titles.entry_id left join exp_relationships on exp_weblog_data.field_id_66 = exp_relationships.rel_id where exp_weblog_data.weblog_id = 33 order by exp_weblog_titles.title');
+        $data = $this->db->query('select exp_weblog_titles.title, exp_relationships.rel_data as producer, exp_weblog_data.* from exp_weblog_data left join exp_weblog_titles on exp_weblog_data.entry_id = exp_weblog_titles.entry_id left join exp_relationships on exp_weblog_data.field_id_66 = exp_relationships.rel_id where exp_weblog_data.weblog_id = 33 AND exp_relationships.rel_data != "" order by exp_weblog_titles.title');
         $iterator = 1;
 
         foreach ($data as $row)
         {
             $title = $this->createSlug($row['title']);
             $row['field_id_65'] = strtotime(self::DATE_OFFSET, $row['field_id_65']);
-            $release_date = $row['field_id_65'] != 0 ? date('Y-m-d', $row['field_id_65']) : '';
+            $release_date = $row['field_id_65'] != 0 ? date('Y-m-d', $row['field_id_65']) : date('Y-m-d');
             $tribute = $row['field_id_77'] == 'y' ? 1 : 0;
             $artwork = $row['field_id_68'] != '' ? '{{ _site_root }}assets/img/recordings/' . $title . '.jpg' : '';
             $producer = $row['producer'] != '' ? unserialize($row['producer']) : '';
-            $performers = "\n  -\n";
-            $ensembles = "\n  -\n";
-            $conductors = "\n  -\n";
-            $tracks = "\n  -\n";
-            $quotes = "\n  -\n";
 
             if ($producer != '')
                 $producer = '/producers/' . $this->createSlug($producer['query']->result[0]['title']);
 
             $ensembles_array = $row['field_id_70'] != '' ? explode("\r", $row['field_id_70']) : '';
             $conductors_array = $row['field_id_71'] != '' ? explode("\r", $row['field_id_71']) : '';
-            $tracks_array = $row['field_id_72'] != '' ? explode("\r", $row['field_id_72']) : '';
-            $performers_array = $row['field_id_73'] != '' ? explode("\r", $row['field_id_73']) : '';
-            $quotes_array = $row['field_id_75'] != '' ? explode("\r", $row['field_id_75']) : '';
 
             if (is_array($ensembles_array))
-            {
-                $ensembles = '';
-
-                foreach ($ensembles_array as $ensemble)
-                {
-                    $ensembles .= "\n  -\n";
-                    $ensembles .= "    ensemble: /ensembles/" . $this->createSlug($this->removeBrackets($ensemble));
-                }
-            }
+                $ensemble = "/ensembles/" . $this->createSlug($this->removeBrackets($ensembles_array[0]));
             else
-                $ensembles .= "    ensemble: \"0\"";
+                $ensemble = "";
 
             if (is_array($conductors_array))
-            {
-                $conductors = '';
-
-                foreach ($conductors_array as $conductor)
-                {
-                    $conductors .= "\n  -\n";
-                    $conductors .= "    conductor: /conductors/" . $this->createSlug($this->removeBrackets($conductor));
-                }
-            }
+                $conductor = "/conductors/" . $this->createSlug($this->removeBrackets($conductors_array[0]));
             else
-                $conductors .= "    conductor: \"0\"";
+                $conductor = "";
 
-            if (is_array($tracks_array))
-            {
-                $tracks = '';
-
-                foreach ($tracks_array as $track)
-                {
-                    $tracks .= "\n  -\n";
-                    $tracks .= "    track: /compositions/" . $this->createSlug($this->removeBrackets($track));
-                }
-            }
-            else
-                $tracks .= "    track: \"0\"";
-
-            if (is_array($performers_array))
-            {
-                $performers = '';
-
-                foreach ($performers_array as $performer)
-                {
-                    $performers .= "\n  -\n";
-                    $performers .= "    performer: /performers/" . $this->createSlug($this->removeBrackets($performer));
-                }
-            }
-            else
-                $performers .= "    performer: \"0\"";
-
-            if (is_array($quotes_array))
-            {
-                $quotes = '';
-
-                foreach ($quotes_array as $quote)
-                {
-                    $quotes .= "\n  -\n";
-                    preg_match('/\d+/', $quote, $rel_id);
-                    $rel_id = $rel_id[0];
-                    $rel_data = $this->db->query('select rel_child_id, rel_data from exp_relationships where rel_id = ' . $rel_id);
-                    $rel_row = $rel_data->fetch();
-                    $rel_data = unserialize($rel_row['rel_data']);
-                    $author = $this->removeBrackets($rel_data['query']->result[0]['field_id_62']);
-                    $quote_id = $rel_row['rel_child_id'];
-
-                    if ($author != '')
-                        $quote = $author;
-
-                    $quotes .= "    quote: /quotes/" . $this->createSlug($this->removeBrackets($quote)) . "-".$quote_id;
-                }
-            }
-            else
-                $quotes .= "    quote: \"0\"";
-
+            $sample = '{{ _site_root }}assets/audio/recordings/' . $title . '.mp3';
             $description = str_replace($this->invalidHTML, $this->markdownReplacements, $row['field_id_74']);
 
 $content = <<<EOD
 ---
 title: '{$row['title']}'
-release_date: $release_date
 producer: $producer
 catalog_number: {$row['field_id_67']}
-artwork: $artwork
 recording_url: {$row['field_id_69']}
-tribute: "$tribute"
-performers: $performers
-ensembles: $ensembles
-conductors: $conductors
-tracks: $tracks
-quotes: $quotes
+ensemble: $ensemble
+conductor: $conductor
+artwork: $artwork
+sample: $sample
 ---
 $description
 EOD;
 
             $entityDir = sprintf('%s-%s', '02', 'recordings');
             $filename = $title;
-            $dir = sprintf(self::VISIBLE_NUMBER_FORMAT, self::CONTENT_DIR, $entityDir, $iterator, $filename);
+            $dir = sprintf(self::VISIBLE_DATE_FORMAT, self::CONTENT_DIR, $entityDir, $release_date, $filename);
+            file_put_contents($dir, $content);
+            $iterator++;
+        }
+    }
+
+    private function createLivePerformances()
+    {
+        $data = $this->db->query('select exp_weblog_titles.title, exp_relationships.rel_data as producer, exp_weblog_data.* from exp_weblog_data left join exp_weblog_titles on exp_weblog_data.entry_id = exp_weblog_titles.entry_id left join exp_relationships on exp_weblog_data.field_id_66 = exp_relationships.rel_id where exp_weblog_data.weblog_id = 33 AND exp_weblog_data.field_id_68 = "" order by exp_weblog_titles.title');
+        $iterator = 1;
+
+        foreach ($data as $row)
+        {
+            $title = $this->createSlug($row['title']);
+            $composer = '';
+
+            switch ($row['title'])
+            {
+                case "Abduction from Montag aus Licht":
+                    $composer = 'Karlheinz Stockhausen';
+                break;
+
+                case "Children's Songs":
+                    $composer = 'Chick Corea';
+                break;
+
+                case "Concerto for Alto Saxophone and 11 Instruments":
+                    $composer = 'Andrew Mead';
+                break;
+
+                case "Concerto for Alto Saxophone and Wind Orchestra":
+                    $composer = 'Ingolf Dahl';
+                break;
+
+                case "Csardas":
+                    $composer = 'Vittorio Monti';
+                break;
+
+                case "Deep Blue (2003) for alto saxophone and percussion":
+                    $composer = 'Luca Vanneschi';
+                break;
+
+                case "Duo Sonata for Two Baritone Saxophones":
+                    $composer = 'Sofia Gubaidulina';
+                break;
+
+                case "Escapades: Suite from \"Catch Me If You Can\"":
+                    $composer = 'John Williams';
+                break;
+
+                case "Six Bagatelles (2002) for alto saxophone and bassoon":
+                    $composer = 'Andrew Mead';
+                break;
+
+                case "Sonata, Mvt. IV Nocturne et Final":
+                    $composer = 'Fernande Decruck';
+                break;
+
+                case "Urban Thoughts for Alto Saxophone and Chamber Orchestra":
+                    $composer = 'Daniel Worley';
+                break;
+            }
+
+            $sample = '{{ _site_root }}assets/audio/live-performances/' . $title . '.mp3';
+
+$content = <<<EOD
+---
+title: '{$row['title']}'
+composer: $composer
+sample: $sample
+---
+EOD;
+
+            $entityDir = sprintf('_%s-%s', self::INDEX, 'live-performances');
+            $filename = $this->createSlug($row['title']);
+            $dir = sprintf(self::NUMBER_FORMAT, self::CONTENT_DIR, $entityDir, $iterator, $filename);
             file_put_contents($dir, $content);
             $iterator++;
         }
@@ -784,67 +791,18 @@ EOD;
             $event_time = $row['entry_date'] != 0 ? date('h:i A', $row['entry_date']) : '';
             $url = $row['field_id_15'];
             $ticket_information_url = $row['field_id_42'];
-            $guest_performers = "\n  -\n";
-            $ensembles = "\n  -\n";
-            $conductors = "\n  -\n";
-            $program = "\n  -\n";
-
-            $guest_performers_array = $row['field_id_73'] != '' ? explode("\r", $row['field_id_73']) : '';
             $ensembles_array = $row['field_id_70'] != '' ? explode("\r", $row['field_id_70']) : '';
             $conductors_array = $row['field_id_71'] != '' ? explode("\r", $row['field_id_71']) : '';
-            $program_array = $row['field_id_72'] != '' ? explode("\r", $row['field_id_72']) : '';
 
             if (is_array($ensembles_array))
-            {
-                $ensembles = '';
-
-                foreach ($ensembles_array as $ensemble)
-                {
-                    $ensembles .= "\n  -\n";
-                    $ensembles .= "    ensemble: /ensembles/" . $this->createSlug($this->removeBrackets($ensemble));
-                }
-            }
+                $ensemble = "/ensembles/" . $this->createSlug($this->removeBrackets($ensembles_array[0]));
             else
-                $ensembles .= "    ensemble: \"0\"";
+                $ensemble = "";
 
             if (is_array($conductors_array))
-            {
-                $conductors = '';
-
-                foreach ($conductors_array as $conductor)
-                {
-                    $conductors .= "\n  -\n";
-                    $conductors .= "    conductor: /conductors/" . $this->createSlug($this->removeBrackets($conductor));
-                }
-            }
+                $conductor = "/conductors/" . $this->createSlug($this->removeBrackets($conductors_array[0]));
             else
-                $conductors .= "    conductor: \"0\"";
-
-            if (is_array($program_array))
-            {
-                $program = '';
-
-                foreach ($program_array as $composition)
-                {
-                    $program .= "\n  -\n";
-                    $program .= "    composition: /compositions/" . $this->createSlug($this->removeBrackets($composition));
-                }
-            }
-            else
-                $program .= "    composition: \"0\"";
-
-            if (is_array($guest_performers_array))
-            {
-                $guest_performers = '';
-
-                foreach ($guest_performers_array as $guest_performer)
-                {
-                    $guest_performers .= "\n  -\n";
-                    $guest_performers .= "    guest_performer: /performers/" . $this->createSlug($this->removeBrackets($guest_performer));
-                }
-            }
-            else
-                $guest_performers .= "    guest_performer: \"0\"";
+                $conductor = "";
 
             $description = str_replace($this->invalidHTML, $this->markdownReplacements, $row['field_id_18']);
 
@@ -864,17 +822,14 @@ $content = <<<EOD
 ---
 title: '$title'
 tribute: "$tribute"
-datestamp: $event_date
 time: $event_time
 location: $location
 latitude: $latitude
 longitude: $longitude
 performance_url: $url
 ticket_information_url: $ticket_information_url
-program: $program
-guest_performers: $guest_performers
-ensembles: $ensembles
-conductors: $conductors
+ensemble: $ensemble
+conductor: $conductor
 ---
 $description
 EOD;

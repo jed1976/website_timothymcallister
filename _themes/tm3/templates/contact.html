@@ -1,4 +1,4 @@
-<section id="content">
+<main id="content" role="main">
     <div class="grid">
         {{ addresses }}
         <div class="col-1-2">
@@ -16,11 +16,11 @@
                             <div class="street-address">{{ address }}</div>
                             <span class="locality">{{ city }}</span>, <span class="region">{{ state }}</span>, <span class="postal-code">{{ zip_code }}</span>
                         </dd>
-                        <dd><a class="email link" href="mailto:{{ email }}">{{ email }}</a></dd>
+                        <dd><a class="email link" href="mailto:{{ email|obfuscate }}">{{ email|obfuscate }}</a></dd>
                     </dl>
                 </div>
             </div>
         </div>
         {{ /addresses }}
     </div>
-</section>
+</main>

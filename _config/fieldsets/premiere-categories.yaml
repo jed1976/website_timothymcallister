@@ -1,0 +1,10 @@
+title: Premiere Categories
+
+hide: true
+
+fields:
+  icon:
+    type: text
+
+include:
+  - hidden

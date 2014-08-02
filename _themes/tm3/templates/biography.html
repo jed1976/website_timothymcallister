@@ -4,12 +4,12 @@
     </div>
 </div>
 
-<section id="content">
+<main id="content" role="main">
     <div class="grid-pad">
         <h2 class="style-1">{{ title }}</h2>
 
         <div class="grid">
-            {{ content }}
+            {{ content|markdown|widont }}
 
             {{ if pdfs }}
             <div class="grid pad text-center">
@@ -20,4 +20,4 @@
             {{ endif }}
         </div>
     </div>
-</section>
+</main>

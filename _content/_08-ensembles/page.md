@@ -1,4 +1,4 @@
 ---
 _fieldset: hidden
-title: Ensemble
+title: Ensembles
 ---

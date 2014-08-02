@@ -1,6 +1,6 @@
 <article>
-    <h3>{TITLE}</h3>
-    <time class="dt-start" datetime="2014-07-1">{DATE}</time>
+    <h3><a class="link" href="{{ url }}">{{ title }}</a></h3>
+    <time class="dt-start" datetime="{{ datestamp format="{{ global_datetime_format }}" }}">{{ datestamp|relative }}</time>
 
-    {CONTENT}
+    {{ content|widont }}
 </article>

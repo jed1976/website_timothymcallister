@@ -7,7 +7,7 @@
     <div class="col-2-3">
         <h3>{{ title }}</h3>
 
-        {{ description }}
+        {{ content|markdown|widont }}
 
         <table class="detail-table">
             <tbody>
@@ -19,10 +19,10 @@
                     {{ /entries:listing }}
                 </tr>
                 {{ endif }}
-                {{ if release_date }}
+                {{ if datestamp }}
                 <tr>
                     <th>Release Date</th>
-                    <td>{{ release_date format="{{ global_date_format }}" }}</td>
+                    <td>{{ datestamp format="{{ global_date_format }}" }}</td>
                 </tr>
                 {{ endif }}
                 {{ if catalog_number }}
@@ -39,5 +39,12 @@
                 {{ endif }}
             </tbody>
         </table>
+
+        {{ if show_samples && sample }}
+        <div class="text-center">
+            <a class="sample button x-small pad" href="{{ sample }}">Play Sample (MP3)</a>
+            <a class="sample button x-small pad" href="{{ sample }}">Play Sample (OGG)</a>
+        </div>
+        {{ endif }}
     </div>
 </div>

@@ -1,0 +1,51 @@
+<div class="hero">
+    <div class="quotes">
+
+    </div>
+</div>
+
+<section id="content">
+    <div class="grid-pad">
+        <h2 class="style-1">{{ title }}</h2>
+
+        <div class="grid negative">
+            <table class="detail-table" id="timeline">
+                <tbody>
+                    {{ entries:listing folder="premieres" group_by_date="Y" show_hidden="true" sort_by="date" sort_dir="desc" }}
+
+                    {{ if grouped_date }}
+                        {{ if !first }}
+                                </ul>
+                            </td>
+                        </tr>
+                        {{ endif }}
+                    <tr>
+                        <th>{{ grouped_date }}</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <ul class="no-bullets">
+                            {{ endif }}
+                                {{ theme:partial src="icon-list" use_context="true" }}
+                                    <h4>{{ title }}</h4>
+                                    <h5>{{ composer }}</h5>
+                                </li>
+                            {{ if last }}
+                            </ul>
+                        </td>
+                    </tr>
+                    {{ endif }}
+                    {{ /entries:listing }}
+              </tbody>
+            </table>
+
+            <table class="detail-table" id="legend">
+                {{ entries:listing folder="premiere-categories" show_hidden="true" }}
+                <tr>
+                    <th data-icon="{{ icon }}">{{ title }}</th>
+                </tr>
+                {{ /entries:listing }}
+            </table>
+        </div>
+    </div>
+</section>

@@ -33,6 +33,4 @@ McAllister serves as Associate Professor of Saxophone and Co-Director of the Ins
 
 He holds the Doctor of Musical Arts and other degrees in music education, conducting and performance from The University of Michigan where he studied saxophone with Donald Sinta and conducting with H. Robert Reynolds. He is the only saxophonist to ever receive the School of Music's most distinguished performance award--the Albert A. Stanley Medal. Alongside composer Derek Bermel, acclaimed countertenor David Daniels, tenor Nicholas Phan and New York Metropolitan Opera coach Howard Watkins, McAllister has been honored with the Paul C. Boylan Award from the Michigan School of Music Alumni Society for his significant contributions to the field of music.
 
-Timothy McAllister is a Conn-Selmer artist, and plays Selmer (Paris) saxophones exclusively. He is also a D'Addario
-
-Woodwind Artist, assisting with research and design for the D'Addario Co, and endorses the RICO Reserve Classic saxophone reeds and Ishimori Ligatures.
+Timothy McAllister is a Conn-Selmer artist, and plays Selmer (Paris) saxophones exclusively. He is also a D'Addario Woodwind Artist, assisting with research and design for the D'Addario Co, and endorses the RICO Reserve Classic saxophone reeds and Ishimori Ligatures.

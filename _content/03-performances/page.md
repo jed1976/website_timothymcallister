@@ -1,5 +1,5 @@
 ---
-map_js: true
+enable_map: true
 page_icon: calendar
 page_id: performances
 page_js: performances

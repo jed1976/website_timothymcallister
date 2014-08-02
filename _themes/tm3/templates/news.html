@@ -1,0 +1,18 @@
+<div class="hero">
+
+</div>
+
+<main id="content" role="main">
+    <div class="grid-pad">
+        <h2 class="style-1">{{ title }}</h2>
+
+        <div class="grid">
+            {{ entries:listing folder="news" }}
+            {{ if total_results > 0 }}
+            {{ theme:partial src="article" use_context="true" }}
+
+            {{ endif }}
+            {{ /entries:listing }}
+        </div>
+    </div>
+</main>

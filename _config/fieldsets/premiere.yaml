@@ -1,0 +1,21 @@
+title: Premiere
+
+hide: true
+
+fields:
+  composer:
+    type: text
+
+  category:
+    content:
+      folder: premiere-categories
+      show_hidden: true
+      type: entries
+    display: Category
+    max_items: 1
+    options:
+      - ''
+    type: suggest
+
+include:
+  - hidden

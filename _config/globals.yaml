@@ -1,5 +1,6 @@
 facebook_url: http://www.facebook.com/timothy.mcallister
 global_date_format: 'F j, Y'
+global_datetime_format: 'Y-m-d'
 prism_url: http://www.prismquartet.com
 publisher_title: 'Visit Publisher site for more information about this recording'
 twitter_url: http://twitter.com/McAllisterSax

@@ -1,1 +1,33 @@
-<h1>Recordings</h1>
+<section id="content">
+    <div class="scroller">
+        <div class="grid-pad">
+            <h2 class="style-1">{{ title }}</h2>
+
+            <ul id="recordings-list">
+                {{ entries:listing folder="recordings" show_hidden="true" sort_by="date" sort_dir="desc" }}
+                <li class="grid-pad recording" id="{{ slug }}">
+                    {{ theme:partial src="recording" use_context="true" }}
+                </li>
+                {{ /entries:listing }}
+
+                <li class="grid-pad recording" id="live-performances">
+                    <img alt="" class="display-none" src="assets/img/recordings/live-performances.jpg">
+
+                    <h2 class="style-1">Live Performances</h2>
+
+                    <ul>
+                        {{ entries:listing folder="live-performances" show_hidden="true" sort_dir="asc" }}
+                        <li id="{{ slug }}">
+                            <h4>{{ title }}</h4>
+                            <h5>{{ composer }}</h5>
+
+                            <a class="sample button x-small pad" href="{{ sample }}">Play Sample (MP3)</a>
+                            <a class="sample button x-small pad" href="{{ sample }}">Play Sample (OGG)</a>
+                        </li>
+                        {{ /entries:listing }}
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>

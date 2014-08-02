@@ -1,19 +1,11 @@
 title: Recording
 
 fields:
-  release_date:
-    type: date
-
   content:
     display: Description
     height: 200
     default:
     type: markitup
-
-  # tribute:
-  #   display: This event is a tribute to one composer
-  #   instructions: "If this performance is a tribute to the work of a specific composer, check this box. This ensures that when selecting compositions for the performance, the composer's name doesn't appear after each composition name."
-  #   type: checkbox
 
   artwork:
     allowed: [jpg]
@@ -46,93 +38,43 @@ fields:
     type: text
 
   section_2:
-    display: Tracks
+    display: Audio Sample
     type: section
 
-  tracks:
+  sample:
+    allowed: [mp3]
+    destination: assets/audio
     display: ''
-    fields:
-      track:
-        content:
-          folder: compositions
-          show_hidden: true
-          type: entries
-        display: ''
-        max_items: 1
-        options:
-          - ''
-        type: suggest
-    type: grid
+    instructions: Sample must be in MP3 format
+    type: audiofile
 
   section_3:
     display: Performers
     type: section
 
-  performers:
-    display: ''
-    fields:
-      performer:
-        content:
-          folder: performers
-          show_hidden: true
-          type: entries
-        display: 'Guest Performers'
-        instructions: Choose the performers who performed on this album (if applicable)
-        max_items: 1
-        options:
-          - ''
-        type: suggest
-    type: grid
+  ensemble:
+    content:
+      folder: ensembles
+      show_hidden: true`
+      type: entries
+    display: 'Ensemble'
+    instructions: Choose the ensemble who performed on this album (if applicable)
+    max_items: 1
+    options:
+      - ''
+    type: suggest
 
-  ensembles:
-    display: ''
-    fields:
-      ensemble:
-        content:
-          folder: ensembles
-          show_hidden: true
-          type: entries
-        display: 'Ensembles'
-        instructions: Choose the ensembles who performed on this album (if applicable)
-        max_items: 1
-        options:
-          - ''
-        type: suggest
-    type: grid
-
-  conductors:
-    display: ''
-    fields:
-      conductor:
-        content:
-          folder: conductors
-          show_hidden: true
-          type: entries
-        display: 'Conductors'
-        instructions: Choose the conductors who performed on this album (if applicable)
-        max_items: 1
-        options:
-          - ''
-        type: suggest
-    type: grid
-
-  section_4:
-    display: Applause
-    type: section
-
-  # quotes:
-  #   fields:
-  #     quote:
-  #       content:
-  #         folder: quotes
-  #         show_hidden: true
-  #         type: entries
-  #       display: ''
-  #       max_items: 1
-  #       options:
-  #         - ''
-  #       type: suggest
-  #   type: grid
+  conductor:
+    content:
+      folder: conductors
+      show_hidden: true
+      type: entries
+    display: 'Conductor'
+    instructions: Choose the conductor who performed on this album (if applicable)
+    max_items: 1
+    options:
+      - ''
+    type: suggest
 
 include:
  - hidden

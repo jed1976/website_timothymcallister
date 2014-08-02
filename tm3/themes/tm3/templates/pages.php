@@ -1,3 +1,15 @@
+<div id="subnav">
+  <ul>
+    <li><a href="<?php echo $app->urlFor("pages"); ?>" class="active"><?php echo Localization::fetch('pages') ?></a></li>
+    <li class="separator">&nbsp;</li>
+    <?php foreach($listings as $listing): ?>
+      <?php if (CP_Helper::is_page_visible($listing)): ?>
+        <li><a href="entries?path=<?php echo $listing['slug']?>"><?php echo $listing['title'] ?></a></li>
+      <?php endif ?>
+    <?php endforeach ?>
+  </ul>
+</div>
+
 <div class="container">
 
   <div id="status-bar">
@@ -30,9 +42,14 @@
 
       <?php if (CP_Helper::is_page_visible($page)): ?>
 
-      <li class="page">
+      <li class="page" data-url="<?php echo $page['url'] ?>">
         <?php if (array_get($page, 'has_entries', false)): ?> <div class="has-entries"></div><?php endif ?>
         <div class="page-wrapper">
+          <?php if (isset($page['children']) && (sizeof($page['children'])> 0)): ?>
+            <button class="toggle-children">
+              <span class="ss-icon">downright</span>
+            </button>
+          <?php endif; ?>
           <div class="page-primary">
           <?php
           $base = $page['slug'];

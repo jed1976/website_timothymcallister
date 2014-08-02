@@ -1,3 +1,15 @@
+<div id="subnav">
+  <ul>
+    <li><a href="<?php echo $app->urlFor("pages"); ?>">Pages</a></li>
+    <li class="separator">&nbsp;</li>
+    <?php foreach($listings as $listing): ?>
+      <?php if (CP_Helper::is_page_visible($listing)): ?>
+        <li><a href="entries?path=<?php echo $listing['slug']?>" <?php if ($listing['slug'] === $path): ?> class="active" <?php endif ?>><?php echo $listing['title'] ?></a></li>
+      <?php endif ?>
+    <?php endforeach ?>
+  </ul>
+</div>
+
 <div class="container">
 
   <div id="status-bar">
@@ -15,28 +27,18 @@
     </ul>
   </div>
 
-  <?php
-  $keys = array_keys($entries);
-  $entry = $entries[$keys[0]];
-  ?>
   <form action="<?php print $app->urlFor('delete_entry')?>" action="POST">
     <div class="section">
       <table class="simple-table <?php echo ($type == 'date') ? "entries-" : ''; ?>sortable">
         <thead>
           <tr>
             <th class="checkbox-col"></th>
-              <th><div class="header-inner"><?php echo Localization::fetch('title')?></div></th>
-              <?php if (isset($entry['composer'])): ?>
-              <th style="width:20%">Composer</th>
-              <?php endif; ?>
-              <?php if ($type == 'date'): ?>
+            <th><div class="header-inner"><?php echo Localization::fetch('title')?></div></th>
+            <?php if ($type == 'date'): ?>
               <th><div class="header-inner"><?php echo Localization::fetch('date')?></div></th>
-              <?php //elseif ($type == 'number' || $type == 'numeric'): ?>
-              <!-- <th><div class="header-inner"><?php //echo Localization::fetch('number')?></div></th> -->
-              <?php endif; ?>
-              <?php if (isset($entry['event_time'])): ?>
-              <th style="width:20%">Time</th>
-              <?php endif; ?>
+            <?php elseif ($type == 'number' || $type == 'numeric'): ?>
+              <th><div class="header-inner"><?php echo Localization::fetch('number')?></div></th>
+            <?php endif; ?>
             <th style="width:80px"><div class="header-inner"><?php echo Localization::fetch('status')?></div></th>
             <th style="width:40px"><div class="header-inner"><?php echo Localization::fetch('view')?></div></th>
           </tr>
@@ -58,32 +60,15 @@
               <a href="<?php print $app->urlFor('publish')?>?path=<?php echo Path::tidy($path.'/')?><?php echo $slug ?>"><?php print (isset($entry['title']) && $entry['title'] <> '') ? $entry['title'] : Slug::prettify($entry['slug']) ?></a>
             </td>
 
-            <?php if (isset($entry['composer'])): ?>
-            <td>
-              <?php
-              $composer_content = ContentService::getContentByURL($entry['composer'])->get();
-              if (isset($composer_content[0]))
-                echo htmlentities($composer_content[0]['title']);
-              ?>
-            </td>
-            <?php endif; ?>
-
-            <?php if ($type == 'date' && isset($entry['datestamp'])): ?>
+            <?php if ($type == 'date'): ?>
               <td data-fulldate="<?php echo $entry['datestamp']; ?>">
                   <?php
                   echo Date::format(Config::getDateFormat('Y/m/d'), $entry['datestamp']);
                   ?>
               </td>
-            <?php //elseif ($type == 'number'): ?>
-              <!-- <td><?php //print $entry['numeric'] ?></td> -->
+            <?php elseif ($type == 'number'): ?>
+              <td><?php print $entry['numeric'] ?></td>
             <?php endif ?>
-          <?php if (isset($entry['event_time'])): ?>
-            <td data-fulldate="<?php echo $entry['event_time']; ?>">
-              <?php
-                  echo Date::format('h:i A', $entry['event_time']);
-                  ?>
-            </td>
-          <?php endif; ?>
             <td class="margin status status-<?php print $status ?>">
               <span class="ss-icon">record</span><?php print ucwords($status) ?>
             </td>
