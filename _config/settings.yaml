@@ -113,7 +113,6 @@ _environments:
   dev:
     - 'http://localhost*'
     - 'http://tm.joedakroub.webfactional.com'
-    - 'test.site.dev2'
     - '*.dev'
     - '*.localip'
   live:
