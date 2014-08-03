@@ -58,16 +58,13 @@ class Plugin_Data extends Plugin
         // 'conductors',
         // 'contact',
         // 'ensembles',
-        // 'facilities',
-        // 'instruments',
         // 'live-performances'
-        // 'performers',
         // 'performances',
-        //  'premieres'
+        // 'premieres'
         // 'premiere-categories'
         // 'producers',
         // 'quote-authors',
-         'quotes',
+        // 'quotes',
         // 'recordings',
     );
 
@@ -341,81 +338,6 @@ title: {$row['title']}
 EOD;
 
             $entityDir = sprintf('_%s-%s', self::INDEX, 'ensembles');
-            $filename = $this->createSlug($row['title']);
-            $dir = sprintf(self::NUMBER_FORMAT, self::CONTENT_DIR, $entityDir, $iterator, $filename);
-            file_put_contents($dir, $content);
-            $iterator++;
-        }
-    }
-
-    private function createFacilities()
-    {
-        $data = $this->db->query('select exp_weblog_titles.title, exp_weblog_data.* from exp_weblog_data left join exp_weblog_titles on exp_weblog_titles.entry_id = exp_weblog_data.entry_id where exp_weblog_data.weblog_id = 19 order by exp_weblog_titles.title');
-        $iterator = 1;
-
-        foreach ($data as $row)
-        {
-$content = <<<EOD
----
-title: '{$row['title']}'
-address:
-latitude:
-longitude:
----
-
-EOD;
-
-            $entityDir = sprintf('_%s-%s', self::INDEX, 'facilities');
-            $filename = $this->createSlug($row['title']);
-            $dir = sprintf(self::NUMBER_FORMAT, self::CONTENT_DIR, $entityDir, $iterator, $filename);
-            file_put_contents($dir, $content);
-            $iterator++;
-        }
-    }
-
-    private function createInstruments()
-    {
-        $data = $this->db->query('select exp_weblog_titles.title, exp_weblog_data.* from exp_weblog_data left join exp_weblog_titles on exp_weblog_titles.entry_id = exp_weblog_data.entry_id where exp_weblog_data.weblog_id = 29 order by exp_weblog_titles.title');
-        $iterator = 1;
-
-        foreach ($data as $row)
-        {
-$content = <<<EOD
----
-title: {$row['title']}
----
-
-EOD;
-
-            $entityDir = sprintf('_%s-%s', self::INDEX, 'instruments');
-            $filename = $this->createSlug($row['title']);
-            $dir = sprintf(self::NUMBER_FORMAT, self::CONTENT_DIR, $entityDir, $iterator, $filename);
-            file_put_contents($dir, $content);
-            $iterator++;
-        }
-    }
-
-    private function createPerformers()
-    {
-        $data = $this->db->query('select exp_weblog_titles.title, exp_weblog_data.* from exp_weblog_data left join exp_weblog_titles on exp_weblog_titles.entry_id = exp_weblog_data.entry_id where exp_weblog_data.weblog_id = 14 order by exp_weblog_titles.title');
-        $iterator = 1;
-
-        foreach ($data as $row)
-        {
-            $instrument = $this->createSlug($this->removeBrackets($row['field_id_59']));
-
-            if ($instrument == 'saxophone')
-                $instrument = 'saxophones';
-
-$content = <<<EOD
----
-title: {$row['title']}
-instrument: /instruments/$instrument
----
-
-EOD;
-
-            $entityDir = sprintf('_%s-%s', self::INDEX, 'performers');
             $filename = $this->createSlug($row['title']);
             $dir = sprintf(self::NUMBER_FORMAT, self::CONTENT_DIR, $entityDir, $iterator, $filename);
             file_put_contents($dir, $content);
@@ -821,8 +743,7 @@ EOD;
 $content = <<<EOD
 ---
 title: '$title'
-tribute: "$tribute"
-time: $event_time
+event_time: $event_time
 location: $location
 latitude: $latitude
 longitude: $longitude
@@ -839,7 +760,5 @@ EOD;
                 $iterator++;
             }
         }
-
-        die();
     }
 }

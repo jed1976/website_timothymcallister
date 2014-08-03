@@ -1,23 +1,11 @@
 ---
 title: 'Broadcast on NPR's Performance Today'
-tribute: "0"
-datestamp: 2006-07-21
-event_time: 11:09 AM
+time: 11:09 AM
 location: 
 latitude: 0
 longitude: 0
 performance_url: http://www.npr.org/schedule/index.php?prgId=4&selStates=NY&showNav=1
 ticket_information_url: 
-program: 
-  -
-    composition: "0"
-guest_performers: 
-  -
-    guest_performer: "0"
-ensembles: 
-  -
-    ensemble: "0"
-conductors: 
-  -
-    conductor: "0"
+ensemble: 
+conductor: 
 ---

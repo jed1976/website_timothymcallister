@@ -1,24 +1,12 @@
 ---
 title: 'Guest Artist Recital'
-tribute: "0"
-datestamp: 2000-02-24
-event_time: 09:50 AM
-location: 
-latitude: 0
-longitude: 0
+time: 09:50 AM
+location: University of Michigan
+latitude: 42.2780436
+longitude: -83.7382241
 performance_url: 
 ticket_information_url: 
-program: 
-  -
-    composition: "0"
-guest_performers: 
-  -
-    guest_performer: "0"
-ensembles: 
-  -
-    ensemble: "0"
-conductors: 
-  -
-    conductor: "0"
+ensemble: 
+conductor: 
 ---
 Works by Debussy, Mead, Steinberg, Lauba, Stockhausen, Chambers

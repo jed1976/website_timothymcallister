@@ -1,23 +1,11 @@
 ---
 title: 'Guest Artist Series'
-tribute: "0"
-datestamp: 1998-10-29
-event_time: 02:55 PM
-location: 
-latitude: 0
-longitude: 0
+time: 02:55 PM
+location: University of Illinois Urbana-Champaign Willard Airport
+latitude: 40.0400682
+longitude: -88.2707151
 performance_url: 
 ticket_information_url: 
-program: 
-  -
-    composition: "0"
-guest_performers: 
-  -
-    guest_performer: "0"
-ensembles: 
-  -
-    ensemble: "0"
-conductors: 
-  -
-    conductor: "0"
+ensemble: 
+conductor: 
 ---

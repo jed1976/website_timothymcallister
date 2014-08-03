@@ -1,23 +1,11 @@
 ---
 title: 'Fischoff Grand Prize Winners Concert'
-tribute: "0"
-datestamp: 2001-10-18
-event_time: 12:17 PM
-location: 
-latitude: 0
-longitude: 0
+time: 12:17 PM
+location: Bethel College
+latitude: 41.678297
+longitude: -86.1961985
 performance_url: 
 ticket_information_url: 
-program: 
-  -
-    composition: "0"
-guest_performers: 
-  -
-    guest_performer: "0"
-ensembles: 
-  -
-    ensemble: "0"
-conductors: 
-  -
-    conductor: "0"
+ensemble: 
+conductor: 
 ---

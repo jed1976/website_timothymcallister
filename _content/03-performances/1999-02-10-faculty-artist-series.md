@@ -1,24 +1,12 @@
 ---
 title: 'Faculty Artist Series'
-tribute: "0"
-datestamp: 1999-02-10
-event_time: 03:55 PM
-location: 
-latitude: 0
-longitude: 0
+time: 03:55 PM
+location: Potsdam
+latitude: 44.6697805
+longitude: -74.9813084
 performance_url: 
 ticket_information_url: 
-program: 
-  -
-    composition: "0"
-guest_performers: 
-  -
-    guest_performer: "0"
-ensembles: 
-  -
-    ensemble: "0"
-conductors: 
-  -
-    conductor: "0"
+ensemble: 
+conductor: 
 ---
 Works by Bassett, Stockhausen, Lauba, Steinberg, Desenclos

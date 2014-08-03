@@ -33,3 +33,5 @@ legend.light,
 .dark .link,
 .dark .link:link,
 .dark .link:visited { color: #fff; }
+
+.dark .link { font-weight: 700; }

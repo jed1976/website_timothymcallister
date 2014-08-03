@@ -1,25 +1,13 @@
 ---
 title: 'Soloist with the Northshore Concert Band'
-tribute: "0"
-datestamp: 2013-11-03
-event_time: 03:00 PM
+time: 03:00 PM
 location: Pick-Staiger Concert Hall
 latitude: 42.0521212
 longitude: -87.6720799
 performance_url: http://www.northshoreband.org/concerts/fall.asp
 ticket_information_url: Tickets are available in advance either online, by phone (847-432-2263), or at the Pick-Staiger box office
-program: 
-  -
-    composition: "0"
-guest_performers: 
-  -
-    guest_performer: "0"
-ensembles: 
-  -
-    ensemble: "0"
-conductors: 
-  -
-    conductor: "0"
+ensemble: 
+conductor: 
 ---
 Sunday, November 3, 2013
 3pm, Pick-Staiger Concert Hall

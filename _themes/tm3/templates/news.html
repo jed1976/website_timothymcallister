@@ -5,10 +5,11 @@
         <h2 class="style-1">{{ title }}</h2>
 
         <div class="grid">
-            {{ entries:listing folder="news" }}
+            {{ entries:listing folder="news" show_hidden="false" sort_by="date" sort_dir="desc" }}
             {{ if total_results > 0 }}
-            {{ theme:partial src="article" use_context="true" }}
-
+            {{ theme:partial src="article" show_view_button="true" use_context="true" }}
+            {{ else }}
+            There are no entries.
             {{ endif }}
             {{ /entries:listing }}
         </div>

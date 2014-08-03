@@ -1,23 +1,11 @@
 ---
 title: 'Guest Artist Series'
-tribute: "0"
-datestamp: 1998-10-25
-event_time: 02:45 PM
-location: 
-latitude: 0
-longitude: 0
+time: 02:45 PM
+location: Central Michigan University
+latitude: 42.6730543
+longitude: -83.2263545
 performance_url: 
 ticket_information_url: 
-program: 
-  -
-    composition: "0"
-guest_performers: 
-  -
-    guest_performer: "0"
-ensembles: 
-  -
-    ensemble: "0"
-conductors: 
-  -
-    conductor: "0"
+ensemble: 
+conductor: 
 ---

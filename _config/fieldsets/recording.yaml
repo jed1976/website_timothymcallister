@@ -53,10 +53,9 @@ fields:
   ensemble:
     content:
       folder: ensembles
-      show_hidden: true`
+      show_hidden: true
       type: entries
-    display: 'Ensemble'
-    instructions: Choose the ensemble who performed on this album (if applicable)
+    display: Ensemble
     max_items: 1
     options:
       - ''
@@ -67,8 +66,7 @@ fields:
       folder: conductors
       show_hidden: true
       type: entries
-    display: 'Conductor'
-    instructions: Choose the conductor who performed on this album (if applicable)
+    display: Conductor
     max_items: 1
     options:
       - ''

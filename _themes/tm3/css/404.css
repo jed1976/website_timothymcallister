@@ -1,0 +1,33 @@
+#sitemap [data-icon]::before
+{
+    font-size: 2rem;
+    margin-right: 10px;
+}
+
+#sitemap a
+{
+    color: #fff;
+    display: block;
+    font-size: 1.1rem;
+    letter-spacing: 0.3rem;
+    padding: 0 15px;
+    text-transform: uppercase;
+}
+
+@media (min-width: 1024px)
+{
+    .js #content
+    {
+        float: right;
+        padding-top: 80px;
+        width: 50%;
+    }
+
+    .js .hero
+    {
+        bottom: 0;
+        position: fixed;
+        top: 0;
+        width: 50%;
+    }
+}

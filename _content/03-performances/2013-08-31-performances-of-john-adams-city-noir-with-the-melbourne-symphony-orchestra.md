@@ -1,23 +1,11 @@
 ---
 title: 'Performances of John Adams' City Noir with the Melbourne Symphony Orchestra'
-tribute: "0"
-datestamp: 2013-08-31
-event_time: 07:30 PM
+time: 07:30 PM
 location: Melbourne
 latitude: -37.814107
 longitude: 144.96328
 performance_url: http://www.mso.com.au/whats-on/2013/adams-conducts-adams/
 ticket_information_url: 
-program: 
-  -
-    composition: "0"
-guest_performers: 
-  -
-    guest_performer: "0"
-ensembles: 
-  -
-    ensemble: "0"
-conductors: 
-  -
-    conductor: "0"
+ensemble: 
+conductor: 
 ---

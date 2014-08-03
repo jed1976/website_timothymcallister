@@ -1,23 +1,11 @@
 ---
 title: 'The Cleveland Composer's Guild'
-tribute: "0"
-datestamp: 2000-11-19
-event_time: 10:34 AM
-location: 
-latitude: 0
-longitude: 0
+time: 10:34 AM
+location: Cleveland
+latitude: 41.49932
+longitude: -81.6943605
 performance_url: 
 ticket_information_url: 
-program: 
-  -
-    composition: "0"
-guest_performers: 
-  -
-    guest_performer: "0"
-ensembles: 
-  -
-    ensemble: "0"
-conductors: 
-  -
-    conductor: "0"
+ensemble: 
+conductor: 
 ---

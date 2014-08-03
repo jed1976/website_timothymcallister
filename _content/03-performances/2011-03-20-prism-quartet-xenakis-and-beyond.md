@@ -1,25 +1,13 @@
 ---
 title: 'PRISM Quartet: Xenakis and Beyond'
-tribute: "0"
-datestamp: 2011-03-20
-event_time: 08:00 PM
+time: 08:00 PM
 location: Tenri Cultural Institute
 latitude: 40.5957855
 longitude: -73.9840569
 performance_url: 
 ticket_information_url: $20 general admission, $15 students/seniors (with ID) at door only
-program: 
-  -
-    composition: "0"
-guest_performers: 
-  -
-    guest_performer: "0"
-ensembles: 
-  -
-    ensemble: "0"
-conductors: 
-  -
-    conductor: "0"
+ensemble: 
+conductor: 
 ---
 Xenakis and Beyond:
 New music from three generations of Greek composers

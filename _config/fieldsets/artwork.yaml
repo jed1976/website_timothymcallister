@@ -7,13 +7,14 @@ fields:
 
   artwork:
     allowed: [jpg]
+    default: '{{ _site_root }}assets/img/tim-news.jpg'
     destination: assets/img
     display: ''
     instructions: JPG format only
     type: file
 
   vertical_position:
-    default: top
+    default: center
     display: Vertical
     options:
       top: Top
@@ -22,7 +23,7 @@ fields:
     type: radio
 
   horizontal_position:
-    default: left
+    default: center
     display: Horizontal
     options:
       left: Left

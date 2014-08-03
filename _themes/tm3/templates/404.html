@@ -1,13 +1,11 @@
-<div class="row">
-	<div class="eight columns">
-		<div class="article">
-			<h1>{{ title }}</h1>
+{{ theme:partial src="hero" use_context="true" }}
 
-			{{ content|widont }}
-		</div>
-	</div>
-	<div class="four columns sidebar" role="complementary">
-		{{ theme:partial src="sub-navigation" }}		
-		{{ theme:partial src="common-sidebar" }}
-	</div>
-</div>
+<main id="content" role="main">
+    <div class="grid-pad">
+        <h2 class="style-1">{{ title }}</h2>
+
+        <div class="grid">
+            {{ content|widont }}
+        </div>
+    </div>
+</main>

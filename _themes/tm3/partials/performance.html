@@ -1,6 +1,6 @@
 <article class="h-event" data-latitude="{{ latitude }}" data-longitude="{{ longitude }}">
     <span class="calendar">
-        <time class="dt-start" datetime="{{ datestamp }} {{ event_time }}">{{ datestamp format="M" }} <span class="day">{{ datestamp format="j" }}</span> <span class="year">{{ datestamp format="Y" }}</span></time>
+        <time class="dt-start" datetime="{{ datestamp format="m-d-Y" }} {{ time }}">{{ datestamp format="M" }} <span class="day">{{ datestamp format="j" }}</span> <span class="year">{{ datestamp format="Y" }}</span></time>
     </span>
 
     <h4 class="p-name">{{ title }}</h4>
@@ -18,40 +18,42 @@
     {{ endif }}
 
     <table class="p-description detail-table">
-        {{ if conductors }}
-        {{ entries:listing folder="conductors" conditions="url:{conductor}" show_hidden="yes" }}
-        {{ if conductor }}
-        <tr>
-            <th>Conductors</th>
-            <td>{{ conductor }}</td>
-        </tr>
-        {{ endif }}
-        {{ /entries:listing }}
-        {{ endif }}
+        <tbody>
+            {{ if conductors }}
+            {{ entries:listing folder="conductors" conditions="url:{conductor}" show_hidden="yes" }}
+            {{ if conductor }}
+            <tr>
+                <th>Conductors</th>
+                <td>{{ conductor }}</td>
+            </tr>
+            {{ endif }}
+            {{ /entries:listing }}
+            {{ endif }}
 
-        {{ if ensembles }}
-        {{ entries:listing folder="ensembles" conditions="url:{ensemble}" show_hidden="yes" }}
-        {{ if ensemble }}
-        <tr>
-            <th>Ensemble</th>
-            <td>{{ ensemble }}</td>
-        </tr>
-        {{ endif }}
-        {{ /entries:listing }}
-        {{ endif }}
+            {{ if ensembles }}
+            {{ entries:listing folder="ensembles" conditions="url:{ensemble}" show_hidden="yes" }}
+            {{ if ensemble }}
+            <tr>
+                <th>Ensemble</th>
+                <td>{{ ensemble }}</td>
+            </tr>
+            {{ endif }}
+            {{ /entries:listing }}
+            {{ endif }}
 
-        {{ if event_time }}
-        <tr>
-            <th>Time</th>
-            <td><time class="dt-start" datetime="{{ datestamp }} {{ event_time }}">{{ event_time }}</time></td>
-        </tr>
-        {{ endif }}
+            {{ if event_time }}
+            <tr>
+                <th>Time</th>
+                <td><time class="dt-start" datetime="{{ datestamp format="m-d-Y" }} {{ event_time }}">{{ event_time }}</time></td>
+            </tr>
+            {{ endif }}
 
-        {{ if performance_url }}
-        <tr>
-            <th>Website</th>
-            <td><a class="u-url link" href="{{ performance_url }}">Visit Site</a></td>
-        </tr>
-        {{ endif }}
+            {{ if performance_url }}
+            <tr>
+                <th>Website</th>
+                <td><a class="u-url link" href="{{ performance_url }}">Visit Site</a></td>
+            </tr>
+            {{ endif }}
+        </tbody>
     </table>
 </article>

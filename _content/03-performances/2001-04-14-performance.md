@@ -1,23 +1,11 @@
 ---
 title: 'Performance'
-tribute: "0"
-datestamp: 2001-04-14
-event_time: 11:51 AM
-location: 
-latitude: 0
-longitude: 0
+time: 11:51 AM
+location: Lincoln Theater
+latitude: 38.862836
+longitude: -76.992508
 performance_url: 
 ticket_information_url: 
-program: 
-  -
-    composition: "0"
-guest_performers: 
-  -
-    guest_performer: "0"
-ensembles: 
-  -
-    ensemble: "0"
-conductors: 
-  -
-    conductor: "0"
+ensemble: 
+conductor: 
 ---

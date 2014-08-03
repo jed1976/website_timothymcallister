@@ -1,25 +1,13 @@
 ---
 title: 'World Premiere of John Adams' "City Noir"'
-tribute: "0"
-datestamp: 2009-10-08
-event_time: 07:00 PM
+time: 07:00 PM
 location: Walt Disney Concert Hall
 latitude: 34.0522342
 longitude: -118.2436849
 performance_url: http://www.laphil.com/tickets/performance_detail.cfm?id=4134
 ticket_information_url: Concert only tickets will go on sale on August 23rd and will be available through the General Ticket office: 323.850.2000
-program: 
-  -
-    composition: "0"
-guest_performers: 
-  -
-    guest_performer: "0"
-ensembles: 
-  -
-    ensemble: "0"
-conductors: 
-  -
-    conductor: "0"
+ensemble: 
+conductor: 
 ---
 For his Inaugural Gala and Opening Night Concert, Gustavo Dudamel conducts the world premiere of John Adams' City Noir, a major orchestral work inspired by LA itself and commissioned by the LA Phil. This historic event concludes with Dudamel conducting Mahler's First Symphony. Gala packages which include a pre-concert reception, preferred concert seating and dinner and dancing following the concert are available now. For Gala package details, please call the Special Events hotline: 213.972.3051.
 

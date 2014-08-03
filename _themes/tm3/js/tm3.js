@@ -193,14 +193,14 @@ document.addEventListener('DOMContentLoaded', function() {
             target.hasClass('email') ||
             target.hasClass('download')) return;
 
-        event.preventDefault();
-
         linkLocation = target.getAttribute('href');
 
-        if (linkLocation !== '#' && linkLocation !== '#menu') {
-            document.body.removeClass('fadein');
-            window.location = linkLocation;
-        }
+        event.preventDefault();
+
+        if (linkLocation.indexOf('#') > -1) return;
+
+        document.body.removeClass('fadein');
+        window.location = linkLocation;
     });
 
     // Update screen size classes on resize
@@ -216,11 +216,5 @@ document.addEventListener('DOMContentLoaded', function() {
 
 window.addEventListener('load', function load() {
     window.removeEventListener('load', load, false);
-
-    // Scroll window to top on load
-    setTimeout(function() {
-        window.scrollTo(0, 0);
-    }, 0)
-
     document.body.addClass('fadein');
 });

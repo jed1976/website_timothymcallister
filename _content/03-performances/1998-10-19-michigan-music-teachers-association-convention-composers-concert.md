@@ -1,23 +1,11 @@
 ---
 title: 'Michigan Music Teacher's Association Convention Composer's Concert'
-tribute: "0"
-datestamp: 1998-10-19
-event_time: 02:40 PM
-location: 
-latitude: 0
-longitude: 0
+time: 02:40 PM
+location: Grand Rapids
+latitude: 42.9633599
+longitude: -85.6680863
 performance_url: 
 ticket_information_url: 
-program: 
-  -
-    composition: "0"
-guest_performers: 
-  -
-    guest_performer: "0"
-ensembles: 
-  -
-    ensemble: "0"
-conductors: 
-  -
-    conductor: "0"
+ensemble: 
+conductor: 
 ---

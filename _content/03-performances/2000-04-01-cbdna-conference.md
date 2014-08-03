@@ -1,23 +1,11 @@
 ---
 title: 'CBDNA Conference'
-tribute: "0"
-datestamp: 2000-04-01
-event_time: 10:04 AM
-location: 
-latitude: 0
-longitude: 0
+time: 10:04 AM
+location: Yale University
+latitude: 41.3163244
+longitude: -72.9223431
 performance_url: 
 ticket_information_url: 
-program: 
-  -
-    composition: "0"
-guest_performers: 
-  -
-    guest_performer: "0"
-ensembles: 
-  -
-    ensemble: "0"
-conductors: 
-  -
-    conductor: "0"
+ensemble: 
+conductor: 
 ---

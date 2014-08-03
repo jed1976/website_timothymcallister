@@ -1,23 +1,11 @@
 ---
 title: 'PRISM Quartet'
-tribute: "0"
-datestamp: 1999-03-15
-event_time: 08:52 AM
-location: 
-latitude: 0
-longitude: 0
+time: 08:52 AM
+location: New York
+latitude: 40.7127837
+longitude: -74.0059413
 performance_url: 
 ticket_information_url: 
-program: 
-  -
-    composition: "0"
-guest_performers: 
-  -
-    guest_performer: "0"
-ensembles: 
-  -
-    ensemble: "0"
-conductors: 
-  -
-    conductor: "0"
+ensemble: 
+conductor: 
 ---

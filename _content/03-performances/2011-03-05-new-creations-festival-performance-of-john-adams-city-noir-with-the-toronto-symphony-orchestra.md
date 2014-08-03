@@ -1,23 +1,11 @@
 ---
 title: 'New Creations Festival: Performance of John Adams' City Noir with the Toronto Symphony Orchestra'
-tribute: "0"
-datestamp: 2011-03-05
-event_time: 07:30 PM
+time: 07:30 PM
 location: Toronto
 latitude: 43.653226
 longitude: -79.3831843
 performance_url: http://www.tso.ca/Concerts-And-Tickets/Events/2010-2011-Season/City-Noir.aspx
 ticket_information_url: $32 - $96
-program: 
-  -
-    composition: "0"
-guest_performers: 
-  -
-    guest_performer: "0"
-ensembles: 
-  -
-    ensemble: "0"
-conductors: 
-  -
-    conductor: "0"
+ensemble: 
+conductor: 
 ---

@@ -1,25 +1,13 @@
 ---
 title: 'Performance of John Adams' City Noir with the New World Symphony'
-tribute: "0"
-datestamp: 2011-04-02
-event_time: 07:30 PM
+time: 07:30 PM
 location: New World Symphony
 latitude: 25.7922022
 longitude: -80.1357063
 performance_url: https://www.nws.edu/WebSales/ConcertInfo.aspx?PID=NOSALE56&EID=446
 ticket_information_url: Tickets from $15
-program: 
-  -
-    composition: "0"
-guest_performers: 
-  -
-    guest_performer: "0"
-ensembles: 
-  -
-    ensemble: "0"
-conductors: 
-  -
-    conductor: "0"
+ensemble: 
+conductor: 
 ---
 Inspired Surroundings 
 John Adams Conductor

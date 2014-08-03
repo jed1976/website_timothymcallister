@@ -1,23 +1,11 @@
 ---
 title: 'PRISM Quartet'
-tribute: "0"
-datestamp: 1999-06-11
-event_time: 09:26 AM
-location: 
-latitude: 0
-longitude: 0
+time: 09:26 AM
+location: Philadelphia Ethical Society
+latitude: 39.9494655
+longitude: -75.1718643
 performance_url: 
 ticket_information_url: 
-program: 
-  -
-    composition: "0"
-guest_performers: 
-  -
-    guest_performer: "0"
-ensembles: 
-  -
-    ensemble: "0"
-conductors: 
-  -
-    conductor: "0"
+ensemble: 
+conductor: 
 ---

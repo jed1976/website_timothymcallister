@@ -1,25 +1,13 @@
 ---
 title: 'PRISM Quartet:  "DAVE, The Premiere"'
-tribute: "0"
-datestamp: 2010-06-05
-event_time: 08:00 PM
+time: 08:00 PM
 location: Philadelphia
 latitude: 39.952335
 longitude: -75.163789
 performance_url: 
 ticket_information_url: $20 general admission; $15 students/seniors, at door only (no reservations required)
-program: 
-  -
-    composition: "0"
-guest_performers: 
-  -
-    guest_performer: "0"
-ensembles: 
-  -
-    ensemble: "0"
-conductors: 
-  -
-    conductor: "0"
+ensemble: 
+conductor: 
 ---
 Saturday, June 5, 2010, 8:00 pm
 Settlement Music School, Mary Louise Curtis Branch

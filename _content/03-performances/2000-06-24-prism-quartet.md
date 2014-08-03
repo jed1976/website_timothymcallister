@@ -1,24 +1,12 @@
 ---
 title: 'PRISM Quartet'
-tribute: "0"
-datestamp: 2000-06-24
-event_time: 09:10 AM
-location: 
-latitude: 0
-longitude: 0
+time: 09:10 AM
+location: Philadelphia
+latitude: 39.952335
+longitude: -75.163789
 performance_url: 
 ticket_information_url: 
-program: 
-  -
-    composition: "0"
-guest_performers: 
-  -
-    guest_performer: "0"
-ensembles: 
-  -
-    ensemble: "0"
-conductors: 
-  -
-    conductor: "0"
+ensemble: 
+conductor: 
 ---
 Works by Xenakis, Keuris, Donatoni, Ticheli (Premiere)

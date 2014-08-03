@@ -6,6 +6,7 @@ title: News
 artwork: '{{ _site_root }}assets/img/tim-news.jpg'
 vertical_position: center
 horizontal_position: center
+_default_folder_template: article
 _fieldset: news
 _template: news
 quotes:

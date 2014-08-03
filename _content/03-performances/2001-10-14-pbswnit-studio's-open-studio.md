@@ -1,23 +1,11 @@
 ---
 title: 'PBS/WNIT Studio&#8217;s Open Studio'
-tribute: "0"
-datestamp: 2001-10-14
-event_time: 12:05 PM
-location: 
-latitude: 0
-longitude: 0
+time: 12:05 PM
+location: Elkhart
+latitude: 41.6819935
+longitude: -85.9766671
 performance_url: 
 ticket_information_url: 
-program: 
-  -
-    composition: "0"
-guest_performers: 
-  -
-    guest_performer: "0"
-ensembles: 
-  -
-    ensemble: "0"
-conductors: 
-  -
-    conductor: "0"
+ensemble: 
+conductor: 
 ---

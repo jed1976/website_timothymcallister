@@ -1,23 +1,11 @@
 ---
 title: 'John Luther Adams' "Inuksuit" at Millennium Park'
-tribute: "0"
-datestamp: 2012-08-26
-event_time: 06:00 PM
+time: 06:00 PM
 location: Chicago Symphony Orchestra
 latitude: 41.757372
 longitude: -87.6215208
 performance_url: 
 ticket_information_url: 
-program: 
-  -
-    composition: "0"
-guest_performers: 
-  -
-    guest_performer: "0"
-ensembles: 
-  -
-    ensemble: "0"
-conductors: 
-  -
-    conductor: "0"
+ensemble: 
+conductor: 
 ---

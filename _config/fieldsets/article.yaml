@@ -7,3 +7,10 @@ fields:
   content:
     required: true
     type: markitup
+
+  page_stylesheet:
+    default: news
+    type: hidden
+
+include:
+  - artwork

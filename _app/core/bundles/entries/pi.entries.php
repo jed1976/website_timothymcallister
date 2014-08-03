@@ -15,14 +15,14 @@ class Plugin_entries extends Plugin
 {
     /**
      * Combines numeric values of all entries found into one combined result
-     * 
+     *
      * @return string
      */
     public function meld()
     {
         // grab common parameters
         $settings = $this->parseCommonParameters();
-        
+
         // grab extra parameters
         $field      = $this->fetchParam('field', null);
         $action     = $this->fetchParam('action', 'sum');
@@ -45,7 +45,7 @@ class Plugin_entries extends Plugin
                 $content_set->limit($limit, $offset);
             }
         }
-        
+
         // get total entries
         $total_entries = $content_set->count();
 
@@ -53,25 +53,25 @@ class Plugin_entries extends Plugin
         if (!$total_entries) {
             return '0';
         }
-        
+
         // total them up
         $total = 0;
         foreach ($content_set->get(false, false) as $content) {
             if (!isset($content[$field]) || !is_numeric($content[$field])) {
                 continue;
             }
-            
+
             $total += $content[$field];
         }
-        
+
         // set output
         $output = $total;
-        
+
         // perform other actions
         if ($action === 'average') {
             $output = $output / $total_entries;
         }
-        
+
         return (!is_null($precision)) ? number_format($output, $precision) : (string) $output;
     }
 
@@ -85,7 +85,7 @@ class Plugin_entries extends Plugin
     {
         // grab common parameters
         $settings = $this->parseCommonParameters();
-        
+
         // grab content set based on the common parameters
         $content_set = $this->getContentSet($settings);
 
@@ -106,7 +106,7 @@ class Plugin_entries extends Plugin
                 $content_set->limit($limit, $offset);
             }
         }
-        
+
         // manually supplement
         $content_set->supplement(array(
             'total_found'    => $total_entries,
@@ -368,7 +368,7 @@ class Plugin_entries extends Plugin
             'type'        => 'entries',
             'conditions'  => trim($this->fetchParam('conditions', null))
         ));
-        
+
         // prepare if needed
         $parse_content = (bool) preg_match(Pattern::USING_CONTENT, $this->content);
         if ($parse_content) {
@@ -445,7 +445,7 @@ class Plugin_entries extends Plugin
 
         $markers = array();
         foreach ($content as $item) {
-            
+
             $marker = array(
                 'latitude'       => $item['latitude'],
                 'longitude'      => $item['longitude'],

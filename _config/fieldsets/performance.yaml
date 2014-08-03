@@ -16,7 +16,7 @@ fields:
     type: time
 
   location:
-    instructions: Type the name of the facility to get an autocompleted list of options
+    instructions: Type the name of the facility to get a list of options
     required: true
     type: text
 
@@ -49,7 +49,6 @@ fields:
       show_hidden: true
       type: entries
     display: Ensemble
-    instructions: Choose the ensemble who will perform on this event
     max_items: 1
     options:
       - ''
@@ -61,11 +60,10 @@ fields:
       show_hidden: true
       type: entries
     display: Conductor
-    instructions: Choose the conductor who will perform on this event
     max_items: 1
     options:
       - ''
     type: suggest
 
 include:
- - hidden
+  - hidden

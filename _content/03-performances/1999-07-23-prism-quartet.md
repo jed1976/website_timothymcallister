@@ -1,24 +1,12 @@
 ---
 title: 'PRISM Quartet'
-tribute: "0"
-datestamp: 1999-07-23
-event_time: 09:32 AM
-location: 
-latitude: 0
-longitude: 0
+time: 09:32 AM
+location: Walden School
+latitude: 38.2615275
+longitude: -85.6375846
 performance_url: 
 ticket_information_url: 
-program: 
-  -
-    composition: "0"
-guest_performers: 
-  -
-    guest_performer: "0"
-ensembles: 
-  -
-    ensemble: "0"
-conductors: 
-  -
-    conductor: "0"
+ensemble: 
+conductor: 
 ---
 Works by D'Rivera, Hsu, Levy, Albright, Sung, Higdon, Browning

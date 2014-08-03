@@ -1,26 +1,9 @@
 <main id="content" role="main">
     <div class="grid">
-        {{ addresses }}
+        {{ entries:listing folder="contact" show_hidden="true" }}
         <div class="col-1-2">
-            <div class="hero" id="location-{{ index }}" style="background-image: url({{ artwork }});">
-                <div class="card grid-pad">
-                    <h2 class="style-1">{{ heading }}</h2>
-
-                    <dl class="vcard" id="hcard-{{ name|slugify }}">
-                        <dt class="fn"><strong>{{ name }}</strong></dt>
-                        <dd class="org">
-                            <div class="organization-name">{{ organization }}</div>
-                            <div class="organization-unit">{{ unit }}</div>
-                        </dd>
-                        <dd class="adr">
-                            <div class="street-address">{{ address }}</div>
-                            <span class="locality">{{ city }}</span>, <span class="region">{{ state }}</span>, <span class="postal-code">{{ zip_code }}</span>
-                        </dd>
-                        <dd><a class="email link" href="mailto:{{ email|obfuscate }}">{{ email|obfuscate }}</a></dd>
-                    </dl>
-                </div>
-            </div>
+            {{ theme:partial src="contact" use_context="true" }}
         </div>
-        {{ /addresses }}
+        {{ /entries:listing }}
     </div>
 </main>

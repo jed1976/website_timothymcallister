@@ -1,23 +1,11 @@
 ---
 title: 'Collage XXIV Midwestern Music Educators Conference'
-tribute: "0"
-datestamp: 2001-01-19
-event_time: 10:37 AM
-location: 
-latitude: 0
-longitude: 0
+time: 10:37 AM
+location: Hill Auditorium
+latitude: 42.2785603
+longitude: -83.7371007
 performance_url: 
 ticket_information_url: 
-program: 
-  -
-    composition: "0"
-guest_performers: 
-  -
-    guest_performer: "0"
-ensembles: 
-  -
-    ensemble: "0"
-conductors: 
-  -
-    conductor: "0"
+ensemble: 
+conductor: 
 ---

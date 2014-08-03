@@ -1,23 +1,11 @@
 ---
 title: 'ninth circle saxophone quartet Masterclass'
-tribute: "0"
-datestamp: 2001-10-15
-event_time: 12:10 PM
-location: 
-latitude: 0
-longitude: 0
+time: 12:10 PM
+location: Elkhart Memorial High School
+latitude: 41.696037
+longitude: -86.0140711
 performance_url: 
 ticket_information_url: 
-program: 
-  -
-    composition: "0"
-guest_performers: 
-  -
-    guest_performer: "0"
-ensembles: 
-  -
-    ensemble: "0"
-conductors: 
-  -
-    conductor: "0"
+ensemble: 
+conductor: 
 ---

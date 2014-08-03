@@ -8,7 +8,7 @@ enable: false
 cache_length: on last modified
 
 # a pipe-separated list of URLs you want to exclude from HTML caching, ending-wildcards OK
-exclude: 
+exclude:
 
 # when `true`, different query strings in URLs will all result in the same page being shown,
 # for example /about and /about?something will all show the same page: /about

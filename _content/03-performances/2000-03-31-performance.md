@@ -1,23 +1,11 @@
 ---
 title: 'Performance'
-tribute: "0"
-datestamp: 2000-03-31
-event_time: 10:02 AM
-location: 
-latitude: 0
-longitude: 0
+time: 10:02 AM
+location: Wappingers Falls
+latitude: 41.5964825
+longitude: -73.91097
 performance_url: 
 ticket_information_url: 
-program: 
-  -
-    composition: "0"
-guest_performers: 
-  -
-    guest_performer: "0"
-ensembles: 
-  -
-    ensemble: "0"
-conductors: 
-  -
-    conductor: "0"
+ensemble: 
+conductor: 
 ---

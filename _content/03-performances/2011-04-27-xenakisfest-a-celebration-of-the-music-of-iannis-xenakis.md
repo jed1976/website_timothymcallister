@@ -1,25 +1,13 @@
 ---
 title: 'XenakisFest: A Celebration of the Music of Iannis Xenakis'
-tribute: "0"
-datestamp: 2011-04-27
-event_time: 07:30 PM
+time: 07:30 PM
 location: The Katzin Concert Hall
 latitude: 33.4176285
 longitude: -111.9381213
 performance_url: http://music.asu.edu/calendar/viewevent.php?eid=548
 ticket_information_url: $5-$9
-program: 
-  -
-    composition: "0"
-guest_performers: 
-  -
-    guest_performer: "0"
-ensembles: 
-  -
-    ensemble: "0"
-conductors: 
-  -
-    conductor: "0"
+ensemble: 
+conductor: 
 ---
 Apr 27, 2011
 7:30 pm - 9:30 pm

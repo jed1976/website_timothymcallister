@@ -1,23 +1,11 @@
 ---
 title: 'Wabash College Visiting Artists Series'
-tribute: "0"
-datestamp: 2001-10-16
-event_time: 12:14 PM
-location: 
-latitude: 0
-longitude: 0
+time: 12:14 PM
+location: Wabash College
+latitude: 40.0351229
+longitude: -86.9070911
 performance_url: 
 ticket_information_url: 
-program: 
-  -
-    composition: "0"
-guest_performers: 
-  -
-    guest_performer: "0"
-ensembles: 
-  -
-    ensemble: "0"
-conductors: 
-  -
-    conductor: "0"
+ensemble: 
+conductor: 
 ---

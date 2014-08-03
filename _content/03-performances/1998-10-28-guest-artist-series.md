@@ -1,23 +1,11 @@
 ---
 title: 'Guest Artist Series'
-tribute: "0"
-datestamp: 1998-10-28
-event_time: 02:54 PM
-location: 
-latitude: 0
-longitude: 0
+time: 02:54 PM
+location: Western Illinois University
+latitude: 40.4701316
+longitude: -90.6839046
 performance_url: 
 ticket_information_url: 
-program: 
-  -
-    composition: "0"
-guest_performers: 
-  -
-    guest_performer: "0"
-ensembles: 
-  -
-    ensemble: "0"
-conductors: 
-  -
-    conductor: "0"
+ensemble: 
+conductor: 
 ---
