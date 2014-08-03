@@ -112,10 +112,11 @@ _enable_static_pipeline: false
 _environments:
   dev:
     - 'http://localhost*'
+    - 'http://tm.joedakroub.webfactional.com'
     - '*.dev'
     - '*.localip'
   live:
-    - '*.com'
+    - 'timothymcallister.com'
 
 # Set to 'true' if you want to log system messages
 _log_enabled: true

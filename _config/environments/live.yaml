@@ -4,5 +4,4 @@
 #
 ###########################################################################################
 
-# Just an example use case
-# enable_analytics: yes
+enable_analytics: yes
