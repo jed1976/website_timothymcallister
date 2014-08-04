@@ -17,6 +17,7 @@
         <title>{{ _site_name }}{{ if segment_1 }} – {{ title }}{{ endif }}</title>
     </head>
     <body>
+        {{ environment }}
         {{ if is_dev}}DEV{{ endif }}
         {{ if is_live }}LIVE{{ endif }}
         {{ if enable_analytics }}
