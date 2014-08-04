@@ -1,7 +1,7 @@
 <article>
     <h3><a class="link" href="{{ url }}">{{ title }}</a></h3>
 
-    <time class="dt-start" datetime="{{ datestamp format="{{ global_datetime_format }}" }}">{{ datestamp|relative }}</time>
+    <time class="dt-start" datetime="{{ datestamp format="{{ _datetime_format }}" }}">{{ datestamp|relative }}</time>
     {{ if truncate }}
     {{ content|widont|truncate:350 }}
     {{ else }}
