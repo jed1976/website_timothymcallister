@@ -59,7 +59,8 @@ var initialize = function() {
         var target = event.target.findParentNodeWithName('ARTICLE');
 
         var performance = target,
-            title = performance.querySelector('.p-location .p-name').innerHTML,
+            titleEl = performance.querySelector('.p-location .p-name'),
+            title = titleEl ? titleEl.innerHTML : '',
             performanceData = markers[title],
             infoWindowEl = null;
 
