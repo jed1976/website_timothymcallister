@@ -81,6 +81,8 @@
     background-color: #b0120a;
 }
 
+#menu li:last-child { border-bottom: 0; }
+
 #menu a
 {
     color: #fff;
@@ -147,6 +149,8 @@
         float: left;
         width: 50%;
     }
+
+    #menu li:nth-child(9) { border-bottom: 0; }
 
     #menu a
     {
