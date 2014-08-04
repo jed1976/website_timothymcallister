@@ -111,12 +111,10 @@ _enable_static_pipeline: false
 # a matching URL, we'll merge the environment-specific config from _config/environments
 _environments:
   dev:
-    - 'http://localhost*'
     - '*.dev'
-    - '*.localip'
   live:
-    - 'timothymcallister.com'
     - 'tm.joedakroub.webfactional.com'
+    - 'timothymcallister.com'
 
 # Set to 'true' if you want to log system messages
 _log_enabled: true
