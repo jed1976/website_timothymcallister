@@ -2,8 +2,7 @@
 
 @media (min-width: 768px)
 {
-    .gm-style-iw .h-event .p-summary,
-    .gm-style-iw .h-event .p-description
+    .gm-style-iw .h-event .p-summary
     {
         display: block;
     }
