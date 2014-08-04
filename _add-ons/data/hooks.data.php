@@ -17,7 +17,7 @@ class Hooks_Data extends Hooks
         }
 
     	chdir(BASE_PATH);
-	   $output = shell_exec('git pull; git add --all; git commit -m "Auto commit"; git push');
+	$output = shell_exec('git pull; git add --all; git commit -m "Auto commit"; git push origin master');
 
         return $data;
     }
