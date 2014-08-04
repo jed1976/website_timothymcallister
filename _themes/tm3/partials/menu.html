@@ -3,8 +3,8 @@
         {{ nav from="/" include_content="true" max_depth="1" }}
         <li><a href="{{ url }}"><span data-icon="{{ page_icon }}">{{ title }}</span></a></li>
         {{ /nav }}
-        <li><a href="{{ prism_url }}"><span data-icon="quartet">PRISM Quartet</span></a></li>
-        <li><a href="{{ twitter_url }}"><span data-icon="twitter">Twitter</span></a></li>
-        <li><a href="{{ facebook_url }}"><span data-icon="facebook">Facebook</span></a></li>
+        {{ entries:listing folder="social-links" show_hidden="true" }}
+        <li><a href="{{ social_url }}"><span data-icon="{{ page_icon }}">{{ title }}</span></a></li>
+        {{ /entries:listing }}
     </ul>
 </aside>

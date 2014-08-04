@@ -4,9 +4,11 @@ hide: true
 
 fields:
   page_icon:
+    default: globe
     type: text
 
-  url:
+  social_url:
+    display: URL
     type: text
 
 include:
