@@ -113,8 +113,8 @@ _environments:
   dev:
     - '*.dev'
   live:
-    - 'tm.joedakroub.webfactional.com'
-    - 'timothymcallister.com'
+    - 'http://tm.joedakroub.webfactional.com'
+    - 'http://timothymcallister.com'
 
 # Set to 'true' if you want to log system messages
 _log_enabled: true
