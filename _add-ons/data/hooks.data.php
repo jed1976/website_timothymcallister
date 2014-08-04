@@ -16,6 +16,9 @@ class Hooks_Data extends Hooks
             $data['file'] = $file;
         }
 
+	chdir(BASE_PATH);
+	$output = shell_exec('git pull; git add --all; git commit -m "Auto commit"; git push');
+
         return $data;
     }
 }
