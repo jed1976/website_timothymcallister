@@ -163,11 +163,11 @@ _admin_theme: ascent
 _admin_nav:
   dashboard: false
   pages:     true
-  members:   false
-  account:   false
-  system:    false
+  members:   true
+  account:   true
+  system:    true
   logs:      false
-  help:      false
+  help:      true
   view_site: true
   logout:    true
 
