@@ -17,6 +17,10 @@
         <title>{{ _site_name }}{{ if segment_1 }} – {{ title }}{{ endif }}</title>
     </head>
     <body>
+        {{ if is_production}}
+        {{ theme:partial scr="google-analytics" }}
+        {{ endif}}
+
         {{ theme:partial src="header" }}
 
         {{ layout_content }}
