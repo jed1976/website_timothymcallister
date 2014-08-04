@@ -25,6 +25,11 @@ RewriteRule ^(.*)?\.html$ - [F,L]
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)\/(\?.*)?$ $1$2 [R=301,L]
 
+# Redirect /performances
+RewriteCond %{QUERY_STRING} !year [NC]
+RewriteCond %{TIME_YEAR} ^(.*)
+RewriteRule ^/?(performances)$ $1?year=%1 [R=301,L]
+
 # Remove the index.php
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

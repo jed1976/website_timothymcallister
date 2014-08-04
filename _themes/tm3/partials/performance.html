@@ -19,26 +19,18 @@
 
     <table class="p-description detail-table">
         <tbody>
-            {{ if conductors }}
-            {{ entries:listing folder="conductors" conditions="url:{conductor}" show_hidden="yes" }}
             {{ if conductor }}
             <tr>
-                <th>Conductors</th>
+                <th>Conductor</th>
                 <td>{{ conductor }}</td>
             </tr>
             {{ endif }}
-            {{ /entries:listing }}
-            {{ endif }}
 
-            {{ if ensembles }}
-            {{ entries:listing folder="ensembles" conditions="url:{ensemble}" show_hidden="yes" }}
             {{ if ensemble }}
             <tr>
                 <th>Ensemble</th>
                 <td>{{ ensemble }}</td>
             </tr>
-            {{ endif }}
-            {{ /entries:listing }}
             {{ endif }}
 
             {{ if event_time }}

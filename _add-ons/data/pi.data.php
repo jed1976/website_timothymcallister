@@ -39,6 +39,8 @@ class Plugin_Data extends Plugin
 
     const VISIBLE_DATE_FORMAT = '%s%s/%02s-%s.md';
 
+    const VISIBLE_DATE_FORMAT_NO_EXTENSION = '%s%s/%02s-%s%s.md';
+
     const INDEX = '08';
 
     const REGEX_BRACKET = '/\[\d+\]\s+/';
@@ -55,15 +57,12 @@ class Plugin_Data extends Plugin
 
     public $data = array(
         // 'biography',
-        // 'conductors',
         // 'contact',
-        // 'ensembles',
         // 'live-performances'
         // 'performances',
         // 'premieres'
         // 'premiere-categories'
         // 'producers',
-        // 'quote-authors',
         // 'quotes',
         // 'recordings',
     );
@@ -140,9 +139,6 @@ class Plugin_Data extends Plugin
             break;
         }
 
-        // echo '<hr>';
-        // echo $location;
-
         $location = urlencode($location);
         $url = 'https://maps.googleapis.com/maps/api/place/autocomplete/json?sensor=false&input=' . $location . '&key=' . self::API_KEY;
         $result = file_get_contents($url);
@@ -163,21 +159,7 @@ class Plugin_Data extends Plugin
                 $return['latitude'] = $coordinates['lat'];
                 $return['longitude'] = $coordinates['lng'];
             }
-
-            // echo '<pre>';
-            // print_r($data);
-            // echo '</pre>';
         }
-
-        // echo '<pre>';
-        // print_r($data);
-        // echo '</pre>';
-
-        // echo '<hr>';
-
-        // echo '<pre>';
-        // print_r($return);
-        // echo '</pre>';
 
         return $return;
     }
@@ -251,8 +233,32 @@ class Plugin_Data extends Plugin
 
 $content = <<<EOD
 ---
-_fieldset: page
+page_icon: user
+page_id: biography
+page_stylesheet: biography
+theme: dark
 title: Biography
+artwork: '{{ _site_root }}assets/img/tim-biography.jpg'
+_fieldset: biography
+_template: biography
+pdfs:
+  -
+    label: Download Full Biography
+    pdf: '{{ _site_root }}assets/pdf/timothy-mcallister-full-biography.pdf'
+  -
+    label: Download Short Biography
+    pdf: '{{ _site_root }}assets/pdf/timothy-mcallister-short-biography.pdf'
+vertical_position: top
+horizontal_position: left
+quotes:
+  -
+    quote: /quotes/william-bolcom
+  -
+    quote: /quotes/leone-buyse
+  -
+    quote: /quotes/michael-segell
+  -
+    quote: /quotes/jean-marie-londeix
 ---
 $biography
 EOD;
@@ -264,84 +270,59 @@ EOD;
         }
     }
 
-    private function createConductors()
-    {
-        $data = $this->db->query('select exp_weblog_titles.title from exp_weblog_data left join exp_weblog_titles on exp_weblog_titles.entry_id = exp_weblog_data.entry_id where exp_weblog_data.weblog_id = 30 order by exp_weblog_titles.title');
-        $iterator = 1;
-
-        foreach ($data as $row)
-        {
-$content = <<<EOD
----
-title: {$row['title']}
----
-
-EOD;
-
-            $entityDir = sprintf('_%s-%s', self::INDEX, 'conductors');
-            $filename = $this->createSlug($row['title']);
-            $dir = sprintf(self::NUMBER_FORMAT, self::CONTENT_DIR, $entityDir, $iterator, $filename);
-            file_put_contents($dir, $content);
-            $iterator++;
-        }
-    }
-
     private function createContact()
     {
+$content = <<<EOD
+---
+page_id: contact
+page_stylesheet: contact
+theme: dark
+title: Contact
+_fieldset: contact
+_template: contact
+---
+EOD;
+
+        $entityDir = sprintf('_content/%s-%s', '06', 'contact');
+        $filename = 'page.md';
+        $dir = sprintf('%s/%s', $entityDir, $filename);
+        file_put_contents($dir, trim($content));
+
         $data = $this->db->query('select exp_weblog_titles.title, exp_weblog_data.* from exp_weblog_data left join exp_weblog_titles on exp_weblog_titles.entry_id = exp_weblog_data.entry_id where exp_weblog_data.weblog_id = 41 order by exp_weblog_titles.title');
+        $iterator = 1;
+        $titles = array(1 => array('School', 'school.jpg'), 2 => array('Summer', 'summer.jpg'));
 
         foreach ($data as $row)
         {
             $contact_info_parts = unserialize($row['field_id_85']);
-            $addresses = '';
 
             foreach ($contact_info_parts as $contact)
             {
-                $addresses .= "\n  -";
-                $addresses .= "\n      name: " . $contact[1];
-                $addresses .= "\n      organization: " . $contact[2];
-                $addresses .= "\n      unit: " . $contact[3];
-                $addresses .= "\n      address: " . $contact[4];
-                $addresses .= "\n      city: " . $contact[5];
-                $addresses .= "\n      state: " . $contact[6];
-                $addresses .= "\n      zip_code: " . $contact[7];
-                $addresses .= "\n      email: " . $contact[8];
+                $key = $titles[$iterator];
+$content = <<<EOD
+---
+title: {$key[0]}
+name: {$contact[1]}
+position:
+organization: {$contact[2]}
+unit: {$contact[3]}
+address_1: {$contact[4]}
+address_2:
+city: {$contact[5]}
+state: {$contact[6]}
+zip_code: {$contact[7]}
+email: {$contact[8]}
+artwork: '{{ _site_root }}assets/img/{$key[1]}'
+---
+EOD;
+
+                $entityDir = sprintf('%s-%s', '06', 'contact');
+                $filename = $this->createSlug($key[0]);
+                $dir = sprintf(self::NUMBER_FORMAT, self::CONTENT_DIR, $entityDir, $iterator, $filename);
+
+                file_put_contents($dir, $content);
+                $iterator++;
             }
-
-$content = <<<EOD
----
-_fieldset: contact
-title: Contact
-addresses: $addresses
----
-EOD;
-
-            $entityDir = sprintf('_content/%s-%s', '06', 'contact');
-            $filename = 'page.md';
-            $dir = sprintf('%s/%s', $entityDir, $filename);
-            file_put_contents($dir, trim($content));
-        }
-    }
-
-    private function createEnsembles()
-    {
-        $data = $this->db->query('select exp_weblog_titles.title, exp_weblog_data.* from exp_weblog_data left join exp_weblog_titles on exp_weblog_titles.entry_id = exp_weblog_data.entry_id where exp_weblog_data.weblog_id = 15 order by exp_weblog_titles.title');
-        $iterator = 1;
-
-        foreach ($data as $row)
-        {
-$content = <<<EOD
----
-title: {$row['title']}
----
-
-EOD;
-
-            $entityDir = sprintf('_%s-%s', self::INDEX, 'ensembles');
-            $filename = $this->createSlug($row['title']);
-            $dir = sprintf(self::NUMBER_FORMAT, self::CONTENT_DIR, $entityDir, $iterator, $filename);
-            file_put_contents($dir, $content);
-            $iterator++;
         }
     }
 
@@ -450,48 +431,6 @@ EOD;
 
             $entityDir = sprintf('_%s-%s', self::INDEX, 'producers');
             $filename = $this->createSlug($row['title']);
-            $dir = sprintf(self::NUMBER_FORMAT, self::CONTENT_DIR, $entityDir, $iterator, $filename);
-            file_put_contents($dir, $content);
-            $iterator++;
-        }
-    }
-
-    private function createQuoteauthors()
-    {
-        $data = $this->db->query('select exp_weblog_titles.title, exp_weblog_data.* from exp_weblog_data left join exp_weblog_titles on exp_weblog_titles.entry_id = exp_weblog_data.entry_id where exp_weblog_data.weblog_id = 4 order by exp_weblog_titles.title');
-        $iterator = 1;
-        $authors = array();
-
-        foreach ($data as $row)
-        {
-                $title = $row['title'];
-                $author_field = $this->removeBrackets($row['field_id_62']);
-
-                if ($author_field)
-                {
-                    $title = $author_field;
-
-                    if ($title == 'JeanMarie Londeix')
-                        $title = 'Jean-Marie Londeix';
-                }
-
-                $authors[] = $title;
-        }
-
-        $authors = array_unique($authors);
-        sort($authors);
-
-        foreach ($authors as $author)
-        {
-$content = <<<EOD
----
-title: $author
----
-
-EOD;
-
-            $entityDir = sprintf('_%s-%s', self::INDEX, 'quote-authors');
-            $filename = $this->createSlug($author);
             $dir = sprintf(self::NUMBER_FORMAT, self::CONTENT_DIR, $entityDir, $iterator, $filename);
             file_put_contents($dir, $content);
             $iterator++;
@@ -706,6 +645,7 @@ EOD;
 
         foreach ($data as $row)
         {
+            sleep(1); // Must sleep for the time stamp to be different for every row
             $title = $row['title'];
             $tribute = $row['field_id_46'] == 'y' ? 1 : 0;
             $row['entry_date'] = strtotime(self::DATE_OFFSET, $row['entry_date']);
@@ -717,12 +657,12 @@ EOD;
             $conductors_array = $row['field_id_71'] != '' ? explode("\r", $row['field_id_71']) : '';
 
             if (is_array($ensembles_array))
-                $ensemble = "/ensembles/" . $this->createSlug($this->removeBrackets($ensembles_array[0]));
+                $ensemble = $this->removeBrackets($ensembles_array[0]);
             else
                 $ensemble = "";
 
             if (is_array($conductors_array))
-                $conductor = "/conductors/" . $this->createSlug($this->removeBrackets($conductors_array[0]));
+                $conductor = $this->removeBrackets($conductors_array[0]);
             else
                 $conductor = "";
 
@@ -730,7 +670,7 @@ EOD;
 
             $entityDir = sprintf('%s-%s', '03', 'performances');
             $filename = $this->createSlug($row['title']);
-            $dir = sprintf(self::VISIBLE_DATE_FORMAT, self::CONTENT_DIR, $entityDir, $event_date, $filename);
+            $dir = sprintf(self::VISIBLE_DATE_FORMAT_NO_EXTENSION, self::CONTENT_DIR, $entityDir, $event_date, $filename, '___'.time());
 
             if (file_exists($dir)) {
                 continue;

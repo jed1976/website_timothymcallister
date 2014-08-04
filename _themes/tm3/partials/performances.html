@@ -2,7 +2,7 @@
     <div id="map-canvas"></div>
 
     <ol class="no-bullets scrollable" id="performance-list">
-        {{ entries:listing folder="performances" limit="{limit}" show_future="true" show_hidden="true" since="01/01/{since}" until="12/31/{until}" sort_dir="asc" }}
+        {{ entries:listing folder="performances" limit="{limit}" show_future="true" show_hidden="true" since="{since}" until="{until}" sort_dir="asc" }}
         <li>{{ theme:partial src="performance" use_context="true" }}</li>
         {{ /entries:listing }}
     </ol>

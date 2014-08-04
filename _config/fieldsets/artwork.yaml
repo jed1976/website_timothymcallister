@@ -15,7 +15,6 @@ fields:
 
   vertical_position:
     default: center
-    display: Vertical
     options:
       top: Top
       center: Center
@@ -24,7 +23,6 @@ fields:
 
   horizontal_position:
     default: center
-    display: Horizontal
     options:
       left: Left
       center: Center

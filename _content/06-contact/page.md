@@ -4,6 +4,6 @@ page_id: contact
 page_stylesheet: contact
 theme: dark
 title: Contact
-_fieldset: page
+_fieldset: contact
 _template: contact
 ---

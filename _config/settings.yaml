@@ -157,7 +157,7 @@ _admin_enabled: true
 _admin_path: tm3
 
 # Folder name of your desired control panel theme
-_admin_theme: tm3
+_admin_theme: ascent
 
 # Customize which pages show in the control panel
 _admin_nav:

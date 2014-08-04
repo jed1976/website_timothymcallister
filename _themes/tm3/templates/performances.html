@@ -14,6 +14,6 @@
             </ol>
         </div>
 
-        {{ theme:partial src="performances" limit="0" since="{ get:year|2014 }" until="{ get:year|2014 }" }}
+        {{ theme:partial src="performances" since="01/01/{ get:year }" until="12/31/{ get:year }" }}
     </div>
 </section>

@@ -44,26 +44,10 @@ fields:
     type: section
 
   ensemble:
-    content:
-      folder: ensembles
-      show_hidden: true
-      type: entries
-    display: Ensemble
-    max_items: 1
-    options:
-      - ''
-    type: suggest
+    type: text
 
   conductor:
-    content:
-      folder: conductors
-      show_hidden: true
-      type: entries
-    display: Conductor
-    max_items: 1
-    options:
-      - ''
-    type: suggest
+    type: text
 
 include:
   - hidden
