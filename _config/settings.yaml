@@ -36,7 +36,7 @@ _theme: tm3
 _entry_timestamps: false
 
 # Global formatting for {{ date }} variables
-_date_format: 'F jS, Y'
+_date_format: 'F j, Y'
 
 # Global formatting for time variables
 _time_format: 'g:i.s a'

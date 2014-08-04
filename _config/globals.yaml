@@ -1,4 +1,3 @@
-global_date_format: 'F j, Y'
-global_datetime_format: 'Y-m-d'
+_datetime_format: 'Y-m-d'
 publisher_title: 'Visit Publisher site for more information about this recording'
-upcoming_performances_total: 6
+upcoming_performances_total: 7
