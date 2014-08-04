@@ -47,6 +47,12 @@ var initialize = function() {
         });
     };
 
+    var selectFirstEvent = function() {
+        setTimeout(function() {
+            performanceList.querySelector('.h-event').click();
+        }, 500);
+    };
+
     performanceList.addEventListener('click', function(event) {
         event.preventDefault();
 
@@ -72,6 +78,7 @@ var initialize = function() {
     });
 
     createMarkers();
+    selectFirstEvent();
 };
 
 window.addEventListener('load', function load() {
