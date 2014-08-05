@@ -103,7 +103,7 @@ var getRecording = function(index) {
 };
 
 var getNextRecordingIndex = function(direction) {
-    currentPosition = window.getScreenSize() < 2 ? Math.abs(this.y) : window.pageYOffset;
+    currentPosition = window.getScreenSize() < 2 ? Math.abs(scroller.y) : window.pageYOffset;
 
     if (direction === 1) {
         for (var i = 0, l = recordingItems.length; i < l; i++) {
@@ -318,13 +318,13 @@ document.body.addEventListener('click', function(event) {
 
 // IScroll only for smaller screens
 if (window.getScreenSize() < 2) {
-    // document.addEventListener('touchmove', function(e) {
-    //     if (document.querySelector('#menu-toggle').hasClass('checked') === false)
-    //         //e.preventDefault();
-    // });
+    document.addEventListener('touchmove', function(e) {
+        if (document.querySelector('#menu-toggle').hasClass('checked') === false)
+            e.preventDefault();
+    });
 
     var script = document.createElement('script');
-    script.src = 'assets/js/iscroll-probe.js';
+    script.src = '/_themes/tm3/js/iscroll-probe.js';
     script.addEventListener('load', function() {
         window.addEventListener('orientationchange', function() {
             updateBackgroundImages();
