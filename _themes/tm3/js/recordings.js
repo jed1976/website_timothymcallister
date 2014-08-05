@@ -289,6 +289,10 @@ document.body.addEventListener('click', function(event) {
 
     if (!el.hasClass('nav-button')) return;
 
+    var headingEl = document.getElementById(el.getAttribute('href', 1).replace('#', '')),
+        headingTop = headingEl.getPosition()[1],
+        headingHeight = parseInt(headingEl.querySelector('h2').getStyle('height'));
+
     document.body.removeClass('fadein');
     document.body.addEventListener('transitionend', function transitionend() {
         document.body.removeEventListener('transitionend', transitionend);
