@@ -292,21 +292,19 @@ document.body.addEventListener('click', function(event) {
     var heading = document.getElementById(el.getAttribute('href', 1).replace('#', '')),
         y = document.getElementById(el.getAttribute('href', 1).replace('#', '')).getPosition()[1];
 
-    document.body.removeClass('fadein');
-    document.body.addEventListener('transitionend', function transitionend() {
-        document.body.removeEventListener('transitionend', transitionend);
-
-        if (window.getScreenSize > 2) {
+    if (window.getScreenSize > 2) {
+        document.body.removeClass('fadein');
+        document.body.addEventListener('transitionend', function transitionend() {
+            document.body.removeEventListener('transitionend', transitionend);
             window.scrollTo(0, window.getDocumentHeight());
             setTimeout(function() {
                 window.scrollTo(0, y);
             }, 10);
-        } else {
-            scroller.scrollTo(0, -y);
-        }
-
-        document.body.addClass('fadein');
-    });
+            document.body.addClass('fadein');
+        });
+    } else {
+        scroller.scrollTo(0, -y, 1000, IScroll.utils.ease.elastic);
+    }
 
     updateBackgroundImages();
 });
