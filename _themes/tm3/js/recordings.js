@@ -318,13 +318,13 @@ document.body.addEventListener('click', function(event) {
 
 // IScroll only for smaller screens
 if (window.getScreenSize() < 2) {
-    // document.addEventListener('touchmove', function(e) {
-    //     if (document.querySelector('#menu-toggle').hasClass('checked') === false)
-    //         //e.preventDefault();
-    // });
+    document.addEventListener('touchmove', function(e) {
+        if (document.querySelector('#menu-toggle').hasClass('checked') === false)
+            e.preventDefault();
+    });
 
     var script = document.createElement('script');
-    script.src = 'assets/js/iscroll-probe.js';
+    script.src = '/_themes/tm3/js/iscroll-probe.js';
     script.addEventListener('load', function() {
         window.addEventListener('orientationchange', function() {
             updateBackgroundImages();

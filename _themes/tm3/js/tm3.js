@@ -146,7 +146,7 @@ window.loadFastClick = function() {
     script.addEventListener('load', function() {
         FastClick.attach(document.body);
     });
-    script.src = 'assets/js/fastclick.js';
+    script.src = '/_themes/tm3/js/fastclick.js';
     document.body.appendChild(script);
 };
 
