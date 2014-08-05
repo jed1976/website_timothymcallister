@@ -36,6 +36,7 @@
         recordingItems = recordingsList.querySelectorAll('li.recording'),
         recordings = {},
         recordingsToLoad = 2,
+        scrollOffset = 100,
         scroller = null;
     soundFadeDuration = 1000,
     soundToUnload = null,
@@ -293,14 +294,16 @@
             y = document.getElementById(el.getAttribute('href', 1).replace('#', '')).getPosition()[1];
 
         if (window.getScreenSize() > 1) {
-            document.body.removeClass('fadein');
+            document.body.toggleClass('fadein');
             document.body.addEventListener('transitionend', function transitionend() {
                 document.body.removeEventListener('transitionend', transitionend);
+                document.body.toggleClass('fadein');
+
                 window.scrollTo(0, window.getDocumentHeight());
+
                 setTimeout(function() {
-                    window.scrollTo(0, y);
+                    window.scrollTo(0, y - scrollOffset);
                 }, 10);
-                document.body.addClass('fadein');
             });
         } else {
             scroller.scrollTo(0, -y, 1000, IScroll.utils.ease.elastic);
