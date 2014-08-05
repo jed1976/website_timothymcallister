@@ -25,12 +25,15 @@ class _Environment
         $port   = (int) $_SERVER['SERVER_PORT'];
         $host   = $_SERVER['HTTP_HOST'];
         
-        
         $url = $scheme . $host;
         if (($scheme === 'https://' && $port !== 443) || ($scheme === 'http://' && $port !== 80)) {
             $url .= ':' . $port;
         }
-        
+      
+echo isset($_SERVER['HTTPS']);
+echo '<hr>';
+echo $_SERVER['HTTPS'];  
+die();
         // get configured environments
         $environments = array_get($config, '_environments', null);
 
