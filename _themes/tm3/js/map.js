@@ -50,7 +50,6 @@ var initialize = function() {
     var selectFirstEvent = function() {
         setTimeout(function() {
             var eventEl = performanceList.querySelector('.h-event.future');
-            console.log(eventEl.getPosition()[1]);
             performanceList.scrollTop = eventEl.getPosition()[1] - performanceList.getPosition()[1];
             eventEl.click();
         }, 500);
