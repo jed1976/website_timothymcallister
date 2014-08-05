@@ -295,7 +295,7 @@ document.body.addEventListener('click', function(event) {
 
         window.scrollTo(0, window.getDocumentHeight());
         setTimeout(function() {
-            window.scrollTo(0, document.getElementById(el.getAttribute('href', 1).replace('#', '')));
+            window.scrollTo(0, document.getElementById(el.getAttribute('href', 1).replace('#', '')).getPosition()[1]);
         }, 10);
 
         document.body.addClass('fadein');
