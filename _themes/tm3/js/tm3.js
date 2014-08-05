@@ -112,6 +112,14 @@ window.createQuoteCarousel = function() {
     });
 };
 
+window.getDocumentHeight = function() {
+    return Math.max(
+        document.body.scrollHeight, document.documentElement.scrollHeight,
+        document.body.offsetHeight, document.documentElement.offsetHeight,
+        document.documentElement.clientHeight
+    );
+};
+
 window.getSizeBasedOnWidth = function(width) {
     if (width < 640)
         return 0;
