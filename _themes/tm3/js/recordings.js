@@ -289,18 +289,21 @@ document.body.addEventListener('click', function(event) {
 
     if (!el.hasClass('nav-button')) return;
 
-    var headingEl = document.getElementById(el.getAttribute('href', 1).replace('#', '')),
-        headingTop = headingEl.getPosition()[1],
-        headingHeight = parseInt(headingEl.querySelector('h2').getStyle('height'));
+    var heading = document.getElementById(el.getAttribute('href', 1).replace('#', '')),
+        y = document.getElementById(el.getAttribute('href', 1).replace('#', '')).getPosition()[1];
 
     document.body.removeClass('fadein');
     document.body.addEventListener('transitionend', function transitionend() {
         document.body.removeEventListener('transitionend', transitionend);
 
-        window.scrollTo(0, window.getDocumentHeight());
-        setTimeout(function() {
-            window.scrollTo(0, document.getElementById(el.getAttribute('href', 1).replace('#', '')).getPosition()[1]);
-        }, 10);
+        if (window.getScreenSize > 2) {
+            window.scrollTo(0, window.getDocumentHeight());
+            setTimeout(function() {
+                window.scrollTo(0, y);
+            }, 10);
+        } else {
+            scroller.scrollTo(0, -y);
+        }
 
         document.body.addClass('fadein');
     });
