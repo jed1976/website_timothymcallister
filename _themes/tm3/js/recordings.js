@@ -289,17 +289,24 @@ document.body.addEventListener('click', function(event) {
 
     if (!el.hasClass('nav-button')) return;
 
+<<<<<<< HEAD
     var headingEl = document.getElementById(el.getAttribute('href', 1).replace('#', '')),
         headingTop = headingEl.getPosition()[1],
         headingHeight = parseInt(headingEl.querySelector('h2').getStyle('height'));
 
+=======
+>>>>>>> 2a6318031b54cc5d59e45da5d0ce138bebd99710
     document.body.removeClass('fadein');
     document.body.addEventListener('transitionend', function transitionend() {
         document.body.removeEventListener('transitionend', transitionend);
 
         window.scrollTo(0, window.getDocumentHeight());
         setTimeout(function() {
+<<<<<<< HEAD
             window.scrollTo(0, headingTop - (headingHeight * 2));
+=======
+            window.scrollTo(0, document.getElementById(el.getAttribute('href', 1).replace('#', '')));
+>>>>>>> 2a6318031b54cc5d59e45da5d0ce138bebd99710
         }, 10);
 
         document.body.addClass('fadein');
