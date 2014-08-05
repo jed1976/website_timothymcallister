@@ -1,6 +1,6 @@
 <div class="hero" style="background-image: url({{ artwork }}); background-position: {{ vertical_position }} {{ horizontal_position }};">
     <div class="quotes">
-        {{ entries:listing conditions="adams_press:!1" folder="quotes" show_hidden="true" sort_by="random" }}
+        {{ entries:listing conditions="adams_press:1" folder="quotes" show_hidden="true" sort_by="random" }}
             {{ theme:partial src="quote" use_context="true" }}
         {{ /entries:listing }}
     </div>

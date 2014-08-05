@@ -63,7 +63,7 @@ class Plugin_Data extends Plugin
         // 'premieres'
         // 'premiere-categories'
         // 'producers',
-        // 'quotes',
+        'quotes',
         // 'recordings',
     );
 
@@ -441,7 +441,24 @@ EOD;
     {
         $data = $this->db->query('select exp_weblog_titles.title, exp_weblog_titles.entry_date, exp_weblog_data.* from exp_weblog_data left join exp_weblog_titles on exp_weblog_titles.entry_id = exp_weblog_data.entry_id where exp_weblog_data.weblog_id = 4 order by exp_weblog_titles.title');
         $iterator = 1;
+        $adamsPress = array('adams', 'city', 'noir', 'dudamel');
         $quotes = array();
+
+        function containsString($str, array $arr) {
+            foreach($arr as $a) {
+                if (stripos($str, $a) !== false) return true;
+            }
+
+            return 0;
+        }
+
+        function cmp($a, $b)
+        {
+            if ($a['name'] == $b['name'])
+                return 0;
+
+            return ($a['name'] < $b['name']) ? -1 : 1;
+        }
 
         foreach ($data as $row)
         {
@@ -459,16 +476,9 @@ EOD;
                 'name' => $row['field_id_62'],
                 'title' => $row['title'],
                 'quote' => $row['field_id_11'],
-                'source' => $row['field_id_13']
+                'source' => $row['field_id_13'],
+                'adams_press' => containsString($row['field_id_11'], $adamsPress)
             );
-        }
-
-        function cmp($a, $b)
-        {
-            if ($a['name'] == $b['name'])
-                return 0;
-
-            return ($a['name'] < $b['name']) ? -1 : 1;
         }
 
         usort($quotes, 'cmp');
@@ -479,6 +489,7 @@ $content = <<<EOD
 ---
 title: {$quote['title']}
 source: {$quote['source']}
+adams_press: {$quote['adams_press']}
 ---
 {$quote['quote']}
 EOD;

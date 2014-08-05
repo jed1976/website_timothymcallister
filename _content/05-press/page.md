@@ -1,8 +1,10 @@
 ---
 page_icon: news
 page_id: press
-page_stylesheet: press
 title: Press
-_fieldset: page
+_fieldset: press
 _template: press
+artwork: '{{ _site_root }}assets/img/tim-premieres.jpg'
+vertical_position: center
+horizontal_position: left
 ---

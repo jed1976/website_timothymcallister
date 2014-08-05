@@ -9,5 +9,10 @@ fields:
   content:
     type: markitup
 
+  adams_press:
+    default: 0
+    display: Adams Press Page
+    type: checkbox
+
 include:
   - hidden

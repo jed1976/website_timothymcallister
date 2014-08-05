@@ -14,12 +14,17 @@
 
 #logo a
 {
-    color: #fff;
     display: block;
     font-size: 1.35rem;
     font-weight: 700;
     letter-spacing: 0.2rem;
     text-transform: uppercase;
+}
+
+#logo a,
+.checked ~ #logo a
+{
+    color: #fff;
 }
 
 #menu-toggle
@@ -49,6 +54,7 @@
 #menu-toggle.checked,
 #menu-toggle.checked ~ #menu
 {
+    color: #fff;
     opacity: 1;
     visibility: visible;
     z-index: 2000;
@@ -150,7 +156,7 @@
         width: 50%;
     }
 
-    #menu li:nth-child(9) { border-bottom: 0; }
+    /*#menu li:nth-child(9) { border-bottom: 0; }*/
 
     #menu a
     {
