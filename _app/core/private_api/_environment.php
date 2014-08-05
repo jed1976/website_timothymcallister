@@ -21,16 +21,27 @@ class _Environment
     {
         // get current URL, this is probably called before the config is ready,
         // so we cannot simply use Request::getURL()
+<<<<<<< HEAD
         $scheme = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']) == 'on' ? 'https://' : 'http://';
         $port   = (int) $_SERVER['SERVER_PORT'];
         $host   = $_SERVER['HTTP_HOST'];
 
 
+=======
+        $scheme = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 'https://' : 'http://';
+        $port   = (int) $_SERVER['SERVER_PORT'];
+        $host   = $_SERVER['HTTP_HOST'];
+        
+>>>>>>> 9b803e0c0f874bb9d3959062a56415b14879883c
         $url = $scheme . $host;
         if (($scheme === 'https://' && $port !== 443) || ($scheme === 'http://' && $port !== 80)) {
             $url .= ':' . $port;
         }
+<<<<<<< HEAD
 
+=======
+      
+>>>>>>> 9b803e0c0f874bb9d3959062a56415b14879883c
         // get configured environments
         $environments = array_get($config, '_environments', null);
 
