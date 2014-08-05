@@ -303,7 +303,7 @@ document.body.addEventListener('click', function(event) {
             document.body.addClass('fadein');
         });
     } else {
-        scroller.scrollToElement(heading, 1000, true, true, IScroll.utils.ease.elastic);
+        scroller.scrollToElement(0, -y, 1000, IScroll.utils.ease.elastic);
     }
 
     updateBackgroundImages();
