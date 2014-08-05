@@ -103,7 +103,7 @@ var getRecording = function(index) {
 };
 
 var getNextRecordingIndex = function(direction) {
-    currentPosition = window.getScreenSize() < 2 ? Math.abs(this.y) : window.pageYOffset;
+    currentPosition = window.getScreenSize() < 2 ? Math.abs(scroller.y) : window.pageYOffset;
 
     if (direction === 1) {
         for (var i = 0, l = recordingItems.length; i < l; i++) {
