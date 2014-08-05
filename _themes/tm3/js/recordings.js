@@ -290,7 +290,7 @@ document.body.addEventListener('click', function(event) {
     if (!el.hasClass('nav-button')) return;
 
     var heading = document.getElementById(el.getAttribute('href', 1).replace('#', '')),
-        y = document.getElementById(el.getAttribute('href', 1).replace('#', '')).getPosition()[1] - scrollOffset;
+        y = document.getElementById(el.getAttribute('href', 1).replace('#', '')).getPosition()[1];
 
     if (window.getScreenSize() > 1) {
         document.body.toggleClass('fadein');
@@ -301,7 +301,7 @@ document.body.addEventListener('click', function(event) {
             window.scrollTo(0, window.getDocumentHeight());
 
             setTimeout(function() {
-                window.scrollTo(0, y);
+                window.scrollTo(0, y - scrollOffset);
             }, 10);
         });
     } else {
