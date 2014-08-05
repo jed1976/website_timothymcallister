@@ -1,4 +1,4 @@
-<article class="h-event" data-latitude="{{ latitude }}" data-longitude="{{ longitude }}">
+<article class="h-event{{ if datestamp|in_future }} future{{ /if }}" data-latitude="{{ latitude }}" data-longitude="{{ longitude }}">
     <span class="calendar">
         <time class="dt-start" datetime="{{ datestamp format="m-d-Y" }} {{ time }}">{{ datestamp format="M" }} <span class="day">{{ datestamp format="j" }}</span> <span class="year">{{ datestamp format="Y" }}</span></time>
     </span>
@@ -9,13 +9,13 @@
     <h5 class="p-location">
         <a class="p-name u-url link" href="http://www.google.com/maps/place/{{ location|urlencode }}/@{{ latitude }},{{ longitude }},17z">{{ location }}</a>
     </h5>
-    {{ endif }}
+    {{ /if }}
 
     {{ if content }}
     <div class="p-summary scrollable">
         {{ content }}
     </div>
-    {{ endif }}
+    {{ /if }}
 
     <table class="p-description detail-table">
         <tbody>
@@ -24,28 +24,28 @@
                 <th>Conductor</th>
                 <td>{{ conductor }}</td>
             </tr>
-            {{ endif }}
+            {{ /if }}
 
             {{ if ensemble }}
             <tr>
                 <th>Ensemble</th>
                 <td>{{ ensemble }}</td>
             </tr>
-            {{ endif }}
+            {{ /if }}
 
             {{ if event_time }}
             <tr>
                 <th>Time</th>
                 <td><time class="dt-start" datetime="{{ datestamp format="m-d-Y" }} {{ event_time }}">{{ event_time }}</time></td>
             </tr>
-            {{ endif }}
+            {{ /if }}
 
             {{ if performance_url }}
             <tr>
                 <th>Website</th>
                 <td><a class="u-url link" href="{{ performance_url }}">Visit Site</a></td>
             </tr>
-            {{ endif }}
+            {{ /if }}
         </tbody>
     </table>
 </article>
