@@ -2,25 +2,33 @@
 .quote
 {
 
-    -webkit-transition: opacity 1s ease-in;
-    -moz-transition: opacity 1s ease-in;
-    -ms-transition: opacity 1s ease-in;
-    -o-transition: opacity 1s ease-in;
-    transition: opacity 1s ease-in;
+    -webkit-transition: opacity 0.5s ease-in;
+    -moz-transition: opacity 0.5s ease-in;
+    -ms-transition: opacity 0.5s ease-in;
+    -o-transition: opacity 0.5s ease-in;
+    transition: opacity 0.5s ease-in;
     opacity: 0;
 }
 
 input[type=text],
 #menu,
 #menu li,
-#year-selector-wrapper a:hover,
-.button
+#year-selector-wrapper a:hover
 {
     -moz-transition: all 0.25s ease-in;
     -ms-transition: all 0.25s ease-in;
     -o-transition: all 0.25s ease-in;
     -webkit-transition: all 0.25s ease-in;
     transition: all 0.25s ease-in;
+}
+
+.button
+{
+    -moz-transition: background-color 0.25s ease-in;
+    -ms-transition: background-color 0.25s ease-in;
+    -o-transition: background-color 0.25s ease-in;
+    -webkit-transition: background-color 0.25s ease-in;
+    transition: background-color 0.25s ease-in;
 }
 
 #logo,

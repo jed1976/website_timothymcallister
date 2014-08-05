@@ -289,7 +289,22 @@ document.body.addEventListener('click', function(event) {
 
     if (!el.hasClass('nav-button')) return;
 
-    window.scrollTo(0, document.getElementById(el.getAttribute('href', 1).replace('#', '')).getPosition()[1]);
+    var headingEl = document.getElementById(el.getAttribute('href', 1).replace('#', '')),
+        headingTop = headingEl.getPosition()[1],
+        headingHeight = parseInt(headingEl.querySelector('h2').getStyle('height'));
+
+    document.body.removeClass('fadein');
+    document.body.addEventListener('transitionend', function transitionend() {
+        document.body.removeEventListener('transitionend', transitionend);
+
+        window.scrollTo(0, window.getDocumentHeight());
+        setTimeout(function() {
+            window.scrollTo(0, headingTop - (headingHeight * 2));
+        }, 10);
+
+        document.body.addClass('fadein');
+    });
+
     updateBackgroundImages();
 });
 
@@ -303,14 +318,13 @@ document.body.addEventListener('click', function(event) {
 
 // IScroll only for smaller screens
 if (window.getScreenSize() < 2) {
-    document.addEventListener('touchmove', function(e) {
-        if (document.querySelector('#menu-toggle').hasClass('checked') === false)
-            e.preventDefault();
-    });
+    // document.addEventListener('touchmove', function(e) {
+    //     if (document.querySelector('#menu-toggle').hasClass('checked') === false)
+    //         //e.preventDefault();
+    // });
 
     var script = document.createElement('script');
     script.src = 'assets/js/iscroll-probe.js';
-
     script.addEventListener('load', function() {
         window.addEventListener('orientationchange', function() {
             updateBackgroundImages();
