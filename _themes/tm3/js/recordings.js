@@ -305,7 +305,7 @@ document.body.addEventListener('click', function(event) {
             }, 10);
         });
     } else {
-        scroller.scrollTo(0, -y, 1000, IScroll.utils.ease.elastic);
+        scroller.scrollTo(0, -y, 1000, IScroll.utils.ease.quadratic);
     }
 
     updateBackgroundImages();
