@@ -54,8 +54,7 @@
 #next-recording-overlay { opacity: 0; }
 #recordings-list { padding: 0; }
 #recordings-list .recording { margin-bottom: 90px; }
-#recordings-list li:last-child { margin-bottom: 0; }
-#recordings-list li:last-of-type, #live-performances li:last-of-type { margin-bottom: 0; }
+#live-performances li:last-of-type { margin-bottom: 0; }
 .js #live-performances li .sample.button { position: static; }
 .js .sample[href] { display: none; }
 .js div.iScrollVerticalScrollbar.iScrollLoneScrollbar { right: 2px !important; width: 3px !important; }
