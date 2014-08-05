@@ -113,7 +113,8 @@ _environments:
   dev:
     - '*.dev'
   live:
-    - '*.com'
+    - 'tm.joedakroub.webfactional.com'
+    - 'timothymcallister.com'
 
 # Set to 'true' if you want to log system messages
 _log_enabled: true
@@ -126,7 +127,7 @@ _log_enabled: true
 #  - error
 #  - fatal  (this is the most-serious level of logged message)
 # Levels less-serious than what you pick will be ignored
-_log_level: debug
+_log_level: warn
 
 # Path to your log file
 #  - to define a path absolutely, start your path with a /
