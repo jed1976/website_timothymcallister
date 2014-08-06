@@ -6,6 +6,7 @@ fields:
     type: section
 
   booking_title:
+    display: Section Heading
     type: text
 
   name:
@@ -93,20 +94,42 @@ fields:
     type: text
 
   section_2:
+    display: Downloads
+    type: section
+
+  downloads_title:
+    display: Section Heading
+    type: text
+
+  downloads:
+    display: ''
+    fields:
+      photo_download:
+        allowed: [jpg]
+        destination: assets/img
+        display: Photo
+        instructions: JPG format only
+        type: file
+    min_rows: 1
+    type: grid
+
+  section_3:
     display: Video
     type: section
 
   video_title:
+    display: Section Heading
     type: text
 
   video_url:
     type: text
 
-  section_3:
+  section_4:
     display: Recording
     type: section
 
   recording_title:
+    display: Section Heading
     type: text
 
 hide: true
