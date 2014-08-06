@@ -27,7 +27,7 @@
 
         <!-- Scripts -->
         {{ theme:js tag="true" }}
-        {{ if enable_howler }}{{ theme:js src="howler.min" tag="true" }}{{ endif }}
+        {{ if enable_audio }}{{ theme:js src="audio" tag="true" }}{{ endif }}
         {{ if enable_map }}{{ theme:js src="map" tag="true" }}{{ endif }}
         {{ if enable_promises }}{{ theme:js src="promise.min" tag="true" }}{{ endif }}
         {{ if enable_blur }}{{ theme:js src="stackblur.min" tag="true" }}{{ endif }}

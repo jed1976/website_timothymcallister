@@ -56,7 +56,6 @@
 #recordings-list .recording { margin-bottom: 90px; }
 #live-performances li:last-of-type { margin-bottom: 0; }
 .js #live-performances li .sample.button { position: static; }
-.js .sample[href] { display: none; }
 .js div.iScrollVerticalScrollbar.iScrollLoneScrollbar { right: 2px !important; width: 3px !important; }
 .js div.iScrollIndicator { border-color: rgba(255, 255, 255, 0.15) !important; }
 

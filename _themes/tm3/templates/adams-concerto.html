@@ -42,12 +42,8 @@
     <div class="grid-pad">
         <h2 class="style-1">{{ recording_title }}</h2>
 
-        {{ entries:listing conditions="slug:john-adams-city-noirsaxophone-concerto-david-robertsonst-louis-symphony" folder="recordings" limit="1" show_hidden="true" show_samples="false" sort_by="datestamp" sort_dir="desc" }}
-        {{ theme:partial src="recording" use_context="true" }}
-
-        <div class="grid-pad text-center">
-            <a class="button small" href="{{ recording_url }}">More Information</a>
-        </div>
+        {{ entries:listing conditions="slug:john-adams-city-noirsaxophone-concerto-david-robertsonst-louis-symphony" folder="recordings" limit="1" show_hidden="true" sort_by="datestamp" sort_dir="desc" }}
+        {{ theme:partial show_samples="true" src="recording" use_context="true" }}
         {{ /entries:listing }}
     </div>
 </main>

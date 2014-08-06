@@ -1,5 +1,5 @@
 ---
-enable_howler: true
+enable_audio: true
 enable_promises: true
 enable_blur: true
 page_icon: audio-wave
