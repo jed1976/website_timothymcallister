@@ -1,5 +1,6 @@
 .dark [type=text],
-[type=text].light
+[type=text].light,
+textarea.light
 {
     background-color: #222;
     border-color: rgba(255, 255, 255, 0.1);

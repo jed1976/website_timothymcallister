@@ -17,6 +17,3 @@ quotes:
   -
     quote: /quotes/andrew-clements
 ---
-
-
-

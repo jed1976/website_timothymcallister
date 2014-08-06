@@ -11,6 +11,7 @@
 }
 
 input[type=text],
+textarea,
 #menu,
 #menu li,
 #year-selector-wrapper a:hover
