@@ -19,10 +19,12 @@ state: NY
 zip_code: "10019"
 email: aelsesser@imgartists.com
 video_url: //www.youtube.com/embed/ChiynCzpuYQ
-video_title: The World Premiere
+video_title: The Premiere
 recording_title: The Recording
 booking_title: Booking Information
 ---
+
+
 
 
 
