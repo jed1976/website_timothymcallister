@@ -3,7 +3,7 @@ page_icon: pen
 page_id: news
 page_stylesheet: news
 title: News
-artwork: '{{ _site_root }}assets/img/tim-news.jpg'
+artwork: '{{ _site_root }}assets/img/prism-press.jpg'
 vertical_position: center
 horizontal_position: center
 _default_folder_template: article

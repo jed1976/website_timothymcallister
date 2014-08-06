@@ -6,16 +6,17 @@ page_id: performances
 page_js: performances
 page_stylesheet: performances
 title: Performances
-artwork: '{{ _site_root }}assets/img/tim-performances.jpg'
+
 _fieldset: performances
 _template: performances
 vertical_position: center
-horizontal_position: left
+horizontal_position: center
 quotes:
   -
     quote: /quotes/janos-gereben
   -
     quote: /quotes/andrew-clements
 ---
+
 
 

@@ -57,5 +57,5 @@
 @media (min-width: 1024px)
 {
     .quote blockquote { font-size: 1.75rem; }
-    .quotes { left: 100px; right: 100px; }
+    .quotes { left: 120px; right: 120px; }
 }
