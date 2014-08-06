@@ -9,7 +9,7 @@
 
 <main id="content" role="main">
     <div class="grid-pad">
-        <h2 class="style-1">Booking Information</h2>
+        <h2 class="style-1">{{ booking_title }}</h2>
         <div class="col-2-3">
             {{ theme:partial src="vcard" use_context="true" }}
         </div>
@@ -34,15 +34,15 @@
     </div>
 
     <div class="grid-pad">
-        <h2 class="style-1">The World Premiere</h2>
+        <h2 class="style-1">{{ video_title }}</h2>
 
         {{ theme:partial src="video" use_context="true" }}
     </div>
 
     <div class="grid-pad">
-        <h2 class="style-1">The Recording</h2>
+        <h2 class="style-1">{{ recording_title }}</h2>
 
-        {{ entries:listing folder="recordings" limit="1" show_hidden="true" show_samples="false" sort_by="datestamp" sort_dir="desc" }}
+        {{ entries:listing conditions="slug:john-adams-city-noirsaxophone-concerto-david-robertsonst-louis-symphony" folder="recordings" limit="1" show_hidden="true" show_samples="false" sort_by="datestamp" sort_dir="desc" }}
         {{ theme:partial src="recording" use_context="true" }}
 
         <div class="grid-pad text-center">
