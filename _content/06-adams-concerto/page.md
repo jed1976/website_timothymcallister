@@ -2,7 +2,6 @@
 page_icon: saxophone
 page_id: adams-concerto
 page_js: adams-concerto
-page_stylesheet: adams-concerto
 theme: dark
 title: "Adam's Concerto"
 _fieldset: adams-concerto
@@ -20,6 +19,14 @@ state: NY
 zip_code: "10019"
 email: aelsesser@imgartists.com
 video_url: //www.youtube.com/embed/ChiynCzpuYQ
+video_title: The Premiere
+recording_title: The Recording
+booking_title: Booking Information
 ---
+
+
+
+
+
 
 

@@ -1,7 +1,7 @@
 ---
 page_icon: news
 page_id: press
-title: Press
+title: Press/Testimonials
 _fieldset: press
 _template: press
 artwork: '{{ _site_root }}assets/img/tim-press.jpg'

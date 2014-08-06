@@ -2,15 +2,11 @@ title: Adams Concerto
 
 fields:
   section_1:
-    display: Video
-    type: section
-
-  video_url:
-    type: text
-
-  section_2:
     display: Artist Management
     type: section
+
+  booking_title:
+    type: text
 
   name:
     type: text
@@ -94,6 +90,23 @@ fields:
     type: text
 
   email:
+    type: text
+
+  section_2:
+    display: Video
+    type: section
+
+  video_title:
+    type: text
+
+  video_url:
+    type: text
+
+  section_3:
+    display: Recording
+    type: section
+
+  recording_title:
     type: text
 
 hide: true
