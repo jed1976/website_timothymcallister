@@ -4,7 +4,11 @@ page_id: press
 title: Press
 _fieldset: press
 _template: press
-artwork: '{{ _site_root }}assets/img/tim-premieres.jpg'
+artwork: '{{ _site_root }}assets/img/tim-press.jpg'
 vertical_position: center
-horizontal_position: left
+horizontal_position: center
 ---
+
+
+
+
