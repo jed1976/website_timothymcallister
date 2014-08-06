@@ -8,5 +8,42 @@
 </div>
 
 <main id="content" role="main">
+    <div class="grid-pad">
+        <h2 class="style-1">Booking Information</h2>
+        <div class="col-2-3">
+            {{ theme:partial src="vcard" use_context="true" }}
+        </div>
+        <div class="col-1-3">
+            <form>
+                <div class="grid">
+                    <div>
+                        <input class="light" name="name-text-field" placeholder="Name" type="text">
+                    </div>
+                    <div>
+                        <input class="light" name="email-text-field" placeholder="Email" type="text">
+                    </div>
+                    <div>
+                        <textarea class="light" cols="40" name="message-text-field" placeholder="Message" rows="5"></textarea>
+                    </div>
+                    <div>
+                        <input class="button expand light x-small" name="mail-list-submit-button" type="submit" value="Send Message">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 
+    <div class="grid-pad">
+        <h2 class="style-1">The World Premiere</h2>
+
+        {{ theme:partial src="video" use_context="true" }}
+    </div>
+
+    <div class="grid-pad">
+        <h2 class="style-1">The Recording</h2>
+
+        {{ entries:listing folder="recordings" limit="1" show_hidden="true" show_samples="false" sort_by="datestamp" sort_dir="desc" }}
+        {{ theme:partial src="recording" use_context="true" }}
+        {{ /entries:listing }}
+    </div>
 </main>

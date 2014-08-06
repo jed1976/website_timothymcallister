@@ -2,21 +2,29 @@ fieldset { border: 0; }
 
 form { margin: 20px 0; }
 
-input[type=text]
+input[type=text],
+textarea
 {
     border-radius: 0;
     color: #fff;
     font-size: 13px;
-    height: 41px;
     margin-bottom: 10px;
+    overflow: auto;
     padding: 5px 5px;
+    resize: none;
     width: 100%;
     -webkit-appearance: none;
 }
 
-input[type=text]:focus
+input[type=text]
 {
-    background-color: #fff;
+    height: 41px;
+}
+
+input[type=text]:focus,
+textarea:focus
+{
+    background-color: #fff !important;
     color: #222;
     outline: none;
 }
@@ -37,7 +45,7 @@ legend
         margin: 0 auto;
         position: relative;
         top: 20px;
-        width: 50%;
+        /*width: 50%;*/
     }
 
     legend { font-size: 12px; }

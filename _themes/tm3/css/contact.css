@@ -16,27 +16,6 @@
     right: 0;
 }
 
-.vcard
-{
-    margin: 20px 0 0 0;
-    padding: 0;
-}
-
-.vcard dt,
-.vcard dd
-{
-    margin: 0;
-    padding: 0;
-}
-
-.vcard .email
-{
-    font-weight: 700;
-    -ms-word-break: break-all;
-    word-break: break-all;
-    word-break: break-word;
-}
-
 @media (min-width: 768px)
 {
     .js .hero
