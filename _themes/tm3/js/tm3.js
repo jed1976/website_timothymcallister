@@ -185,7 +185,9 @@ document.addEventListener('DOMContentLoaded', function() {
     updateScreenSizeClass();
     loadFastClick();
 
-    document.addEventListener('scroll', toggleLogoOpacity);
+    document.addEventListener('scroll', function() {
+        toggleLogoOpacity();
+    });
 
     document.body.addEventListener('click', function(event) {
         var target = event.target;

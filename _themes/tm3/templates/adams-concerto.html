@@ -44,6 +44,10 @@
 
         {{ entries:listing folder="recordings" limit="1" show_hidden="true" show_samples="false" sort_by="datestamp" sort_dir="desc" }}
         {{ theme:partial src="recording" use_context="true" }}
+
+        <div class="grid-pad text-center">
+            <a class="button small" href="{{ recording_url }}">More Information</a>
+        </div>
         {{ /entries:listing }}
     </div>
 </main>
