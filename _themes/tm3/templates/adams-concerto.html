@@ -34,6 +34,34 @@
     </div>
 
     <div class="grid-pad">
+        <h2 class="style-1">{{ downloads_title }}</h2>
+
+        <div class="col-1-3">
+            {{ get_content from="biography" }}
+            {{ if pdfs }}
+                <div class="grid pad text-center">
+                    {{ pdfs }}
+                    <a class="button pad xx-small expand download" href="{{ download file="{pdf}" as="{pdf}" }}">{{ label }}</a>
+                    {{ /pdfs }}
+                </div>
+            {{ endif }}
+            {{ /get_content }}
+        </div>
+
+        <div class="col-2-3">
+            {{ if downloads }}
+            <div class="grid">
+            {{ downloads }}
+                <div class="col-1-3">
+                    <a href="{{ download file="{photo_download}" as="{photo_download}" }}" title="Click to download this photo"><img alt="" src="{{ photo_download }}" /></a>
+                </div>
+            {{ /downloads }}
+            </div>
+            {{ /if }}
+        </div>
+    </div>
+
+    <div class="grid-pad">
         <h2 class="style-1">{{ video_title }}</h2>
 
         {{ theme:partial src="video" use_context="true" }}
