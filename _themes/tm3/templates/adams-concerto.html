@@ -52,7 +52,7 @@
             {{ if downloads }}
             <div class="grid">
             {{ downloads }}
-                <div class="col-1-3">
+                <div class="col-1-{{ total_results }}">
                     <a href="{{ download file="{photo_download}" as="{photo_download}" }}" title="Click to download this photo"><img alt="" src="{{ photo_download }}" /></a>
                 </div>
             {{ /downloads }}
