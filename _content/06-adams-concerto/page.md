@@ -23,17 +23,19 @@ video_url: //www.youtube.com/embed/ChiynCzpuYQ
 video_title: The Premiere
 recording_title: The Recording
 booking_title: Booking Information
-downloads_title: Downloads
+downloads_title: Media
 downloads:
   - 
-    photo_download: '{{ _site_root }}assets/img/Timothy McAllister - 1.jpg'
+    photo_download: '{{ _site_root }}assets/img/downloads/Timothy McAllister - 1.jpg'
   - 
-    photo_download: '{{ _site_root }}assets/img/Timothy McAllister - 2.jpg'
+    photo_download: '{{ _site_root }}assets/img/downloads/Timothy McAllister - 2.jpg'
   - 
-    photo_download: '{{ _site_root }}assets/img/Timothy McAllister - 3.jpg'
-  - 
-    photo_download: '{{ _site_root }}assets/img/Photo Jan 01, 12 06 42 AM.jpg'
+    photo_download: '{{ _site_root }}assets/img/downloads/Timothy McAllister - 3.jpg'
 ---
+
+
+
+
 
 
 

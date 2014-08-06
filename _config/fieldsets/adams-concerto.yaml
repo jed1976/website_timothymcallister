@@ -106,7 +106,7 @@ fields:
     fields:
       photo_download:
         allowed: [jpg]
-        destination: assets/img
+        destination: assets/img/downloads
         display: Photo
         instructions: JPG format only
         type: file
