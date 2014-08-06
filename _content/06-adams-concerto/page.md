@@ -31,7 +31,10 @@ downloads:
     photo_download: '{{ _site_root }}assets/img/Timothy McAllister - 2.jpg'
   - 
     photo_download: '{{ _site_root }}assets/img/Timothy McAllister - 3.jpg'
+  - 
+    photo_download: '{{ _site_root }}assets/img/Photo Jan 01, 12 06 42 AM.jpg'
 ---
+
 
 
 
