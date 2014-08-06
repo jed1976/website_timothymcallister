@@ -8,6 +8,8 @@
     z-index: 1;
 }
 
+.hero.short { min-height: 325px; }
+
 .hero::before,
 .overlay::before
 {
@@ -34,4 +36,5 @@ img { max-width: 100%; }
 @media (min-width: 768px)
 {
     .hero { min-height: 600px; }
+    .hero.short { min-height: 450px; }
 }
