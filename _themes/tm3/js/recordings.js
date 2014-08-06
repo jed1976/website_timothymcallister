@@ -1,6 +1,4 @@
 var canvasDimension = 28,
-    playSampleLabel = 'Play Sample',
-    stopSampleLabel = 'Stop Playing',
     overlays = [
         '<canvas class="display-none" height="' + canvasDimension + '" id="blur-context" width="' + canvasDimension + '"></canvas>',
         '<div id="current-recording-overlay"></div>',
@@ -11,39 +9,25 @@ var canvasDimension = 28,
 // Insert overlays
 document.getElementById('content').insertStringBefore(overlays);
 
-// Insert Play Sample buttons
-[].forEach.call(document.querySelectorAll('#content .button.sample:first-of-type'), function(el) {
-    el.insertStringBefore('<span class="sample button light x-small pad">' + playSampleLabel + '</span>');
-});
-
 // Variables
 var blurRadius = canvasDimension / 8,
     canvas = document.querySelector('canvas'),
     canvasContext = canvas.getContext('2d'),
     changeNextRecordingImage = false,
-    currentPlayButton = null,
     currentPosition = 0,
     currentRecording = nextRecording = previousRecording = null,
     currentRecordingOverlay = document.getElementById('current-recording-overlay'),
     currentSound = null,
     distance = 0,
     nextRecordingOverlay = document.getElementById('next-recording-overlay'),
-    playingClass = 'playing',
     previousPosition = 0,
-    previousSound = null,
     recordingIndex = 0,
     recordingsList = document.getElementById('recordings-list'),
     recordingItems = recordingsList.querySelectorAll('li.recording'),
     recordings = {},
-    recordingsToLoad = 2,
     scrollOffset = 100,
-    scroller = null;
-soundFadeDuration = 1000,
-soundToUnload = null,
-timer = null,
-totalRecordings = recordingItems.length - 1,
-volumeMax = 1.0,
-volumeMin = 0.0;
+    scroller = null,
+    totalRecordings = recordingItems.length - 1;
 
 // Functions
 var cacheRecording = function(index, recording) {
@@ -132,8 +116,6 @@ var getNextRecordingIndex = function(direction) {
 };
 
 var init = function() {
-    primeAudioPlayer();
-
     getRecording(getNextRecordingIndex(1)).then(function(error, recording) {
         currentRecording = recording;
 
@@ -150,41 +132,6 @@ var init = function() {
             document.addEventListener('scroll', updateBackgroundImages);
         });
     });
-};
-
-var playRecording = function(id) {
-    if (previousSound) {
-        soundToUnload = previousSound;
-        soundToUnload.fade(volumeMax, volumeMin, soundFadeDuration, function() {
-            clearTimeout(soundToUnload.timer1ID);
-
-            soundToUnload.stop();
-            soundToUnload.unload();
-        });
-    }
-
-    playSound(id);
-};
-
-var playSound = function(id) {
-    var basePath = 'assets/audio/' + id;
-
-    currentSound = new Howl({
-        onplay: function() {
-            previousSound = currentSound;
-
-            var duration = (Math.round(this._duration) * 1000) - soundFadeDuration,
-                _this = this;
-
-            currentSound.timer1ID = setTimeout(function() {
-                _this.fade(volumeMax, volumeMin, soundFadeDuration, function() {
-                    clearTimeout(currentSound.timer1ID);
-                    _this.stop();
-                });
-            }, duration);
-        },
-        urls: [basePath + '.mp3', basePath + '.ogg']
-    }).play().fade(volumeMin, volumeMax, soundFadeDuration);
 };
 
 var prepareNextRecording = function() {
@@ -217,57 +164,12 @@ var preparePreviousRecording = function() {
     });
 };
 
-var primeAudioPlayer = function() {
-    // Play an empty sound file to prime the audio engine in iOS
-    new Howl({
-        urls: ['assets/audio/empty.mp3', 'assets/audio/empty.ogg']
-    }).play();
-};
-
 var setCurrentRecordingBackground = function(recording) {
     currentRecordingOverlay.style.backgroundImage = 'url(' + recording.blurredImage + ')';
 };
 
 var setNextRecordingBackground = function(recording) {
     nextRecordingOverlay.style.backgroundImage = 'url(' + recording.blurredImage + ')';
-};
-
-var stopSound = function(sound) {
-    soundToUnload = sound;
-    soundToUnload.fade(volumeMax, volumeMin, soundFadeDuration, function() {
-        clearTimeout(soundToUnload.timer1ID);
-
-        soundToUnload.stop();
-        soundToUnload.unload();
-    });
-};
-
-var togglePlayButtonLabel = function(button) {
-    button.innerHTML = button.hasClass(playingClass) ? playSampleLabel : stopSampleLabel;
-    button.toggleClass(playingClass);
-};
-
-var toggleRecordingPlayback = function(el) {
-    if (currentPlayButton) {
-        togglePlayButtonLabel(currentPlayButton);
-        stopSound(currentSound);
-    }
-
-    var listItem = el.findParentNodeWithName('LI');
-
-    if (el === currentPlayButton) {
-        currentPlayButton = null;
-        return;
-    }
-
-    currentPlayButton = el;
-
-    if (el.hasClass(playingClass))
-        stopSound(currentSound);
-    else
-        playRecording(listItem.getAttribute('id'));
-
-    togglePlayButtonLabel(el);
 };
 
 var updateBackgroundImages = function() {
@@ -309,14 +211,6 @@ document.body.addEventListener('click', function(event) {
     }
 
     updateBackgroundImages();
-});
-
-document.body.addEventListener('click', function(event) {
-    var target = event.target;
-
-    if (target.hasClass('sample') === false) return;
-
-    toggleRecordingPlayback(target);
 });
 
 // IScroll only for smaller screens

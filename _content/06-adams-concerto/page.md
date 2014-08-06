@@ -1,4 +1,5 @@
 ---
+enable_audio: true
 page_icon: saxophone
 page_id: adams-concerto
 page_js: adams-concerto

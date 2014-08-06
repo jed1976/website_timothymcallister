@@ -9,7 +9,7 @@
 
             <ul id="recordings-list">
                 {{ entries:listing folder="recordings" show_hidden="true" sort_by="date" sort_dir="desc" }}
-                <li class="grid-pad recording" id="{{ slug }}">
+                <li class="grid-pad recording">
                     {{ theme:partial src="recording" use_context="true" }}
                 </li>
                 {{ /entries:listing }}
@@ -21,11 +21,13 @@
 
                     <ul>
                         {{ entries:listing folder="live-performances" show_hidden="true" sort_dir="asc" }}
-                        <li id="{{ slug }}">
-                            <h4>{{ title }}</h4>
-                            <h5>{{ composer }}</h5>
+                        <li>
+                            <article id="{{ slug }}">
+                                <h4>{{ title }}</h4>
+                                <h5>{{ composer }}</h5>
 
-                            <a class="sample button x-small pad" href="{{ sample }}">Play Sample</a>
+                                <a class="sample button x-small pad" href="{{ sample }}">Play Sample</a>
+                            </article>
                         </li>
                         {{ /entries:listing }}
                     </ul>
