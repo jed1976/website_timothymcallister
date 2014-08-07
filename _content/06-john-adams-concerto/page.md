@@ -4,7 +4,7 @@ page_icon: saxophone
 page_id: adams-concerto
 page_js: adams-concerto
 theme: dark
-title: "Adam's Concerto"
+title: John Adams Concerto
 _fieldset: adams-concerto
 _template: adams-concerto
 artwork: '{{ _site_root }}assets/img/tim-adams-bw.jpg'
@@ -18,7 +18,6 @@ address_2: '152 West 57th Street - 5th Floor'
 city: New York
 state: NY
 zip_code: "10019"
-email: aelsesser@imgartists.com
 video_url: //www.youtube.com/embed/ChiynCzpuYQ
 video_title: The Premiere
 recording_title: The Recording
@@ -31,7 +30,20 @@ downloads:
     photo_download: '{{ _site_root }}assets/img/downloads/Timothy McAllister - 2.jpg'
   - 
     photo_download: '{{ _site_root }}assets/img/downloads/Timothy McAllister - 3.jpg'
+quotes:
+  - 
+    quote: /quotes/john-adams
+  - 
+    quote: /quotes/william-robin
+  - 
+    quote: /quotes/harriet-cunningham
+  - 
+    quote: /quotes/tim-smith
+critics_title: The Critics Speak
 ---
+
+
+
 
 
 

@@ -1,13 +1,7 @@
-<div class="hero short" style="background-image: url({{ artwork }}); background-position: {{ vertical_position }} {{ horizontal_position }};">
-    <div class="quotes">
-        {{ entries:listing conditions="adams_press:1" folder="quotes" show_hidden="true" sort_by="random" }}
-            {{ theme:partial src="quote" use_context="true" }}
-        {{ /entries:listing }}
-    </div>
-    {{ theme:js src="quotes" tag="true" }}
-</div>
+{{ theme:partial src="hero" use_context="true" }}
 
 <main id="content" role="main">
+    {{ if booking_title }}
     <div class="grid-pad">
         <h2 class="style-1">{{ booking_title }}</h2>
         <div class="col-2-3">
@@ -32,7 +26,9 @@
             </form>
         </div>
     </div>
+    {{ /if }}
 
+    {{ if downloads_title }}
     <div class="grid-pad">
         <h2 class="style-1">{{ downloads_title }}</h2>
 
@@ -60,13 +56,17 @@
             {{ /get_content }}
         </div>
     </div>
+    {{ /if }}
 
+    {{ if video_title }}
     <div class="grid-pad">
         <h2 class="style-1">{{ video_title }}</h2>
 
         {{ theme:partial src="video" use_context="true" }}
     </div>
+    {{ /if }}
 
+    {{ if recording_title }}
     <div class="grid-pad">
         <h2 class="style-1">{{ recording_title }}</h2>
 
@@ -74,4 +74,19 @@
         {{ theme:partial show_samples="true" src="recording" use_context="true" }}
         {{ /entries:listing }}
     </div>
+    {{ /if }}
+
+    {{ if critics_title }}
+    <div class="grid-pad">
+        <h2 class="style-1">{{ critics_title }}</h2>
+
+        <div class="grid-pad quotes">
+            {{ entries:listing conditions="adams_press:1" folder="quotes" show_hidden="true" sort_by="random" }}
+                <div class="col-1-2">
+                    {{ theme:partial src="quote" use_context="true" }}
+                </div>
+            {{ /entries:listing }}
+        </div>
+    </div>
+    {{ /if }}
 </main>

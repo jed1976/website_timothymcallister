@@ -132,8 +132,17 @@ fields:
     display: Section Heading
     type: text
 
+  section_5:
+    display: Critics
+    type: section
+
+  critics_title:
+    display: Section Heading
+    type: text
+
 hide: true
 
 include:
   - hidden
+  - quotes
   - artwork
