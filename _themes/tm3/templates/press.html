@@ -7,7 +7,9 @@
         <div class="grid-pad quotes">
             {{ entries:listing conditions="adams_press:!1" folder="quotes" show_hidden="true" sort_by="random" }}
                 <div class="col-1-2">
-                    {{ theme:partial src="quote" use_context="true" }}
+                    <div class="grid-pad">
+                        {{ theme:partial src="quote" use_context="true" }}
+                    </div>
                 </div>
             {{ /entries:listing }}
         </div>
