@@ -2,6 +2,16 @@ title: Press
 
 hide: true
 
+fields:
+  section_1:
+    display: Critics
+    type: section
+
+  critics_title:
+    display: Section Heading
+    type: text
+
 include:
   - hidden
+  - quotes
   - artwork

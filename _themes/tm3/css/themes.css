@@ -1,3 +1,4 @@
+/* Dark */
 .dark [type=text],
 [type=text].light,
 textarea.light
@@ -36,3 +37,7 @@ legend.light,
 .dark .link:visited { color: #fff; }
 
 .dark .link { font-weight: 700; }
+
+/* Light */
+
+.light #content .quote { color: #222; }
