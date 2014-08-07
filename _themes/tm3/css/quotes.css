@@ -1,4 +1,4 @@
-.quotes
+.hero .quotes
 {
     bottom: 30px;
     left: 30px;
@@ -6,15 +6,19 @@
     right: 30px;
 }
 
-.quote
+.hero .quote
 {
     bottom: 0;
-    color: #fff;
-    font-weight: 300;
     left: 0;
-    margin: 0;
     position: absolute;
     right: 0;
+}
+
+.quote
+{
+    color: #fff;
+    font-weight: 300;
+    margin: 0;
 }
 
 .quote blockquote
@@ -25,7 +29,6 @@
 
 .quote figcaption
 {
-    font-size: 1rem;
     font-weight: 700;
     letter-spacing: 2px;
     margin-top: 20px;
@@ -42,20 +45,26 @@
     text-transform: none;
 }
 
+.quote blockquote { font-size: 1rem; }
+.quote figcaption { font-size: 0.8rem; }
 .quote blockquote, .quote figcaption { font-family: 'museo-slab'; }
-
-.quote:first-child { opacity: 1; }
-
-.js .quote { opacity: 0; }
+.js .hero .quote { opacity: 0; }
+.hero .quote:first-child { opacity: 1; }
+.hero .quote blockquote { font-size: 1.25rem; }
+.hero .quote figcaption { font-size: 1rem; }
 
 @media (min-width: 768px)
 {
-    .quote blockquote { font-size: 1.5rem; }
-    .quotes { left: 60px; right: 60px; }
+    .quote blockquote { font-size: 1.1rem; }
+    .quote figcaption { font-size: 0.85rem; }
+    .hero .quote blockquote { font-size: 1.5rem; }
+    .hero .quotes { left: 60px; right: 60px; }
 }
 
 @media (min-width: 1024px)
 {
-    .quote blockquote { font-size: 1.75rem; }
-    .quotes { left: 120px; right: 120px; }
+    .quote blockquote { font-size: 1.15rem; }
+    .quote figcaption { font-size: 0.9rem; }
+    .hero .quote blockquote { font-size: 1.75rem; }
+    .hero .quotes { left: 120px; right: 120px; }
 }

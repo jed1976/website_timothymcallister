@@ -441,7 +441,7 @@ EOD;
     {
         $data = $this->db->query('select exp_weblog_titles.title, exp_weblog_titles.entry_date, exp_weblog_data.* from exp_weblog_data left join exp_weblog_titles on exp_weblog_titles.entry_id = exp_weblog_data.entry_id where exp_weblog_data.weblog_id = 4 order by exp_weblog_titles.title');
         $iterator = 1;
-        $adamsPress = array('adams', 'city', 'noir', 'dudamel');
+        $adamsPress = array('john', 'adams');
         $quotes = array();
 
         function containsString($str, array $arr) {

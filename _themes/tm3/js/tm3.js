@@ -83,35 +83,6 @@ HTMLElement.prototype.toggleClass = function(string) {
 };
 
 // Functions
-window.createQuoteCarousel = function() {
-    var currentQuoteIndex = 0,
-        quotes = document.querySelectorAll('.quote'),
-        quoteInterval = 8000,
-        quoteTimerID;
-
-    if (quotes.length === 0) return;
-
-    quotes[currentQuoteIndex].toggleClass('fadein');
-
-    quoteTimerID = setTimeout(function() {
-        quotes[currentQuoteIndex].toggleClass('fadein');
-
-        currentQuoteIndex++;
-
-        if (currentQuoteIndex === quotes.length)
-            currentQuoteIndex = 0;
-
-        quotes[currentQuoteIndex].toggleClass('fadein');
-
-        setTimeout(arguments.callee, quoteInterval);
-    }, quoteInterval);
-
-    window.addEventListener('unload', function unload() {
-        window.removeEventListener('unload', unload, false);
-        window.clearTimeout(quoteTimerID);
-    });
-};
-
 window.getDocumentHeight = function() {
     return Math.max(
         document.body.scrollHeight, document.documentElement.scrollHeight,

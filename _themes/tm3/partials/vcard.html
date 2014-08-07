@@ -1,14 +1,17 @@
 <dl class="vcard" id="hcard-{{ name|slugify }}">
-    <dt class="fn"><strong>{{ name }}</strong></dt>
-    {{ if position }}<dd class="note">{{ position }}</dd>{{ endif }}
-    <dd class="org">
-        <div class="organization-name">{{ organization }}</div>
-        <div class="organization-unit">{{ unit }}</div>
+    {{ if name }}<dt class="fn"><strong>{{ name }}</strong></dt>{{ /if }}
+    {{ if position }}<dd class="note">{{ position }}</dd>{{ /if }}
+    {{ if organization }}<dd class="org">
+        {{ if organization }}<div class="organization-name">{{ organization }}</div>{{ /if }}
+        {{ if unit }}<div class="organization-unit">{{ unit }}</div>{{ /if }}
     </dd>
+    {{ /if }}
+    {{ if address_1 }}
     <dd class="adr">
-        {{ if address_1 }}<div class="street-address">{{ address_1 }}</div>{{ endif }}
-        {{ if address_2 }}<div class="street-address">{{ address_2 }}</div>{{ endif }}
-        <span class="locality">{{ city }}</span>, <span class="region">{{ state }}</span>, <span class="postal-code">{{ zip_code }}</span>
+        {{ if address_1 }}<div class="street-address">{{ address_1 }}</div>{{ /if }}
+        {{ if address_2 }}<div class="street-address">{{ address_2 }}</div>{{ /if }}
+        {{ if city }}<span class="locality">{{ city }}</span>,{{ /if }}{{ if state}} <span class="region">{{ state }}</span>,{{ /if }}{{ if zip_code }} <span class="postal-code">{{ zip_code }}</span>{{ /if }}
     </dd>
-    <dd><a class="email link" href="mailto:{{ email|obfuscate }}">{{ email|obfuscate }}</a></dd>
+    {{ /if }}
+    {{ if email }}<dd><a class="email link" href="mailto:{{ email|obfuscate }}">{{ email|obfuscate }}</a></dd>{{ /if }}
 </dl>
