@@ -45,8 +45,8 @@
     text-transform: none;
 }
 
-.quote blockquote { font-size: 1.1rem; }
-.quote figcaption { font-size: 0.95rem; }
+.quote blockquote { font-size: 1.05rem; }
+.quote figcaption { font-size: 0.9rem; }
 .quote blockquote, .quote figcaption { font-family: 'museo-slab'; }
 .js .hero .quote { opacity: 0; }
 .hero .quote:first-child { opacity: 1; }
@@ -55,16 +55,16 @@
 
 @media (min-width: 768px)
 {
-    .quote blockquote { font-size: 1.25rem; }
-    .quote figcaption { font-size: 1rem; }
+    .quote blockquote { font-size: 1.15rem; }
+    .quote figcaption { font-size: 0.9rem; }
     .hero .quote blockquote { font-size: 1.5rem; }
     .hero .quotes { left: 60px; right: 60px; }
 }
 
 @media (min-width: 1024px)
 {
-    .quote blockquote { font-size: 1.35rem; }
-    .quote figcaption { font-size: 1.1rem; }
+    .quote blockquote { font-size: 1.25rem; }
+    .quote figcaption { font-size: 1rem; }
     .hero .quote blockquote { font-size: 1.75rem; }
     .hero .quotes { left: 120px; right: 120px; }
 }
