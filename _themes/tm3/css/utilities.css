@@ -5,6 +5,7 @@
 .js .fadein, .js .hero .quote.fadein { opacity: 1; }
 .grid, .grid-pad { position: relative; }
 .grid-pad { padding: 30px; }
+.aside .grid-pad { padding: 15px; }
 .grid.pad { margin: 30px 0; }
 .negative { margin: 0 -30px; }
 .scrollable { -webkit-overflow-scrolling: touch; }
