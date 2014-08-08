@@ -1,5 +1,7 @@
-fieldset { border: 0; }
+fieldset { border: 0; padding: 0; }
+
 form { margin: 20px 0; }
+
 input[type] { height: 41px; }
 
 input[type],

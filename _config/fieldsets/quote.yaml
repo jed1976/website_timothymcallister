@@ -11,7 +11,7 @@ fields:
 
   adams_press:
     default: 0
-    display: Adams Press Page
+    display: Should appear on the Adams Saxophone Concerto page
     type: checkbox
 
 include:
