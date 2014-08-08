@@ -1,12 +1,16 @@
+#mailing-list-form
+{
+    margin: 60px 0;
+}
+
 .hero
 {
     background-position: top center;
     background-size: cover;
-    margin-bottom: 20px;
     position: relative;
 }
 
-.col-1-2:last-of-type .hero { margin-bottom: 0; }
+.hero:first-child { margin-bottom: 30px; }
 
 .card
 {
@@ -16,39 +20,12 @@
     right: 0;
 }
 
-@media (min-width: 768px)
+@media (min-width: 1024px)
 {
-    .hero
+    #mailing-list-form
     {
-        margin: 0 30px 0 0;
-        min-height: 0;
-    }
-
-    .col-1-2,
-    .grid,
-    .hero
-    {
-        bottom: 0;
-        left: 0;
-        position: absolute;
+        position: fixed;
         right: 0;
-        top: 0;
-    }
-
-    .col-1-2:last-child
-    {
-        left: auto;
-        right: 0;
-    }
-
-    .col-1-2:last-child .hero
-    {
-        margin: 0;
-    }
-
-    .js .card
-    {
-        left: 0;
-        right: 0;
+        width: 35%;
     }
 }

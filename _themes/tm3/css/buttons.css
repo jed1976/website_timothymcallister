@@ -17,7 +17,6 @@
 
 .button, .button:link, .button:visited { color: #222; }
 .button:hover { background-color: #222; color: #fff; text-decoration: none; }
-.button.expand { display: block; width: 100%; }
 .button.xx-small { font-size: 60%; }
 .button.x-small { font-size: 70%; }
 .button.small { font-size: 85%; }

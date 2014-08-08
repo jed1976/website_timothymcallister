@@ -1,9 +1,14 @@
 <main id="content" role="main">
     <div class="grid">
-        {{ entries:listing folder="contact" show_hidden="true" }}
-        <div class="col-1-2">
+        <div class="col-2-3">
+            {{ entries:listing folder="contact" show_hidden="true" }}
             {{ theme:partial src="contact" use_context="true" }}
+            {{ /entries:listing }}
         </div>
-        {{ /entries:listing }}
+        <div class="col-1-3" style="position:absolute; right: 0; top: 0; bottom: 0;">
+            <div id="mailing-list-form">
+                {{ theme:partial src="mailing-list" }}
+            </div>
+        </div>
     </div>
 </main>
