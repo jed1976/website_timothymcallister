@@ -165,6 +165,7 @@ _admin_nav:
   account:   true
   system:    true
   logs:      false
+  raven:     true
   help:      true
   view_site: true
   logout:    true
