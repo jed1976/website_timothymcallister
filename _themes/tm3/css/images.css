@@ -8,6 +8,8 @@
     z-index: 1;
 }
 
+.hero *, .hero a.link { color: #fff; }
+
 .hero.short { min-height: 325px; }
 
 .hero::before,
