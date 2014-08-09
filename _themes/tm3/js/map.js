@@ -1,4 +1,4 @@
-var initializeMap = function() {
+var initializeMap = function(callback) {
     document.querySelector('html').addClass('map');
 
     // Variables
@@ -83,6 +83,9 @@ var initializeMap = function() {
 
     createMarkers();
     selectFirstEvent();
+
+    if (callback)
+        callback();
 };
 
 window.addEventListener('load', function load() {
