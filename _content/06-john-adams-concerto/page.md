@@ -25,11 +25,11 @@ booking_title: Booking Information
 downloads_title: Media
 downloads:
   - 
-    photo_download: '{{ _site_root }}assets/img/downloads/Timothy McAllister - 1.jpg'
+    photo_download: '{{ _site_root }}assets/img/downloads/tim-2.jpg'
   - 
-    photo_download: '{{ _site_root }}assets/img/downloads/Timothy McAllister - 2.jpg'
+    photo_download: '{{ _site_root }}assets/img/downloads/tim-1.jpg'
   - 
-    photo_download: '{{ _site_root }}assets/img/downloads/Timothy McAllister - 3.jpg'
+    photo_download: '{{ _site_root }}assets/img/downloads/tim-4.jpg'
 quotes:
   - 
     quote: /quotes/john-adams
@@ -43,6 +43,7 @@ critics_title: The Critics Speak
 message_form_content: Contact Timothy McAllister for booking engagements.
 thank_you_message: Thank you for your message.
 ---
+
 
 
 
