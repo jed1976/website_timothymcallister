@@ -1,3 +1,5 @@
+.js #map { height: auto; }
+
 #map-canvas { display: none; }
 
 #map-wrapper { position: relative; }
