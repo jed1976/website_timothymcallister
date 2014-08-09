@@ -10,10 +10,12 @@ _default_folder_template: article
 _fieldset: news
 _template: news
 quotes:
-  -
+  - 
     quote: /quotes/jeremy-eichler
-  -
+  - 
     quote: /quotes/rob-barnett
+background_color: '#efeeec'
 ---
+
 
 
