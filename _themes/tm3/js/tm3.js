@@ -118,7 +118,7 @@ window.getScreenSize = function() {
 };
 
 window.getWindowSize = function() {
-    return window.getSizeBasedOnWidth(window.width);
+    return window.getSizeBasedOnWidth(window.innerWidth);
 };
 
 window.loadFastClick = function() {

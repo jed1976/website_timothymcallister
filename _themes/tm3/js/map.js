@@ -88,6 +88,13 @@ var initializeMap = function(callback) {
         callback();
 };
 
+var resizeMap = function() {
+    var logoHeight = parseInt(document.getElementById('logo').getStyle('height'));
+        headerHeight = parseInt(document.getElementById('content').querySelector('.style-1').getStyle('height'));
+
+    document.getElementById('map').style.height = window.getWindowSize() > 1 ? (window.innerHeight - logoHeight - (headerHeight * 2)) + 'px' : 'auto';
+};
+
 window.addEventListener('load', function load() {
     window.removeEventListener('load', load, false);
 
@@ -97,8 +104,9 @@ window.addEventListener('load', function load() {
     script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyA2Kd093BDPlBJhWykIlVOEHamfG4_8WKo&callback=initializeMap';
     document.body.appendChild(script);
 
-    var logoHeight = parseInt(document.getElementById('logo').getStyle('height'));
-        headerHeight = parseInt(document.getElementById('content').querySelector('.style-1').getStyle('height'));
+    resizeMap();
+});
 
-    document.getElementById('map').style.height = (window.innerHeight - logoHeight - (headerHeight * 2)) + 'px';
+window.addEventListener('resize', function load() {
+    resizeMap();
 });
