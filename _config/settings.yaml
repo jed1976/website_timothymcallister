@@ -163,7 +163,7 @@ _admin_nav:
   pages:     true
   members:   true
   account:   true
-  system:    true
+  system:    false
   logs:      false
   raven:     true
   help:      true
