@@ -16,8 +16,9 @@ quotes:
   - 
     quote: /quotes/robert-mccolley
 critics_title: Applause
-background_color: '#33322e'
+background_color: '#373632'
 ---
+
 
 
 

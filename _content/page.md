@@ -14,8 +14,9 @@ quotes:
     quote: /quotes/david-patrick-stearns
   - 
     quote: /quotes/donald-sinta
-background_color: '#fff'
+background_color: '#ebebeb'
 ---
+
 
 
 
