@@ -1,8 +1,8 @@
-title: Artwork
+title: Hero
 
 fields:
   artwork_section:
-    display: Artwork
+    display: Hero Image
     type: section
 
   artwork:
