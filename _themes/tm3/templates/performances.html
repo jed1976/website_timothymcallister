@@ -14,6 +14,8 @@
             </ol>
         </div>
 
-        {{ theme:partial src="performances" since="01/01/{ get:year }" until="12/31/{ get:year }" }}
+        <div id="map-wrapper">
+            {{ theme:partial src="performances" since="01/01/{ get:year }" until="12/31/{ get:year }" }}
+        </div>
     </div>
 </section>
