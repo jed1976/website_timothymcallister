@@ -14,7 +14,13 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('year-selector').addEventListener('change', function(event) {
         var target = event.target;
 
-        window.location.href = '?year=' + target.options[target.selectedIndex].getAttribute('value');
+        //window.location.href = '?year=' + target.options[target.selectedIndex].getAttribute('value');
+        var url = '?year=' + target.options[target.selectedIndex].getAttribute('value');
+
+        window.getUrl(url, function(response) {
+            document.getElementById('map').innerHTML = queryHTML(response, '#map').innerHTML;
+            initializeMap();
+        });
 
         target.blur();
     });
