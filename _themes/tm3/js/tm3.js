@@ -121,6 +121,38 @@ window.loadFastClick = function() {
     document.body.appendChild(script);
 };
 
+window.queryHTML = function(html, selector) {
+    var root = document.createElement('DIV');
+    root.innerHTML = html;
+
+    return root.querySelector(selector);
+};
+
+window.submitForm = function(form, action, callback) {
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        var params = [];
+
+        [].forEach.call(event.target.elements, function(el) {
+            if (el.name)
+                params.push(el.name + '=' + encodeURI(el.value));
+        });
+
+        params = params.join('&');
+
+        var request = new XMLHttpRequest();
+        request.open('POST', action, true);
+        request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+        request.onreadystatechange = function() {
+            if (request.readyState == 4 && request.status == 200) {
+                callback(form, request);
+            }
+        };
+        request.send(params);
+    });
+};
+
 window.toggleLogoOpacity = function() {
     var y = Math.abs(this.y) || window.pageYOffset,
         targetY = 600,

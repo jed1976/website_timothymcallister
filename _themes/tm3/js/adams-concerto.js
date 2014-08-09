@@ -16,5 +16,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     resizeVideos();
 
+    // Listeners
     window.addEventListener('resize', resizeVideos);
+
+    submitForm(document.getElementById('message-form'), window.location.href, function(form, request) {
+        form.innerHTML = queryHTML(request.responseText, '#' + form.id).innerHTML;
+    });
 });

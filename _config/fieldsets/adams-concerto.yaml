@@ -1,6 +1,17 @@
 title: Adams Concerto
 
 fields:
+  section_0:
+    display: Message Form
+    type: section
+
+  message_form_content:
+    height: 100
+    type: markitup
+
+  thank_you_message:
+    type: text
+
   section_1:
     display: Artist Management
     type: section
