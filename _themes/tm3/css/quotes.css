@@ -31,7 +31,7 @@
 {
     font-weight: 700;
     letter-spacing: 2px;
-    margin-top: 20px;
+    margin-top: 30px;
     text-align: right;
     text-transform: uppercase;
 }
@@ -62,5 +62,5 @@
 @media (min-width: 1024px)
 {
     .hero .quote blockquote { font-size: 1.75rem; }
-    .hero .quotes { left: 120px; right: 120px; }
+    .hero .quotes { left: 100px; right: 100px; }
 }
