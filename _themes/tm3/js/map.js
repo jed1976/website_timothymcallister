@@ -1,4 +1,4 @@
-var initialize = function() {
+var initializeMap = function() {
     document.querySelector('html').addClass('map');
 
     // Variables
@@ -50,6 +50,7 @@ var initialize = function() {
     var selectFirstEvent = function() {
         setTimeout(function() {
             var eventEl = performanceList.querySelector('.h-event.future');
+            if (eventEl === null) return;
             performanceList.scrollTop = eventEl.getPosition()[1] - performanceList.getPosition()[1];
             eventEl.click();
         }, 500);
@@ -90,6 +91,11 @@ window.addEventListener('load', function load() {
     if (getScreenSize() < 1) return;
 
     var script = document.createElement('script');
-    script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyA2Kd093BDPlBJhWykIlVOEHamfG4_8WKo&callback=initialize';
+    script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyA2Kd093BDPlBJhWykIlVOEHamfG4_8WKo&callback=initializeMap';
     document.body.appendChild(script);
+
+    var logoHeight = parseInt(document.getElementById('logo').getStyle('height'));
+        headerHeight = parseInt(document.getElementById('content').querySelector('.style-1').getStyle('height'));
+
+    document.getElementById('map').style.height = (window.innerHeight - logoHeight - (headerHeight * 2)) + 'px';
 });
