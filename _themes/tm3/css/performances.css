@@ -34,7 +34,7 @@
 
 .js #year-selector
 {
-    background-color: #fff;
+    background-color: transparent;
     border-color: rgba(0, 0, 0, 0.1);
     border-radius: 0;
     cursor: pointer;
