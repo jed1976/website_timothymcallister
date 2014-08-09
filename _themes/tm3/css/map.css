@@ -1,5 +1,23 @@
 #map-canvas { display: none; }
 
+#map-wrapper { position: relative; }
+
+#map-wrapper::after
+{
+    bottom: 0;
+    content: 'Loading Season';
+    font-size: 1rem;
+    font-weight: 700;
+    left: 0;
+    letter-spacing: 0.125rem;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    text-transform: uppercase;
+    top: 50%;
+    z-index: -1;
+}
+
 @media (min-width: 768px)
 {
     .gm-style-iw .h-event .p-summary
