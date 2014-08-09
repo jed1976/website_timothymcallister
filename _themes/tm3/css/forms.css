@@ -2,9 +2,9 @@ fieldset { border: 0; padding: 0; }
 
 form { margin: 20px 0; }
 
-input[type] { height: 41px; }
+[type] { height: 41px; }
 
-input[type],
+[type],
 textarea
 {
     border: 0;
@@ -17,7 +17,7 @@ textarea
     -webkit-appearance: none;
 }
 
-input[type]:focus,
+[type]:focus,
 textarea:focus
 {
     background-color: #fff !important;

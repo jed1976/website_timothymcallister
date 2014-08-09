@@ -1,7 +1,6 @@
 /* Dark */
-.dark [type],
 .dark textarea,
-[type].light,
+.light[type],
 textarea.light
 {
     background-color: #222;
@@ -10,6 +9,7 @@ textarea.light
     border-width: 1px;
 }
 
+.dark .button[type],
 .dark .button,
 .dark .button:link,
 .dark .button:visited,
