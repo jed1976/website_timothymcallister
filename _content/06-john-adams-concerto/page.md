@@ -24,20 +24,20 @@ recording_title: The Recording
 booking_title: Booking Information
 downloads_title: Media
 downloads:
-  - 
-    photo_download: '{{ _site_root }}assets/img/downloads/tim-2.jpg'
-  - 
-    photo_download: '{{ _site_root }}assets/img/downloads/tim-1.jpg'
-  - 
+  -
     photo_download: '{{ _site_root }}assets/img/downloads/tim-4.jpg'
+  -
+    photo_download: '{{ _site_root }}assets/img/downloads/tim-2.jpg'
+  -
+    photo_download: '{{ _site_root }}assets/img/downloads/tim-1.jpg'
 quotes:
-  - 
+  -
     quote: /quotes/john-adams
-  - 
+  -
     quote: /quotes/william-robin
-  - 
+  -
     quote: /quotes/harriet-cunningham
-  - 
+  -
     quote: /quotes/tim-smith
 critics_title: The Critics Speak
 message_form_content: Contact Timothy McAllister for booking engagements.
