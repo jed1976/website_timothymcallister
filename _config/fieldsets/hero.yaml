@@ -28,3 +28,7 @@ fields:
       center: Center
       right: Right
     type: radio
+
+  background_color:
+    default: #ffffff
+    type: color

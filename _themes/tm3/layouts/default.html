@@ -16,7 +16,7 @@
 
         <title>{{ _site_name }}{{ if segment_1 }} – {{ title }}{{ endif }}</title>
     </head>
-    <body>
+    <body style="background-color: {{ background_color }};">
         {{ if enable_analytics }}
         {{ theme:partial src="google-analytics" }}
         {{ endif}}
