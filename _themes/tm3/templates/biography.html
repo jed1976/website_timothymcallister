@@ -10,7 +10,7 @@
             {{ if pdfs }}
             <div class="grid pad text-center">
                 {{ pdfs }}
-                <a class="button pad xx-small expand download" href="{{ download file="{pdf}" as="{pdf}" }}">{{ label }}</a>
+                <a class="button pad xx-small download" href="{{ download file="{pdf}" as="{pdf}" }}">{{ label }}</a>
                 {{ /pdfs }}
             </div>
             {{ endif }}
