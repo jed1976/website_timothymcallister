@@ -84,7 +84,7 @@
 
 #menu li:hover
 {
-    background-color: #b0120a;
+    background-color: #5A687F;
 }
 
 #menu li:last-child { border-bottom: 0; }
@@ -155,8 +155,6 @@
         float: left;
         width: 50%;
     }
-
-    /*#menu li:nth-child(9) { border-bottom: 0; }*/
 
     #menu a
     {
