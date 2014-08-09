@@ -1,4 +1,4 @@
-<article class="h-event{{ if datestamp|in_future }} future{{ /if }}" data-latitude="{{ latitude }}" data-longitude="{{ longitude }}">
+<article class="h-event{{ if datestamp|in_future }} future{{ /if }}{{ if datestamp|is_today }} today{{ /if }}" data-latitude="{{ latitude }}" data-longitude="{{ longitude }}">
     <span class="calendar">
         <time class="dt-start" datetime="{{ datestamp format="m-d-Y" }} {{ time }}">{{ datestamp format="M" }} <span class="day">{{ datestamp format="j" }}</span> <span class="year">{{ datestamp format="Y" }}</span></time>
     </span>
