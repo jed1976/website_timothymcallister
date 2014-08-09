@@ -49,7 +49,7 @@ var initializeMap = function(callback) {
 
     var selectFirstEvent = function() {
         setTimeout(function() {
-            var eventEl = performanceList.querySelector('.h-event.future');
+            var eventEl = performanceList.querySelector('.h-event.today') || performanceList.querySelector('.h-event.future');
             if (eventEl === null) return;
             performanceList.scrollTop = eventEl.getPosition()[1] - performanceList.getPosition()[1];
             eventEl.click();
