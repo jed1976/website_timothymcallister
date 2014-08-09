@@ -199,14 +199,15 @@ document.body.addEventListener('click', function(event) {
         document.body.addEventListener('transitionend', function transitionend(transition) {
             document.body.removeEventListener('transitionend', transitionend);
 
-            if (transition.propertyName !== 'opacity') return;
-            document.body.toggleClass('fadein');
+            if (transition.propertyName === 'opacity') {
+                document.body.toggleClass('fadein');
 
-            window.scrollTo(0, window.getDocumentHeight());
+                window.scrollTo(0, window.getDocumentHeight());
 
-            setTimeout(function() {
-                window.scrollTo(0, y - scrollOffset);
-            }, 10);
+                setTimeout(function() {
+                    window.scrollTo(0, y - scrollOffset);
+                }, 10);
+            }
         });
     } else {
         scroller.scrollTo(0, -y, 1000, IScroll.utils.ease.elastic);
