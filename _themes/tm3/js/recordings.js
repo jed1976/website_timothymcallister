@@ -196,8 +196,10 @@ document.body.addEventListener('click', function(event) {
 
     if (window.getScreenSize() > 1) {
         document.body.toggleClass('fadein');
-        document.body.addEventListener('transitionend', function transitionend() {
+        document.body.addEventListener('transitionend', function transitionend(transition) {
             document.body.removeEventListener('transitionend', transitionend);
+
+            if (transition.propertyName !== 'opacity') return;
             document.body.toggleClass('fadein');
 
             window.scrollTo(0, window.getDocumentHeight());

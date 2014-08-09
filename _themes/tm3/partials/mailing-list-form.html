@@ -1,0 +1,28 @@
+{{ raven:form attr="id:mailing-list-form" formset="mailing-list" }}
+    {{ if {raven:has_errors} }}
+        <ul class="form-errors">
+        {{ raven:errors }}
+            {{ missing }}
+              <li><strong>{{ field|ucfirst }}</strong> field is required</li>
+            {{ /missing }}
+
+            {{ invalid }}
+              <li><strong>{{ field|ucfirst }}</strong> {{ message }}</li>
+            {{ /invalid }}
+        {{ /raven:errors }}
+        </ul>
+    {{ /if }}
+
+    {{ if {raven:success} }}
+        <h3 class="submission-confirmation">{{ thank_you_message }}</h3>
+    {{ else }}
+        <div class="grid">
+            <div class="col-full">
+                <input class="expand light" name="email" placeholder="Email" required type="email" value="{{ value:email }}">
+            </div>
+            <div class="col-full">
+                <input class="button expand light x-small" name="message-submit-button" type="submit" value="Send Message">
+            </div>
+        </div>
+    {{ /if }}
+{{ /raven:form }}

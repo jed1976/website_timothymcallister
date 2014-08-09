@@ -17,7 +17,7 @@
 
 @media (min-width: 1024px)
 {
-    #mailing-list-form
+    #mailing-list-form-wrapper
     {
         padding-top: 90px;
         position: fixed;

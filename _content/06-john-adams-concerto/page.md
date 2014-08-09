@@ -40,7 +40,11 @@ quotes:
   - 
     quote: /quotes/tim-smith
 critics_title: The Critics Speak
+message_form_content: Contact Timothy McAllister for booking engagements.
+thank_you_message: Thank you for your message.
 ---
+
+
 
 
 

@@ -4,7 +4,11 @@ hide: true
 
 fields:
   content:
+    height: 100
     type: markitup
+
+  thank_you_message:
+    type: text
 
 include:
   - hidden

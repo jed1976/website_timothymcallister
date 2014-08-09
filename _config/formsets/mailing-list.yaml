@@ -1,26 +1,21 @@
-submission_save_path: _forms/messages/
+submission_save_path: _forms/mailing-list/
 
 # Fields allowed to be submitted in the form, automatically
 # purging anything and everything else
 allowed:
-  - name
   - email
-  - message
 
 # You are not required to require fields, but once you do, any missing
 # from the POST will squash this submission and send a list of
 # missing fields to your {{ raven:errors }} tagpair
 required:
-  - name
   - email
-  - message
 
 submission_save_extension: yaml
 
 # Apply validation rules to specific fields. Refer to documentation
 # for a full list of available rules and their format
 validate:
-  name: alpha
   email: email
 
 # Error messages can be mapped to your fields and passed to the
@@ -33,15 +28,13 @@ validate:
 # {{ /raven:error }}
 #
 messages:
-  name: "must contain letters"
-  email: "must be a valid email address"
-  message: "is required"
+  email: "must be a valid address"
 
 # Configure notification email
 email:
   to: joe.dakroub@me.com
   from: joe.dakroub@me.com
-  subject: Timothy McAllister Message Submission
+  subject: Timothy McAllister Mailing List Submission
   automagic: true
   # html_template: html_email
   # text_template: text_email
@@ -50,11 +43,4 @@ datestamp_format: "m/d/Y"
 
 control_panel:
   fields:
-    - name
     - email
-    - message
-
-akismet:
-  author: name
-  email: email
-  content: message
