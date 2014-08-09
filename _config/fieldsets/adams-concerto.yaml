@@ -156,4 +156,4 @@ hide: true
 include:
   - hidden
   - quotes
-  - artwork
+  - hero

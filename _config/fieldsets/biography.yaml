@@ -7,13 +7,14 @@ fields:
     type: markitup
 
   section_2:
-    display: Files
+    display: Downloads
     type: section
 
   pdfs:
     display: ''
     fields:
       label:
+        display: Button Label
         type: text
 
       pdf:
@@ -28,5 +29,5 @@ fields:
 
 include:
   - hidden
-  - artwork
+  - hero
   - quotes
