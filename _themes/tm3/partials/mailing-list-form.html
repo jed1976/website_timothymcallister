@@ -18,10 +18,13 @@
     {{ else }}
         <div class="grid">
             <div class="col-full">
+                <input class="expand light" name="name" placeholder="Name" required type="text" value="{{ value:name }}">
+            </div>
+            <div class="col-full">
                 <input class="expand light" name="email" placeholder="Email" required type="email" value="{{ value:email }}">
             </div>
             <div class="col-full">
-                <input class="button expand light x-small" name="message-submit-button" type="submit" value="Send Message">
+                <input class="button expand x-small" name="message-submit-button" type="submit" value="Send Message">
             </div>
         </div>
     {{ /if }}

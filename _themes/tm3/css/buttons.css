@@ -1,4 +1,6 @@
-.button
+.button,
+.button[type],
+button.button
 {
     background-color: transparent;
     border-color: #ccc;
