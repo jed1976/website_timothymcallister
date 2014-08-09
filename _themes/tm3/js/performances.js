@@ -12,10 +12,8 @@ document.addEventListener('DOMContentLoaded', function() {
     yearSelectorWrapper.innerHTML = yearSelector;
 
     document.getElementById('year-selector').addEventListener('change', function(event) {
-        var target = event.target;
-
-        //window.location.href = '?year=' + target.options[target.selectedIndex].getAttribute('value');
-        var url = '?year=' + target.options[target.selectedIndex].getAttribute('value');
+        var target = event.target,
+            url = '?year=' + target.options[target.selectedIndex].getAttribute('value');
 
         window.getUrl(url, function(response) {
             document.getElementById('map').innerHTML = queryHTML(response, '#map').innerHTML;
