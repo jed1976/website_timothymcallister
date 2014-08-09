@@ -1,3 +1,5 @@
+h3 { font-weight: 400; }
+
 #current-recording-overlay,
 #next-recording-overlay
 {
@@ -19,6 +21,12 @@
     list-style: none;
     position: relative;
     z-index: 1;
+}
+
+#recordings-list li:last-of-type,
+#live-performances ul
+{
+    margin-bottom: 0;
 }
 
 #live-performances li
@@ -50,7 +58,7 @@
     top: 0;
 }
 
-#content { padding: 60px 0 0 0; }
+#content { padding: 20px 0 0 0; }
 #next-recording-overlay { opacity: 0; }
 #recordings-list { padding: 0; }
 #recordings-list .recording { margin-bottom: 90px; }
@@ -61,6 +69,8 @@
 
 @media (min-width: 768px)
 {
+    #content { padding: 60px 0 0 0; }
+
     .js #live-performances li
     {
         display: inline-block;

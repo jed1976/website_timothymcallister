@@ -1,10 +1,10 @@
 <article>
-    <h3><a class="link" href="{{ url }}">{{ title }}</a></h3>
+    <h4><a class="link" href="{{ url }}">{{ title }}</a></h4>
 
     <time class="dt-start" datetime="{{ datestamp format="{{ _datetime_format }}" }}">{{ datestamp|relative }}</time>
     {{ if truncate }}
-    {{ content|widont|truncate:350 }}
+    {{ content|markdown|truncate:350 }}
     {{ else }}
-    {{ content|widont }}
+    {{ content|markdown }}
     {{ endif }}
 </article>
