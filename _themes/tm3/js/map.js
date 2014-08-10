@@ -7,7 +7,7 @@ var initializeMap = function(callback) {
         featureOpts = [
             {
                 stylers: [
-                    { color: '#cccccc' },
+                    { color: '#b0b4c4' },
                     { visibility: 'simplified' }
                 ]
             },
@@ -22,7 +22,7 @@ var initializeMap = function(callback) {
             {
                 featureType: 'water',
                 stylers: [
-                    { color: '#5685c5' }
+                    { color: '#426c99' }
                 ]
             }
         ],
