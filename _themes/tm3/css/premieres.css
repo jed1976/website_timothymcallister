@@ -55,7 +55,7 @@
 {
     .js #content
     {
-        float: left;
+        float: right;
         padding-top: 80px;
         width: 50%;
     }
@@ -65,7 +65,6 @@
         bottom: 0;
         min-height: 0;
         position: fixed;
-        right: 0;
         top: 0;
         width: 50%;
     }

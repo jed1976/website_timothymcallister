@@ -3,6 +3,13 @@
         {{ if recording_url }}<a href="{{ recording_url }}" title="{{ publisher_title }}">{{ endif }}
         <img alt="{{ title }}" src="{{ artwork }}">
         {{ if recording_url }}</a>{{ endif }}
+
+        {{ if show_samples && sample }}
+        <div class="text-center">
+            <a class="sample button x-small pad" href="{{ sample }}">Play Sample (MP3)</a>
+            <a class="sample button x-small pad" href="{{ sample }}">Play Sample (OGG)</a>
+        </div>
+        {{ endif }}
     </div>
     <div class="col-2-3">
         <h3>{{ title }}</h3>
@@ -39,12 +46,5 @@
                 {{ endif }}
             </tbody>
         </table>
-
-        {{ if show_samples && sample }}
-        <div class="text-center">
-            <a class="sample button x-small pad" href="{{ sample }}">Play Sample (MP3)</a>
-            <a class="sample button x-small pad" href="{{ sample }}">Play Sample (OGG)</a>
-        </div>
-        {{ endif }}
     </div>
 </article>

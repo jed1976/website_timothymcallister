@@ -10,7 +10,7 @@ _template: adams-concerto
 artwork: '{{ _site_root }}assets/img/tim-adams-bw.jpg'
 vertical_position: top
 horizontal_position: center
-background_color: '#111'
+background_color: '#212121'
 name: Andrew C. Elsesser
 position: Booking Manager
 organization: IMG Artists
@@ -44,30 +44,3 @@ critics_title: The Critics Speak
 message_form_content: Contact Timothy McAllister for booking engagements.
 thank_you_message: Thank you for your message.
 ---
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
