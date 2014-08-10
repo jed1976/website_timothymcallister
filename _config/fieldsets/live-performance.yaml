@@ -1,0 +1,19 @@
+title: Live Performance
+
+fields:
+  composer:
+    type: text
+
+  section_2:
+    display: Audio Sample
+    type: section
+
+  sample:
+    allowed: [mp3]
+    destination: assets/audio
+    display: ''
+    instructions: Sample must be in MP3 format
+    type: audiofile
+
+include:
+ - hidden

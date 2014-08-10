@@ -1,4 +1,6 @@
-#live-performances
+#live-performances .hero::before { background: none !important; }
+
+#live-performances-list
 {
     margin: -15px -30px 0 -30px;
     padding: 0;
@@ -7,16 +9,17 @@
     z-index: 1;
 }
 
-#live-performances li
+#live-performances-list li
 {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     display: block;
     height: auto;
-    margin: 0;
-    padding: 15px 30px;
+    margin: 0 0 15px 0;
     position: relative;
     vertical-align: top;
     width: 100%;
+    padding: 0 30px;
 }
 
-#live-performances li:last-of-type { border-bottom: 0; }
+#live-performances-list li:last-of-type { border-bottom: 0; }
+
+#live-performances-list li .sample { margin: 0; }

@@ -1,4 +1,7 @@
 ---
-_fieldset: hidden
 title: Live Performances
+artwork: '{{ _site_root }}assets/img/tim-3.jpg'
+vertical_position: bottom
+horizontal_position: left
+_fieldset: live-performances
 ---

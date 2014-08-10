@@ -11,7 +11,7 @@ var currentPlayButton = null,
 
 // Insert Play Sample buttons
 [].forEach.call(document.querySelectorAll('#content .button.sample:first-of-type'), function(el) {
-    el.insertStringBefore('<span class="sample button x-small pad">' + playSampleLabel + '</span>');
+    el.insertStringBefore('<span class="sample button xx-small pad">' + playSampleLabel + '</span>');
 });
 
 var playRecording = function(id) {

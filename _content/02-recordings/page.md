@@ -2,7 +2,7 @@
 enable_audio: true
 enable_promises: true
 enable_blur: true
-page_icon: audio-wave
+page_icon: recordings
 page_id: recordings
 page_js: recordings
 page_stylesheet: recordings

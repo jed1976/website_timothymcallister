@@ -2,7 +2,7 @@
 {
     .js #content
     {
-        float: right;
+        float: left;
         padding-top: 80px;
         width: 50%;
     }
@@ -11,6 +11,7 @@
     {
         bottom: 0;
         position: fixed;
+        right: 0;
         top: 0;
         width: 50%;
     }
