@@ -4,7 +4,7 @@ button.button
 {
     background-color: transparent;
     border-color: #ccc;
-    border-radius: 5px;
+    border-radius: 0;
     border-style: solid;
     border-width: 1px;
     cursor: pointer;

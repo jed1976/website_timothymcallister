@@ -18,16 +18,16 @@ document.addEventListener('DOMContentLoaded', function() {
         var target = event.target,
             url = '?year=' + target.options[target.selectedIndex].getAttribute('value');
 
-        if (window.getScreenSize() > 1) {
-            window.getUrl(url, function(response) {
-                map.innerHTML = queryHTML(response, '#map').innerHTML;
+        window.getUrl(url, function(response) {
+            map.innerHTML = queryHTML(response, '#map').innerHTML;
+
+            if (window.getScreenSize() > 1)
                 initializeMap(function() {
                     map.toggleClass('fadeout');
                 });
-            });
-        } else {
-            window.location.href = url;
-        }
+            else
+                map.toggleClass('fadeout');
+        });
 
         target.blur();
     });
