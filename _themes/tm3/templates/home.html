@@ -2,9 +2,9 @@
 
 <section id="content">
     <div class="grid-pad">
-        <div class="col-2-3">
-            <h2 class="style-1">Latest Release</h2>
+        <h2 class="style-1">Latest Release</h2>
 
+        <div class="col-2-3">
             {{ entries:listing folder="recordings" limit="1" show_hidden="true" show_samples="false" sort_by="datestamp" sort_dir="desc" }}
             {{ theme:partial src="recording" use_context="true" }}
             {{ /entries:listing }}
