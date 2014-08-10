@@ -9,7 +9,7 @@ title: Performances
 _fieldset: performances
 _template: performances
 vertical_position: center
-horizontal_position: right
+horizontal_position: center
 quotes:
   -
     quote: /quotes/janos-gereben

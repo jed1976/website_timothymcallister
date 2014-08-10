@@ -90,7 +90,7 @@ var initializeMap = function(callback) {
 
 var resizeMap = function() {
     var logoHeight = parseInt(document.getElementById('logo').getStyle('height'));
-    document.getElementById('map').style.height = window.getWindowSize() > 1 ? (window.innerHeight - logoHeight) + 'px' : 'auto';
+    document.getElementById('map').style.height = window.getScreenSize() > 1 ? (window.innerHeight - logoHeight) + 'px' : 'auto';
 };
 
 window.addEventListener('load', function load() {
