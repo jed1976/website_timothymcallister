@@ -14,7 +14,7 @@
     font-weight: 700;
     margin: 0 !important;
     right: 0;
-    letter-spacing: 0.125rem;
+    letter-spacing: 0.065rem;
     text-align: center;
     text-transform: uppercase;
     top: 3px;
@@ -24,10 +24,9 @@
 
 .calendar .day
 {
-    color: #162432;
     display: block;
     font-size: 36px;
-    font-weight: 200;
+    font-weight: 700;
     line-height: 36px;
 }
 
@@ -111,10 +110,7 @@
         white-space: nowrap;
     }
 
-    .map #performance-list .h-event.active
-    {
-        background-color: rgba(29, 49, 67, 0.75);
-    }
+    .map #performance-list .h-event.active { background-color: #35383D; }
 
     .map #performance-list .h-event.active *,
     .map #performance-list .h-event.active .p-name

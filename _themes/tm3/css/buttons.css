@@ -37,7 +37,7 @@ button.button
 }
 
 .button, .button:link, .button:visited { color: #222; }
-.button:hover { background-color: rgba(0, 0, 0, 0.9); color: #fff; text-decoration: none; }
+.button:hover { background-color: #35383D; color: #fff; text-decoration: none; }
 .button.xx-small { font-size: 60%; }
 .button.x-small { font-size: 70%; }
 .button.small { font-size: 85%; }
