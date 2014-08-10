@@ -1,8 +1,12 @@
 .js #map { height: auto; }
 
-#map-canvas { display: none; }
-
 #map-wrapper { position: relative; }
+
+#map-canvas
+{
+    display: none;
+    z-index: 1;
+}
 
 #map-wrapper::after
 {
@@ -17,12 +21,16 @@
     text-align: center;
     text-transform: uppercase;
     top: 50%;
-    z-index: -1;
+    z-index: 0;
 }
 
 @media (min-width: 768px)
 {
-    .map #map { border: 1px solid rgba(0, 0, 0, 0.1); }
+    .map #map
+    {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        margin-top: 0;
+    }
 
     .gm-style-iw .h-event .p-summary
     {

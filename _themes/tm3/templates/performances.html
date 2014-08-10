@@ -1,9 +1,7 @@
 {{ theme:partial src="hero" use_context="true" }}
 
 <section id="content" style="background-color: {{ background_color }};">
-    <div class="grid-pad">
-        <h2 class="style-1">{{ title }}</h2>
-
+    <div class="grid">
         <div data-icon="down" id="year-selector-wrapper">
             <ol>
                 {{ entries:listing folder="performances" group_by_date="Y" show_future="true" show_hidden="true" }}
