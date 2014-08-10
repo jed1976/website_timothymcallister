@@ -38,31 +38,32 @@
         </div>
     </div>
 
-    <div class="grid-pad no-padding-bottom" id="live-performances">
-        <h2 class="style-1">Live Performances</h2>
+    {{ get_content from="live-performances" show_hidden="true" }}
+    <div class="grid-pad no-padding-bottom" id="live-recordings">
+        <h2 class="style-1">{{ title }}</h2>
 
-        {{ get_content from="live-performances" show_hidden="true" }}
-        <div class="grid negative hero" style="background-image: url({{ artwork }}); background-position: {{ vertical_position }} {{ horizontal_position }}; background-size: 50%;">
-            <div class="grid-pad">
-                <div class="col-1-2 float-right">
-                    <ul id="live-performances-list">
-                        {{ entries:listing folder="live-performances" show_hidden="true" sort_dir="asc" }}
-                        <li>
-                            <article class="grid" id="{{ slug }}">
-                                <div class="col-3-4">
-                                    <h4>{{ title }}</h4>
-                                    <h5>{{ composer }}</h5>
-                                </div>
-                                <div class="col-1-4 text-right">
-                                    <a class="sample button x-small pad" data-icon="play" href="{{ sample }}">Play Sample</a>
-                                </div>
-                            </article>
-                        </li>
-                        {{ /entries:listing }}
-                    </ul>
-                </div>
+        <div class="grid">
+            <div class="col-1-2">
+                <div class="grid negative hero" style="background-image: url({{ artwork }}); background-position: {{ vertical_position }} {{ horizontal_position }};"></div>
+            </div>
+            <div class="col-1-2">
+                <ul id="live-recordings-list">
+                    {{ entries:listing folder="live-performances" show_hidden="true" sort_dir="asc" }}
+                    <li>
+                        <article class="grid" id="{{ slug }}">
+                            <div class="col-3-4">
+                                <h4>{{ title }}</h4>
+                                <h5>{{ composer }}</h5>
+                            </div>
+                            <div class="col-1-4 text-right">
+                                <a class="sample button x-small pad" data-icon="play" href="{{ sample }}">Play Sample</a>
+                            </div>
+                        </article>
+                    </li>
+                    {{ /entries:listing }}
+                </ul>
             </div>
         </div>
-        {{ /get_content }}
     </div>
+    {{ /get_content }}
 </section>
