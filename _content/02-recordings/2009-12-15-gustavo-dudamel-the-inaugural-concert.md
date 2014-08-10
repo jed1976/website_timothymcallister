@@ -6,6 +6,5 @@ recording_url: http://www2.deutschegrammophon.com/cat/result?sort=newest_rec&Sea
 ensemble: /ensembles/los-angeles-philharmonic
 conductor: /conductors/gustavo-dudamel
 artwork: {{ _site_root }}assets/img/recordings/gustavo-dudamel-the-inaugural-concert.jpg
-sample: {{ _site_root }}assets/audio/recordings/gustavo-dudamel-the-inaugural-concert.mp3
 ---
-The new DVD featuring the Inaugural Concert of Gustavo Dudamel's tenure as Music Director of the LA Philharmonic.  Timothy McAllister is featured throughout as saxophonist in John Adams' monumental new work, CITY NOIR.  
+The new DVD featuring the Inaugural Concert of Gustavo Dudamel's tenure as Music Director of the LA Philharmonic.  Timothy McAllister is featured throughout as saxophonist in John Adams' monumental new work, CITY NOIR.
