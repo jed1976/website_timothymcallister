@@ -4,11 +4,11 @@ page_id: premieres
 page_stylesheet: premieres
 theme: dark
 title: Premieres
-artwork: '{{ _site_root }}assets/img/tim-5.jpg'
+artwork: '{{ _site_root }}assets/img/prism.jpg'
 _fieldset: premieres
 _template: premieres
-vertical_position: bottom
-horizontal_position: right
+vertical_position: center
+horizontal_position: center
 quotes:
   -
     quote: /quotes/imagination-97
@@ -16,7 +16,7 @@ quotes:
     quote: /quotes/william-robin
   -
     quote: /quotes/fred-child
-background_color: '#293857'
+background_color: '#26221f'
 ---
 
 

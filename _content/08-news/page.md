@@ -14,7 +14,7 @@ quotes:
     quote: /quotes/jeremy-eichler
   -
     quote: /quotes/rob-barnett
-background_color: '#efeeec'
+background_color: '#e4e4e4'
 ---
 
 

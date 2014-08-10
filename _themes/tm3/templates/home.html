@@ -38,7 +38,7 @@
         </div>
     </div>
 
-    {{ get_content from="live-performances" show_hidden="true" }}
+    {{ get_content from="live-recordings" show_hidden="true" }}
     <div class="grid-pad no-padding-bottom" id="live-recordings">
         <h2 class="style-1">{{ title }}</h2>
 
@@ -48,7 +48,7 @@
             </div>
             <div class="col-1-2">
                 <ul id="live-recordings-list">
-                    {{ entries:listing folder="live-performances" show_hidden="true" sort_dir="asc" }}
+                    {{ entries:listing folder="live-recordings" show_hidden="true" sort_dir="asc" }}
                     <li>
                         <article class="grid" id="{{ slug }}">
                             <div class="col-3-4">

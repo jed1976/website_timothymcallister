@@ -4,7 +4,7 @@ button.button
 {
     background-color: transparent;
     border-color: #ccc;
-    border-radius: 0;
+    border-radius: 5px;
     border-style: solid;
     border-width: 1px;
     cursor: pointer;
@@ -18,7 +18,7 @@ button.button
 }
 
 .button, .button:link, .button:visited { color: #222; }
-.button:hover { background-color: #222; color: #fff; text-decoration: none; }
+.button:hover { background-color: rgba(0, 0, 0, 0.9); color: #fff; text-decoration: none; }
 .button.xx-small { font-size: 60%; }
 .button.x-small { font-size: 70%; }
 .button.small { font-size: 85%; }
