@@ -60,10 +60,11 @@
 {
     .js #year-selector-wrapper
     {
-        bottom: 15px;
-        left: 48%;
+        left: auto;
+        top: 15px;
         margin: 0;
         position: absolute;
+        right: 15px;
         width: 100px;
         z-index: 2;
     }
