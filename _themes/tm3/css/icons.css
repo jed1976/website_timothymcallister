@@ -10,7 +10,8 @@
     font-style: normal;
 }
 
-[data-icon]::before
+[data-icon]::before,
+#menu-toggle::before
 {
     font-family: 'icomoon';
     font-style: normal;
@@ -29,7 +30,7 @@
 [data-icon=recordings]::before { content: "\e601"; }
 [data-icon=performances]::before { content: "\e602"; }
 [data-icon=premieres]::before { content: "\e603"; }
-[data-icon=press]::before { content: "\e5f3"; }
+[data-icon=applause]::before { content: "\e5f3"; }
 [data-icon=saxophone]::before { content: "\e605"; }
 [data-icon=contact]::before { content: "\e606"; }
 [data-icon=news]::before { content: "\e607"; }
@@ -39,6 +40,6 @@
 [data-icon=ensemble]::before { content: "\e60b"; }
 [data-icon=play]::before { content: "\e60c"; }
 [data-icon=stop]::before { content: "\e60d"; }
-[data-icon=menu]::before { content: "\e60e"; }
-[data-icon=close]::before { content: "\e60f"; }
+[data-icon=menu]::before, #menu-toggle::before { content: "\e60e"; }
+[data-icon=close]::before, #menu-toggle.checked::before { content: "\e60f"; }
 [data-icon=down]::before { content: "\e604"; }

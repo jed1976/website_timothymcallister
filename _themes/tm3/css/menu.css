@@ -32,24 +32,18 @@
     color: #fff;
     cursor: pointer;
     display: none;
-    line-height: 44px;
+    line-height: 1.25;
     opacity: 1;
     overflow: hidden;
     padding: 0 8px;
     position: fixed;
-    right: 20px;
+    right: 15px;
     text-align: center;
     top: 0;
     z-index: 3;
 }
 
-#menu-toggle::before
-{
-    content: 'Menu';
-    font-size: 1.1rem;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-}
+#menu-toggle::before { font-size: 3rem; }
 
 #menu-toggle.checked,
 #menu-toggle.checked ~ #menu
@@ -110,8 +104,6 @@
     font-size: 3rem;
     margin-right: 10px;
 }
-
-#menu-toggle.checked::before { content: 'Close'; }
 
 #menu-toggle.checked ~ #logo { background-color: rgba(0, 0, 0, 0.9) !important; }
 
