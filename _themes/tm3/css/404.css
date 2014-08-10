@@ -6,7 +6,7 @@
 
 #sitemap a
 {
-    color: #fff;
+    color: #222;
     display: block;
     font-size: 1.1rem;
     letter-spacing: 0.3rem;
@@ -18,15 +18,16 @@
 {
     .js #content
     {
-        float: right;
+        left: 0;
         padding-top: 80px;
-        width: 50%;
     }
 
+    .js #content,
     .js .hero
     {
         bottom: 0;
         position: fixed;
+        right: 0;
         top: 0;
         width: 50%;
     }
