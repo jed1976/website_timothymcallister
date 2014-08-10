@@ -1,15 +1,15 @@
-#live-performances .hero::before { background: none !important; }
+#live-recordings .hero::before { background: none !important; }
 
-#live-performances-list
+#live-recordings-list
 {
-    margin: -15px -30px 0 -30px;
+    margin: 30px -30px 0 -30px;
     padding: 0;
     list-style: none;
     position: relative;
     z-index: 1;
 }
 
-#live-performances-list li
+#live-recordings-list li
 {
     display: block;
     height: auto;
@@ -20,6 +20,29 @@
     padding: 0 30px;
 }
 
-#live-performances-list li:last-of-type { border-bottom: 0; }
+#live-recordings-list li:last-of-type { border-bottom: 0; }
 
-#live-performances-list li .sample { margin: 0; }
+#live-recordings-list li .sample { margin: 0; }
+
+@media (min-width: 1024px)
+{
+    #live-recordings .hero
+    {
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    .col-1-2:first-of-type
+    {
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        top: 0;
+        z-index: 0;
+    }
+
+    .col-1-2:last-of-type { float: right; }
+}

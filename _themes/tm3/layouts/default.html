@@ -16,23 +16,23 @@
 
         <title>{{ _site_name }}{{ if segment_1 }} – {{ title }}{{ endif }}</title>
     </head>
-    <body style="background-color: {{ background_color }};">
-        <div class="fixed-background" style="background-image: url({{ artwork }}); background-position: {{ vertical_position }} {{ horizontal_position }};">
-            {{ if enable_analytics }}
-            {{ theme:partial src="google-analytics" }}
-            {{ endif}}
+    <body>
+        <div class="fixed-hero" style="background-image: url({{ artwork }}); background-position: {{ vertical_position }} {{ horizontal_position }};"></div>
 
-            {{ theme:partial src="header" }}
+        {{ if enable_analytics }}
+        {{ theme:partial src="google-analytics" }}
+        {{ endif}}
 
-            {{ layout_content }}
+        {{ theme:partial src="header" }}
 
-            <!-- Scripts -->
-            {{ theme:js tag="true" }}
-            {{ if enable_audio }}{{ theme:js src="audio" tag="true" }}{{ endif }}
-            {{ if enable_map }}{{ theme:js src="map" tag="true" }}{{ endif }}
-            {{ if enable_promises }}{{ theme:js src="promise.min" tag="true" }}{{ endif }}
-            {{ if enable_blur }}{{ theme:js src="stackblur.min" tag="true" }}{{ endif }}
-            {{ if page_js }}{{ theme:js src="{ page_js }" tag="true" }}{{ endif }}
-        </div>
+        {{ layout_content }}
+
+        <!-- Scripts -->
+        {{ theme:js tag="true" }}
+        {{ if enable_audio }}{{ theme:js src="audio" tag="true" }}{{ endif }}
+        {{ if enable_map }}{{ theme:js src="map" tag="true" }}{{ endif }}
+        {{ if enable_promises }}{{ theme:js src="promise.min" tag="true" }}{{ endif }}
+        {{ if enable_blur }}{{ theme:js src="stackblur.min" tag="true" }}{{ endif }}
+        {{ if page_js }}{{ theme:js src="{ page_js }" tag="true" }}{{ endif }}
     </body>
 </html>
