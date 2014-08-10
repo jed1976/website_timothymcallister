@@ -22,6 +22,12 @@
 .width-50 { width: 50%; }
 .width-75 { width: 75%; }
 
+.aside
+{
+    background-color: #35383D;
+    padding: 15px !important;
+}
+
 .grid::after,
 .grid-pad::after
 {

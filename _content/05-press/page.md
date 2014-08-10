@@ -18,15 +18,3 @@ quotes:
 critics_title: Applause
 background_color: '#272422'
 ---
-
-
-
-
-
-
-
-
-
-
-
-

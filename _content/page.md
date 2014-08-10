@@ -18,13 +18,3 @@ quotes:
     quote: /quotes/donald-sinta
 background_color: '#ebebeb'
 ---
-
-
-
-
-
-
-
-
-
-

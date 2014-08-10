@@ -15,7 +15,7 @@ quotes:
     quote: /quotes/janos-gereben
   -
     quote: /quotes/andrew-clements
-artwork: '{{ _site_root }}assets/img/tim-7.jpg'
+artwork: '{{ _site_root }}assets/img/tim-2.jpg'
 background_color: '#e4e4e4'
 ---
 

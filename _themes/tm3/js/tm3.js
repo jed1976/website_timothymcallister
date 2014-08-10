@@ -164,24 +164,6 @@ window.submitForm = function(form, action, callback) {
     });
 };
 
-window.toggleLogoOpacity = function() {
-    var y = Math.abs(this.y) || window.pageYOffset,
-        targetY = 600,
-        opacity = (100 - ((targetY - y) / targetY) * 100) / 100,
-        changeOpacity = function(opacity) {
-            document.getElementById('logo').style.backgroundColor = 'rgba(0, 0, 0, ' + opacity + ')';
-        };
-
-    if (y > targetY) {
-        changeOpacity(0.9);
-        return;
-    }
-
-    if (opacity > 0.9) return;
-
-    changeOpacity(opacity);
-};
-
 window.updateScreenSizeClass = function() {
     var className,
         html = document.querySelector('html'),
@@ -198,10 +180,6 @@ window.updateScreenSizeClass = function() {
 document.addEventListener('DOMContentLoaded', function() {
     updateScreenSizeClass();
     loadFastClick();
-
-    document.addEventListener('scroll', function() {
-        toggleLogoOpacity();
-    });
 
     document.body.addEventListener('click', function(event) {
         var target = event.target;
