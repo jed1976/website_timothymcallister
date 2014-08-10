@@ -13,7 +13,7 @@ fields:
     destination: assets/audio
     display: ''
     instructions: Sample must be in MP3 format
-    type: audiofile
+    type: file
 
 include:
  - hidden

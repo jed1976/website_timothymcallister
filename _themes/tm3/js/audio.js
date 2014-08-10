@@ -1,8 +1,8 @@
 var currentPlayButton = null,
-    playSampleLabel = 'Play Sample',
+    playSampleLabel = 'play',
     playingClass = 'playing',
     previousSound = null,
-    stopSampleLabel = 'Stop Playing',
+    stopSampleLabel = 'stop',
     soundFadeDuration = 1000,
     soundToUnload = null,
     timer = null,
@@ -11,7 +11,7 @@ var currentPlayButton = null,
 
 // Insert Play Sample buttons
 [].forEach.call(document.querySelectorAll('#content .button.sample:first-of-type'), function(el) {
-    el.insertStringBefore('<span class="sample button xx-small pad">' + playSampleLabel + '</span>');
+    el.insertStringBefore('<span class="sample button light xx-small pad" data-icon="' + playSampleLabel + '"></span>');
 });
 
 var playRecording = function(id) {
@@ -67,7 +67,7 @@ var stopSound = function(sound) {
 };
 
 var togglePlayButtonLabel = function(button) {
-    button.innerHTML = button.hasClass(playingClass) ? playSampleLabel : stopSampleLabel;
+    button.setAttribute('data-icon', button.hasClass(playingClass) ? playSampleLabel : stopSampleLabel);
     button.toggleClass(playingClass);
 };
 

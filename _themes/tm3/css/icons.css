@@ -37,8 +37,8 @@
 [data-icon=twitter]::before { content: "\e609"; }
 [data-icon=facebook]::before { content: "\e60a"; }
 [data-icon=ensemble]::before { content: "\e60b"; }
-[data-icon=pause]::before { content: "\e60c"; }
-[data-icon=play]::before { content: "\e60d"; }
+[data-icon=play]::before { content: "\e60c"; }
+[data-icon=stop]::before { content: "\e60d"; }
 [data-icon=menu]::before { content: "\e60e"; }
 [data-icon=close]::before { content: "\e60f"; }
 [data-icon=down]::before { content: "\e604"; }
