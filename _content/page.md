@@ -9,6 +9,7 @@ _fieldset: home
 _template: home
 vertical_position: center
 horizontal_position: center
+quote_position: right
 quotes:
   -
     quote: /quotes/john-adams

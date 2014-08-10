@@ -6,6 +6,15 @@
     right: 30px;
 }
 
+.hero .quotes.center,
+.hero .quotes.left,
+.hero .quotes.right
+{
+    left: 30px;
+    right: 30px;
+    width: auto;
+}
+
 .hero .quote
 {
     bottom: 0;
@@ -46,11 +55,11 @@
 @media (min-width: 768px)
 {
     .hero .quote blockquote { font-size: 1.75rem; }
-    .hero .quotes { left: 60px; width: 50%; }
+    .hero .quotes.left { right: auto; width: 50%; }
+    .hero .quotes.right { left: auto; width: 50%; }
 }
 
 @media (min-width: 1024px)
 {
     .hero .quote blockquote { font-size: 2rem; }
-    .hero .quotes { left: 100px; }
 }

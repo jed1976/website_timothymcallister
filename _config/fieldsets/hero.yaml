@@ -29,6 +29,14 @@ fields:
       right: Right
     type: radio
 
+  quote_position:
+    default: left
+    options:
+      left: Left
+      center: Center
+      right: Right
+    type: radio
+
   background_color:
     default: #ffffff
     type: color

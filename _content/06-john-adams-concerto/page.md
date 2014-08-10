@@ -10,6 +10,7 @@ _template: adams-concerto
 artwork: '{{ _site_root }}assets/img/tim-adams-bw.jpg'
 vertical_position: top
 horizontal_position: center
+quote_position: right
 background_color: '#212121'
 name: Andrew C. Elsesser
 position: Booking Manager
