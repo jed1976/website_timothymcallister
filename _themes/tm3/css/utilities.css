@@ -42,7 +42,7 @@
     width: 100%;
 }
 
-.js .sample[href] { display: none; }
+.button[href] { display: none; }
 
 @media (min-width: 768px)
 {

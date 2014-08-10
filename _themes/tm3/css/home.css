@@ -1,0 +1,22 @@
+#live-performances
+{
+    margin: -15px -30px 0 -30px;
+    padding: 0;
+    list-style: none;
+    position: relative;
+    z-index: 1;
+}
+
+#live-performances li
+{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    display: block;
+    height: auto;
+    margin: 0;
+    padding: 15px 30px;
+    position: relative;
+    vertical-align: top;
+    width: 100%;
+}
+
+#live-performances li:last-of-type { border-bottom: 0; }
