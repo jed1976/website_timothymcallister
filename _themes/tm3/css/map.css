@@ -1,4 +1,8 @@
-.js #map { height: auto; }
+.js #map
+{
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    height: auto;
+}
 
 #map-canvas { display: none; }
 

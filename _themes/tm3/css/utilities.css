@@ -9,7 +9,7 @@
 .grid, .grid-pad { position: relative; }
 .grid-pad { padding: 30px; }
 .aside .grid-pad { padding: 15px; }
-.grid.pad { margin: 10px 0; }
+.grid.pad { margin: 20px 0 10px 0; }
 .negative { margin: 0 -30px; }
 .scrollable { -webkit-overflow-scrolling: touch; }
 .text-center { text-align: center; }
