@@ -1,8 +1,4 @@
-.js #map
-{
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    height: auto;
-}
+.js #map { height: auto; }
 
 #map-canvas { display: none; }
 
@@ -26,6 +22,8 @@
 
 @media (min-width: 768px)
 {
+    .map #map { border: 1px solid rgba(0, 0, 0, 0.1); }
+
     .gm-style-iw .h-event .p-summary
     {
         display: block;
