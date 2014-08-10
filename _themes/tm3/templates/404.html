@@ -1,11 +1,11 @@
 {{ theme:partial src="hero" use_context="true" }}
 
-<main id="content" role="main">
+<main id="content" role="main" style="background-color: {{ background_color }};">
     <div class="grid-pad">
         <h2 class="style-1">{{ title }}</h2>
 
         <div class="grid">
-            {{ content|widont }}
+            {{ content|markdown }}
         </div>
     </div>
 </main>

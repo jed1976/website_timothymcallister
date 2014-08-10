@@ -7,7 +7,7 @@ theme: dark
 title: John Adams Concerto
 _fieldset: adams-concerto
 _template: adams-concerto
-artwork: '{{ _site_root }}assets/img/tim-adams-bw.jpg'
+artwork: '{{ _site_root }}assets/img/tim-adams.jpg'
 vertical_position: top
 horizontal_position: center
 quote_position: right
