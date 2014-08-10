@@ -1,14 +1,14 @@
 ---
-page_icon: music-conductor
+page_icon: premieres
 page_id: premieres
 page_stylesheet: premieres
 theme: dark
 title: Premieres
-artwork: '{{ _site_root }}assets/img/tim-premieres.jpg'
+artwork: '{{ _site_root }}assets/img/tim-5.jpg'
 _fieldset: premieres
 _template: premieres
-vertical_position: center
-horizontal_position: left
+vertical_position: bottom
+horizontal_position: right
 quotes:
   -
     quote: /quotes/imagination-97
@@ -16,7 +16,7 @@ quotes:
     quote: /quotes/william-robin
   -
     quote: /quotes/fred-child
-background_color: '#233049'
+background_color: '#293857'
 ---
 
 

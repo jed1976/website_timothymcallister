@@ -1,6 +1,6 @@
 {{ theme:partial src="hero" }}
 
-<section id="content">
+<section id="content" style="background-color: {{ background_color }};">
     <div class="grid-pad">
         <h2 class="style-1">Latest Release</h2>
 
@@ -38,23 +38,31 @@
         </div>
     </div>
 
-    <div class="grid-pad">
+    <div class="grid-pad no-padding-bottom" id="live-performances">
         <h2 class="style-1">Live Performances</h2>
 
-        <ul id="live-performances">
-            {{ entries:listing folder="live-performances" show_hidden="true" sort_dir="asc" }}
-            <li>
-                <article class="grid" id="{{ slug }}">
-                    <div class="col-3-4">
-                        <h3>{{ title }}</h3>
-                        <h4>{{ composer }}</h4>
-                    </div>
-                    <div class="col-1-4 text-right">
-                        <a class="sample button x-small pad" href="{{ sample }}">Play Sample</a>
-                    </div>
-                </article>
-            </li>
-            {{ /entries:listing }}
-        </ul>
+        {{ get_content from="live-performances" show_hidden="true" }}
+        <div class="grid negative hero" style="background-image: url({{ artwork }}); background-position: {{ vertical_position }} {{ horizontal_position }}; background-size: 50%;">
+            <div class="grid-pad">
+                <div class="col-1-2 float-right">
+                    <ul id="live-performances-list">
+                        {{ entries:listing folder="live-performances" show_hidden="true" sort_dir="asc" }}
+                        <li>
+                            <article class="grid" id="{{ slug }}">
+                                <div class="col-3-4">
+                                    <h4>{{ title }}</h4>
+                                    <h5>{{ composer }}</h5>
+                                </div>
+                                <div class="col-1-4 text-right">
+                                    <a class="sample button x-small pad" data-icon="play" href="{{ sample }}">Play Sample</a>
+                                </div>
+                            </article>
+                        </li>
+                        {{ /entries:listing }}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {{ /get_content }}
     </div>
 </section>

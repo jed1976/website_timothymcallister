@@ -55,7 +55,7 @@
 {
     .js #content
     {
-        float: right;
+        float: left;
         padding-top: 80px;
         width: 50%;
     }
@@ -63,9 +63,9 @@
     .js .hero
     {
         bottom: 0;
-        left: 0;
         min-height: 0;
         position: fixed;
+        right: 0;
         top: 0;
         width: 50%;
     }

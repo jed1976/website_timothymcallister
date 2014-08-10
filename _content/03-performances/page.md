@@ -1,7 +1,7 @@
 ---
 enable_map: true
 enable_quotes: true
-page_icon: calendar
+page_icon: performances
 page_id: performances
 page_js: performances
 page_stylesheet: performances

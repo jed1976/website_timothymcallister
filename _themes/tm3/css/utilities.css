@@ -6,11 +6,14 @@
 .js .fadein, .js .hero .quote.fadein { opacity: 1; }
 .js .fadeout { opacity: 0; }
 .fixed { bottom: 0; left: 0; position: fixed; right: 0; top: 0; }
+.float-left { float: left !important; }
+.float-right { float: right !important; }
 .grid, .grid-pad { position: relative; }
 .grid-pad { padding: 30px; }
 .aside .grid-pad { padding: 15px; }
 .grid.pad { margin: 20px 0 10px 0; }
 .negative { margin: 0 -30px; }
+.no-padding-bottom { padding-bottom: 0; }
 .scrollable { -webkit-overflow-scrolling: touch; }
 .text-center { text-align: center; }
 .text-left { text-align: left; }
@@ -42,7 +45,7 @@
     width: 100%;
 }
 
-.button[href] { display: none; }
+.button.sample[href] { display: none; }
 
 @media (min-width: 768px)
 {
@@ -52,6 +55,8 @@
         padding-right: 30px;
         position: relative;
     }
+
+    [class*='col-']:last-of-type { padding-right: 0; }
 
     .col-1-8 { width: 12.5%; }
     .col-1-7 { width: 14.28571429%; }
