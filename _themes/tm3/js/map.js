@@ -4,6 +4,29 @@ var initializeMap = function(callback) {
     // Variables
     var activeClass = 'active',
         currentRow,
+        featureOpts = [
+            {
+                stylers: [
+                    { color: '#cccccc' },
+                    { visibility: 'simplified' }
+                ]
+            },
+
+            {
+                elementType: 'labels',
+                stylers: [
+                    { visibility: 'off' }
+                ]
+            },
+
+            {
+                featureType: 'water',
+                stylers: [
+                    { color: '#5685c5' }
+                ]
+            }
+        ],
+        MY_MAPTYPE_ID = 'custom_style',
         markers = {},
         icon = new google.maps.MarkerImage('/_themes/tm3/img/marker.png', null, null, null, new google.maps.Size(25, 45)),
         infoWindow = new google.maps.InfoWindow({
@@ -16,12 +39,21 @@ var initializeMap = function(callback) {
             center: new google.maps.LatLng(23.0414243, -83.8188083),
             disableDefaultUI: true,
             draggable: false,
+            mapTypeControlOptions: {
+                mapTypeIds: [google.maps.MapTypeId.ROADMAP, MY_MAPTYPE_ID]
+            },
+            mapTypeId: MY_MAPTYPE_ID,
             scrollwheel: false,
             zoom: initialZoomLevel
         },
-        performanceList = document.getElementById('performance-list');
+        performanceList = document.getElementById('performance-list'),
+        styledMapOptions = {
+            name: 'Custom Style'
+        };
 
     var map = new google.maps.Map(mapCanvas, mapOptions);
+    var customMapType = new google.maps.StyledMapType(featureOpts, styledMapOptions);
+    map.mapTypes.set(MY_MAPTYPE_ID, customMapType);
 
     var createMarkers = function() {
         var eventEl, coordinates, marker, title;
@@ -90,7 +122,7 @@ var initializeMap = function(callback) {
 
 var resizeMap = function() {
     var logoHeight = parseInt(document.getElementById('logo').getStyle('height'));
-    document.getElementById('map').style.height = window.getScreenSize() > 1 ? (window.innerHeight - logoHeight) + 'px' : 'auto';
+    document.getElementById('map').style.height = window.getWindowSize() >= 1 ? (window.innerHeight - logoHeight) + 'px' : 'auto';
 };
 
 window.addEventListener('load', function load() {
