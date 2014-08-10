@@ -1,10 +1,10 @@
 ---
-page_icon: press
-page_id: press
+page_icon: applause
+page_id: applause
 theme: dark
-title: Press/Testimonials
-_fieldset: press
-_template: press
+title: Applause
+_fieldset: applause
+_template: applause
 artwork: '{{ _site_root }}assets/img/tim-1.jpg'
 vertical_position: top
 horizontal_position: right
@@ -16,6 +16,5 @@ quotes:
     quote: /quotes/janos-gereben
   -
     quote: /quotes/robert-mccolley
-critics_title: Applause
 background_color: '#272422'
 ---

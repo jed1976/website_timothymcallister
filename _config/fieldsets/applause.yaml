@@ -1,0 +1,8 @@
+title: Press
+
+hide: true
+
+include:
+  - hidden
+  - quotes
+  - hero
