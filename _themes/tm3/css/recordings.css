@@ -11,32 +11,18 @@
     z-index: 0;
 }
 
-#recordings-list li,
-#live-performances ul
+#recordings-list li
 {
-    margin: 0 0 40px 0;
+    margin: 0 0 60px 0;
     padding: 0;
     list-style: none;
     position: relative;
     z-index: 1;
 }
 
-#recordings-list li:last-of-type,
-#live-performances ul
+#recordings-list li:last-of-type
 {
     margin-bottom: 0;
-}
-
-#live-performances li
-{
-    display: block;
-    font-size: 80%;
-    height: auto;
-    margin: 0;
-    padding: 0;
-    position: relative;
-    vertical-align: top;
-    width: 100%;
 }
 
 #recordings-list img
@@ -60,31 +46,10 @@
 #next-recording-overlay { opacity: 0; }
 #recordings-list { padding: 0; }
 #recordings-list .recording { margin-bottom: 90px; }
-#live-performances li:last-of-type { margin-bottom: 0; }
-.js #live-performances li .sample.button { position: static; }
 .js div.iScrollVerticalScrollbar.iScrollLoneScrollbar { right: 2px !important; width: 3px !important; }
 .js div.iScrollIndicator { border-color: rgba(255, 255, 255, 0.15) !important; }
 
 @media (min-width: 768px)
 {
     #content { padding: 60px 0 0 0; }
-
-    .js #live-performances li
-    {
-        display: inline-block;
-        min-height: 160px;
-        margin-bottom: 0;
-        margin-right: -4px;
-        padding-right: 20px;
-        width: 33%;
-    }
-
-    .js #live-performances li .sample.button
-    {
-        bottom: 0;
-        left: 0;
-        position: absolute;
-        right: 20px;
-        width: auto;
-    }
 }
