@@ -44,6 +44,8 @@
         padding: 0;
     }
 
+    .gm-style-iw .h-event .calendar { right: 0; }
+
     .gm-style-iw .h-event dt.p-name,
     .gm-style-iw .h-event .p-location
     {

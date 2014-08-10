@@ -16,6 +16,7 @@
     font-size: 11px;
     font-weight: 700;
     margin: 0 !important;
+    right: 10px;
     text-align: center;
     text-transform: uppercase;
     top: 3px;
@@ -46,7 +47,7 @@
 {
     margin-bottom: 10px;
     min-height: 70px;
-    padding-left: 70px;
+    padding-right: 70px;
 }
 
 .h-event .p-location .p-name
@@ -115,8 +116,7 @@
         font-weight: 400;
         display: block;
         overflow: hidden;
-        padding-left: 70px;
-        padding-right: 10px;
+        padding-right: 70px;
         text-overflow: ellipsis;
         white-space: nowrap;
     }
