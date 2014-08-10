@@ -2,7 +2,7 @@
 
 #live-recordings-list
 {
-    margin: 30px 0;
+    margin: 0;
     padding: 0;
     list-style: none;
     position: relative;
@@ -14,15 +14,12 @@
     display: block;
     height: auto;
     margin: 0 0 15px 0;
+    padding: 0;
     position: relative;
     vertical-align: top;
-    width: 100%;
-    padding: 0 30px;
 }
 
 #live-recordings-list li:last-of-type { border-bottom: 0; }
-
-#live-recordings-list li .sample { margin: 0; }
 
 @media (min-width: 1024px)
 {
@@ -35,7 +32,7 @@
         top: 0;
     }
 
-    .col-1-2:first-of-type
+    #live-recordings .col-1-2:first-of-type
     {
         bottom: 0;
         left: 0;
@@ -44,5 +41,5 @@
         z-index: 0;
     }
 
-    .col-1-2:last-of-type { float: right; }
+    #live-recordings .col-1-2:last-of-type { float: right; }
 }
