@@ -5,7 +5,8 @@ page_stylesheet: news
 title: News
 artwork: '{{ _site_root }}assets/img/tim-6.jpg'
 vertical_position: center
-horizontal_position: center
+horizontal_position: right
+quote_position: left
 _default_folder_template: article
 _fieldset: news
 _template: news
@@ -14,7 +15,7 @@ quotes:
     quote: /quotes/jeremy-eichler
   -
     quote: /quotes/rob-barnett
-background_color: '#e4e4e4'
+background_color: '#FBFBFB'
 ---
 
 

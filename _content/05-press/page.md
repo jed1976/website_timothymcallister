@@ -8,6 +8,7 @@ _template: press
 artwork: '{{ _site_root }}assets/img/tim-1.jpg'
 vertical_position: top
 horizontal_position: right
+quote_position: left
 quotes:
   -
     quote: /quotes/mark-stryker

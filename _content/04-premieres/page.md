@@ -9,6 +9,8 @@ _fieldset: premieres
 _template: premieres
 vertical_position: center
 horizontal_position: center
+quote_position: center
+background_color: '#26221f'
 quotes:
   -
     quote: /quotes/imagination-97
@@ -16,10 +18,4 @@ quotes:
     quote: /quotes/william-robin
   -
     quote: /quotes/fred-child
-background_color: '#26221f'
 ---
-
-
-
-
-
