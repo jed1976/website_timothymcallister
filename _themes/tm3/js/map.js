@@ -92,7 +92,7 @@ var resizeMap = function() {
     var logoHeight = parseInt(document.getElementById('logo').getStyle('height'));
         headerHeight = parseInt(document.getElementById('content').querySelector('.style-1').getStyle('height'));
 
-    document.getElementById('map').style.height = window.getWindowSize() > 1 ? (window.innerHeight - logoHeight - (headerHeight * 2)) + 'px' : 'auto';
+    document.getElementById('map').style.height = window.getWindowSize() > 1 ? (window.innerHeight - logoHeight - (headerHeight * 2) - 20) + 'px' : 'auto';
 };
 
 window.addEventListener('load', function load() {
