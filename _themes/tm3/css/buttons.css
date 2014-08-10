@@ -27,6 +27,7 @@ button.button
 .button.x-large { font-size: 120%; }
 .button.xx-large { font-size: 130%; }
 .button.pad { margin: 15px 0; }
+.button.sample[data-icon] { font-size: 2rem; line-height: 2rem; padding: 5px; }
 
 @media (min-width: 768px)
 {
