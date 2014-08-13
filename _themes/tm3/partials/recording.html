@@ -1,6 +1,6 @@
 <article class="row" id="{{ slug }}">
     <div class="col-{{ if split_layout }}1-2{{ else }}1-3{{ /if }}">
-        {{ if recording_url }}<a href="{{ recording_url }}" title="{{ publisher_title }}">{{ /if }}
+        {{ if recording_url }}<a href="{{ recording_url }}" title="{{ publisher_title }}" target="_blank">{{ /if }}
             <div class="row">
                 <img alt="{{ title }}" src="{{ artwork }}">
                 {{ if show_samples && sample }}<a class="button center light shadow sample" data-icon="play" href="{{ sample }}">Play</a>{{ /if }}
@@ -37,7 +37,7 @@
                 <tr>
                     <td colspan="2">
                         <div class="pad">
-                            <a class="button block link" href="{{ recording_url }}" title="{{ publisher_title }}">More Information</a>
+                            <a class="button block link" href="{{ recording_url }}" target="_blank" title="{{ publisher_title }}">More Information</a>
                         </div>
                     </td>
                 </tr>
