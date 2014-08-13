@@ -39,6 +39,9 @@
 .margin { margin: 24px; }
 .margin-horizontal { margin: 0 24px; }
 .margin-vertical { margin: 24px 0; }
+.margin-half { margin: 12px; }
+.margin-half-horizontal { margin: 0 12px; }
+.margin-half-vertical { margin: 12px 0; }
 
 .pad { padding: 24px; }
 .pad-horizontal { padding: 0 24px; }
