@@ -12,7 +12,6 @@ td, th
     padding: 6px 0;
     text-align: left;
     vertical-align: top;
-    width: 50%;
 }
 
 tr:last-child td, tr:last-child th { border-bottom: 0; }
