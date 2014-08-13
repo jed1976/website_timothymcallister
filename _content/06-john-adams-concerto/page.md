@@ -8,7 +8,7 @@ title: John Adams Concerto
 _fieldset: adams-concerto
 _template: adams-concerto
 artwork: '{{ _site_root }}assets/img/tim-adams.jpg'
-vertical_position: top
+vertical_position: center
 horizontal_position: center
 quote_position: right
 background_color: '#212121'
