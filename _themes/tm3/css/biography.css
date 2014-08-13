@@ -1,18 +1,8 @@
-@media (min-width: 1024px)
+@media (min-width: 768px)
 {
-    .js #content
+    #content
     {
-        float: left;
-        padding-top: 80px;
-        width: 50%;
-    }
-
-    .js .hero
-    {
-        bottom: 0;
-        position: fixed;
-        right: 0;
-        top: 0;
-        width: 50%;
+        margin: 0 auto;
+        max-width: 960px;
     }
 }

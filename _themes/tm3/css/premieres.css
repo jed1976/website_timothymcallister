@@ -2,30 +2,20 @@
 #timeline [data-icon]::before
 {
     font-size: 2rem;
-    left: 20px;
+    right: 20px;
     position: absolute;
 }
 
-#timeline li:last-child { border-bottom: 0; }
+#legend [data-icon]::before { left: 20px; right: auto; }
 
 #timeline td,
 #timeline th { border: 0; }
 
-@media (min-width: 1024px)
+@media (min-width: 768px)
 {
-    .js #content
+    #content
     {
-        float: right;
-        padding-top: 80px;
-        width: 50%;
-    }
-
-    .js .hero
-    {
-        bottom: 0;
-        min-height: 0;
-        position: fixed;
-        top: 0;
-        width: 50%;
+        margin: 0 auto;
+        max-width: 960px;
     }
 }
