@@ -47,11 +47,11 @@
         <div class="col-1-2">
             <ul class="list" id="live-recordings-list">
                 {{ entries:listing folder="live-recordings" show_hidden="true" sort_dir="asc" }}
-                <li class="pad-half divider-dark">
-                    <article class="row" id="{{ slug }}">
+                <li class="divider-dark">
+                    <article class="row pad-half-icon-right" id="{{ slug }}">
                         <h4 class="title">{{ title }}</h4>
                         <h5 class="subhead">{{ composer }}</h5>
-                        <a class="button positioned right sample" data-icon="play" href="{{ sample }}">Play</a>
+                        <a class="button border light positioned right sample" data-icon="play" href="{{ sample }}">Play</a>
                     </article>
                 </li>
                 {{ /entries:listing }}

@@ -45,11 +45,13 @@
 
 .pad { padding: 24px; }
 .pad-horizontal { padding: 0 24px; }
-.pad-icon { padding: 24px 24px 24px 72px; }
+.pad-icon-left { padding: 24px 24px 24px 72px; }
+.pad-icon-right { padding: 24px 72px 24px 24px; }
 .pad-vertical { padding: 24px 0; }
 .pad-half { padding: 12px; }
 .pad-half-horizontal { padding: 0 12px; }
-.pad-half-icon { padding: 12px 12px 12px 72px; }
+.pad-half-icon-left { padding: 12px 12px 12px 72px; }
+.pad-half-icon-right { padding: 12px 72px 12px 12px; }
 .pad-half-vertical { padding: 24px 0; }
 
 [class*=row]
