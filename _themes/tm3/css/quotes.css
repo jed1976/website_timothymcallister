@@ -33,23 +33,21 @@
 .js .hero .quote { opacity: 0; }
 .hero .quote:first-child { opacity: 1; }
 
-.quotes.left
-{
-    left: 24px;
-    right: auto;
-    text-align: left;
-}
-
-.quotes.right
-{
-    right: 24px;
-    text-align: right;
-}
-
-.small { font-size: 12px !important; }
-
 @media (min-width: 768px)
 {
+    .quotes.left
+    {
+        left: 24px;
+        right: auto;
+        text-align: left;
+    }
+
+    .quotes.right
+    {
+        right: 24px;
+        text-align: right;
+    }
+
     .hero .quotes.half { width: 50%; }
     .hero .quotes.half.right { left: auto; }
 }

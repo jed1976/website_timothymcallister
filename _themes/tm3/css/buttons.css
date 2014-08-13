@@ -25,6 +25,15 @@
 
 .button.sample
 {
+    left: 50%;
+    margin-left: -32px;
+    margin-top: -32px;
+    position: absolute;
+    top: 50%;
+}
+
+.button.sample
+{
     background: rgba(255, 255, 255, 0.25);
     border-radius: 128px;
     border-width: 3px;

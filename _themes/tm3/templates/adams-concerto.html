@@ -35,7 +35,9 @@
                 {{ if pdfs }}
                     <div class="grid pad text-center">
                         {{ pdfs }}
-                        <a class="button download link pad" href="{{ download file="{pdf}" as="{pdf}" }}">{{ label }}</a>
+                        <div class="pad-half">
+                            <a class="button block border download" href="{{ download file="{pdf}" as="{pdf}" }}">{{ label }}</a>
+                        </div>
                         {{ /pdfs }}
                     </div>
                 {{ endif }}
