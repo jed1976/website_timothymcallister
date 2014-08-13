@@ -5,7 +5,7 @@
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 3;
+    z-index: 5;
 }
 
 #menu-toggle
@@ -19,7 +19,7 @@
     text-align: center;
     top: 2px;
     width: 48px;
-    z-index: 3;
+    z-index: 5;
 }
 
 #menu
@@ -39,7 +39,7 @@
     top: 0;
     transition: .3s ease all;
     width: 0;
-    z-index: 2;
+    z-index: 4;
     -webkit-overflow-scrolling: touch;
 }
 

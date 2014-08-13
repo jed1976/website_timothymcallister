@@ -164,10 +164,11 @@ td, th
 .white-100,
 .light-text,
 .quotes *,
-.checked ~ #logo a,
 .dark *,
 .dark .link,
-.button.sample.light[data-icon]::before
+.button.sample.light[data-icon]::before,
+.button.light[data-icon]::before,
+.button.light
 { color: #FFF; }
 
 
