@@ -9,8 +9,7 @@ form { margin: 20px 0; }
 [type=text],
 textarea
 {
-    border: 0;
-    border-bottom: 1px solid #DBDBDB;
+    border: 1px solid #DBDBDB;
     border-radius: 0;
     font-size: 13px;
     margin-bottom: 10px;
