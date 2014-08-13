@@ -178,6 +178,8 @@ window.updateScreenSizeClass = function() {
 };
 
 document.addEventListener('DOMContentLoaded', function() {
+    var body = document.body;
+
     updateScreenSizeClass();
     loadFastClick();
 
@@ -193,6 +195,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (target.hasClass('u-url') ||
             target.hasClass('email') ||
+            target.hasClass('sample') ||
             target.hasClass('download')) return;
 
         linkLocation = target.getAttribute('href');
@@ -211,9 +214,16 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Menu toggle listener
-    document.querySelector('#menu-toggle').addEventListener('click', function(event) {
-        event.target.toggleClass('checked');
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+        body.toggleClass('checked');
     });
+
+    if (window.getScreenSize() < 2) {
+        body.addEventListener('touchmove', function(event) {
+            if (event.target.hasClass('scrollable'))
+                event.preventDefault();
+        });
+    };
 });
 
 window.addEventListener('load', function load() {

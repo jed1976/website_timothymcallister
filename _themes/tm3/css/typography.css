@@ -1,5 +1,7 @@
+html { font-size: 16px; }
+@media (min-width: 768px) { html { font-size: 17px; } }
+
 body,
-html,
 .gm-style
 {
     font-family: 'brandon-grotesque', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
@@ -9,81 +11,185 @@ html,
     -webkit-font-smoothing: antialiased;
 }
 
-body
-{
-    color: #35383D;
-    font-size: 1.4rem;
-    line-height: 1.57142857142857; /* 22px / 14px; (line-height / base) */
-}
+.quote { font-family: 'museo-slab'; }
 
-html
-{
-    font-size: 75%; /* 12px; 1.0rem = 12px */
-    line-height: 1.5; /* 21px */
-}
-
+/* Resets */
 a { text-decoration: none; }
-h1, h2, h3, h4, h5, h6 { line-height: 1.35; margin: 0 0 0.5rem 0; }
-h1 { font-size: 2.4rem; }
-h2 { font-size: 2rem; }
-h3 { font-size: 2.5rem; font-weight: 400; }
-h4 { font-size: 1.6rem; }
-h5 { font-size: 1.3rem; font-weight: 400; }
-h6 { font-size: 1rem; font-weight: 400; }
-p { margin-bottom: 2rem; }
-em { font-weight: 400; }
-strong { font-weight: 700; }
+em { font-style: normal; }
+strong { font-weight: 400; }
+
+/* Standard Styles */
+.display-4
+{
+    font-size: 7rem;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 3.0rem;
+    margin: 0;
+}
+
+.display-3
+{
+    font-size: 3.5rem;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 3.0rem;
+    margin: 0;
+}
+
+.display-2
+{
+    font-size: 2.8125rem;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 3.42857142857143rem;
+    margin: 0;
+}
+
+.display-1
+{
+    font-size: 2.125rem;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 2.85714285714286rem;
+    margin: 0;
+}
+
+.headline
+{
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 2.28571428571429rem;
+    margin: 0;
+}
+
+.title
+{
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 1.75rem;
+    margin: 0;
+}
+
+.subhead
+{
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 2.1rem;
+    margin: 0;
+}
+
+.body-2,
+.body-1
+{
+    font-size: 0.875rem;
+    letter-spacing: 0;
+    line-height: 1.42857142857143rem;
+    margin: 0;
+}
+
+.body-2
+{
+    font-weight: 700;
+    line-height: 1.71428571428571rem;
+}
+
+.caption
+{
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0;
+    margin: 0;
+}
+
+
+@media (min-width: 768px)
+{
+    .button { width: auto; }
+}
+
+/* Lists */
+.list { list-style: none; margin: 0; padding: 0; }
+.square { list-style: square; }
+.disc { list-style: disc; }
+.divider-dark { border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+.divider-light { border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+.divider:last-of-type { border: 0; }
+
+/* Colors */
+.callout { background-color: #353639; }
+#menu li:hover { background-color: #607d8b; }
+
+.black-87,
+.primary-text,
+body,
+.gm-style-iw .panel *,
+.dark [type=email], .dark [type=text],
+.dark textarea
+{ color: #202020; }
+
+.black-54,
+.secondary-text,
+.button.sample[data-icon]::before
+{ color: #727272; }
+
+.black-26,
+.hint-text
+{ color: #B9B9B9; }
+
+.black-12
+{ color: #DBDBDB; }
+
+td, th
+{
+    border-color: #DBDBDB;
+}
 
 .link,
 .link:link,
 .link:visited,
 .gm-style-iw .link,
 .gm-style-iw .link:link,
-.gm-style-iw .link:visited { color: #3b597d; }
+.gm-style-iw .link:visited
+{ color: #03a9f4; }
 
-.aside,
-.aside *,
-.aside .link { color: #fff; }
+#logo a,
+#menu a,
+#menu-toggle,
+.callout *,
+.callout .link,
+.white-100,
+.light-text,
+.quotes *,
+.checked ~ #logo a,
+.dark *,
+.dark .link,
+.button.sample.light[data-icon]::before
+{ color: #FFF; }
 
-.style-1
+
+/* Specific Elements */
+#logo
 {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-    font-weight: 400;
-    letter-spacing: 0.25rem;
-    margin-bottom: 0;
-    margin-left: -30px;
-    margin-right: -30px;
-    padding: 0 30px 10px 30px;
+    line-height: 2.25rem;
+    margin: 0;
+    padding-left: 12px;
+    letter-spacing: 0.125rem;
     text-transform: uppercase;
 }
 
-.vcard
+#menu a
 {
-    margin: 30px 0 0 0;
-    padding: 0;
+    font-weight: 400;
 }
 
-.vcard dt,
-.vcard dd
+#menu [data-icon]::before
 {
-    margin: 0;
-    padding: 0;
+    font-size: 2rem;
+    margin-right: 16px;
 }
 
-.vcard .email
-{
-    font-weight: 700;
-    -ms-word-break: break-all;
-    word-break: break-all;
-    word-break: break-word;
-}
-
-@media (min-width: 768px)
-{
-    html {  font-size: 75%; } /* 12px */
-}
-
-@media (min-width: 1024px)
-{
-    html {  font-size: 81.25%; } /* 14px */
-}
+#menu-toggle::before { font-size: 2.07rem; }

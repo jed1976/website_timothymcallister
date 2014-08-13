@@ -1,15 +1,17 @@
 {{ theme:partial src="hero" short="true" use_context="true" }}
 
 <main id="content" role="main" style="background-color: {{ background_color }};">
-    <div class="grid-pad">
-        <h2 class="style-1">News</h2>
+    <div id="articles">
+        <div class="pad">
+            <h2 class="display-1">News</h2>
 
-        <div class="grid-pad negative">
-            {{ theme:partial src="article" use_context="true" }}
-        </div>
+            <div class="pad-vertical">
+                {{ theme:partial src="article" use_context="true" }}
+            </div>
 
-        <div class="grid pad text-center">
-            <a class="button small" href="/news">All News</a>
+            <div class="pad text-center">
+                <a class="button link" href="/news">All News</a>
+            </div>
         </div>
     </div>
 </main>

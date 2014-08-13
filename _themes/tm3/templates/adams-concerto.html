@@ -1,9 +1,9 @@
-{{ theme:partial src="hero" use_context="true" }}
+{{ theme:partial half_size="true" src="hero" use_context="true" }}
 
 <main id="content" role="main" style="background-color: {{ background_color }};">
     {{ if booking_title }}
-    <div class="grid-pad">
-        <h2 class="style-1">{{ booking_title }}</h2>
+    <div class="row pad">
+        <h2 class="display-1">{{ booking_title }}</h2>
         <div class="col-2-3">
             {{ theme:partial src="vcard" use_context="true" }}
         </div>
@@ -14,13 +14,13 @@
     {{ /if }}
 
     {{ if downloads_title }}
-    <div class="grid-pad">
-        <h2 class="style-1">{{ downloads_title }}</h2>
+    <div class="pad">
+        <h2 class="display-1">{{ downloads_title }}</h2>
 
-        <div class="grid-pad negative">
+        <div class="row pad-vertical">
             <div class="col-2-3">
                 {{ if downloads }}
-                <div class="grid">
+                <div class="row">
                 {{ downloads }}
                     <div class="col-1-{{ total_results }}">
                         <a href="{{ download file="{photo_download}" as="{photo_download}" }}" title="Click to download this photo"><img alt="" src="{{ photo_download }}" /></a>
@@ -35,7 +35,7 @@
                 {{ if pdfs }}
                     <div class="grid pad text-center">
                         {{ pdfs }}
-                        <a class="button pad xx-small expand download" href="{{ download file="{pdf}" as="{pdf}" }}">{{ label }}</a>
+                        <a class="button download link pad" href="{{ download file="{pdf}" as="{pdf}" }}">{{ label }}</a>
                         {{ /pdfs }}
                     </div>
                 {{ endif }}
@@ -46,36 +46,35 @@
     {{ /if }}
 
     {{ if video_title }}
-    <div class="grid-pad">
-        <h2 class="style-1">{{ video_title }}</h2>
-
-        <div class="grid-pad negative">
-            {{ theme:partial src="video" use_context="true" }}
-        </div>
+    <div class="pad">
+        <h2 class="display-1">{{ video_title }}</h2>
+    </div>
+    <div class="pad-horizontal">
+        {{ theme:partial src="video" use_context="true" }}
     </div>
     {{ /if }}
 
     {{ if recording_title }}
-    <div class="grid-pad">
-        <h2 class="style-1">{{ recording_title }}</h2>
+    <div class="row pad">
+        <h2 class="display-1">{{ recording_title }}</h2>
+    </div>
 
-        <div class="grid-pad negative">
-            {{ entries:listing conditions="slug:john-adams-city-noirsaxophone-concerto-david-robertsonst-louis-symphony" folder="recordings" limit="1" show_hidden="true" sort_by="datestamp" sort_dir="desc" }}
-            {{ theme:partial show_samples="true" src="recording" use_context="true" }}
-            {{ /entries:listing }}
-        </div>
+    <div class="row pad-horizontal">
+        {{ entries:listing conditions="slug:john-adams-city-noirsaxophone-concerto-david-robertsonst-louis-symphony" folder="recordings" limit="1" show_hidden="true" sort_by="datestamp" sort_dir="desc" }}
+            {{ theme:partial show_details="true" show_samples="true" src="recording" use_context="true" }}
+        {{ /entries:listing }}
     </div>
     {{ /if }}
 
     {{ if critics_title }}
-    <div class="grid-pad">
-        <h2 class="style-1">{{ critics_title }}</h2>
+    <div class="pad">
+        <h2 class="display-1">{{ critics_title }}</h2>
 
-        <div class="grid-pad negative">
+        <div class="row pad">
             {{ entries:listing conditions="adams_press:1" folder="quotes" show_hidden="true" sort_by="random" }}
                 <div class="col-1-2">
-                    <div class="grid-pad">
-                        {{ theme:partial src="quote" use_context="true" }}
+                    <div class="pad">
+                        {{ theme:partial size="small" src="quote" use_context="true" }}
                     </div>
                 </div>
             {{ /entries:listing }}

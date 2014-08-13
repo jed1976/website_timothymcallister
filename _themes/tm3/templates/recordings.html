@@ -1,10 +1,10 @@
 <section id="content">
     <div class="scroller">
-        <div class="grid-pad">
+        <div class="pad">
             <ul id="recordings-list">
                 {{ entries:listing folder="recordings" show_hidden="true" sort_by="date" sort_dir="desc" }}
                 <li class="grid-pad recording">
-                    {{ theme:partial src="recording" use_context="true" }}
+                    {{ theme:partial show_details="true" show_sample="true" src="recording" use_context="true" }}
                 </li>
                 {{ /entries:listing }}
             </ul>

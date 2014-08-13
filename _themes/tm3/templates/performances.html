@@ -1,9 +1,9 @@
-{{ theme:partial src="hero" use_context="true" }}
+{{ theme:partial half_size="true" src="hero" use_context="true" }}
 
 <section id="content" style="background-color: {{ background_color }};">
-    <div class="grid">
+    <div class="row">
         <div data-icon="down" id="year-selector-wrapper">
-            <ol>
+            <ol class="list">
                 {{ entries:listing folder="performances" group_by_date="Y" show_future="true" show_hidden="true" }}
                 {{ if grouped_date }}
                 <li><a class="link" href="?year={{ grouped_date }}">{{ grouped_date }}</a></li>

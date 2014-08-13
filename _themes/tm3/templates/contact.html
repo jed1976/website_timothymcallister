@@ -1,12 +1,12 @@
 <main id="content" role="main">
-    <div class="grid">
+    <div class="row">
         <div class="col-2-3">
             {{ entries:listing folder="contact" show_hidden="true" }}
             {{ theme:partial src="contact" use_context="true" }}
             {{ /entries:listing }}
         </div>
         <div class="col-1-3">
-            <div class="grid-pad" id="mailing-list-form-wrapper">
+            <div class="pad" id="mailing-list-form-wrapper">
                 {{ content|markdown }}
                 {{ theme:partial src="mailing-list-form" }}
             </div>
