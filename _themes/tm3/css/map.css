@@ -16,10 +16,12 @@
         margin-top: 0;
     }
 
-    .gm-style-iw .h-event .p-summary
-    {
-        display: block;
-    }
+    .gm-style-iw + div { display: none; }
+
+    .gm-style-iw { left: 20px !important; }
+
+    .gm-style-iw .h-event .p-summary,
+    .gm-style-iw .h-event .button { display: block; }
 
     .gm-style-iw .h-event
     {

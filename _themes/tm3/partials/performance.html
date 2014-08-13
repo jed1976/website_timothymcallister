@@ -1,8 +1,10 @@
 <article class="h-event{{ if datestamp|in_future }} future{{ /if }}{{ if datestamp|is_today }} today{{ /if }}" data-latitude="{{ latitude }}" data-longitude="{{ longitude }}">
+    <span class="subhead secondary-text"><time class="dt-start" datetime="{{ datestamp format="m-d-Y" }} {{ time }}">{{ datestamp format="l, F j" }} {{ if event_time }}, {{ event_time format="g:i A" }}{{ /if }}</time></span>
+
     <h4 class="title primary-text p-name">{{ title }}</h4>
 
     {{ if location }}
-    <h5 class="subhead p-location">
+    <h5 class="subhead p-location padding-half">
         <a class="p-name u-url link" href="http://www.google.com/maps/place/{{ location|urlencode }}/@{{ latitude }},{{ longitude }},17z">{{ location }}</a>
     </h5>
     {{ /if }}
@@ -13,36 +15,7 @@
     </div>
     {{ /if }}
 
-    <table class="p-description">
-        <tbody>
-            <tr>
-                <td class="subhead secondary-text"><time class="dt-start" datetime="{{ datestamp format="m-d-Y" }} {{ time }}">{{ datestamp format="l, F j" }} {{ if event_time }}, {{ event_time format="g:i A" }}{{ /if }}</time></td>
-            </tr>
-            {{ if conductor }}
-            <tr>
-                <td class="body-1 primary-text">
-                    {{ conductor }}<br>
-                    <span class="body-1 secondary-text">Conductor</span>
-                </td>
-            </tr>
-            {{ /if }}
-
-            {{ if ensemble }}
-            <tr>
-                <td class="body-1 primary-text">
-                    {{ ensemble }}<br>
-                    <span class="body-1 secondary-text">Ensemble</span>
-                </td>
-            </tr>
-            {{ /if }}
-
-            {{ if performance_url }}
-            <tr class="performance_url">
-                <td>
-                    <a class="button block u-url link" href="{{ performance_url }}">More Information</a>
-                </td>
-            </tr>
-            {{ /if }}
-        </tbody>
-    </table>
+    {{ if performance_url }}
+    <a class="button block border u-url margin-half-vertical" href="{{ performance_url }}">More Information</a>
+    {{ /if }}
 </article>
