@@ -1,7 +1,7 @@
 {{ theme:partial src="hero" use_context="true" }}
 
 <section id="content" style="background-color: {{ background_color }};">
-    <div class="row">
+    <div class="row pad-vertical">
         <table id="timeline">
             <tbody>
                 {{ entries:listing folder="premieres" group_by_date="Y" show_hidden="true" sort_by="date" sort_dir="desc" }}

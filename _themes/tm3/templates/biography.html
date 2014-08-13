@@ -5,9 +5,9 @@
         {{ content|widont }}
 
         {{ if pdfs }}
-        <div class="grid pad text-center">
+        <div class="text-center">
             {{ pdfs }}
-            <a class="button block border download margin-vertical" href="{{ download file="{pdf}" as="{pdf}" }}">{{ label }}</a>
+            <a class="button border light download margin-half-vertical" href="{{ download file="{pdf}" as="{pdf}" }}">{{ label }}</a>
             {{ /pdfs }}
         </div>
         {{ endif }}

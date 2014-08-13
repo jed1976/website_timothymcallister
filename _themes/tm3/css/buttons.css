@@ -23,7 +23,9 @@
     width: 100%;
 }
 
-.button.sample
+.button.sample.shadow { box-shadow: 0 0 2px #000; }
+
+.button.sample.center
 {
     left: 50%;
     margin-left: -32px;
@@ -37,7 +39,6 @@
     background: rgba(0, 0, 0, 0.25);
     border: 2px solid #fff;
     border-radius: 128px;
-    box-shadow: 0 0 2px #000;
     color: transparent;
     height: 64px;
     padding: 0;
