@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     window.addEventListener('resize', function load() {
-        resizeSection();
+//        resizeSection();
     });
 
-    resizeSection();
+  //  resizeSection();
 });
