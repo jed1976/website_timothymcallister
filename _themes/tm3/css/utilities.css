@@ -6,8 +6,8 @@
 .float-right { float: right !important; }
 .js .fadein, .js .hero .quote.fadein { opacity: 1; }
 .js .fadeout { opacity: 0; }
-.positioned { position: absolute; top: 0; }
-.right { right: 0; }
+.positioned { position: absolute; top: 50%; margin-top: -32px; }
+.right { right: 12px; }
 .scrollable { -webkit-overflow-scrolling: touch; }
 .text-center { text-align: center; }
 .text-left { text-align: left; }

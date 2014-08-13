@@ -19,7 +19,7 @@
                     <td>
                         <ul class="list">
                         {{ endif }}
-                            <li class="divider-light pad-icon row" {{ theme:partial src="icon-list" use_context="true" }}>
+                            <li class="divider-light pad-icon-left row" {{ theme:partial src="icon-list" use_context="true" }}>
                                 <h4 class="title">{{ title }}</h4>
                                 <h5 class="subhead">{{ composer }}</h5>
                             </li>
@@ -35,7 +35,7 @@
         <table id="legend">
             {{ entries:listing folder="premiere-categories" show_hidden="true" }}
             <tr>
-                <th class="body-1 divider-light pad-half-icon row" data-icon="{{ icon }}">{{ title }}</th>
+                <th class="body-1 divider-light pad-half-icon-left row" data-icon="{{ icon }}">{{ title }}</th>
             </tr>
             {{ /entries:listing }}
         </table>
