@@ -6,6 +6,8 @@
 
 .h-event tr:first-child td { border: 0; }
 
+.h-event .button { display: none; }
+
 @media (min-width: 768px)
 {
     .map #performance-list
