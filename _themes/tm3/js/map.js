@@ -108,13 +108,11 @@ var initializeMap = function(callback) {
 
 var resizeMap = function() {
     var logo = document.getElementById('logo');
-        yearSelector = document.getElementById('year-selector-wrapper'),
         logoHeight = yearSelectorHeight = 0;
 
     if (logo) logoHeight = parseInt(logo.getStyle('height'));
-    if (yearSelector) yearSelectorHeight = parseInt(yearSelector.getStyle('height'));
 
-    document.getElementById('map').style.height = window.getWindowSize() >= 1 ? (window.innerHeight - logoHeight - yearSelectorHeight) + 'px' : 'auto';
+    document.getElementById('map').style.height = window.getWindowSize() >= 1 ? (window.innerHeight - logoHeight) + 'px' : 'auto';
 };
 
 window.addEventListener('load', function load() {

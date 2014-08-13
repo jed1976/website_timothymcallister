@@ -2,7 +2,7 @@
 
 <section id="content" style="background-color: {{ background_color }};">
     <div class="row">
-        <div data-icon="down" id="year-selector-wrapper">
+        <div class="card" data-icon="down" id="year-selector-wrapper">
             <ol class="list">
                 {{ entries:listing folder="performances" group_by_date="Y" show_future="true" show_hidden="true" }}
                 {{ if grouped_date }}

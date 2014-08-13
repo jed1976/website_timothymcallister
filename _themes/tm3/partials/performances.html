@@ -3,7 +3,7 @@
 
     <ol class="list scrollable" id="performance-list">
         {{ entries:listing folder="performances" limit="{limit}" show_future="true" show_hidden="true" since="{since}" until="{until}" sort_dir="asc" }}
-        <li class="divider">{{ theme:partial src="performance" use_context="true" }}</li>
+        <li class="divider-dark">{{ theme:partial src="performance" use_context="true" }}</li>
         {{ /entries:listing }}
     </ol>
 </div>
