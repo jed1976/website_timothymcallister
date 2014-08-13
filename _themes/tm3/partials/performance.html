@@ -5,7 +5,7 @@
 
     {{ if location }}
     <h5 class="subhead p-location padding-half">
-        <a class="p-name u-url link" href="http://www.google.com/maps/place/{{ location|urlencode }}/@{{ latitude }},{{ longitude }},17z">{{ location }}</a>
+        <a class="p-name u-url link" href="http://www.google.com/maps/place/{{ location|urlencode }}/@{{ latitude }},{{ longitude }},17z" target="_blank">{{ location }}</a>
     </h5>
     {{ /if }}
 
@@ -16,6 +16,6 @@
     {{ /if }}
 
     {{ if performance_url }}
-    <a class="button block border u-url margin-half-vertical" href="{{ performance_url }}">More Information</a>
+    <a class="button block border u-url margin-half-vertical" href="{{ performance_url }}" target="_blank">More Information</a>
     {{ /if }}
 </article>
