@@ -13,5 +13,5 @@
         {{ if city }}<span class="locality">{{ city }}</span>,{{ /if }}{{ if state}} <span class="region">{{ state }}</span>,{{ /if }}{{ if zip_code }} <span class="postal-code">{{ zip_code }}</span>{{ /if }}
     </dd>
     {{ /if }}
-    {{ if email }}<dd><a class="email link" href="mailto:{{ email|obfuscate }}">{{ email|obfuscate }}</a></dd>{{ /if }}
+    {{ if email }}<dd><a class="email" href="mailto:{{ email|obfuscate }}">{{ email|obfuscate }}</a></dd>{{ /if }}
 </dl>
