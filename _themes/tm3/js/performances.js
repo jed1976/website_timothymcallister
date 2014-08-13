@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var map = document.getElementById('map'),
+    var content = document.getElementById('content'),
+        map = document.getElementById('map'),
         year,
         yearSelector = '<select id="year-selector">',
         yearSelectorWrapper = document.getElementById('year-selector-wrapper');
@@ -13,8 +14,6 @@ document.addEventListener('DOMContentLoaded', function() {
     yearSelectorWrapper.innerHTML = yearSelector;
 
     document.getElementById('year-selector').addEventListener('change', function(event) {
-        map.toggleClass('fadeout');
-
         var target = event.target,
             url = '?year=' + target.options[target.selectedIndex].getAttribute('value');
 
@@ -22,11 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
             map.innerHTML = queryHTML(response, '#map').innerHTML;
 
             if (window.getScreenSize() > 1)
-                initializeMap(function() {
-                    map.toggleClass('fadeout');
-                });
-            else
-                map.toggleClass('fadeout');
+                initializeMap();
         });
 
         target.blur();

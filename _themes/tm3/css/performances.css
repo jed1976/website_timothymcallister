@@ -58,4 +58,13 @@
 @media (min-width: 768px)
 {
     #content { background-color: transparent !important; }
+
+    .js #year-selector-wrapper
+    {
+        position: absolute;
+        right: 16px;
+        top: 16px;
+        width: 125px;
+        z-index: 2;
+    }
 }
