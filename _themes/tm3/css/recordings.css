@@ -51,5 +51,5 @@
 
 @media (min-width: 768px)
 {
-    #content { padding: 60px 0; }
+    #content { padding: 120px 0 60px 0; }
 }

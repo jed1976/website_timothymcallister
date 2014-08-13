@@ -8,6 +8,35 @@
     box-sizing: border-box;
 }
 
+body
+{
+    padding-bottom: 76px;
+}
+
+footer
+{
+    background-color: #111;
+    bottom: 0;
+    color: #FFF;
+    left: 0;
+    position: fixed;
+    right: 0;
+    z-index: 0;
+}
+
+footer [data-icon]::before
+{
+    font-size: 2.5rem;
+}
+
+#content,
+#content-wrapper,
+#site-wrapper
+{
+    position: relative;
+    z-index: 2;
+}
+
 .card
 {
     background-color: #fff;
