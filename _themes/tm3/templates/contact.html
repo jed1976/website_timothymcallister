@@ -1,13 +1,7 @@
 <main id="content" role="main">
     <div class="row">
-        <div class="col-1-3">
-            <div class="pad" id="mailing-list-form-wrapper">
-                {{ content|markdown }}
-                {{ theme:partial src="mailing-list-form" }}
-            </div>
-        </div>
         {{ entries:listing folder="contact" show_hidden="true" }}
-        <div class="col-1-3">
+        <div class="col-1-2">
             {{ theme:partial src="contact" use_context="true" }}
         </div>
         {{ /entries:listing }}

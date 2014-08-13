@@ -2,13 +2,13 @@
 {
     background-size: cover;
     background-repeat: no-repeat;
-    bottom: 76px;
+    bottom: 0;
     left: 0;
     pointer-events: none;
     position: fixed;
     top: 0;
     right: 0;
-    z-index: 1;
+    z-index: -1;
 }
 
 .hero
@@ -18,10 +18,8 @@
     min-height: 450px;
     overflow: hidden;
     position: relative;
-    z-index: 1;
+    z-index: 0;
 }
-
-.hero.short { min-height: 325px; }
 
 .hero::before,
 .overlay::before
@@ -36,7 +34,7 @@
     position: absolute;
     right: 0;
     top: 0;
-    z-index: 3;
+    z-index: 1;
 }
 
 .fixed.hero::before,
@@ -52,5 +50,4 @@ img { max-width: 100%; }
 @media (min-width: 768px)
 {
     .hero { min-height: 600px; }
-    .hero.short { min-height: 450px; }
 }

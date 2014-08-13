@@ -1,5 +1,14 @@
-<footer class="pad-half text-center">
-    {{ entries:listing folder="social-links" show_hidden="true" }}
-    <a class="button light text-left" data-icon="{{ page_icon }}" href="{{ social_url }}" target="_blank" title="Visit the {{ title }} page">{{ title }}</a>
-    {{ /entries:listing }}
+<footer>
+    <div class="row pad">
+        <div class="col-1-2">
+            {{ theme:partial src="mailing-list-form" }}
+        </div>
+        <div class="col-1-2 pad-half-vertical">
+            <div id="social-links">
+                {{ entries:listing folder="social-links" show_hidden="true" }}
+                <a class="button light text-left social" data-icon="{{ page_icon }}" href="{{ social_url }}" target="_blank" title="Visit the {{ title }} page">{{ title }}</a>
+                {{ /entries:listing }}
+            </div>
+        </div>
+    </div>
 </footer>
