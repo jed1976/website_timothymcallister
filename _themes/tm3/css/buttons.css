@@ -1,53 +1,45 @@
-.button,
-.button[type],
-button.button
+.button
 {
-    background-color: transparent;
-    border-color: #ccc;
-    border-radius: 0;
-    border-style: solid;
-    border-width: 1px;
+    background: transparent;
+    border: 0;
+    color: #202020;
     cursor: pointer;
     display: inline-block;
+    font-size: 0.75rem;
     font-weight: 700;
-    letter-spacing: 0.2rem;
-    padding: 10px 20px;
+    letter-spacing: 0.125rem;
+    margin: 0;
+    padding: 8px 16px;
     text-align: center;
     text-transform: uppercase;
+    white-space: nowrap;
+    width: 100%;
+    -webkit-appearance: none;
+}
+
+.button.block
+{
+    display: block;
     width: 100%;
 }
 
-.button.sample[data-icon]
+.button.sample
 {
-    border-width: 2px;
-    border-radius: 100px;
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 2.5rem;
-    line-height: 2.5rem;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 128px;
+    border-width: 3px;
+    color: transparent;
+    height: 64px;
+    padding: 0;
+    width: 64px;
+}
+
+.button.sample[data-icon]::before
+{
+    display: block;
+    font-size: 2rem;
+    line-height: 64px;
     margin: 0 auto;
-    padding: 10px;
-    width: auto;
 }
 
-.aside .button.sample[data-icon]
-{
-    font-size: 1.35rem;
-    line-height: 1.35rem;
-    padding: 5px;
-}
-
-.button, .button:link, .button:visited { color: #222; }
-.button:hover { background-color: #35383D; color: #fff; text-decoration: none; }
-.button.xx-small { font-size: 60%; }
-.button.x-small { font-size: 70%; }
-.button.small { font-size: 85%; }
-.button.medium { font-size: 100%; }
-.button.large { font-size: 110%; }
-.button.x-large { font-size: 120%; }
-.button.xx-large { font-size: 130%; }
-.button.pad { margin: 15px 0; }
-
-@media (min-width: 768px)
-{
-    .button { width: auto; }
-}
+.button.border { border: 1px solid #DBDBDB; }

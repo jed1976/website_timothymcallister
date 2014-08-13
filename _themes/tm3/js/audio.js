@@ -9,11 +9,6 @@ var currentPlayButton = null,
     volumeMax = 1.0,
     volumeMin = 0.0;
 
-// Insert Play Sample buttons
-[].forEach.call(document.querySelectorAll('#content .button.sample:first-of-type'), function(el) {
-    el.insertStringBefore('<span class="sample button light xx-small pad" data-icon="' + playSampleLabel + '"></span>');
-});
-
 var playRecording = function(id) {
     if (previousSound) {
         soundToUnload = previousSound;
@@ -103,10 +98,12 @@ var init = function() {
     document.body.appendChild(script);
 };
 
-document.body.addEventListener('click', function(event) {
+document.addEventListener('click', function(event) {
     var target = event.target;
 
     if (target.hasClass('sample') === false) return;
+
+    event.preventDefault();
 
     toggleRecordingPlayback(target);
 });

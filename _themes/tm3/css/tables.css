@@ -1,45 +1,19 @@
-.detail-table
+table
 {
-    font-size: 1rem;
+    border-collapse: collapse;
     width: 100%;
-    margin: 10px 0;
 }
 
-.detail-table th,
-.detail-table td
+td, th
 {
-    border-bottom: 1px solid #ccc;
-    padding: 5px 0;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    font-weight: 400;
+    padding: 6px 0;
+    text-align: left;
     vertical-align: top;
 }
 
-.detail-table tr:last-child th,
-.detail-table tr:last-child td
-{
-    border-bottom: 0;
-}
+tr:last-child td, tr:last-child th { border-bottom: 0; }
 
-.detail-table th
-{
-    letter-spacing: 0.0625rem;
-    text-align: left;
-    text-transform: uppercase;
-    width: 50%;
-}
-
-.detail-table td
-{
-    font-size: 1.1rem;
-    text-align: right;
-}
-
-.detail-table [data-icon]::before
-{
-    font-size: 2rem;
-    padding-right: 5px;
-}
-
-.detail-table .link
-{
-    font-weight: 700;
-}
+.dark td, .dark th { border-color: rgba(255, 255, 255, 0.1); }

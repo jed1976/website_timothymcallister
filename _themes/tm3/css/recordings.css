@@ -37,6 +37,15 @@
     margin-bottom: 20px;
 }
 
+.sample
+{
+    left: 50%;
+    margin-left: -32px;
+    margin-top: -32px;
+    position: absolute;
+    top: 50%;
+}
+
 .js.screen-size-0 #content,
 .js.screen-size-1 #content
 {

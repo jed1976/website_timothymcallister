@@ -1,17 +1,19 @@
-{{ theme:partial short="true" src="hero" use_context="true" }}
+{{ theme:partial half_size="true" src="hero" use_context="true" }}
 
 <main id="content" role="main" style="background-color: {{ background_color }};">
-    <div class="grid-pad">
-        <h2 class="style-1">{{ title }}</h2>
+    <div id="articles">
+        <div class="row pad">
+            <h2 class="display-1">{{ title }}</h2>
 
-        <div class="grid-pad negative">
-            {{ entries:listing folder="news" show_hidden="false" sort_by="date" sort_dir="desc" }}
-            {{ if total_results > 0 }}
-            {{ theme:partial src="article" show_view_button="true" use_context="true" }}
-            {{ else }}
-            There are no entries.
-            {{ endif }}
-            {{ /entries:listing }}
+            <div class="pad-vertical">
+                {{ entries:listing folder="news" show_hidden="false" sort_by="date" sort_dir="desc" }}
+                {{ if total_results > 0 }}
+                {{ theme:partial src="article" show_view_button="true" use_context="true" }}
+                {{ else }}
+                There are no entries.
+                {{ endif }}
+                {{ /entries:listing }}
+            </div>
         </div>
     </div>
 </main>

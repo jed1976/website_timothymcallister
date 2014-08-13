@@ -1,49 +1,46 @@
 <article class="h-event{{ if datestamp|in_future }} future{{ /if }}{{ if datestamp|is_today }} today{{ /if }}" data-latitude="{{ latitude }}" data-longitude="{{ longitude }}">
-    <span class="calendar">
-        <time class="dt-start" datetime="{{ datestamp format="m-d-Y" }} {{ time }}">{{ datestamp format="M" }} <span class="day">{{ datestamp format="j" }}</span> <span class="year">{{ datestamp format="Y" }}</span></time>
-    </span>
-
-    <h4 class="p-name">{{ title }}</h4>
+    <h4 class="title primary-text p-name">{{ title }}</h4>
 
     {{ if location }}
-    <h5 class="p-location">
+    <h5 class="subhead p-location">
         <a class="p-name u-url link" href="http://www.google.com/maps/place/{{ location|urlencode }}/@{{ latitude }},{{ longitude }},17z">{{ location }}</a>
     </h5>
     {{ /if }}
 
     {{ if content }}
-    <div class="p-summary scrollable">
+    <div class="body-1 primary-text p-summary">
         {{ content }}
     </div>
     {{ /if }}
 
-    <table class="p-description detail-table">
+    <table class="p-description">
         <tbody>
+            <tr>
+                <td class="subhead secondary-text"><time class="dt-start" datetime="{{ datestamp format="m-d-Y" }} {{ time }}">{{ datestamp format="l, F j" }} {{ if event_time }}, {{ event_time format="g:i A" }}{{ /if }}</time></td>
+            </tr>
             {{ if conductor }}
             <tr>
-                <th>Conductor</th>
-                <td>{{ conductor }}</td>
+                <td class="body-1 primary-text">
+                    {{ conductor }}<br>
+                    <span class="body-1 secondary-text">Conductor</span>
+                </td>
             </tr>
             {{ /if }}
 
             {{ if ensemble }}
             <tr>
-                <th>Ensemble</th>
-                <td>{{ ensemble }}</td>
-            </tr>
-            {{ /if }}
-
-            {{ if event_time }}
-            <tr>
-                <th>Time</th>
-                <td><time class="dt-start" datetime="{{ datestamp format="m-d-Y" }} {{ event_time }}">{{ event_time }}</time></td>
+                <td class="body-1 primary-text">
+                    {{ ensemble }}<br>
+                    <span class="body-1 secondary-text">Ensemble</span>
+                </td>
             </tr>
             {{ /if }}
 
             {{ if performance_url }}
-            <tr>
-                <th>Website</th>
-                <td><a class="u-url link" href="{{ performance_url }}">Visit Site</a></td>
+            <tr class="performance_url">
+                <td>
+                    <a class="button block u-url link" href="{{ performance_url }}">Visit site for more information</a>
+                </td>
             </tr>
             {{ /if }}
         </tbody>

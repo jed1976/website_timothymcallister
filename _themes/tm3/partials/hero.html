@@ -1,6 +1,6 @@
 <div class="hero">
     {{ if quotes }}
-    <div class="quotes {{ quote_position }}">
+    <div class="quotes {{ quote_position }}{{ if half_size }} half{{ /if }}">
         {{ quotes sort_by="random" }}
         {{ entries:listing conditions="url:{quote}" folder="quotes" limit="1" show_hidden="true" }}
             {{ theme:partial src="quote" use_context="true" }}
@@ -8,5 +8,5 @@
         {{ /quotes }}
     </div>
     {{ theme:js src="quotes" tag="true" }}
-    {{ endif }}
+    {{ /if }}
 </div>

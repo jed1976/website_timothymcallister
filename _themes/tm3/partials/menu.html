@@ -1,10 +1,10 @@
-<aside id="menu">
-    <ul>
+<aside class="scrollable" id="menu">
+    <ul class="list">
         {{ nav from="/" include_content="true" max_depth="1" }}
-        <li><a href="{{ url }}"><span data-icon="{{ page_icon }}">{{ title }}</span></a></li>
+        <li><a class="button block text-left" data-icon="{{ page_icon }}" href="{{ url }}">{{ title }}</a></li>
         {{ /nav }}
         {{ entries:listing folder="social-links" show_hidden="true" }}
-        <li><a href="{{ social_url }}"><span data-icon="{{ page_icon }}">{{ title }}</span></a></li>
+        <li><a class="button block text-left" data-icon="{{ page_icon }}" href="{{ social_url }}">{{ title }}</a></li>
         {{ /entries:listing }}
     </ul>
 </aside>

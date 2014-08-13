@@ -16,6 +16,7 @@ pdfs:
     pdf: '{{ _site_root }}assets/pdf/timothy-mcallister-short-biography.pdf'
 vertical_position: center
 horizontal_position: center
+quote_position: right
 quotes:
   -
     quote: /quotes/william-bolcom

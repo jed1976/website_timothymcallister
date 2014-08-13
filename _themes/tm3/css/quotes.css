@@ -1,18 +1,9 @@
 .hero .quotes
 {
-    bottom: 60px;
-    left: 30px;
+    bottom: 24px;
+    left: 24px;
     position: absolute;
-    right: 30px;
-}
-
-.hero .quotes.center,
-.hero .quotes.left,
-.hero .quotes.right
-{
-    left: 30px;
-    right: 30px;
-    width: auto;
+    right: 24px;
 }
 
 .hero .quote
@@ -25,41 +16,40 @@
 
 .quote
 {
-    color: #fff;
-    font-weight: 300;
     margin: 0;
 }
 
 .quote figcaption
 {
-    font-weight: 700;
-    margin-top: 30px;
-    text-align: right;
-    text-transform: uppercase;
+    margin-top: 24px;
 }
 
 .quote cite
 {
     display: block;
     font-style: normal;
-    font-weight: 400;
-    text-transform: none;
 }
 
-.quote blockquote { font-size: 1.5rem; margin: 0; }
-.quote figcaption { font-size: 1.1rem; }
-.quote blockquote, .quote figcaption { font-family: 'museo-slab'; }
 .js .hero .quote { opacity: 0; }
 .hero .quote:first-child { opacity: 1; }
 
-@media (min-width: 768px)
+.quotes.left
 {
-    .hero .quote blockquote { font-size: 1.75rem; }
-    .hero .quotes.left { right: auto; width: 50%; }
-    .hero .quotes.right { left: auto; width: 50%; }
+    left: 24px;
+    right: auto;
+    text-align: left;
 }
 
-@media (min-width: 1024px)
+.quotes.right
 {
-    .hero .quote blockquote { font-size: 2rem; }
+    right: 24px;
+    text-align: right;
+}
+
+.small { font-size: 12px !important; }
+
+@media (min-width: 768px)
+{
+    .hero .quotes.half { width: 50%; }
+    .hero .quotes.half.right { left: auto; }
 }

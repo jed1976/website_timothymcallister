@@ -1,76 +1,16 @@
-#performance-list { margin-top: 30px; }
-
 .h-event
 {
-    display: block;
     margin: 0;
-    padding: 0 30px 50px 30px;
-    position: relative;
+    padding: 16px;
 }
 
-.calendar
-{
-    font-size: 11px;
-    font-weight: 700;
-    margin: 0 !important;
-    right: 0;
-    letter-spacing: 0.065rem;
-    text-align: center;
-    text-transform: uppercase;
-    top: 3px;
-    width: 60px;
-    position: absolute;
-}
-
-.calendar .day
-{
-    display: block;
-    font-size: 36px;
-    font-weight: 700;
-    line-height: 36px;
-}
-
-.calendar .year { font-weight: 700; }
-
-.h-event .p-name
-{
-    margin-bottom: 10px;
-    min-height: 70px;
-    padding-right: 70px;
-}
-
-.h-event .p-location .p-name
-{
-    font-weight: 700;
-    padding-left: 0;
-}
-
-.h-event .p-summary
-{
-    margin: 10px 0;
-    overflow: hidden;
-}
-
-.h-event .p-summary p
-{
-    font-size: 1.15rem;
-    margin: 0 0 15px 0;
-    padding: 0;
-}
-
-.h-event .p-summary p:last-child { margin-bottom: 0; }
-
-.h-event .detail-table { margin: 0; }
-
-.h-event .detail-table th { width: auto; }
-
-.h-event .detail-table td { width: 85%; }
+.h-event tr:first-child td { border: 0; }
 
 @media (min-width: 768px)
 {
     .map #performance-list
     {
-        background-color: rgba(255, 255, 255, 0.9);
+        background: #FFFFFF;
         bottom: 0;
         left: 0;
         margin: 0;
@@ -84,42 +24,16 @@
 
     .map #performance-list .h-event
     {
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         cursor: pointer;
-        height: 90px;
-        padding: 10px;
+        padding: 12px;
         overflow: hidden;
     }
 
-    .map #performance-list .h-event .p-name
-    {
-        font-size: 90%;
-        max-height: 45px;
-        margin: 0;
-        min-height: 0;
-        overflow: hidden;
-    }
+    .map #performance-list .h-event tr,
+    .map #performance-list .h-event .p-summary { display: none; }
 
-    .map #performance-list .h-event .p-location .p-name
-    {
-        font-weight: 400;
-        display: block;
-        overflow: hidden;
-        padding-right: 70px;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
+    .map #performance-list .h-event tr:first-child { display: table-row; }
 
-    .map #performance-list .h-event.active { background-color: #35383D; }
-
-    .map #performance-list .h-event.active *,
-    .map #performance-list .h-event.active .p-name
-    { color: #fff; }
-
-    .map #performance-list .h-event .calendar { top: 13px; }
-
-    .map #performance-list .h-event .p-summary,
-    .map #performance-list .h-event .p-description { display: none; }
-
-    .map #performance-list .h-event .u-url { color: #222; }
+    .map #performance-list .h-event.active { background-color: #01579b; }
+    .map #performance-list .h-event.active * { color: #fff; }
 }

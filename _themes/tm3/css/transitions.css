@@ -13,43 +13,12 @@
 input,
 textarea,
 #map,
-#menu,
-#menu li,
 #year-selector-wrapper a:hover
+.button:hover
 {
     -moz-transition: all 0.25s ease-in;
     -ms-transition: all 0.25s ease-in;
     -o-transition: all 0.25s ease-in;
     -webkit-transition: all 0.25s ease-in;
     transition: all 0.25s ease-in;
-}
-
-.button
-{
-    -moz-transition: background-color 0.25s ease-in;
-    -ms-transition: background-color 0.25s ease-in;
-    -o-transition: background-color 0.25s ease-in;
-    -webkit-transition: background-color 0.25s ease-in;
-    transition: background-color 0.25s ease-in;
-}
-
-#logo,
-#menu-toggle
-{
-    opacity: 1;
-    -moz-transition-property: background, opacity;
-    -moz-transition-duration: 0.25s;
-    -moz-transition-timing-function: ease-in;
-    -ms-transition-property: background, opacity;
-    -ms-transition-duration: 0.25s;
-    -ms-transition-timing-function: ease-in;
-    -o-transition-property: background, opacity;
-    -o-transition-duration: 0.25s;
-    -o-transition-timing-function: ease-in;
-    -webkit-transition-property: background, opacity;
-    -webkit-transition-duration: 0.25s;
-    -webkit-transition-timing-function: ease-in;
-    transition-property: background, opacity;
-    transition-duration: 0.25s;
-    transition-timing-function: ease-in;
 }

@@ -2,12 +2,15 @@ fieldset { border: 0; padding: 0; }
 
 form { margin: 20px 0; }
 
-[type] { height: 41px; }
+[type=email],
+[type=text] { height: 41px; }
 
-[type],
+[type=email],
+[type=text],
 textarea
 {
     border: 0;
+    border-bottom: 1px solid #DBDBDB;
     border-radius: 0;
     font-size: 13px;
     margin-bottom: 10px;
@@ -20,8 +23,6 @@ textarea
 [type]:focus,
 textarea:focus
 {
-    background-color: #fff !important;
-    color: #222 !important;
     outline: none;
 }
 

@@ -41,5 +41,4 @@
 [data-icon=play]::before { content: "\e60c"; }
 [data-icon=stop]::before { content: "\e60d"; }
 [data-icon=menu]::before, #menu-toggle::before { content: "\e60e"; }
-[data-icon=close]::before, #menu-toggle.checked::before { content: "\e60f"; }
 [data-icon=down]::before { content: "\e604"; }

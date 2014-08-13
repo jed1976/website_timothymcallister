@@ -2,6 +2,7 @@
 enable_audio: true
 enable_map: true
 page_id: home
+page_js: home
 page_stylesheet: home
 title: Home
 artwork: '{{ _site_root }}assets/img/tim-4.jpg'
@@ -17,5 +18,5 @@ quotes:
     quote: /quotes/david-patrick-stearns
   -
     quote: /quotes/donald-sinta
-background_color: '#ebebeb'
+background_color: '#ffffff'
 ---
