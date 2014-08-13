@@ -9,7 +9,7 @@ _fieldset: premieres
 _template: premieres
 vertical_position: center
 horizontal_position: center
-quote_position: center
+quote_position: right
 background_color: '#26221f'
 quotes:
   -

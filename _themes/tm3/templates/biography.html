@@ -1,15 +1,17 @@
-{{ theme:partial src="hero" use_context="true" }}
+{{ theme:partial half_size="true" src="hero" use_context="true" }}
 
-<main id="content" role="main" style="background-color: {{ background_color }};">
-    <div class="pad">
-        {{ content|widont }}
+<main id="wrapper" role="main" style="background-color: {{ background_color }};">
+    <div id="content">
+        <div class="pad">
+            {{ content|widont }}
 
-        {{ if pdfs }}
-        <div class="text-center">
-            {{ pdfs }}
-            <a class="button border light download margin-half-vertical" href="{{ download file="{pdf}" as="{pdf}" }}">{{ label }}</a>
-            {{ /pdfs }}
+            {{ if pdfs }}
+            <div class="text-center">
+                {{ pdfs }}
+                <a class="button border light download margin-half-vertical" href="{{ download file="{pdf}" as="{pdf}" }}">{{ label }}</a>
+                {{ /pdfs }}
+            </div>
+            {{ endif }}
         </div>
-        {{ endif }}
     </div>
 </main>
