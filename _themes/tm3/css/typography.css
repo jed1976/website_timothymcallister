@@ -115,7 +115,7 @@ strong { font-weight: 400; }
 .list { list-style: none; margin: 0; padding: 0; }
 .square { list-style: square; }
 .disc { list-style: disc; }
-.divider-dark { border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+.divider-dark { border-bottom: 1px solid rgbargba(0, 0, 0, 0.1); }
 .divider-light { border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
 .divider:last-of-type { border: 0; }
 
