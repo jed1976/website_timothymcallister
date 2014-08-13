@@ -54,3 +54,7 @@
 }
 
 .button.border { border: 1px solid #DBDBDB; }
+.button.border:hover { background-color: #202020; color: #FFF; }
+
+.dark .button.border { border-color: rgba(255, 255, 255, 0.1); }
+.dark .button.border:hover { background-color: rgba(255, 255, 255, 0.1); }

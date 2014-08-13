@@ -12,8 +12,8 @@
 
 input,
 textarea,
-#year-selector-wrapper a:hover
-.button:hover
+#year-selector-wrapper a:hover,
+.button.border
 {
     -moz-transition: all 0.25s ease-in;
     -ms-transition: all 0.25s ease-in;
