@@ -164,6 +164,24 @@ window.queryHTML = function(html, selector) {
     return root.querySelector(selector);
 };
 
+window.toggleLogoOpacity = function() {
+    var y = Math.abs(this.y) || window.pageYOffset,
+        targetY = 700,
+        opacity = (100 - ((targetY - y) / targetY) * 100) / 100,
+        changeOpacity = function(opacity) {
+            document.getElementById('logo').style.backgroundColor = 'rgba(0, 0, 0, ' + opacity + ')';
+        };
+
+    if (y > targetY) {
+        changeOpacity(0.9);
+        return;
+    }
+
+    if (opacity > 0.9 || opacity < 0.2) return;
+
+    changeOpacity(opacity);
+};
+
 window.updateScreenSizeClass = function() {
     var className,
         html = document.querySelector('html'),
@@ -185,6 +203,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     addFormSubmissionHandler(document.getElementById('mailing-list-form'), window.location.href, function(form, request) {
         form.innerHTML = queryHTML(request.responseText, '#' + form.id).innerHTML;
+    });
+
+    document.addEventListener('scroll', function() {
+        toggleLogoOpacity();
     });
 
     document.body.addEventListener('click', function(event) {
