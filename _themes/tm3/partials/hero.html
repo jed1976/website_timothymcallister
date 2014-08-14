@@ -1,12 +1,20 @@
-<div class="hero">
-    {{ if quotes }}
-    <div class="quotes {{ quote_position }}{{ if half_size }} half{{ /if }}">
-        {{ quotes sort_by="random" }}
-        {{ entries:listing conditions="url:{quote}" folder="quotes" limit="1" show_hidden="true" }}
-            {{ theme:partial src="quote" use_context="true" }}
-        {{ /entries:listing }}
-        {{ /quotes }}
+<div class="row">
+    <div class="hero">
+        {{ if quotes }}
+        <div class="quotes {{ quote_position }}{{ if half_size }} half{{ /if }}">
+            {{ quotes sort_by="random" }}
+            {{ entries:listing conditions="url:{quote}" folder="quotes" limit="1" show_hidden="true" }}
+                {{ theme:partial src="quote" use_context="true" }}
+            {{ /entries:listing }}
+            {{ /quotes }}
+        </div>
+        {{ theme:js src="quotes" tag="true" }}
+        {{ /if }}
     </div>
-    {{ theme:js src="quotes" tag="true" }}
-    {{ /if }}
+    <div class="hero-mask"></div>
+
+    <style>
+        .hero-mask::after,
+        .hero-mask::before { border-bottom: 20px solid {{ background_color }}; }
+    </style>
 </div>
