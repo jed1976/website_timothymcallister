@@ -86,6 +86,8 @@ footer [data-icon]::before
 .pad-half-icon-right { padding: 12px 72px 12px 12px; }
 .pad-half-vertical { padding: 12px 0; }
 
+.no-pad { padding: 0 !important; }
+
 [class*=row]
 {
     overflow: hidden;
@@ -109,7 +111,7 @@ footer [data-icon]::before
         position: relative;
     }
 
-    [class*='col-']:last-of-type { padding-right: 0; }
+    /*[class*='col-']:last-of-type { padding-right: 0; }*/
 
     .col-1-8 { width: 12.5%; }
     .col-1-7 { width: 14.28571429%; }

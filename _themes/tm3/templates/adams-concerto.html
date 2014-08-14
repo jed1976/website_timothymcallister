@@ -23,17 +23,19 @@
                 {{ if index|%:2 == 1 and index > 1 }}</div>{{ /if }}
                 {{ if index|%:2 == 1 }}<div class="row">{{ /if }}
                     <div class="col-1-2">
-                        <a href="{{ download file="{photo_download}" as="{photo_download}" }}" title="Click to download this photo"><img alt="" src="{{ photo_download }}" /></a>
+                        <div class="pad-half-vertical">
+                            <a href="{{ download file="{photo_download}" as="{photo_download}" }}" title="Click to download this photo"><img alt="" src="{{ photo_download }}" /></a>
+                        </div>
                     </div>
                 {{ /downloads }}
             {{ /if }}
-
-            {{ get_content from="biography" }}
-            {{ theme:partial src="biography-downloads" use_context="true" }}
-            {{ /get_content }}
             </div>
 
-            {{ theme:partial src="" }}
+            {{ get_content from="biography" }}
+            <div class="row">
+                {{ theme:partial src="biography-downloads" use_context="true" }}
+           </div>
+            {{ /get_content }}
         </div>
         {{ /if }}
 

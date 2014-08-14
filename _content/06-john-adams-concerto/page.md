@@ -32,6 +32,8 @@ downloads:
     photo_download: '{{ _site_root }}assets/img/downloads/tim-2.jpg'
   -
     photo_download: '{{ _site_root }}assets/img/downloads/tim-1.jpg'
+  -
+    photo_download: '{{ _site_root }}assets/img/downloads/tim-6.jpg'
 quotes:
   -
     quote: /quotes/john-adams
@@ -42,6 +44,6 @@ quotes:
   -
     quote: /quotes/tim-smith
 critics_title: The Critics Speak
-message_form_content: Contact Timothy McAllister for booking engagements.
+message_form_content: Inquire about booking engagements
 thank_you_message: Thank you for your message.
 ---
