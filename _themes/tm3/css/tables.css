@@ -8,6 +8,7 @@ td, th
 {
     border-bottom-width: 1px;
     border-bottom-style: solid;
+    border-color: #DBDBDB;
     font-weight: 400;
     padding: 6px 0;
     text-align: left;

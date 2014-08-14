@@ -2,7 +2,7 @@
 #timeline [data-icon]::before
 {
     font-size: 2rem;
-    left: 20px;
+    left: 0;
     position: absolute;
 }
 

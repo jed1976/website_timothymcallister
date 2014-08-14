@@ -1,5 +1,10 @@
 <article class="h-event{{ if datestamp|in_future }} future{{ /if }}{{ if datestamp|is_today }} today{{ /if }}" data-latitude="{{ latitude }}" data-longitude="{{ longitude }}">
-    <span class="subhead secondary-text"><time class="dt-start" datetime="{{ datestamp format="m-d-Y" }} {{ time }}">{{ datestamp format="l, F j" }} {{ if event_time }}, {{ event_time format="g:i A" }}{{ /if }}</time></span>
+    <span class="subhead secondary-text">
+        <time class="dt-start" datetime="{{ datestamp format="m-d-Y" }} {{ time }}">
+            {{ datestamp format="{{ _date_format }}" }}
+            {{ if event_time }}<span class="float-right">{{ event_time format="{{ _time_format }}" }}</span>{{ /if }}
+        </time>
+    </span>
 
     <h4 class="title primary-text p-name">{{ title }}</h4>
 
@@ -16,6 +21,6 @@
     {{ /if }}
 
     {{ if performance_url }}
-    <a class="button block u-url margin-half-vertical" href="{{ performance_url }}" target="_blank">More Information</a>
+    <a class="button block link u-url margin-half-vertical" href="{{ performance_url }}" target="_blank">More Information</a>
     {{ /if }}
 </article>

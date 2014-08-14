@@ -2,6 +2,8 @@
 
 <div class="pad-vertical" style="background-color: {{ background_color }};">
     <main id="content">
+        <h2 class="display-1">{{ title }}</h2>
+
         <div class="row">
             <div id="timeline">
                 {{ entries:listing folder="premieres" group_by_date="Y" show_hidden="true" sort_by="date" sort_dir="desc" }}
@@ -10,7 +12,8 @@
                     {{ if !first }}
                             </ul>
                     {{ endif }}
-                <h2 class="pad display-1">{{ grouped_date }}</h2>
+                <h2 class="pad-vertical headline">{{ grouped_date }}</h2>
+
                 <ul class="list">
                 {{ endif }}
                     <li class="divider-light pad-icon-left row" {{ theme:partial src="icon-list" use_context="true" }}>
@@ -26,7 +29,7 @@
             <div class="row pad-vertical">
                 <ul class="list" id="legend">
                     {{ entries:listing folder="premiere-categories" show_hidden="true" }}
-                    <li class="subhead divider-light pad-half-icon-left row" data-icon="{{ icon }}">{{ title }}</li>
+                    <li class="body-2 divider-light pad-half-icon-left row" data-icon="{{ icon }}">{{ title }}</li>
                     {{ /entries:listing }}
                 </ul>
             </div>

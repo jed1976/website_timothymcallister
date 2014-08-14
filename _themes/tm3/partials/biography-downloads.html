@@ -1,0 +1,7 @@
+{{ if pdfs }}
+{{ pdfs }}
+<div class="row pad-half-vertical text-center">
+    <a class="button download" href="{{ download file="{pdf}" as="{pdf}" }}">{{ label }}</a>
+</div>
+{{ /pdfs }}
+{{ endif }}

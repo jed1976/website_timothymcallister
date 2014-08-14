@@ -2,18 +2,12 @@
 
 <div class="pad-vertical" style="background-color: {{ background_color }};">
     <main id="content" role="main">
-        <div class="pad">
+        <h2 class="display-1">{{ title }}</h2>
+
+        <div class="pad-vertical">
             <div class="body-1">{{ content|widont }}</div>
 
-            {{ if pdfs }}
-            <div class="row">
-                {{ pdfs }}
-                <div class="col-1-2 margin-half-vertical text-center">
-                    <a class="button download" href="{{ download file="{pdf}" as="{pdf}" }}">{{ label }}</a>
-                </div>
-                {{ /pdfs }}
-            </div>
-            {{ endif }}
+            {{ theme:partial src="biography-downloads" use_context }}
         </div>
     </main>
 </div>
