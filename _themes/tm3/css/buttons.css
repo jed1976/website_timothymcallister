@@ -79,3 +79,8 @@
 .button.sample.small.positioned { margin-top: -22px; }
 
 .button.border:hover { background-color: #202020; color: #FFF; }
+
+@media (min-width: 768px)
+{
+    .button { width: auto; }
+}

@@ -39,7 +39,7 @@ _entry_timestamps: false
 _date_format: 'F j, Y'
 
 # Global formatting for time variables
-_time_format: 'g:i.s a'
+_time_format: 'g:i A'
 
 # Timezone
 _timezone: America/Detroit

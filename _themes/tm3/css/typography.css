@@ -21,19 +21,19 @@ strong { font-weight: 400; }
 /* Standard Styles */
 .display-2
 {
-    font-size: 2.8125rem;
+    font-size: 2.250rem;
     font-weight: 400;
     letter-spacing: 0;
-    line-height: 3.42857142857143rem;
+    line-height: 3.25rem;
     margin: 0;
 }
 
 .display-1
 {
-    font-size: 2.125rem;
+    font-size: 2.1rem;
     font-weight: 400;
     letter-spacing: 0;
-    line-height: 2.85714285714286rem;
+    line-height: 2.75rem;
     margin: 0;
 }
 
@@ -42,7 +42,7 @@ strong { font-weight: 400; }
     font-size: 1.5rem;
     font-weight: 400;
     letter-spacing: 0;
-    line-height: 2.28571428571429rem;
+    line-height: 2.25rem;
     margin: 0;
 }
 
@@ -57,10 +57,10 @@ strong { font-weight: 400; }
 
 .subhead
 {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     font-weight: 400;
     letter-spacing: 0;
-    line-height: 2.1rem;
+    line-height: 2rem;
     margin: 0;
 }
 
@@ -69,28 +69,14 @@ strong { font-weight: 400; }
 {
     font-size: 1rem;
     letter-spacing: 0;
-    line-height: 1.42857142857143rem;
+    line-height: 1.5rem;
     margin: 0;
 }
 
 .body-2
 {
     font-weight: 700;
-    line-height: 1.71428571428571rem;
-}
-
-.caption
-{
-    font-size: 0.85rem;
-    font-weight: 400;
-    letter-spacing: 0;
-    margin: 0;
-}
-
-
-@media (min-width: 768px)
-{
-    .button { width: auto; }
+    line-height: 1.75rem;
 }
 
 /* Lists */
@@ -103,6 +89,7 @@ strong { font-weight: 400; }
 
 /* Colors */
 .callout { background-color: #353639; }
+
 #menu li:hover { background-color: #607d8b; }
 
 .black-87,
@@ -110,25 +97,16 @@ strong { font-weight: 400; }
 body,
 .gm-style-iw .panel *,
 .dark [type=email], .dark [type=text],
-.dark textarea
-{ color: #202020; }
+.dark textarea { color: #202020; }
 
 .black-54,
 .secondary-text,
-.button.sample[data-icon]::before
-{ color: #727272; }
+.button.sample[data-icon]::before { color: #727272; }
 
 .black-26,
-.hint-text
-{ color: #B9B9B9; }
+.hint-text { color: #B9B9B9; }
 
-.black-12
-{ color: #DBDBDB; }
-
-td, th
-{
-    border-color: #DBDBDB;
-}
+.black-12 { color: #DBDBDB; }
 
 .link,
 .link:link,
@@ -152,27 +130,3 @@ td, th
 .button.light[data-icon]::before,
 .button.light
 { color: #FFF; }
-
-
-/* Specific Elements */
-#logo
-{
-    line-height: 2.25rem;
-    margin: 0;
-    padding-left: 12px;
-    letter-spacing: 0.125rem;
-    text-transform: uppercase;
-}
-
-#menu a
-{
-    font-weight: 400;
-}
-
-#menu [data-icon]::before
-{
-    font-size: 2rem;
-    margin-right: 16px;
-}
-
-#menu-toggle::before { font-size: 2.07rem; }
