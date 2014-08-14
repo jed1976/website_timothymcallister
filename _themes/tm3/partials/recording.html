@@ -3,7 +3,7 @@
         {{ if recording_url }}<a href="{{ recording_url }}" title="{{ publisher_title }}" target="_blank">{{ /if }}
             <div class="row">
                 <img alt="{{ title }}" src="{{ artwork }}">
-                {{ if show_sample && sample }}<a class="button border center light shadow sample" data-icon="play" href="{{ sample }}">Play</a>{{ /if }}
+                {{ if show_sample && sample }}<a class="button border center light sample" data-icon="play" href="{{ sample }}">Play</a>{{ /if }}
             </div>
         {{ if recording_url }}</a>{{ /if }}
     </div>

@@ -23,8 +23,6 @@
     width: 100%;
 }
 
-.button.sample.shadow { box-shadow: 0 0 2px #000; }
-
 .button.sample.center
 {
     left: 50%;
@@ -51,7 +49,7 @@
 .button.border.sample
 {
     background: rgba(0, 0, 0, 0.25);
-    border: 2px solid #fff !important;
+    border: 3px solid #fff !important;
     border-radius: 128px;
 }
 

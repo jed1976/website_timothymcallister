@@ -10,12 +10,6 @@
 
 @media (min-width: 768px)
 {
-    .map #map
-    {
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        margin-top: 0;
-    }
-
     .gm-style-iw + div { display: none; }
 
     .gm-style-iw { left: 21px !important; }
@@ -44,7 +38,7 @@
         bottom: 0;
         display: block;
         left: 0;
-        position: absolute !important;
+        position: absolute;
         right: 0;
         top: 0;
     }
