@@ -6,6 +6,8 @@
                 {{ if show_sample && sample }}<a class="button border center light sample" data-icon="play" href="{{ sample }}">Play</a>{{ /if }}
             </div>
         {{ if recording_url }}</a>{{ /if }}
+
+        {{ if recording_url }}<a class="button expand" href="{{ recording_url }}" target="_blank" title="{{ publisher_title }}">More Information</a>{{ /if }}
     </div>
     <div class="col-{{ if split_layout }}1-2{{ else }}2-3{{ /if }}">
         <h3 class="{{ if use_title }}title{{ else }}display-1{{ /if }}">{{ title }}</h3>
@@ -33,22 +35,13 @@
                     <td class="body-1 primary-text text-right">{{ catalog_number }}</td>
                 </tr>
                 {{ /if }}
-                {{ if recording_url }}
-                <tr>
-                    <td colspan="2">
-                        <div class="pad-vertical text-center">
-                            <a class="button" href="{{ recording_url }}" target="_blank" title="{{ publisher_title }}">More Information</a>
-                        </div>
-                    </td>
-                </tr>
-                {{ /if }}
             </tbody>
         </table>
         {{ /if }}
 
         {{ if show_learn_more }}
         <div class="pad-vertical text-center">
-            <a class="button border" href="/recordings">Learn More</a>
+            <a class="button link" href="/recordings">Learn More</a>
         </div>
         {{ /if }}
     </div>
