@@ -491,7 +491,7 @@ title: {$quote['title']}
 source: {$quote['source']}
 adams_press: {$quote['adams_press']}
 ---
-{$quote['quote']}
+"{$quote['quote']}"
 EOD;
 
 

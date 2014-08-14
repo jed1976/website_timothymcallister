@@ -1,4 +1,8 @@
 <figure class="quote {{ size }}">
-    <blockquote class="title">{{ content }}</blockquote>
-    <figcaption class="body-2">{{ title }} <cite class="caption">{{ source }}</cite></figcaption>
+    <blockquote class="headline">{{ content|widont|smartypants }}</blockquote>
+
+    <figcaption>
+        <span class="body-2">{{ title }}</span>
+        <cite class="body-1">{{ source }}</cite>
+    </figcaption>
 </figure>

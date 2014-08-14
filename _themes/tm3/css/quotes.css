@@ -49,6 +49,6 @@
         text-align: right;
     }
 
-    .hero .quotes.half { width: 50%; }
+    .hero .quotes.half { width: 40%; }
     .hero .quotes.half.right { left: auto; }
 }
