@@ -1,9 +1,10 @@
-<main id="content" role="main" style="background-color: {{ background_color }};">
-    <div class="row">
-        {{ entries:listing folder="contact" show_hidden="true" }}
-        <div class="col-1-2">
-            {{ theme:partial src="contact" use_context="true" }}
+<main id="content" role="main">
+    {{ entries:listing folder="contact" show_hidden="true" }}
+    <div class="hero row" style="background-image: url({{ artwork }});">
+        <div class="tile pad">
+            <h2 class="display-1">{{ title }}</h2>
+            {{ theme:partial src="vcard" use_context="true" }}
         </div>
-        {{ /entries:listing }}
     </div>
+    {{ /entries:listing }}
 </main>
