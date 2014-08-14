@@ -6,9 +6,11 @@
             <div class="body-1">{{ content|widont }}</div>
 
             {{ if pdfs }}
-            <div class="text-center">
+            <div class="row">
                 {{ pdfs }}
-                <a class="button border light download margin-half-vertical" href="{{ download file="{pdf}" as="{pdf}" }}">{{ label }}</a>
+                <div class="col-1-2 margin-half-vertical text-center">
+                    <a class="button download" href="{{ download file="{pdf}" as="{pdf}" }}">{{ label }}</a>
+                </div>
                 {{ /pdfs }}
             </div>
             {{ endif }}
