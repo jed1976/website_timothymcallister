@@ -1,17 +1,19 @@
 {{ theme:partial src="hero" use_context="true" }}
 
 <main id="content" role="main" style="background-color: {{ background_color }};">
-    <div class="center-layout pad">
-        <h2 class="display-1">{{ title }}</h2>
+    <div class="center-layout" id="articles">
+        <div class="row pad">
+            <h2 class="display-1">{{ title }}</h2>
 
-        <div class="row quotes">
-            {{ entries:listing conditions="adams_press:!1" folder="quotes" show_hidden="true" sort_by="random" }}
-                <div class="col-1-2">
-                    <div class="pad">
-                        {{ theme:partial src="quote" use_context="true" }}
+            <div class="row quotes">
+                {{ entries:listing conditions="adams_press:!1" folder="quotes" show_hidden="true" sort_by="random" }}
+                    <div class="col-1-2">
+                        <div class="pad">
+                            {{ theme:partial src="quote" use_context="true" }}
+                        </div>
                     </div>
-                </div>
-            {{ /entries:listing }}
+                {{ /entries:listing }}
+            </div>
         </div>
     </div>
 </main>
