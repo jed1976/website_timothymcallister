@@ -7,7 +7,7 @@ var canvasDimension = 28,
     ].join('');
 
 // Insert overlays
-document.getElementById('content').insertStringBefore(overlays);
+document.getElementById('site-wrapper').insertStringBefore(overlays);
 
 // Variables
 var blurRadius = canvasDimension / 8,
