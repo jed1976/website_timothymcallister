@@ -1,6 +1,6 @@
 <article class="h-event{{ if datestamp|in_future }} future{{ /if }}{{ if datestamp|is_today }} today{{ /if }}" data-latitude="{{ latitude }}" data-longitude="{{ longitude }}">
 
-    <div class="row">
+    <div class="row pad-half-vertical">
         <div class="calendar col-1-4 no-pad">
             <time class="dt-start" datetime="{{ datestamp format="m-d-Y" }} {{ time }}">
                 <span class="month">{{ datestamp format="M" }}</span>
@@ -8,7 +8,7 @@
                 <span class="year">{{ datestamp format="Y" }}</span>
             </time>
 
-            {{ if event_time }}<span class="time">{{ event_time format="{{ _time_format }}" }}</span>{{ /if }}
+            {{ if event_time }}<span class="time pad-half-vertical">{{ event_time format="{{ _time_format }}" }}</span>{{ /if }}
         </div>
         <div class="event-headlines col-3-4 pad-half-horizontal">
             <h4 class="title primary-text p-name">{{ title }}</h4>
