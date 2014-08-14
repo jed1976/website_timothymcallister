@@ -66,7 +66,7 @@ strong { font-weight: 400; }
 
 .title
 {
-    font-size: 1.15rem;
+    font-size: 1.25rem;
     font-weight: 700;
     letter-spacing: 0;
     line-height: 1.75rem;
@@ -75,7 +75,7 @@ strong { font-weight: 400; }
 
 .subhead
 {
-    font-size: 1rem;
+    font-size: 1.15rem;
     font-weight: 400;
     letter-spacing: 0;
     line-height: 2.1rem;
@@ -85,7 +85,7 @@ strong { font-weight: 400; }
 .body-2,
 .body-1
 {
-    font-size: 0.875rem;
+    font-size: 1rem;
     letter-spacing: 0;
     line-height: 1.42857142857143rem;
     margin: 0;
@@ -99,7 +99,7 @@ strong { font-weight: 400; }
 
 .caption
 {
-    font-size: 0.75rem;
+    font-size: 0.85rem;
     font-weight: 400;
     letter-spacing: 0;
     margin: 0;
