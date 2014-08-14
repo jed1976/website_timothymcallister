@@ -200,7 +200,7 @@ if (window.getScreenSize() < 2) {
             scroller.refresh();
         });
 
-        scroller = new IScroll('#content', {
+        scroller = new IScroll('#site-wrapper', {
             deceleration: 0.003,
             eventPassthrough: 'horizontal',
             fadeScrollbars: true,
