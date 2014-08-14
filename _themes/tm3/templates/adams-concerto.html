@@ -61,11 +61,11 @@
     <div class="pad">
         <h2 class="display-1">{{ critics_title }}</h2>
 
-        <div class="row pad">
+        <div class="row quotes">
             {{ entries:listing conditions="adams_press:1" folder="quotes" show_hidden="true" sort_by="random" }}
                 <div class="col-1-2">
                     <div class="pad">
-                        {{ theme:partial size="small" src="quote" use_context="true" }}
+                        {{ theme:partial src="quote" use_context="true" }}
                     </div>
                 </div>
             {{ /entries:listing }}
