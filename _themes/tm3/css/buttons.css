@@ -32,6 +32,12 @@
     top: 50%;
 }
 
+.button.border
+{
+    border: 1px solid #DBDBDB;
+    border-radius: 0;
+}
+
 .button.sample
 {
     color: transparent !important;
@@ -72,7 +78,6 @@
 
 .button.sample.small.positioned { margin-top: -22px; }
 
-.button.border { border: 1px solid #DBDBDB; }
 .button.border:hover { background-color: #202020; color: #FFF; }
 
 .dark .button.border { border-color: rgba(255, 255, 255, 0.1); }
