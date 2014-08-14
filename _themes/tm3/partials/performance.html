@@ -1,18 +1,25 @@
 <article class="h-event{{ if datestamp|in_future }} future{{ /if }}{{ if datestamp|is_today }} today{{ /if }}" data-latitude="{{ latitude }}" data-longitude="{{ longitude }}">
-    <span class="subhead secondary-text">
-        <time class="dt-start" datetime="{{ datestamp format="m-d-Y" }} {{ time }}">
-            {{ datestamp format="{{ _date_format }}" }}
-            {{ if event_time }}<span class="float-right">{{ event_time format="{{ _time_format }}" }}</span>{{ /if }}
-        </time>
-    </span>
 
-    <h4 class="title primary-text p-name">{{ title }}</h4>
+    <div class="row">
+        <div class="calendar col-1-4 no-pad">
+            <time class="dt-start" datetime="{{ datestamp format="m-d-Y" }} {{ time }}">
+                <span class="month">{{ datestamp format="M" }}</span>
+                <span class="day">{{ datestamp format="j" }}</span>
+                <span class="year">{{ datestamp format="Y" }}</span>
+            </time>
 
-    {{ if location }}
-    <h5 class="subhead p-location padding-half">
-        <a class="p-name u-url link" href="http://www.google.com/maps/place/{{ location|urlencode }}/@{{ latitude }},{{ longitude }},17z" target="_blank">{{ location }}</a>
-    </h5>
-    {{ /if }}
+            {{ if event_time }}<span class="time">{{ event_time format="{{ _time_format }}" }}</span>{{ /if }}
+        </div>
+        <div class="event-headlines col-3-4 pad-half-horizontal">
+            <h4 class="title primary-text p-name">{{ title }}</h4>
+
+            {{ if location }}
+            <h5 class="subhead p-location padding-half">
+                <a class="p-name u-url link" href="http://www.google.com/maps/place/{{ location|urlencode }}/@{{ latitude }},{{ longitude }},17z" target="_blank">{{ location }}</a>
+            </h5>
+            {{ /if }}
+        </div>
+    </div>
 
     {{ if content }}
     <div class="body-1 primary-text p-summary">
