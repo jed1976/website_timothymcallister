@@ -2,14 +2,9 @@
 #timeline [data-icon]::before
 {
     font-size: 2rem;
-    right: 20px;
+    left: 20px;
     position: absolute;
 }
-
-#legend [data-icon]::before { left: 20px; right: auto; }
-
-#timeline td,
-#timeline th { border: 0; }
 
 @media (min-width: 768px)
 {

@@ -1,6 +1,6 @@
 {{ theme:partial half_size="true" src="hero" use_context="true" }}
 
-<section id="content" style="background-color: {{ background_color }};">
+<main id="content" style="background-color: {{ background_color }};">
     <div class="row">
         <div class="card" data-icon="down" id="year-selector-wrapper">
             <ol class="list">
@@ -16,4 +16,4 @@
             {{ theme:partial src="performances" since="01/01/{ get:year }" until="12/31/{ get:year }" }}
         </div>
     </div>
-</section>
+</main>

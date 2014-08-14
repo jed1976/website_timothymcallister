@@ -33,7 +33,6 @@ footer [data-icon]::before
 #social-links { text-align: center; }
 
 #content,
-#content-wrapper,
 #site-wrapper
 {
     position: relative;
