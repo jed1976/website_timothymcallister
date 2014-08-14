@@ -38,7 +38,7 @@
         bottom: 0;
         display: block;
         left: 0;
-        position: absolute;
+        position: absolute !important;
         right: 0;
         top: 0;
     }
