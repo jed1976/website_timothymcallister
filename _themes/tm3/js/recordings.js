@@ -209,6 +209,10 @@ if (window.getScreenSize() < 2) {
         });
         scroller.on('scroll', updateBackgroundImages);
         scroller.on('scroll', toggleLogoOpacity);
+
+        setTimeout(function() {
+            scroller.refresh();
+        }, 500);
     });
 
     document.body.appendChild(script);
