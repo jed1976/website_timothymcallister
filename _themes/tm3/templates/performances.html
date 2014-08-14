@@ -1,17 +1,21 @@
 {{ theme:partial half_size="true" src="hero" use_context="true" }}
 
 <main id="content" style="background-color: {{ background_color }};">
-    <div class="row">
-        <div class="card" data-icon="down" id="year-selector-wrapper">
-            <ol class="list">
-                {{ entries:listing folder="performances" group_by_date="Y" show_future="true" show_hidden="true" }}
-                {{ if grouped_date }}
-                <li><a class="link" href="?year={{ grouped_date }}">{{ grouped_date }}</a></li>
-                {{ endif }}
-                {{ /entries:listing }}
-            </ol>
-        </div>
+    <div class="row pad">
+        <h2 class="display-1">{{ title }}</h2>
+    </div>
 
+    <div class="card" data-icon="down" id="year-selector-wrapper">
+        <ol class="list">
+            {{ entries:listing folder="performances" group_by_date="Y" show_future="true" show_hidden="true" }}
+            {{ if grouped_date }}
+            <li><a class="link" href="?year={{ grouped_date }}">{{ grouped_date }}</a></li>
+            {{ endif }}
+            {{ /entries:listing }}
+        </ol>
+    </div>
+
+    <div class="row">
         <div id="map-wrapper">
             {{ theme:partial src="performances" since="01/01/{ get:year }" until="12/31/{ get:year }" }}
         </div>

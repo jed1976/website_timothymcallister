@@ -2,7 +2,7 @@
     {{ message_form_content|markdown }}
 
     {{ if {raven:has_errors} }}
-        <ul class="form-errors">
+        <ul class="form-errors list">
         {{ raven:errors }}
             {{ missing }}
               <li><strong>{{ field|ucfirst }}</strong> is required</li>
