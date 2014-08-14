@@ -39,12 +39,6 @@ footer [data-icon]::before
     z-index: 1;
 }
 
-.center-layout
-{
-    margin: 0 auto;
-    max-width: 1170px;
-}
-
 .card,
 .map #performance-list
 {
@@ -101,6 +95,12 @@ footer [data-icon]::before
 @media (min-width: 768px)
 {
     #social-links { text-align: right; }
+
+    .center-layout
+    {
+        margin: 0 auto;
+        max-width: 1170px;
+    }
 
     [class*='col-']
     {
