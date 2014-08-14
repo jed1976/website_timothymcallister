@@ -9,11 +9,11 @@ _fieldset: biography
 _template: biography
 pdfs:
   -
-    label: Full Biography
-    pdf: '{{ _site_root }}assets/pdf/timothy-mcallister-full-biography.pdf'
-  -
     label: Short Biography
     pdf: '{{ _site_root }}assets/pdf/timothy-mcallister-short-biography.pdf'
+  -
+    label: Full Biography
+    pdf: '{{ _site_root }}assets/pdf/timothy-mcallister-full-biography.pdf'
 vertical_position: center
 horizontal_position: center
 quote_position: right

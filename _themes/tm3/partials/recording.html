@@ -7,7 +7,7 @@
         </div>
         {{ if recording_url }}</a>{{ /if }}
 
-        {{ if recording_url }}<a class="button expand link pad-half-vertical" href="{{ recording_url }}" target="_blank" title="{{ publisher_title }}">More Information</a>{{ /if }}
+        {{ if recording_url and show_more_information }}<a class="button expand link pad-half-vertical" href="{{ recording_url }}" target="_blank" title="{{ publisher_title }}">More Information</a>{{ /if }}
     </div>
     <div class="col-1-2">
         <h3 class="headline">{{ title }}</h3>
@@ -40,7 +40,7 @@
         {{ /if }}
 
         {{ if show_learn_more }}
-        <div class="pad-vertical text-center">
+        <div class="pad-half-vertical text-center">
             <a class="button link" href="/recordings">All Recordings</a>
         </div>
         {{ /if }}

@@ -24,7 +24,7 @@ strong { font-weight: 400; }
     font-size: 2.25em;
     font-weight: 400;
     letter-spacing: 0;
-    line-height: 3.25em;
+    line-height: 2.25em;
     margin: 0;
 }
 
@@ -33,7 +33,6 @@ strong { font-weight: 400; }
     font-size: 2.1em;
     font-weight: 400;
     letter-spacing: 0;
-    line-height: 2.75em;
     margin: 0;
 }
 
@@ -48,10 +47,10 @@ strong { font-weight: 400; }
 
 .title
 {
-    font-size: 1.35em;
+    font-size: 1.25em;
     font-weight: 700;
     letter-spacing: 0;
-    line-height: 1.75em;
+    line-height: 1.55em;
     margin: 0;
 }
 
