@@ -5,11 +5,11 @@
         <ul class="form-errors list">
         {{ raven:errors }}
             {{ missing }}
-              <li><strong>{{ field|ucfirst }}</strong> is required</li>
+              <li class="body-2 pad-half">{{ field|ucfirst }} field is required</li>
             {{ /missing }}
 
             {{ invalid }}
-              <li><strong>{{ field|ucfirst }}</strong> {{ message }}</li>
+              <li class="body-2 pad-half">{{ field|ucfirst }} {{ message }}</li>
             {{ /invalid }}
         {{ /raven:errors }}
         </ul>
