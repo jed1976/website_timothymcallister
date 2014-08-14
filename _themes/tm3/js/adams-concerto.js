@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Listeners
     window.addEventListener('resize', resizeVideos);
 
-    submitForm(document.getElementById('message-form'), window.location.href, function(form, request) {
+    addFormSubmissionHandler(document.getElementById('message-form'), window.location.href, function(form, request) {
         form.innerHTML = queryHTML(request.responseText, '#' + form.id).innerHTML;
     });
 });

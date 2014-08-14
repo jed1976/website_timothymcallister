@@ -83,6 +83,31 @@ HTMLElement.prototype.toggleClass = function(string) {
 };
 
 // Functions
+window.addFormSubmissionHandler = function(form, action, callback) {
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        var params = [];
+
+        [].forEach.call(event.target.elements, function(el) {
+            if (el.name)
+                params.push(el.name + '=' + encodeURI(el.value));
+        });
+
+        params = params.join('&');
+
+        var request = new XMLHttpRequest();
+        request.open('POST', action, true);
+        request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+        request.onreadystatechange = function() {
+            if (request.readyState == 4 && request.status == 200) {
+                callback(form, request);
+            }
+        };
+        request.send(params);
+    });
+};
+
 window.getDocumentHeight = function() {
     return Math.max(
         document.body.scrollHeight, document.documentElement.scrollHeight,
@@ -139,31 +164,6 @@ window.queryHTML = function(html, selector) {
     return root.querySelector(selector);
 };
 
-window.submitForm = function(form, action, callback) {
-    form.addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        var params = [];
-
-        [].forEach.call(event.target.elements, function(el) {
-            if (el.name)
-                params.push(el.name + '=' + encodeURI(el.value));
-        });
-
-        params = params.join('&');
-
-        var request = new XMLHttpRequest();
-        request.open('POST', action, true);
-        request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-        request.onreadystatechange = function() {
-            if (request.readyState == 4 && request.status == 200) {
-                callback(form, request);
-            }
-        };
-        request.send(params);
-    });
-};
-
 window.updateScreenSizeClass = function() {
     var className,
         html = document.querySelector('html'),
@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', function() {
     updateScreenSizeClass();
     loadFastClick();
 
-    submitForm(document.getElementById('mailing-list-form'), window.location.href, function(form, request) {
+    addFormSubmissionHandler(document.getElementById('mailing-list-form'), window.location.href, function(form, request) {
         form.innerHTML = queryHTML(request.responseText, '#' + form.id).innerHTML;
     });
 
