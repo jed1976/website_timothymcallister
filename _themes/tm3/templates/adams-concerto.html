@@ -1,75 +1,77 @@
-{{ theme:partial half_size="true" src="hero" use_context="true" }}
+{{ theme:partial src="hero" use_context="true" }}
 
-<main class="pad-vertical" id="content" role="main" style="background-color: {{ background_color }};">
-    {{ if booking_title }}
-    <div class="row pad">
-        <h2 class="display-1">{{ booking_title }}</h2>
-        <div class="col-2-3">
-            {{ theme:partial src="vcard" use_context="true" }}
+<main id="content" role="main" style="background-color: {{ background_color }};">
+    <div class="center-layout">
+        {{ if booking_title }}
+        <div class="row pad">
+            <h2 class="display-1">{{ booking_title }}</h2>
+            <div class="col-2-3 pad-half-vertical">
+                {{ theme:partial src="vcard" use_context="true" }}
+            </div>
+            <div class="col-1-3">
+                {{ theme:partial src="message-form" }}
+            </div>
         </div>
-        <div class="col-1-3">
-            {{ theme:partial src="message-form" }}
-        </div>
-    </div>
-    {{ /if }}
-
-    {{ if downloads_title }}
-    <div class="pad">
-        <h2 class="display-1">{{ downloads_title }}</h2>
-
-        {{ if downloads }}
-            {{ downloads }}
-            {{ if index|%:2 == 1 and index > 1 }}</div>{{ /if }}
-            {{ if index|%:2 == 1 }}<div class="row">{{ /if }}
-                <div class="col-1-2">
-                    <a href="{{ download file="{photo_download}" as="{photo_download}" }}" title="Click to download this photo"><img alt="" src="{{ photo_download }}" /></a>
-                </div>
-            {{ /downloads }}
         {{ /if }}
 
-        {{ get_content from="biography" }}
-        {{ theme:partial src="biography-downloads" use_context="true" }}
-        {{ /get_content }}
+        {{ if downloads_title }}
+        <div class="pad">
+            <h2 class="display-1">{{ downloads_title }}</h2>
+
+            {{ if downloads }}
+                {{ downloads }}
+                {{ if index|%:2 == 1 and index > 1 }}</div>{{ /if }}
+                {{ if index|%:2 == 1 }}<div class="row">{{ /if }}
+                    <div class="col-1-2">
+                        <a href="{{ download file="{photo_download}" as="{photo_download}" }}" title="Click to download this photo"><img alt="" src="{{ photo_download }}" /></a>
+                    </div>
+                {{ /downloads }}
+            {{ /if }}
+
+            {{ get_content from="biography" }}
+            {{ theme:partial src="biography-downloads" use_context="true" }}
+            {{ /get_content }}
+            </div>
+
+            {{ theme:partial src="" }}
+        </div>
+        {{ /if }}
+
+        {{ if video_title }}
+        <div class="pad">
+            <h2 class="display-1">{{ video_title }}</h2>
+        </div>
+        <div class="pad-horizontal">
+            {{ theme:partial src="video" use_context="true" }}
+        </div>
+        {{ /if }}
+
+        {{ if recording_title }}
+        <div class="row pad">
+            <h2 class="display-1">{{ recording_title }}</h2>
         </div>
 
-        {{ theme:partial src="" }}
-    </div>
-    {{ /if }}
-
-    {{ if video_title }}
-    <div class="pad">
-        <h2 class="display-1">{{ video_title }}</h2>
-    </div>
-    <div class="pad-horizontal">
-        {{ theme:partial src="video" use_context="true" }}
-    </div>
-    {{ /if }}
-
-    {{ if recording_title }}
-    <div class="row pad">
-        <h2 class="display-1">{{ recording_title }}</h2>
-    </div>
-
-    <div class="row pad-horizontal">
-        {{ entries:listing conditions="slug:john-adams-city-noirsaxophone-concerto-david-robertsonst-louis-symphony" folder="recordings" limit="1" show_hidden="true" sort_by="datestamp" sort_dir="desc" }}
-            {{ theme:partial show_details="true" show_sample="true" src="recording" use_context="true" }}
-        {{ /entries:listing }}
-    </div>
-    {{ /if }}
-
-    {{ if critics_title }}
-    <div class="pad">
-        <h2 class="display-1">{{ critics_title }}</h2>
-
-        <div class="row quotes">
-            {{ entries:listing conditions="adams_press:1" folder="quotes" show_hidden="true" sort_by="random" }}
-                <div class="col-1-2">
-                    <div class="pad">
-                        {{ theme:partial src="quote" use_context="true" }}
-                    </div>
-                </div>
+        <div class="row pad-horizontal">
+            {{ entries:listing conditions="slug:john-adams-city-noirsaxophone-concerto-david-robertsonst-louis-symphony" folder="recordings" limit="1" show_hidden="true" sort_by="datestamp" sort_dir="desc" }}
+                {{ theme:partial show_details="true" show_sample="true" src="recording" use_context="true" }}
             {{ /entries:listing }}
         </div>
-    </div>
-    {{ /if }}
+        {{ /if }}
+
+        {{ if critics_title }}
+        <div class="pad">
+            <h2 class="display-1">{{ critics_title }}</h2>
+
+            <div class="row quotes">
+                {{ entries:listing conditions="adams_press:1" folder="quotes" show_hidden="true" sort_by="random" }}
+                    <div class="col-1-2">
+                        <div class="pad">
+                            {{ theme:partial src="quote" use_context="true" }}
+                        </div>
+                    </div>
+                {{ /entries:listing }}
+            </div>
+        </div>
+        {{ /if }}
+    </main>
 </main>

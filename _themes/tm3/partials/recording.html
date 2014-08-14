@@ -1,15 +1,15 @@
 <article class="row" id="{{ slug }}">
-    <div class="col-{{ if split_layout }}1-2{{ else }}1-3{{ /if }}">
+    <div class="col-1-2">
         {{ if recording_url }}<a href="{{ recording_url }}" title="{{ publisher_title }}" target="_blank">{{ /if }}
         <div class="row">
-            <img alt="{{ title }}" src="{{ artwork }}">
+            <img alt="{{ title }}" class="center" src="{{ artwork }}">
             {{ if show_sample && sample }}<a class="button border center light sample" data-icon="play" href="{{ sample }}">Play</a>{{ /if }}
         </div>
         {{ if recording_url }}</a>{{ /if }}
 
         {{ if recording_url }}<a class="button expand link pad-half-vertical" href="{{ recording_url }}" target="_blank" title="{{ publisher_title }}">More Information</a>{{ /if }}
     </div>
-    <div class="col-{{ if split_layout }}1-2{{ else }}2-3{{ /if }}">
+    <div class="col-1-2">
         <h3 class="headline">{{ title }}</h3>
 
         {{ content }}

@@ -51,6 +51,6 @@
         text-align: right;
     }
 
-    .hero .quotes.half { width: 40%; }
-    .hero .quotes.half.right { left: auto; }
+    .hero .quotes { width: 50%; }
+    .hero .quotes.right { left: auto; }
 }
