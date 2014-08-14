@@ -10,7 +10,7 @@
 
 footer
 {
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: #000;
     color: #FFF;
     position: relative;
     z-index: 1;
@@ -19,7 +19,9 @@ footer
 footer [data-icon]
 {
     font-size: 0;
-    margin-left: 12px;
+    margin-left: 6px;
+    margin-right: 6px;
+    padding: 0;
     width: 44px;
 }
 
@@ -82,7 +84,7 @@ footer [data-icon]::before
 .pad-half-horizontal { padding: 0 12px; }
 .pad-half-icon-left { padding: 12px 12px 12px 72px; }
 .pad-half-icon-right { padding: 12px 72px 12px 12px; }
-.pad-half-vertical { padding: 24px 0; }
+.pad-half-vertical { padding: 12px 0; }
 
 [class*=row]
 {

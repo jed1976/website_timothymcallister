@@ -3,10 +3,10 @@
         <div class="col-1-2">
             {{ theme:partial src="mailing-list-form" }}
         </div>
-        <div class="col-1-2 pad-half-vertical">
+        <div class="col-1-2 pad-vertical">
             <div id="social-links">
                 {{ entries:listing folder="social-links" show_hidden="true" }}
-                <a class="button light text-left social" data-icon="{{ page_icon }}" href="{{ social_url }}" target="_blank" title="Visit the {{ title }} page">{{ title }}</a>
+                <a class="button light social" data-icon="{{ page_icon }}" href="{{ social_url }}" target="_blank" title="Visit the {{ title }} page">{{ title }}</a>
                 {{ /entries:listing }}
             </div>
         </div>

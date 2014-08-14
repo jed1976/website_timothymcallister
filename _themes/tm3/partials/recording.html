@@ -8,7 +8,7 @@
         {{ if recording_url }}</a>{{ /if }}
     </div>
     <div class="col-{{ if split_layout }}1-2{{ else }}2-3{{ /if }}">
-        <h3 class="{{ if split_layout }}title{{ else }}display-1{{ /if }}">{{ title }}</h3>
+        <h3 class="{{ if use_title }}title{{ else }}display-1{{ /if }}">{{ title }}</h3>
 
         {{ content }}
 
