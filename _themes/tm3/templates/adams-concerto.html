@@ -33,9 +33,11 @@
             <div class="col-1-3">
                 {{ get_content from="biography" }}
                 {{ if pdfs }}
+                <div class="pad-vertical">
                     {{ pdfs }}
                     <a class="button block border download margin-vertical" href="{{ download file="{pdf}" as="{pdf}" }}">{{ label }}</a>
                     {{ /pdfs }}
+                </div>
                 {{ endif }}
                 {{ /get_content }}
             </div>
@@ -59,7 +61,7 @@
 
     <div class="row pad-horizontal">
         {{ entries:listing conditions="slug:john-adams-city-noirsaxophone-concerto-david-robertsonst-louis-symphony" folder="recordings" limit="1" show_hidden="true" sort_by="datestamp" sort_dir="desc" }}
-            {{ theme:partial show_details="true" show_sample="true" src="recording" use_context="true" }}
+            {{ theme:partial show_details="true" show_sample="true" src="recording" use_context="true" use_title="true" }}
         {{ /entries:listing }}
     </div>
     {{ /if }}
