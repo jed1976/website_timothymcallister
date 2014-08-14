@@ -7,7 +7,7 @@ var canvasDimension = 28,
     ].join('');
 
 // Insert overlays
-document.getElementById('content').insertStringBefore(overlays);
+document.getElementById('site-wrapper').insertStringBefore(overlays);
 
 // Variables
 var blurRadius = canvasDimension / 8,
@@ -200,7 +200,7 @@ if (window.getScreenSize() < 2) {
             scroller.refresh();
         });
 
-        scroller = new IScroll('#content', {
+        scroller = new IScroll('#site-wrapper', {
             deceleration: 0.003,
             eventPassthrough: 'horizontal',
             fadeScrollbars: true,
