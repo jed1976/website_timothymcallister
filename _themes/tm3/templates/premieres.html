@@ -1,8 +1,8 @@
 {{ theme:partial half_size="true" src="hero" use_context="true" }}
 
-<div style="background-color: {{ background_color }};">
+<div class="pad-vertical" style="background-color: {{ background_color }};">
     <main id="content">
-        <div class="row pad-vertical">
+        <div class="row">
             <div id="timeline">
                 {{ entries:listing folder="premieres" group_by_date="Y" show_hidden="true" sort_by="date" sort_dir="desc" }}
 

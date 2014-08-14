@@ -1,9 +1,9 @@
 {{ theme:partial half_size="true" src="hero" use_context="true" }}
 
-<div style="background-color: {{ background_color }};">
+<div class="pad-vertical" style="background-color: {{ background_color }};">
     <main id="content" role="main">
         <div class="pad">
-            {{ content|widont }}
+            <div class="body-1">{{ content|widont }}</div>
 
             {{ if pdfs }}
             <div class="text-center">
