@@ -13,17 +13,6 @@ textarea
 }
 
 [type]:focus,
-textarea:focus
-{
-    outline: none;
-}
+textarea:focus { outline: none; }
 
-.form-errors
-{
-    background-color: #3b597d;
-    color: #fff;
-    font-size: 1rem;
-    list-style: none;
-    margin: 0 0 20px 0;
-    padding: 10px;
-}
+.form-errors { background-color: #b0120a; }

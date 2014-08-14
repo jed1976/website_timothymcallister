@@ -3,22 +3,22 @@
 
     {{ raven:form attr="id:mailing-list-form" formset="mailing-list" }}
         {{ if {raven:has_errors} }}
-            <ul class="form-errors">
+            <ul class="form-errors list">
             {{ raven:errors }}
                 {{ missing }}
-                  <li><strong>{{ field|ucfirst }}</strong> field is required</li>
+                  <li class="body-2 pad-half">{{ field|ucfirst }} field is required</li>
                 {{ /missing }}
 
                 {{ invalid }}
-                  <li><strong>{{ field|ucfirst }}</strong> {{ message }}</li>
+                  <li class="body-2 pad-half">{{ field|ucfirst }} {{ message }}</li>
                 {{ /invalid }}
             {{ /raven:errors }}
             </ul>
         {{ /if }}
 
         {{ if {raven:success} }}
-            <div class="text-center">
-                <h3 class="title">{{ thank_you_message }}</h3>
+            <div class="text-center pad-half">
+                <h3 class="headline">Thank you.</h3>
             </div>
         {{ else }}
             <div class="row">
