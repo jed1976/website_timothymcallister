@@ -1,7 +1,7 @@
 {{ theme:partial half_size="true" src="hero" use_context="true" }}
 
-<main id="content-wrapper" role="main" style="background-color: {{ background_color }};">
-    <div id="content">
+<div style="background-color: {{ background_color }};">
+    <main id="content" role="main">
         <div class="pad">
             {{ content|widont }}
 
@@ -13,5 +13,5 @@
             </div>
             {{ endif }}
         </div>
-    </div>
-</main>
+    </main>
+</div>

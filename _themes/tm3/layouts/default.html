@@ -27,17 +27,18 @@
         {{ theme:partial src="menu" }}
 
         <div id="site-wrapper">
-            {{ layout_content }}
-
-            <!-- Scripts -->
-            {{ theme:js tag="true" }}
-            {{ if enable_audio }}{{ theme:js src="audio" tag="true" }}{{ endif }}
-            {{ if enable_map }}{{ theme:js src="map" tag="true" }}{{ endif }}
-            {{ if enable_promises }}{{ theme:js src="promise.min" tag="true" }}{{ endif }}
-            {{ if enable_blur }}{{ theme:js src="stackblur.min" tag="true" }}{{ endif }}
-            {{ if page_js }}{{ theme:js src="{ page_js }" tag="true" }}{{ endif }}
+            <div class="scroller">
+                {{ layout_content }}
+                {{ theme:partial src="footer" }}
+            </div>
         </div>
 
-        {{ theme:partial src="footer" }}
+        <!-- Scripts -->
+        {{ theme:js tag="true" }}
+        {{ if enable_audio }}{{ theme:js src="audio" tag="true" }}{{ endif }}
+        {{ if enable_map }}{{ theme:js src="map" tag="true" }}{{ endif }}
+        {{ if enable_promises }}{{ theme:js src="promise.min" tag="true" }}{{ endif }}
+        {{ if enable_blur }}{{ theme:js src="stackblur.min" tag="true" }}{{ endif }}
+        {{ if page_js }}{{ theme:js src="{ page_js }" tag="true" }}{{ endif }}
     </body>
 </html>
