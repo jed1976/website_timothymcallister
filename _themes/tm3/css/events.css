@@ -6,8 +6,6 @@
 
 .h-event tr:first-child td { border: 0; }
 
-.h-event .button { display: none; }
-
 @media (min-width: 768px)
 {
     .map #performance-list
@@ -29,6 +27,8 @@
         padding: 12px;
         overflow: hidden;
     }
+
+    .map #performance-list .h-event .button { display: none; }
 
     .map #performance-list .h-event tr,
     .map #performance-list .h-event .p-summary { display: none; }
