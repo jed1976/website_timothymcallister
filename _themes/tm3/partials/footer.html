@@ -5,7 +5,7 @@
         </div>
         <div class="col-1-2 pad-vertical">
             <div id="social-links">
-                {{ entries:listing folder="social-links" show_hidden="true" }}
+                {{ entries:listing conditions="slug:!prism-quartet" folder="social-links" show_hidden="true" }}
                 <a class="button light social" data-icon="{{ page_icon }}" href="{{ social_url }}" target="_blank" title="Visit the {{ title }} page">{{ title }}</a>
                 {{ /entries:listing }}
             </div>
