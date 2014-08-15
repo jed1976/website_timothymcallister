@@ -1,7 +1,11 @@
 <div class="row">
+    <div class="col-1-2">
+        &nbsp;
+        {{ theme:partial src="hero" use_context="true" }}
+    </div>
     <div class="col-1-2" style="background-color: {{ background_color }};">
         <main class="pad" id="content" role="main">
-            <h2 class="display-1">This page cannot be found.</h2>
+            <h2 class="display-1">{{ title }}</h2>
 
             <div class="body-1 pad-vertical">
                 {{ content|widont }}
@@ -11,9 +15,5 @@
                 <a class="button" href="/">Return to Homepage</a>
             </div>
         </main>
-    </div>
-    <div class="col-1-2">
-        &nbsp;
-        {{ theme:partial src="hero" use_context="true" }}
     </div>
 </div>

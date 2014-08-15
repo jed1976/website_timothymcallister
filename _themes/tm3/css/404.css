@@ -22,6 +22,8 @@
 
 @media (min-width: 768px)
 {
+    .fixed-hero { background-position: -550px center !important; }
+
     .hero
     {
         bottom: 0;
@@ -37,7 +39,7 @@
 
     #content
     {
-        float: left;
+        float: right;
         min-height: 625px;
         padding-top: 80px;
     }
