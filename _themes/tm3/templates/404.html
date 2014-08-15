@@ -1,11 +1,19 @@
-{{ theme:partial src="hero" use_context="true" }}
+<div class="row">
+    <div class="col-1-2" style="background-color: {{ background_color }};">
+        <main class="pad" id="content" role="main">
+            <h2 class="display-1">This page cannot be found.</h2>
 
-<main id="content" role="main" style="background-color: {{ background_color }};">
-    <div class="grid-pad">
-        <h2 class="style-1">{{ title }}</h2>
+            <div class="body-1 pad-vertical">
+                {{ content|widont }}
+            </div>
 
-        <div class="grid">
-            {{ content|markdown }}
-        </div>
+            <div class="text-center pad">
+                <a class="button" href="/">Return to Homepage</a>
+            </div>
+        </main>
     </div>
-</main>
+    <div class="col-1-2">
+        &nbsp;
+        {{ theme:partial src="hero" use_context="true" }}
+    </div>
+</div>

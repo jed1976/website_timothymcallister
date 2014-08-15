@@ -1,3 +1,9 @@
+#content
+{
+    min-height: 475px;
+    width: 100%;
+}
+
 #sitemap [data-icon]::before
 {
     font-size: 2rem;
@@ -14,21 +20,25 @@
     text-transform: uppercase;
 }
 
-@media (min-width: 1024px)
+@media (min-width: 768px)
 {
-    .js #content
-    {
-        left: 0;
-        padding-top: 80px;
-    }
-
-    .js #content,
-    .js .hero
+    .hero
     {
         bottom: 0;
         position: fixed;
         right: 0;
         top: 0;
         width: 50%;
+    }
+
+    .hero-mask,
+    .hero-mask::after,
+    .hero-mask::before { display: none; }
+
+    #content
+    {
+        float: left;
+        min-height: 625px;
+        padding-top: 80px;
     }
 }
