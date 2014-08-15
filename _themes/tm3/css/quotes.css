@@ -10,7 +10,7 @@
 .hero .quote
 {
     bottom: 0;
-    font-size: 16px;
+    font-size: 13px;
     left: 0;
     position: absolute;
     right: 0;
@@ -52,5 +52,6 @@
     }
 
     .hero .quotes { width: 50%; }
+
     .hero .quotes.right { left: auto; }
 }
