@@ -2,6 +2,7 @@
 {
     font-size: 10px;
     margin: 0;
+    text-shadow: 0 0 1px #000;
 }
 
 .quote figcaption
