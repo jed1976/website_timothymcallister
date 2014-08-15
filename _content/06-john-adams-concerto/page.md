@@ -8,8 +8,8 @@ title: John Adams Concerto
 _fieldset: adams-concerto
 _template: adams-concerto
 artwork: '{{ _site_root }}assets/img/tim-adams.jpg'
-vertical_position: center
-horizontal_position: center
+vertical_position: top
+horizontal_position: left
 quote_position: right
 background_color: '#212121'
 name: Andrew C. Elsesser
@@ -26,24 +26,24 @@ recording_title: The Recording
 booking_title: Booking Information
 downloads_title: Media
 downloads:
-  - 
+  -
     photo_download: '{{ _site_root }}assets/img/downloads/tim-4.jpg'
-  - 
+  -
     photo_download: '{{ _site_root }}assets/img/downloads/tim-2.jpg'
-  - 
+  -
     photo_download: '{{ _site_root }}assets/img/downloads/tim-1.jpg'
-  - 
+  -
     photo_download: '{{ _site_root }}assets/img/downloads/tim-6.jpg'
 quotes:
-  - 
+  -
     quote: /quotes/john-adams
-  - 
+  -
     quote: /quotes/william-robin
-  - 
+  -
     quote: /quotes/david-nice
-  - 
+  -
     quote: /quotes/lewis-whittington
-  - 
+  -
     quote: /quotes/murray-black
 critics_title: The Critics Speak
 message_form_content: Inquire about booking engagements
