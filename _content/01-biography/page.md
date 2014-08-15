@@ -13,9 +13,9 @@ pdfs:
   -
     label: Full Biography
     pdf: '{{ _site_root }}assets/pdf/timothy-mcallister-full-biography.pdf'
-vertical_position: center
+vertical_position: top
 horizontal_position: center
-quote_position: right
+quote_position: left
 quotes:
   -
     quote: /quotes/william-bolcom
