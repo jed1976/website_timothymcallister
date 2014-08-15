@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var resizeVideos = function(el) {
-        var paddingOffset = 48;
+    var paddingOffset = 0;
 
+    var resizeVideos = function(el) {
         [].forEach.call(document.querySelectorAll('.video'), function(el) {
             var aspectRatio = parseInt(el.getStyle('height')) / parseInt(el.getStyle('width'));
 

@@ -53,7 +53,7 @@ footer [data-icon]::before
 .col-5-6,
 .col-6-7,
 .col-2-3,
-.col-3-4 { width: 100%; }
+.col-3-4 { padding: 0; width: 100%; }
 
 .margin { margin: 24px; }
 .margin-horizontal { margin: 0 24px; }
@@ -63,23 +63,15 @@ footer [data-icon]::before
 .margin-half-vertical { margin: 12px 0; }
 
 .pad { padding: 24px; }
-.pad-horizontal { padding: 0 24px; }
-.pad-left { padding-left: 24px; }
-.pad-right { padding-right: 24px; }
-.pad-bottom { padding-bottom: 24px; }
-.pad-top { padding-top: 24px; }
 .pad-icon-left { padding: 24px 24px 24px 52px; }
 .pad-icon-right { padding: 24px 72px 24px 24px; }
+.pad-horizontal { padding: 0 24px; }
+.pad-half-horizontal { padding: 0 12px; }
 .pad-vertical { padding: 24px 0; }
 .pad-half { padding: 12px; }
-.pad-half-horizontal { padding: 0 12px; }
 .pad-half-icon-left { padding: 12px 12px 12px 52px; }
 .pad-half-icon-right { padding: 12px 72px 12px 12px; }
 .pad-half-vertical { padding: 12px 0; }
-.pad-half-left { padding-left: 12px; }
-.pad-half-right { padding-right: 12px; }
-.pad-half-bottom { padding-bottom: 12px; }
-.pad-half-top { padding-top: 12px; }
 
 .no-pad { padding: 0 !important; }
 
@@ -116,8 +108,12 @@ footer [data-icon]::before
     [class*='col-']
     {
         float: left;
+        padding-bottom: 24px;
+        padding-right: 24px;
         position: relative;
     }
+
+    [class*='col-']:last-child { padding-right: 0; }
 
     .col-1-8 { width: 12.5%; }
     .col-1-7 { width: 14.28571429%; }
@@ -129,5 +125,7 @@ footer [data-icon]::before
     .col-2-3 { width: 66.66%; }
     .col-3-4 { width: 75%; }
     .col-7-8 { width: 87.5%; }
-    .col-full { width: 100%; }
+    .col-full { padding-right: 0; width: 100%; }
+
+    .pad-right { padding-right: 24px !important; }
 }
