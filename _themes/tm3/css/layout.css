@@ -16,6 +16,8 @@ footer
     z-index: 1;
 }
 
+footer [class*=col] { padding-bottom: 0; }
+
 footer [data-icon]
 {
     font-size: 0;
@@ -108,9 +110,9 @@ footer [data-icon]::before
     [class*='col-']
     {
         float: left;
-        padding-bottom: 24px;
         padding-right: 24px;
         position: relative;
+        padding-bottom: 24px;
     }
 
     [class*='col-']:last-child { padding-right: 0; }

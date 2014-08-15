@@ -24,7 +24,9 @@
                 {{ if index|%:2 == 1 and index > 1 }}</div>{{ /if }}
                 {{ if index|%:2 == 1 }}<div class="row">{{ /if }}
                     <div class="col-1-2{{ if index|%:2 == 0 }} pad-right{{ /if }}">
-                        <a href="{{ download file="{photo_download}" as="{photo_download}" }}" title="Click to download this photo"><img alt="" src="{{ photo_download }}" /></a>
+                        <a href="{{ download file="{photo_download}" as="{photo_download}" }}" title="Click to download this photo">
+                            <img alt="" src="{{ photo_download }}" />
+                        </a>
                     </div>
                 {{ /downloads }}
             {{ /if }}
