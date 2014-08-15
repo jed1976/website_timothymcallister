@@ -40,13 +40,15 @@ quotes:
   - 
     quote: /quotes/william-robin
   - 
-    quote: /quotes/harriet-cunningham
-  - 
-    quote: /quotes/tim-smith
-  - 
     quote: /quotes/david-nice
+  - 
+    quote: /quotes/lewis-whittington
+  - 
+    quote: /quotes/murray-black
 critics_title: The Critics Speak
 message_form_content: Inquire about booking engagements
 thank_you_message: Thank you for your message.
 ---
+
+
 
