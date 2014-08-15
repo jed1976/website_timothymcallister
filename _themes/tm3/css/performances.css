@@ -27,6 +27,7 @@
 
 .js #year-selector-wrapper
 {
+    border: 1px solid #DBDBDB;
     position: relative;
     width: 100%;
 }

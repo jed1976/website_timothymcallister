@@ -72,8 +72,8 @@ strong { font-weight: 400; }
 /* Lists */
 .list { list-style: none; margin: 0; padding: 0; }
 .list.dark-borders li { border-bottom: 1px solid #DBDBDB; }
-.list.light li { border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-.list.dark-borders li:last-child, .list.light li:last-child { border-bottom: 0; }
+.list.light-borders li { border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+.list.dark-borders li:last-child, .list.light-borders li:last-child { border-bottom: 0; }
 .square { list-style: square; }
 .disc { list-style: disc; }
 
