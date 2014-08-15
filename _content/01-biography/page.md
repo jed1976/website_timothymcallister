@@ -1,7 +1,6 @@
 ---
 page_icon: biography
 page_id: biography
-page_stylesheet: biography
 theme: dark
 title: Biography
 artwork: '{{ _site_root }}assets/img/tim-7.jpg'
