@@ -1,15 +1,6 @@
 <article class="h-event{{ if datestamp|in_future }} future{{ /if }}{{ if datestamp|is_today }} today{{ /if }}" data-latitude="{{ latitude }}" data-longitude="{{ longitude }}">
 
     <div class="row pad-half-vertical">
-        <div class="calendar col-1-4 no-pad">
-            <time class="dt-start" datetime="{{ datestamp format="m-d-Y" }} {{ time }}">
-                <span class="month">{{ datestamp format="M" }}</span>
-                <span class="day">{{ datestamp format="j" }}</span>
-                <span class="year">{{ datestamp format="Y" }}</span>
-            </time>
-
-            {{ if event_time }}<span class="time pad-half-vertical">{{ event_time format="{{ _time_format }}" }}</span>{{ /if }}
-        </div>
         <div class="event-headlines col-3-4 pad-half-horizontal">
             <h4 class="title primary-text p-name">{{ title }}</h4>
 
@@ -18,6 +9,16 @@
                 <a class="p-name u-url link" href="http://www.google.com/maps/place/{{ location|urlencode }}/@{{ latitude }},{{ longitude }},17z" target="_blank">{{ location }}</a>
             </h5>
             {{ /if }}
+        </div>
+
+        <div class="calendar col-1-4 no-pad">
+            <time class="dt-start" datetime="{{ datestamp format="m-d-Y" }} {{ time }}">
+                <span class="month">{{ datestamp format="M" }}</span>
+                <span class="day">{{ datestamp format="j" }}</span>
+                <span class="year">{{ datestamp format="Y" }}</span>
+            </time>
+
+            {{ if event_time }}<span class="time pad-half-vertical">{{ event_time format="{{ _time_format }}" }}</span>{{ /if }}
         </div>
     </div>
 
