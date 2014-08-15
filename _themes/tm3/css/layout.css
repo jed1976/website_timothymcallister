@@ -66,7 +66,10 @@ footer [data-icon]::before
 .col-6-7,
 .col-2-3,
 .col-3-4
-{ width: 100%; }
+{
+    padding-bottom: 12px;
+    width: 100%;
+}
 
 .margin { margin: 24px; }
 .margin-horizontal { margin: 0 24px; }

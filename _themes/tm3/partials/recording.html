@@ -14,9 +14,7 @@
     <div class="col-1-2">
         <h3 class="headline">{{ title }}</h3>
 
-        <div class="pad-vertical">
-            {{ content }}
-        </div>
+        {{ content }}
 
         {{ if show_details }}
         <table>
@@ -44,7 +42,7 @@
         {{ /if }}
 
         {{ if show_learn_more }}
-        <div class="pad-half-vertical text-center">
+        <div class="text-center">
             <a class="button link" href="/recordings">All Recordings</a>
         </div>
         {{ /if }}
