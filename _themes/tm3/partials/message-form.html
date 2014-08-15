@@ -1,6 +1,4 @@
 {{ raven:form attr="id:message-form" formset="messages" }}
-    {{ message_form_content|markdown }}
-
     {{ if {raven:has_errors} }}
         <ul class="form-errors list">
         {{ raven:errors }}

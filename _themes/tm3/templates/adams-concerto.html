@@ -5,10 +5,10 @@
         {{ if booking_title }}
         <div class="row pad">
             <h2 class="display-1">{{ booking_title }}</h2>
-            <div class="col-2-3 pad-half-vertical">
+            <div class="col-2-3">
                 {{ theme:partial src="vcard" use_context="true" }}
             </div>
-            <div class="col-1-3">
+            <div class="col-1-3 pad-vertical">
                 {{ theme:partial src="message-form" }}
             </div>
         </div>
@@ -18,26 +18,26 @@
         <div class="pad">
             <h2 class="display-1">{{ downloads_title }}</h2>
 
-            <p class="body-1 pad-vertical">Download photos or biographies</p>
-
-            {{ if downloads }}
-                {{ downloads }}
-                {{ if index|%:2 == 1 and index > 1 }}</div>{{ /if }}
-                {{ if index|%:2 == 1 }}<div class="row">{{ /if }}
-                    <div class="col-1-2">
-                        <div class="pad-half-vertical">
-                            <a href="{{ download file="{photo_download}" as="{photo_download}" }}" title="Click to download this photo"><img alt="" src="{{ photo_download }}" /></a>
+            <div class="pad-vertical">
+                {{ if downloads }}
+                    {{ downloads }}
+                    {{ if index|%:2 == 1 and index > 1 }}</div>{{ /if }}
+                    {{ if index|%:2 == 1 }}<div class="row">{{ /if }}
+                        <div class="col-1-2">
+                            <div class="pad-half-{{ if index < 3 }}bottom{{ else }}top{{ /if }} pad-half-{{ if index|%:2 == 1}}right{{ else }}left{{ /if }}">
+                                <a href="{{ download file="{photo_download}" as="{photo_download}" }}" title="Click to download this photo"><img alt="" src="{{ photo_download }}" /></a>
+                            </div>
                         </div>
-                    </div>
-                {{ /downloads }}
-            {{ /if }}
-            </div>
+                    {{ /downloads }}
+                {{ /if }}
+                </div>
 
-            {{ get_content from="biography" }}
-            <div class="row">
-                {{ theme:partial src="biography-downloads" use_context="true" }}
-           </div>
-            {{ /get_content }}
+                {{ get_content from="biography" }}
+                <div class="row pad">
+                    {{ theme:partial src="biography-downloads" use_context="true" }}
+               </div>
+                {{ /get_content }}
+            </div>
         </div>
         {{ /if }}
 
