@@ -1,38 +1,42 @@
-{{ theme:partial src="hero" use_context="true" }}
+<div class="row">
+    <div class="col-1-2">
+        &nbsp;
+        {{ theme:partial src="hero" use_context="true" }}
+    </div>
+    <div class="col-1-2" style="background-color: {{ background_color }};">
+        <main class="pad" id="content" role="main">
+            <h2 class="display-1">{{ title }}</h2>
 
-<div id="content" style="background-color: {{ background_color }};">
-    <main class="center-layout pad">
-        <h2 class="display-1">{{ title }}</h2>
+            <div class="row">
+                <div id="timeline">
+                    {{ entries:listing folder="premieres" group_by_date="Y" show_hidden="true" sort_by="date" sort_dir="desc" }}
 
-        <div class="row">
-            <div id="timeline">
-                {{ entries:listing folder="premieres" group_by_date="Y" show_hidden="true" sort_by="date" sort_dir="desc" }}
+                    {{ if grouped_date }}
+                        {{ if !first }}
+                                </ul>
+                        {{ endif }}
+                    <h2 class="pad-vertical headline">{{ grouped_date }}</h2>
 
-                {{ if grouped_date }}
-                    {{ if !first }}
-                            </ul>
+                    <ul class="list">
                     {{ endif }}
-                <h2 class="pad-vertical headline">{{ grouped_date }}</h2>
-
-                <ul class="list">
-                {{ endif }}
-                    <li class="divider-light pad-icon-left row" {{ theme:partial src="icon-list" use_context="true" }}>
-                        <h4 class="title">{{ title }}</h4>
-                        <h5 class="subhead">{{ composer }}</h5>
-                    </li>
-                {{ if last }}
-                </ul>
-                {{ endif }}
-                {{ /entries:listing }}
-            </div>
-
-            <div class="row pad-vertical">
-                <ul class="list" id="legend">
-                    {{ entries:listing folder="premiere-categories" show_hidden="true" }}
-                    <li class="body-1 divider-light pad-half-icon-left row" data-icon="{{ icon }}">{{ title }}</li>
+                        <li class="divider-light pad-icon-left row" {{ theme:partial src="icon-list" use_context="true" }}>
+                            <h4 class="title">{{ title }}</h4>
+                            <h5 class="subhead">{{ composer }}</h5>
+                        </li>
+                    {{ if last }}
+                    </ul>
+                    {{ endif }}
                     {{ /entries:listing }}
-                </ul>
+                </div>
+
+                <div class="row pad-vertical">
+                    <ul class="list" id="legend">
+                        {{ entries:listing folder="premiere-categories" show_hidden="true" }}
+                        <li class="body-1 divider-light pad-half-icon-left row" data-icon="{{ icon }}">{{ title }}</li>
+                        {{ /entries:listing }}
+                    </ul>
+                </div>
             </div>
-        </div>
-    </main>
+        </main>
+    </div>
 </div>

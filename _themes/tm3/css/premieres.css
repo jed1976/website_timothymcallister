@@ -5,3 +5,30 @@
     left: 0;
     position: absolute;
 }
+
+@media (min-width: 768px)
+{
+    .fixed-hero
+    {
+        background-size: 50%;
+    }
+
+    .hero
+    {
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        top: 0;
+        width: 50%;
+    }
+
+    .hero-mask,
+    .hero-mask::after,
+    .hero-mask::before { display: none; }
+
+    #content
+    {
+        float: right;
+        padding-top: 80px;
+    }
+}

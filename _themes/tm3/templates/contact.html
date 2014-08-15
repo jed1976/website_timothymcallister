@@ -1,10 +1,19 @@
 <main id="content" role="main">
     {{ entries:listing folder="contact" show_hidden="true" }}
+
+    <h2 class="display-1 pad">{{ title }}</h2>
+
     <div class="hero row" style="background-image: url({{ artwork }});">
         <div class="tile pad">
-            <h2 class="display-1">{{ title }}</h2>
             {{ theme:partial src="vcard" use_context="true" }}
         </div>
+
+        {{ if first }}<div class="hero-mask"></div>{{ /if }}
     </div>
     {{ /entries:listing }}
 </main>
+
+<style>
+.hero-mask::after,
+.hero-mask::before { border-bottom: 20px solid {{ background_color }}; }
+</style>

@@ -15,7 +15,7 @@
 {
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 450px;
+    min-height: 475px;
     overflow: hidden;
     position: relative;
     z-index: 0;
@@ -31,6 +31,7 @@
     height: 0;
     position: absolute;
     width: 50%;
+    z-index: 2;
 }
 
 .hero-mask:before
@@ -75,5 +76,5 @@ img { max-width: 100%; }
 
 @media (min-width: 768px)
 {
-    .hero { min-height: 600px; }
+    .hero { min-height: 625px; }
 }
