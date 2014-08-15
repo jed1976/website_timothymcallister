@@ -26,8 +26,7 @@
 }
 
 .h-event .month,
-.h-event .year,
-.h-event .time
+.h-event .year
 {
     font-size: 12px;
     font-weight: 700;
@@ -51,6 +50,7 @@
 .h-event .year
 {
     color: #202020 !important;
+    font-weight: 400;
 }
 
 .calendar { float: left; width: 25% !important; }
