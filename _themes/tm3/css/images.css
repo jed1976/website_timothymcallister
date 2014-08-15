@@ -51,10 +51,10 @@
 .hero::before,
 .overlay::before
 {
-    background: -o-linear-gradient(bottom, rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.01) 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(bottom, rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.01) 100%); /* IE10+ */
-    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.01) 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#03000000', endColorstr='#000000',GradientType=0 ); /* IE6-8 */
+    background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.2) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.2) 100%); /* IE10+ */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.65) 25%, rgba(0, 0, 0, 0) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 ); /* IE6-8 */
     bottom: 0;
     content: '';
     left: 0;
