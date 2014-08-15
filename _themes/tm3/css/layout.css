@@ -39,15 +39,6 @@ footer [data-icon]::before
     z-index: 1;
 }
 
-.card,
-.map #performance-list
-{
-    background-color: #fff;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    -webkit-box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px;
-    box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px;
-}
-
 .tile.light *
 {
     color: #fff;
@@ -91,6 +82,13 @@ footer [data-icon]::before
 
 .no-pad { padding: 0 !important; }
 
+.card,
+.map #performance-list
+{
+    background-color: #fff;
+    border: 1px solid #DBDBDB;
+}
+
 [class*=row]
 {
     overflow: hidden;
@@ -100,6 +98,13 @@ footer [data-icon]::before
 @media (min-width: 768px)
 {
     #social-links { text-align: right; }
+
+    .card,
+    .map #performance-list
+    {
+        -webkit-box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px;
+        box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px;
+    }
 
     .center-layout
     {
@@ -113,8 +118,6 @@ footer [data-icon]::before
         padding-right: 30px;
         position: relative;
     }
-
-    /*[class*='col-']:last-of-type { padding-right: 0; }*/
 
     .col-1-8 { width: 12.5%; }
     .col-1-7 { width: 14.28571429%; }

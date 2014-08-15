@@ -1,13 +1,11 @@
 <article class="h-event{{ if datestamp|in_future }} future{{ /if }}{{ if datestamp|is_today }} today{{ /if }}" data-latitude="{{ latitude }}" data-longitude="{{ longitude }}">
 
     <div class="row pad-half-vertical">
-        <div class="event-headlines col-3-4 pad-half-horizontal">
-            <h4 class="title primary-text p-name">{{ title }}</h4>
+        <div class="event-headlines col-3-4 no-pad">
+            <h4 class="title p-name">{{ title }}</h4>
 
             {{ if location }}
-            <h5 class="subhead p-location padding-half">
-                <a class="p-name u-url link" href="http://www.google.com/maps/place/{{ location|urlencode }}/@{{ latitude }},{{ longitude }},17z" target="_blank">{{ location }}</a>
-            </h5>
+            <a class="p-name u-url link" href="http://www.google.com/maps/place/{{ location|urlencode }}/@{{ latitude }},{{ longitude }},17z" target="_blank">{{ location }}</a>
             {{ /if }}
         </div>
 
@@ -23,7 +21,7 @@
     </div>
 
     {{ if content }}
-    <div class="body-1 primary-text p-summary">
+    <div class="body-1 p-summary">
         {{ content }}
     </div>
     {{ /if }}
