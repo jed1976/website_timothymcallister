@@ -97,6 +97,7 @@ footer [data-icon]::before
     .card,
     .map #performance-list
     {
+        border: 1px solid #DBDBDB;
         -webkit-box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px;
         box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px;
     }
