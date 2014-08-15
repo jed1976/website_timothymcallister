@@ -59,6 +59,8 @@
     border-radius: 128px;
 }
 
+.button.border.sample.small { border-width: 2px !important; }
+
 .button.sample[data-icon]::before
 {
     display: block;
@@ -78,7 +80,7 @@
 
 .button.sample.small.positioned { margin-top: -22px; }
 
-.button.border:hover { background-color: #202020; color: #FFF; }
+.button.border:hover { background-color: rgba(0, 0, 0, 0.5); color: #FFF; }
 
 @media (min-width: 768px)
 {

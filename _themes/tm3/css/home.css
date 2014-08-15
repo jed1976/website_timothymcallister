@@ -1,1 +1,28 @@
 #live-recordings { background: #EDEDED; }
+
+@media (min-width: 768px)
+{
+    #live-recordings .col-1-2:first-child
+    {
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 50%;
+    }
+
+    #live-recordings .col-1-2:first-child img
+    {
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        top: 0;
+    }
+
+    #live-recordings .col-1-2:last-child
+    {
+        float: right;
+        width: 50%;
+    }
+}
