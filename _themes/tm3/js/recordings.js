@@ -26,7 +26,7 @@ var blurRadius = canvasDimension / 8,
     recordingItems = recordingsList.querySelectorAll('li.recording'),
     recordings = {},
     scrollOffset = 100,
-    scroller = null,
+    scroller = { y: 0 },
     totalRecordings = recordingItems.length - 1;
 
 // Functions
@@ -130,6 +130,10 @@ var init = function() {
 
             window.addEventListener('resize', updateBackgroundImages);
             document.addEventListener('scroll', updateBackgroundImages);
+
+            setTimeout(function() {
+                loadScroller();
+            }, 0)
         });
     });
 };
@@ -151,18 +155,17 @@ var loadScroller = function() {
         });
 
         scroller = new IScroll('#site-wrapper', {
-            deceleration: 0.003,
-            eventPassthrough: 'horizontal',
             fadeScrollbars: true,
             probeType: 3,
             scrollbars: true
         });
+
         scroller.on('scroll', updateBackgroundImages);
         scroller.on('scroll', toggleLogoOpacity);
 
         setTimeout(function() {
             scroller.refresh();
-        }, 500);
+        }, 0);
     });
 
     document.body.appendChild(script);
@@ -218,8 +221,6 @@ var updateBackgroundImages = function() {
 
     changeOpacity();
 };
-
-loadScroller();
 
 window.addEventListener('load', function() {
     init();
