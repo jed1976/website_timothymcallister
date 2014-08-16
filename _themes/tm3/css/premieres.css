@@ -29,10 +29,6 @@
         width: auto;
     }
 
-    .hero-mask,
-    .hero-mask::after,
-    .hero-mask::before { display: none; }
-
     #content
     {
         float: right;
