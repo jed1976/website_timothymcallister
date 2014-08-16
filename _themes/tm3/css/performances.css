@@ -43,7 +43,7 @@
     padding: 8px 16px;
     width: 100%;
     -webkit-appearance: none;
-    -moz-appearance: none;
+    -moz-appearance: window;
     -o-appearance: none;
     appearance: none;
 }
