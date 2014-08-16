@@ -13,7 +13,8 @@
 input,
 textarea,
 #year-selector-wrapper a:hover,
-.button.border
+.button.border,
+body.checked #menu-toggle
 {
     -moz-transition: all 0.25s ease-in;
     -ms-transition: all 0.25s ease-in;
