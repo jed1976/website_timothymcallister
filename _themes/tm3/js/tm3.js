@@ -209,7 +209,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     document.body.addEventListener('click', function(event) {
-        var target = event.target;
+        var target = event.target,
+            waitDuration = 350;
 
         if (target.nodeName != 'A' && target.nodeName != 'SPAN') return;
 
@@ -229,8 +230,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (linkLocation.indexOf('#') > -1) return;
 
-        document.body.removeClass('fadein');
-        window.location = linkLocation;
+        if (body.hasClass('checked')) {
+            body.removeClass('checked');
+            setTimeout(function() {
+                body.removeClass('fadein');
+                setTimeout(function() {
+                    window.location = linkLocation;
+                }, waitDuration);
+            }, waitDuration);
+        }
+        else {
+            body.removeClass('fadein');
+
+            setTimeout(function() {
+                window.location = linkLocation;
+            }, waitDuration);
+        }
     });
 
     // Update screen size classes on resize

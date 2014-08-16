@@ -41,7 +41,8 @@
 .js #menu
 {
     bottom: 0;
-    overflow: scroll;
+    overflow: auto;
+    overflow-x: hidden;
     padding-top: 16px;
     position: fixed;
     right: 0;
@@ -59,7 +60,7 @@
     margin-right: 16px;
 }
 
-body.checked { overflow: hidden; }
+/*body.checked { overflow: hidden; }*/
 body.checked #menu { width: 320px; }
 body.checked #menu-toggle { right: 8px; }
 body.checked #menu-toggle::before { content: "\e60f"; }
