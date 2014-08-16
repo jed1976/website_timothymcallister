@@ -14,7 +14,7 @@
     z-index: 4;
 }
 
-.tile.right { right: 24px; text-align: right; }
+.tile.right { right: 0; text-align: right; }
 
 .tile:last-of-type { bottom: 0; }
 
