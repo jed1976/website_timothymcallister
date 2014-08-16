@@ -4,7 +4,7 @@
 .fixed { bottom: 0; left: 0; position: fixed; right: 0; top: 0; }
 .float-left { float: left !important; }
 .float-right { float: right !important; }
-.js .fadein, .js .hero .quote.fadein { opacity: 1; }
+.js .fadein, .js .hero .quote.fadein, .js #map.fadein { opacity: 1; }
 .js .fadeout { opacity: 0; }
 .right { right: 12px; }
 .scrollable { -webkit-overflow-scrolling: touch; }

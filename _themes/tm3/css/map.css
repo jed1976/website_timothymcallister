@@ -2,6 +2,21 @@
 
 #map-wrapper { position: relative; }
 
+#map-wrapper::before
+{
+    background-image: url('../img/loader.gif');
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: 32px 32px;
+    bottom: 0;
+    content: '';
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 24px;
+    z-index: -1;
+}
+
 #map-canvas
 {
     display: none;
@@ -10,6 +25,11 @@
 
 @media (min-width: 768px)
 {
+    #map-wrapper::before
+    {
+        background-position: center center;
+    }
+
     .gm-style-iw + div { display: none; }
 
     .gm-style-iw { left: 21px !important; }
