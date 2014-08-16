@@ -55,6 +55,7 @@
 
 .js #year-selector-wrapper::before
 {
+    background-color: #FFF;
     bottom: 0;
     font-size: 28px;
     line-height: 44px;

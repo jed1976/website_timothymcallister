@@ -5,6 +5,8 @@
     min-width: 300px;
 }
 
+.h-event { min-width: 285px; \ ;} /* IE 9 */
+
 .h-event tr:first-child td { border: 0; }
 
 .h-event .dt-start
