@@ -6,7 +6,7 @@
             <h2 class="display-1">{{ title }}</h2>
 
             <div class="row quotes">
-                {{ entries:listing conditions="adams_press:!1" folder="quotes" show_hidden="true" sort_by="random" }}
+                {{ entries:listing conditions="adams_press:!1" folder="quotes" show_hidden="true" sort_by="date" sort_dir="desc" }}
                     <div class="col-1-2 pad-vertical">
                         {{ theme:partial src="quote" use_context="true" }}
                     </div>
