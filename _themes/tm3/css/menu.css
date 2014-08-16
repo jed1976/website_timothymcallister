@@ -48,9 +48,9 @@
     overflow-x: hidden;
     padding-top: 16px;
     position: fixed;
-    right: 0;
+    right: -320px;
     top: 0;
-    width: 0;
+    width: 320px;
     -webkit-overflow-scrolling: touch;
 }
 
@@ -63,9 +63,10 @@
 }
 
 /*body.checked { overflow: hidden; }*/
-body.checked #menu { width: 320px; }
 body.checked #menu-toggle { right: 8px; }
 body.checked #menu-toggle::before { content: "\e60f"; }
+body.checked #site-wrapper, body.checked .fixed-hero, body.checked #menu { -webkit-transform: translate3d(-320px, 0, 0); }
+body.checked #site-wrapper::before { opacity: 1; z-index: 7; }
 
 @media (min-width: 768px)
 {

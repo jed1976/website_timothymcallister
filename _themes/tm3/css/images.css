@@ -9,6 +9,7 @@
     top: 0;
     right: 0;
     z-index: -1;
+    -webkit-transform: translate3d(0, 0, 0);
 }
 
 .hero
@@ -48,6 +49,7 @@
     right: 0;
 }
 
+#site-wrapper::before,
 .hero::before,
 .overlay::before
 {
