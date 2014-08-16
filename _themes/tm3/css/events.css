@@ -2,6 +2,7 @@
 {
     margin: 0;
     padding: 16px;
+    min-width: 320px;
 }
 
 .h-event tr:first-child td { border: 0; }

@@ -44,6 +44,8 @@
         padding: 24px;
     }
 
+    .hero .quote { padding: 0; }
+
     .quotes.left
     {
         left: 24px;

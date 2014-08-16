@@ -3,6 +3,12 @@
     <div class="row">
         <div class="event-headlines col-3-4 no-pad">
             <h4 class="title p-name">{{ title }}</h4>
+
+            {{ if location }}
+            <div class="row p-location">
+                <a class="p-name u-url subhead link" href="http://www.google.com/maps/place/{{ location|urlencode }}/@{{ latitude }},{{ longitude }},17z" target="_blank">{{ location }}</a>
+            </div>
+            {{ /if }}
         </div>
 
         <div class="float-right">
@@ -19,12 +25,6 @@
             {{ /if }}
         </div>
     </div>
-
-    {{ if location }}
-    <div class="row p-location">
-        <a class="p-name u-url subhead link" href="http://www.google.com/maps/place/{{ location|urlencode }}/@{{ latitude }},{{ longitude }},17z" target="_blank">{{ location }}</a>
-    </div>
-    {{ /if }}
 
     {{ if content }}
     <div class="body-1 p-summary">
