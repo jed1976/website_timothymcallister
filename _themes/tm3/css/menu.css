@@ -42,11 +42,10 @@
 {
     bottom: 0;
     overflow: scroll;
-    padding-top: 14px;
+    padding-top: 16px;
     position: fixed;
     right: 0;
     top: 0;
-    transition: .3s ease all;
     width: 0;
     z-index: 6;
     -webkit-overflow-scrolling: touch;
