@@ -1,18 +1,23 @@
-<main id="content" role="main">
-    {{ entries:listing folder="contact" show_hidden="true" }}
-    <div class="hero row" style="background-image: url({{ artwork }});">
+<div class="row">
+    <div class="hero">
+        {{ entries:listing conditions="slug:school" folder="contact" show_hidden="true" }}
         <div class="tile pad">
             <h2 class="display-1 pad-vertical">{{ title }}</h2>
 
             {{ theme:partial src="vcard" use_context="true" }}
         </div>
+        {{ /entries:listing }}
+    </div>
+</div>
 
-        {{ if first }}<div class="hero-mask"></div>{{ /if }}
+<div class="row">
+    {{ entries:listing conditions="slug:summer" folder="contact" show_hidden="true" }}
+    <div class="hero" style="background-image: url({{ artwork }}); background-position: left center;">
+        <div class="tile pad right">
+            <h2 class="display-1 pad-vertical">{{ title }}</h2>
+
+            {{ theme:partial src="vcard" use_context="true" }}
+        </div>
     </div>
     {{ /entries:listing }}
-</main>
-
-<style>
-.hero-mask::after,
-.hero-mask::before { border-bottom: 20px solid {{ background_color }}; }
-</style>
+</div>
