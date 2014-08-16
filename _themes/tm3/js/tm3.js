@@ -167,7 +167,7 @@ window.queryHTML = function(html, selector) {
 window.toggleLogoOpacity = function() {
     var y = Math.abs(this.y) || window.pageYOffset,
         logo = document.getElementById('logo'),
-        targetY = window.getDocumentHeight() / 2,
+        targetY = 1000,
         opacity = (100 - ((targetY - y) / targetY) * 100) / 100,
         changeOpacity = function(opacity) {
             logo.style.backgroundColor = 'rgba(0, 0, 0, ' + opacity + ')';
@@ -177,8 +177,6 @@ window.toggleLogoOpacity = function() {
         changeOpacity(1.0);
         return;
     }
-
-    //if (opacity > 0.9 || opacity < 0.2) return;
 
     changeOpacity(opacity);
 };
