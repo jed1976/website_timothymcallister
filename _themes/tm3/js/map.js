@@ -1,6 +1,4 @@
 var initializeMap = function(callback) {
-    document.querySelector('html').addClass('map');
-
     // Variables
     var activeClass = 'active',
         currentRow,
@@ -46,7 +44,7 @@ var initializeMap = function(callback) {
         [].forEach.call(performanceList.querySelectorAll('.h-event'), function(el) {
             title = el.querySelector('.p-location .p-name');
             title = title ? title.innerHTML : '';
-            coordinates = new google.maps.LatLng(el.dataset.latitude, el.dataset.longitude);
+            coordinates = new google.maps.LatLng(el.getAttribute('data-latitude'), el.getAttribute('data-longitude'));
             marker = new google.maps.Marker({
                 animation: google.maps.Animation.DROP,
                 icon: icon,
@@ -126,6 +124,8 @@ window.addEventListener('load', function load() {
     window.removeEventListener('load', load, false);
 
     if (getScreenSize() < 1) return;
+
+    document.querySelector('html').addClass('map');
 
     var script = document.createElement('script');
     script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyA2Kd093BDPlBJhWykIlVOEHamfG4_8WKo&callback=initializeMap';

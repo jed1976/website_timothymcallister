@@ -12,6 +12,8 @@ footer
 {
     background-color: #111;
     color: #FFF;
+    position: relative;
+    z-index: 3;
 }
 
 footer [class*=col] { padding-bottom: 0; }
