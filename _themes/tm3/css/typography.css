@@ -69,6 +69,8 @@ strong { font-weight: 400; }
 
 .body-2 { font-weight: 700; }
 
+.intro { padding-bottom: 96px; }
+
 /* Lists */
 .list { list-style: none; margin: 0; padding: 0; }
 .list.dark-borders li { border-bottom: 1px solid #DBDBDB; }

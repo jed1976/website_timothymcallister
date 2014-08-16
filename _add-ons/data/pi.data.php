@@ -475,7 +475,7 @@ EOD;
                 'datestamp' => date('Y-m-d', $row['entry_date']),
                 'name' => $row['field_id_62'],
                 'title' => $row['title'],
-                'quote' => $row['field_id_11'],
+                'quote' => trim($row['field_id_11']),
                 'source' => $row['field_id_13'],
                 'adams_press' => containsString($row['field_id_11'], $adamsPress)
             );

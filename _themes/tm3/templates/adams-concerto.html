@@ -2,78 +2,76 @@
 
 <main id="content" role="main" style="background-color: {{ background_color }};">
     <div class="center-layout pad">
-        <div class="headline pad-vertical">
+        <div class="headline intro">
             {{ content|widont }}
         </div>
 
-        <div class="margin-vertical">
-            {{ if booking_title }}
-            <h2 class="display-1">{{ booking_title }}</h2>
+        {{ if booking_title }}
+        <h2 class="display-1">{{ booking_title }}</h2>
 
-            <div class="row pad-vertical">
-                <div class="col-1-2">
-                    {{ theme:partial src="vcard" use_context="true" }}
-                </div>
-                <div class="col-1-2">
-                    {{ theme:partial src="message-form" }}
-                </div>
+        <div class="row pad-vertical">
+            <div class="col-1-2">
+                {{ theme:partial src="vcard" use_context="true" }}
             </div>
-            {{ /if }}
-
-            {{ if downloads_title }}
-            <h2 class="display-1">{{ downloads_title }}</h2>
-
-            <div class="pad-vertical">
-                {{ if downloads }}
-                    {{ downloads }}
-                    {{ if index|%:2 == 1 and index > 1 }}</div>{{ /if }}
-                    {{ if index|%:2 == 1 }}<div class="row">{{ /if }}
-                        <div class="col-1-2">
-                            <a href="{{ download file="{photo_download}" as="{photo_download}" }}" title="Click to download this photo">
-                                <img alt="" src="{{ photo_download }}" />
-                            </a>
-                        </div>
-                    {{ /downloads }}
-                {{ /if }}
-                </div>
-
-                {{ get_content from="biography" }}
-                <div class="row pad-vertical">
-                    {{ theme:partial src="biography-downloads" use_context="true" }}
-               </div>
-                {{ /get_content }}
+            <div class="col-1-2">
+                {{ theme:partial src="message-form" }}
             </div>
-            {{ /if }}
-
-            {{ if video_title }}
-            <h2 class="display-1">{{ video_title }}</h2>
-
-            <div class="pad-vertical">
-                {{ theme:partial src="video" use_context="true" }}
-            </div>
-            {{ /if }}
-
-            {{ if recording_title }}
-            <h2 class="display-1">{{ recording_title }}</h2>
-
-            <div class="pad-vertical">
-                {{ entries:listing conditions="slug:john-adams-city-noirsaxophone-concerto-david-robertsonst-louis-symphony" folder="recordings" limit="1" show_hidden="true" sort_by="datestamp" sort_dir="desc" }}
-                    {{ theme:partial show_details="true" show_more_information="true" show_sample="true" src="recording" use_context="true" }}
-                {{ /entries:listing }}
-            </div>
-            {{ /if }}
-
-            {{ if critics_title }}
-            <h2 class="display-1">{{ critics_title }}</h2>
-
-            <div class="row quotes">
-                {{ entries:listing conditions="adams_press:1" folder="quotes" show_hidden="true" sort_by="date" sort_dir="desc" }}
-                    <div class="col-1-2 pad-vertical">
-                        {{ theme:partial src="quote" use_context="true" }}
-                    </div>
-                {{ /entries:listing }}
-            </div>
-            {{ /if }}
         </div>
+        {{ /if }}
+
+        {{ if downloads_title }}
+        <h2 class="display-1">{{ downloads_title }}</h2>
+
+        <div class="pad-vertical">
+            {{ if downloads }}
+                {{ downloads }}
+                {{ if index|%:2 == 1 and index > 1 }}</div>{{ /if }}
+                {{ if index|%:2 == 1 }}<div class="row">{{ /if }}
+                    <div class="col-1-2">
+                        <a href="{{ download file="{photo_download}" as="{photo_download}" }}" title="Click to download this photo">
+                            <img alt="" src="{{ photo_download }}" />
+                        </a>
+                    </div>
+                {{ /downloads }}
+            {{ /if }}
+            </div>
+
+            {{ get_content from="biography" }}
+            <div class="row pad-vertical">
+                {{ theme:partial src="biography-downloads" use_context="true" }}
+           </div>
+            {{ /get_content }}
+        </div>
+        {{ /if }}
+
+        {{ if video_title }}
+        <h2 class="display-1">{{ video_title }}</h2>
+
+        <div class="pad-vertical">
+            {{ theme:partial src="video" use_context="true" }}
+        </div>
+        {{ /if }}
+
+        {{ if recording_title }}
+        <h2 class="display-1">{{ recording_title }}</h2>
+
+        <div class="pad-vertical">
+            {{ entries:listing conditions="slug:john-adams-city-noirsaxophone-concerto-david-robertsonst-louis-symphony" folder="recordings" limit="1" show_hidden="true" sort_by="datestamp" sort_dir="desc" }}
+                {{ theme:partial show_details="true" show_more_information="true" show_sample="true" src="recording" use_context="true" }}
+            {{ /entries:listing }}
+        </div>
+        {{ /if }}
+
+        {{ if critics_title }}
+        <h2 class="display-1">{{ critics_title }}</h2>
+
+        <div class="row quotes">
+            {{ entries:listing conditions="adams_press:1" folder="quotes" show_hidden="true" sort_by="date" sort_dir="desc" }}
+                <div class="col-1-2 pad-vertical">
+                    {{ theme:partial src="quote" use_context="true" }}
+                </div>
+            {{ /entries:listing }}
+        </div>
+        {{ /if }}
     </main>
 </main>
