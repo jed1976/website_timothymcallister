@@ -15,4 +15,4 @@ textarea
 [type]:focus,
 textarea:focus { outline: none; }
 
-.form-errors { background-color: #b0120a; }
+.form-error { background-color: #b0120a; }

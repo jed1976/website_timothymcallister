@@ -105,18 +105,17 @@ footer [data-icon]::before
     .center-layout
     {
         margin: 0 auto;
-        max-width: 1170px;
+        max-width: 960px;
     }
 
     [class*='col-']
     {
         float: left;
-        padding-right: 24px;
+        padding-right: 12px;
+        padding-right: 12px;
         position: relative;
-        padding-bottom: 24px;
+        padding-bottom: 12px;
     }
-
-    [class*='col-']:last-child { padding-right: 0; }
 
     .col-1-8 { width: 12.5%; }
     .col-1-7 { width: 14.28571429%; }
@@ -131,4 +130,9 @@ footer [data-icon]::before
     .col-full { padding-right: 0; width: 100%; }
 
     .pad-right { padding-right: 24px !important; }
+}
+
+@media (min-width: 768px)
+{
+    .center-layout { max-width: 1140px; }
 }

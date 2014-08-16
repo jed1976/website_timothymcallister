@@ -16,5 +16,5 @@ quotes:
     quote: /quotes/janos-gereben
   -
     quote: /quotes/robert-mccolley
-background_color: '#272422'
+background_color: '#191817'
 ---

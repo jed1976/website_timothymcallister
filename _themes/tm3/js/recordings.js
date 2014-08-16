@@ -134,6 +134,40 @@ var init = function() {
     });
 };
 
+var loadScroller = function() {
+    if (window.getScreenSize() > 1) return;
+
+    document.addEventListener('touchmove', function(e) {
+        if (document.querySelector('#menu-toggle').hasClass('checked') === false)
+            e.preventDefault();
+    });
+
+    var script = document.createElement('script');
+    script.src = '/_themes/tm3/js/iscroll-probe.js';
+    script.addEventListener('load', function() {
+        window.addEventListener('orientationchange', function() {
+            updateBackgroundImages();
+            scroller.refresh();
+        });
+
+        scroller = new IScroll('#site-wrapper', {
+            deceleration: 0.003,
+            eventPassthrough: 'horizontal',
+            fadeScrollbars: true,
+            probeType: 3,
+            scrollbars: true
+        });
+        scroller.on('scroll', updateBackgroundImages);
+        scroller.on('scroll', toggleLogoOpacity);
+
+        setTimeout(function() {
+            scroller.refresh();
+        }, 500);
+    });
+
+    document.body.appendChild(script);
+};
+
 var prepareNextRecording = function() {
     recordingIndex = getNextRecordingIndex(1);
 
@@ -185,38 +219,7 @@ var updateBackgroundImages = function() {
     changeOpacity();
 };
 
-// IScroll only for smaller screens
-if (window.getScreenSize() < 2) {
-    document.addEventListener('touchmove', function(e) {
-        if (document.querySelector('#menu-toggle').hasClass('checked') === false)
-            e.preventDefault();
-    });
-
-    var script = document.createElement('script');
-    script.src = '/_themes/tm3/js/iscroll-probe.js';
-    script.addEventListener('load', function() {
-        window.addEventListener('orientationchange', function() {
-            updateBackgroundImages();
-            scroller.refresh();
-        });
-
-        scroller = new IScroll('#site-wrapper', {
-            deceleration: 0.003,
-            eventPassthrough: 'horizontal',
-            fadeScrollbars: true,
-            probeType: 3,
-            scrollbars: true
-        });
-        scroller.on('scroll', updateBackgroundImages);
-        scroller.on('scroll', toggleLogoOpacity);
-
-        setTimeout(function() {
-            scroller.refresh();
-        }, 500);
-    });
-
-    document.body.appendChild(script);
-}
+loadScroller();
 
 window.addEventListener('load', function() {
     init();
