@@ -11,7 +11,7 @@ artwork: '{{ _site_root }}assets/img/tim-adams.jpg'
 vertical_position: top
 horizontal_position: left
 quote_position: right
-background_color: '#212121'
+background_color: '#090909'
 name: Andrew C. Elsesser
 position: Booking Manager
 organization: IMG Artists
