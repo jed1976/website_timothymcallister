@@ -63,10 +63,8 @@
 
         <div class="row quotes">
             {{ entries:listing conditions="adams_press:1" folder="quotes" show_hidden="true" sort_by="random" }}
-                <div class="col-1-2">
-                    <div class="pad">
-                        {{ theme:partial src="quote" use_context="true" }}
-                    </div>
+                <div class="col-1-2 pad-vertical">
+                    {{ theme:partial src="quote" use_context="true" }}
                 </div>
             {{ /entries:listing }}
         </div>
