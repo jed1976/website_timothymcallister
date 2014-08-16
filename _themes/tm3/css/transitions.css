@@ -1,6 +1,7 @@
 .js body,
 .js .hero .quote,
-.js #map
+.js #map,
+.js #site-wrapper::before
 {
 
     -moz-transition: opacity 0.5s ease-in;
@@ -13,10 +14,12 @@
 
 input,
 textarea,
-.js #menu,
 #logo,
 #menu-toggle,
 #year-selector-wrapper a:hover,
+.js #site-wrapper,
+.js .fixed-hero,
+.js #menu,
 .button.border
 {
     -moz-transition: all 0.25s ease-in;

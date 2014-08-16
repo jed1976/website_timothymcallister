@@ -269,4 +269,5 @@ document.addEventListener('DOMContentLoaded', function() {
 window.addEventListener('load', function load() {
     window.removeEventListener('load', load, false);
     document.body.addClass('fadein');
+    window.toggleLogoOpacity();
 });
