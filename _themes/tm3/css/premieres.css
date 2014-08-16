@@ -10,6 +10,7 @@
 {
     .fixed-hero
     {
+        background-position: -250px center !important;
         background-size: 100%;
     }
 
