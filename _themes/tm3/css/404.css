@@ -22,7 +22,9 @@
 
 @media (min-width: 768px)
 {
-    .fixed-hero { background-position: -550px center !important; }
+    #logo a { color: #111; }
+
+    .fixed-hero { background-position: -500px center !important; }
 
     .hero
     {
@@ -32,10 +34,6 @@
         top: 0;
         width: 50%;
     }
-
-    .hero-mask,
-    .hero-mask::after,
-    .hero-mask::before { display: none; }
 
     #content
     {

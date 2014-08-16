@@ -1,6 +1,8 @@
 #logo
 {
+    font-size: 14px;
     letter-spacing: 0.25rem;
+    line-height: 28px;
     margin: 0;
     padding-bottom: 24px;
     padding-left: 24px;
@@ -21,9 +23,9 @@
     opacity: 1;
     overflow: hidden;
     position: fixed;
-    right: 20px;
+    right: 16px;
     text-align: center;
-    top: 20px;
+    top: 22px;
     width: 48px;
     z-index: 7;
 }
@@ -34,14 +36,13 @@
 {
     background-color: #000;
     overflow: hidden;
-    padding-top: 60px;
 }
 
 .js #menu
 {
-    height: 100%;
+    bottom: 0;
     overflow: scroll;
-    padding-top: 36px;
+    padding-top: 14px;
     position: fixed;
     right: 0;
     top: 0;
@@ -51,10 +52,7 @@
     -webkit-overflow-scrolling: touch;
 }
 
-#menu a
-{
-    font-weight: 400;
-}
+#menu a { font-weight: 400; }
 
 #menu [data-icon]::before
 {
@@ -63,7 +61,11 @@
 }
 
 body.checked { overflow: hidden; }
-
 body.checked #menu { width: 320px; }
-
+body.checked #menu-toggle { right: 8px; }
 body.checked #menu-toggle::before { content: "\e60f"; }
+
+@media (min-width: 768px)
+{
+    #logo { font-size: 22px; }
+}
