@@ -1,50 +1,52 @@
-<article class="row" id="{{ slug }}">
-    <div class="col-1-2">
-        {{ if recording_url }}<a href="{{ recording_url }}" title="{{ publisher_title }}" target="_blank">{{ /if }}
-        <div class="row">
-            <img alt="{{ title }}" class="center" src="{{ artwork }}">
-            {{ if show_sample && sample }}<a class="button border center light sample" data-icon="play" href="{{ sample }}">Play</a>{{ /if }}
+<article id="{{ slug }}">
+    <div class="row">
+        <div class="col-1-2">
+            {{ if recording_url }}<a href="{{ recording_url }}" title="{{ publisher_title }}" target="_blank">{{ /if }}
+            <div class="row">
+                <img alt="{{ title }}" class="center" src="{{ artwork }}">
+                {{ if show_sample && sample }}<a class="button border center light sample" data-icon="play" href="{{ sample }}">Play</a>{{ /if }}
+            </div>
+            {{ if recording_url }}</a>{{ /if }}
         </div>
-        {{ if recording_url }}</a>{{ /if }}
+        <div class="col-1-2">
+            <h3 class="headline">{{ title|widont }}</h3>
 
-        {{ if recording_url and show_more_information }}
-        <a class="button expand link pad-half-vertical" href="{{ recording_url }}" target="_blank" title="{{ publisher_title }}">More Information</a>
-        {{ /if }}
+            {{ content }}
+
+            {{ if show_details }}
+            <table class="margin-vertical">
+                <tbody>
+                    {{ if datestamp }}
+                    <tr>
+                        <th class="body-1 secondary-text width-50">Release Date</th>
+                        <td class="body-1 primary-text text-right">{{ datestamp format="{{ _date_format }}" }}</td>
+                    </tr>
+                    {{ /if }}
+                    {{ if producer }}
+                    <tr>
+                        <th class="body-1 secondary-text width-50">Producer</th>
+                        <td class="body-1 primary-text text-right">{{ entries:listing conditions="url:{producer}" folder="producers" limit="1" show_hidden="true" }}{{ title }}{{ /entries:listing }}</td>
+                    </tr>
+                    {{ /if }}
+                    {{ if catalog_number }}
+                    <tr>
+                        <th class="body-1 secondary-text width-50">Catalog Number</th>
+                        <td class="body-1 primary-text text-right">{{ catalog_number }}</td>
+                    </tr>
+                    {{ /if }}
+                </tbody>
+            </table>
+            {{ /if }}
+        </div>
     </div>
-    <div class="col-1-2">
-        <h3 class="headline">{{ title }}</h3>
 
-        {{ content }}
-
-        {{ if show_details }}
-        <table class="margin-vertical">
-            <tbody>
-                {{ if datestamp }}
-                <tr>
-                    <th class="body-1 secondary-text">Release Date</th>
-                    <td class="body-1 primary-text text-right">{{ datestamp format="{{ _date_format }}" }}</td>
-                </tr>
-                {{ /if }}
-                {{ if producer }}
-                <tr>
-                    <th class="body-1 secondary-text">Producer</th>
-                    <td class="body-1 primary-text text-right">{{ entries:listing conditions="url:{producer}" folder="producers" limit="1" show_hidden="true" }}{{ title }}{{ /entries:listing }}</td>
-                </tr>
-                {{ /if }}
-                {{ if catalog_number }}
-                <tr>
-                    <th class="body-1 secondary-text">Catalog Number</th>
-                    <td class="body-1 primary-text text-right">{{ catalog_number }}</td>
-                </tr>
-                {{ /if }}
-            </tbody>
-        </table>
+    <div class="text-center">
+        {{ if recording_url and show_more_information }}
+        <a class="button" href="{{ recording_url }}" target="_blank" title="{{ publisher_title }}">More Information</a>
         {{ /if }}
 
         {{ if show_learn_more }}
-        <div class="text-center margin-vertical">
-            <a class="button border" href="/recordings">All Recordings</a>
-        </div>
+        <a class="button link" href="/recordings">All Recordings</a>
         {{ /if }}
     </div>
 </article>

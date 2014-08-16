@@ -128,11 +128,11 @@ window.getUrl = function(url, callback) {
 };
 
 window.getSizeBasedOnWidth = function(width) {
-    if (width < 639)
+    if (width <= 640)
         return 0;
-    else if (width < 1023)
+    else if (width <= 1024)
         return 1;
-    else if (width < 1365)
+    else if (width <= 1366)
         return 2
 
     return 3;

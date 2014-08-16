@@ -1,16 +1,14 @@
 {{ raven:form attr="id:message-form" formset="messages" }}
     {{ if {raven:has_errors} }}
-        <ul class="form-errors list">
-        {{ raven:errors }}
-            {{ missing }}
-              <li class="body-2 pad-half">{{ field|ucfirst }} field is required</li>
-            {{ /missing }}
+    {{ raven:errors }}
+        {{ missing }}
+        {{ if index == 1 }}<div class="form-error pad-half">All fields are required</div>{{ /if }}
+        {{ /missing }}
 
-            {{ invalid }}
-              <li class="body-2 pad-half">{{ field|ucfirst }} {{ message }}</li>
-            {{ /invalid }}
-        {{ /raven:errors }}
-        </ul>
+        {{ invalid }}
+        {{ if index == 1 }}<div class="form-error pad-half">All fields must be valid</div>{{ /if }}
+        {{ /invalid }}
+    {{ /raven:errors }}
     {{ /if }}
 
     {{ if {raven:success} }}
