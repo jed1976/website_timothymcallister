@@ -151,11 +151,14 @@ var loadScroller = function() {
     script.addEventListener('load', function() {
         window.addEventListener('orientationchange', function() {
             updateBackgroundImages();
-            scroller.refresh();
+
+            setTimeout(function() {
+                scroller.refresh();
+            }, 0);
         });
 
         scroller = new IScroll('#site-wrapper', {
-            fadeScrollbars: true,
+            freeScroll: true,
             probeType: 3,
             scrollbars: true
         });
