@@ -18,20 +18,20 @@
                 <tbody>
                     {{ if datestamp }}
                     <tr>
-                        <th class="body-1 secondary-text width-50">Release Date</th>
-                        <td class="body-1 primary-text text-right">{{ datestamp format="{{ _date_format }}" }}</td>
+                        <th class="body-1 secondary-text">Release Date</th>
+                        <td class="body-1 primary-text text-right width-60">{{ datestamp format="{{ _date_format }}" }}</td>
                     </tr>
                     {{ /if }}
                     {{ if producer }}
                     <tr>
-                        <th class="body-1 secondary-text width-50">Producer</th>
-                        <td class="body-1 primary-text text-right">{{ entries:listing conditions="url:{producer}" folder="producers" limit="1" show_hidden="true" }}{{ title }}{{ /entries:listing }}</td>
+                        <th class="body-1 secondary-text">Producer</th>
+                        <td class="body-1 primary-text text-right width-60">{{ entries:listing conditions="url:{producer}" folder="producers" limit="1" show_hidden="true" }}{{ title }}{{ /entries:listing }}</td>
                     </tr>
                     {{ /if }}
                     {{ if catalog_number }}
                     <tr>
-                        <th class="body-1 secondary-text width-50">Catalog Number</th>
-                        <td class="body-1 primary-text text-right">{{ catalog_number }}</td>
+                        <th class="body-1 secondary-text">Catalog Number</th>
+                        <td class="body-1 primary-text text-right width-60">{{ catalog_number }}</td>
                     </tr>
                     {{ /if }}
                 </tbody>

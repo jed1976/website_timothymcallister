@@ -1,10 +1,10 @@
 #logo
 {
-    background-color: rgba(0, 0, 0, 0.2);
-    letter-spacing: 0.125rem;
-    line-height: 2.25rem;
+    letter-spacing: 0.25rem;
     margin: 0;
-    padding-left: 12px;
+    padding-bottom: 24px;
+    padding-left: 24px;
+    padding-top: 24px;
     position: fixed;
     text-transform: uppercase;
     top: 0;
@@ -21,11 +21,11 @@
     opacity: 1;
     overflow: hidden;
     position: fixed;
-    right: 4px;
+    right: 20px;
     text-align: center;
-    top: 2px;
+    top: 20px;
     width: 48px;
-    z-index: 5;
+    z-index: 7;
 }
 
 .js #menu-toggle { display: block; }
@@ -47,7 +47,7 @@
     top: 0;
     transition: .3s ease all;
     width: 0;
-    z-index: 4;
+    z-index: 6;
     -webkit-overflow-scrolling: touch;
 }
 
@@ -65,3 +65,5 @@
 body.checked { overflow: hidden; }
 
 body.checked #menu { width: 320px; }
+
+body.checked #menu-toggle::before { content: "\e60f"; }
