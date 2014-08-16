@@ -10,7 +10,7 @@ _template: premieres
 vertical_position: center
 horizontal_position: left
 quote_position: left
-background_color: '#2a36b1'
+background_color: '#0D1F48'
 quotes:
   -
     quote: /quotes/imagination-97
