@@ -35,7 +35,10 @@
 #menu
 {
     background-color: #000;
+    padding-top: 80px;
     overflow: hidden;
+    position: relative;
+    z-index: 6;
 }
 
 .js #menu
@@ -48,7 +51,6 @@
     right: 0;
     top: 0;
     width: 0;
-    z-index: 6;
     -webkit-overflow-scrolling: touch;
 }
 
