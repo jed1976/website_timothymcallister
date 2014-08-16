@@ -80,8 +80,14 @@ footer [data-icon]::before
 .card,
 .map #performance-list
 {
+    border: 1px solid #DBDBDB;
     background-color: #fff;
+}
 
+.card
+{
+    -webkit-box-shadow: rgba(0, 0, 0, 0.298039) 0 1px 4px -1px;
+    box-shadow: rgba(0, 0, 0, 0.298039) 0 1px 4px -1px;
 }
 
 [class*=row]
@@ -94,12 +100,10 @@ footer [data-icon]::before
 {
     #social-links { text-align: right; }
 
-    .card,
     .map #performance-list
     {
-        border: 1px solid #DBDBDB;
-        -webkit-box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px;
-        box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px;
+        -webkit-box-shadow: rgba(0, 0, 0, 0.298039) 0 1px 4px -1px;
+        box-shadow: rgba(0, 0, 0, 0.298039) 0 1px 4px -1px;
     }
 
     .center-layout
