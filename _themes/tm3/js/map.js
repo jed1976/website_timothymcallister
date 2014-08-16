@@ -86,8 +86,8 @@ var initializeMap = function(callback) {
             summary = performance.querySelector('.p-summary'),
             maxWidth = 320;
 
-        if (summary)
-            maxWidth = summary.innerHTML.length > 250 ? window.innerWidth / 2 : maxWidth;
+        if (summary && summary.innerHTML.length > 250)
+            maxWidth = window.innerWidth / 2;
 
         if (currentRow)
             currentRow.toggleClass(activeClass);
@@ -96,8 +96,8 @@ var initializeMap = function(callback) {
         currentRow.toggleClass(activeClass);
 
         infoWindow.close();
-        infoWindow.setOptions({ maxWidth: maxWidth });
         infoWindow.setContent(performance.outerHTML);
+        infoWindow.setOptions({ maxWidth: maxWidth });
         infoWindow.open(map, performanceData.marker);
 
         map.setCenter(performanceData.coordinates);

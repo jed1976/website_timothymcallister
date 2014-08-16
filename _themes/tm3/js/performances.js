@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
         window.getUrl(url, function(response) {
             map.innerHTML = queryHTML(response, '#map').innerHTML;
 
-            if (window.getScreenSize() > 1)
+            if (window.getScreenSize() > 0)
                 initializeMap();
             else
                 map.addClass('fadein');
