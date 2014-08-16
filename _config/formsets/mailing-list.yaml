@@ -32,8 +32,8 @@ messages:
 
 # Configure notification email
 email:
-  to: joe.dakroub@me.com
-  from: joe.dakroub@me.com
+  to: mcallitp@gmail.com
+  from: mail@timothymcallister.com
   subject: Timothy McAllister Mailing List Submission
   automagic: true
   # html_template: html_email
