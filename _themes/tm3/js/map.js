@@ -15,9 +15,7 @@ var initializeMap = function(callback) {
         MY_MAPTYPE_ID = 'custom_style',
         markers = {},
         icon = new google.maps.MarkerImage('/_themes/tm3/img/marker.png', null, null, null, new google.maps.Size(25, 45)),
-        infoWindow = new google.maps.InfoWindow({
-            maxWidth: 320
-        }),
+        infoWindow = new google.maps.InfoWindow(),
         initialZoomLevel = 3,
         logoHeight = parseInt(document.getElementById('logo').getStyle('height')),
         mapCanvas = document.getElementById('map-canvas'),
@@ -83,7 +81,12 @@ var initializeMap = function(callback) {
             titleEl = performance.querySelector('.p-location .p-name'),
             title = titleEl ? titleEl.innerHTML : '',
             performanceData = markers[title],
-            infoWindowEl = null;
+            infoWindowEl = null,
+            summary = performance.querySelector('.p-summary'),
+            maxWidth = 320;
+
+        if (summary)
+            maxWidth = summary.innerHTML.length > 250 ? window.innerWidth / 2 : maxWidth;
 
         if (currentRow)
             currentRow.toggleClass(activeClass);
@@ -92,6 +95,7 @@ var initializeMap = function(callback) {
         currentRow.toggleClass(activeClass);
 
         infoWindow.close();
+        infoWindow.setOptions({ maxWidth: maxWidth });
         infoWindow.setContent(performance.outerHTML);
         infoWindow.open(map, performanceData.marker);
 

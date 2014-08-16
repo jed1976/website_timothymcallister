@@ -12,34 +12,36 @@
             </div>
         </div>
         <div class="col-1-2">
-            <h3 class="headline">{{ title|widont }}</h3>
+            <div class="pad-half-horizontal">
+                <h3 class="headline">{{ title|widont }}</h3>
 
-            {{ content }}
+                {{ content }}
 
-            {{ if show_details }}
-            <table class="margin-vertical">
-                <tbody>
-                    {{ if datestamp }}
-                    <tr>
-                        <th class="body-1 secondary-text">Release Date</th>
-                        <td class="body-1 primary-text text-right width-60">{{ datestamp format="{{ _date_format }}" }}</td>
-                    </tr>
-                    {{ /if }}
-                    {{ if producer }}
-                    <tr>
-                        <th class="body-1 secondary-text">Producer</th>
-                        <td class="body-1 primary-text text-right width-60">{{ entries:listing conditions="url:{producer}" folder="producers" limit="1" show_hidden="true" }}{{ title }}{{ /entries:listing }}</td>
-                    </tr>
-                    {{ /if }}
-                    {{ if catalog_number }}
-                    <tr>
-                        <th class="body-1 secondary-text">Catalog Number</th>
-                        <td class="body-1 primary-text text-right width-60">{{ catalog_number }}</td>
-                    </tr>
-                    {{ /if }}
-                </tbody>
-            </table>
-            {{ /if }}
+                {{ if show_details }}
+                <table class="margin-vertical">
+                    <tbody>
+                        {{ if datestamp }}
+                        <tr>
+                            <th class="body-1 secondary-text">Release Date</th>
+                            <td class="body-1 primary-text text-right width-60">{{ datestamp format="{{ _date_format }}" }}</td>
+                        </tr>
+                        {{ /if }}
+                        {{ if producer }}
+                        <tr>
+                            <th class="body-1 secondary-text">Producer</th>
+                            <td class="body-1 primary-text text-right width-60">{{ entries:listing conditions="url:{producer}" folder="producers" limit="1" show_hidden="true" }}{{ title }}{{ /entries:listing }}</td>
+                        </tr>
+                        {{ /if }}
+                        {{ if catalog_number }}
+                        <tr>
+                            <th class="body-1 secondary-text">Catalog Number</th>
+                            <td class="body-1 primary-text text-right width-60">{{ catalog_number }}</td>
+                        </tr>
+                        {{ /if }}
+                    </tbody>
+                </table>
+                {{ /if }}
+            </div>
         </div>
     </div>
 

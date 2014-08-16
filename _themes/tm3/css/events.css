@@ -11,7 +11,6 @@
     background-color: #FFF;
     border: 1px solid #DBDBDB;
     height: 64px;
-    margin: 0 auto;
     width: 64px;
 }
 
@@ -52,6 +51,10 @@
     color: #202020 !important;
     font-weight: 400;
 }
+
+.h-event .time { clear: both; }
+
+.h-event .location-link { margin-top: 12px; }
 
 .calendar { float: left; width: 25% !important; }
 .event-headlines { float: left; width: 75% !important; }

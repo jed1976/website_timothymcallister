@@ -13,6 +13,7 @@
 input,
 textarea,
 .js #menu,
+#menu-toggle,
 #year-selector-wrapper a:hover,
 .button.border
 {
@@ -21,13 +22,4 @@ textarea,
     -o-transition: all 0.25s ease-in;
     -webkit-transition: all 0.25s ease-in;
     transition: all 0.25s ease-in;
-}
-
-#menu-toggle
-{
-    -moz-transition: all 0.4s ease-in;
-    -ms-transition: all 0.4s ease-in;
-    -o-transition: all 0.4s ease-in;
-    -webkit-transition: all 0.4s ease-in;
-    transition: all 0.4s ease;
 }
