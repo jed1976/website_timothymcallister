@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', function() {
     yearSelectorWrapper.innerHTML = yearSelector;
 
     document.getElementById('year-selector').addEventListener('change', function(event) {
+        map.removeClass('fadein');
+
         var target = event.target,
             url = '?year=' + target.options[target.selectedIndex].getAttribute('value');
 

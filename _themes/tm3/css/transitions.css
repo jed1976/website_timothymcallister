@@ -1,5 +1,6 @@
 .js body,
-.js .hero .quote
+.js .hero .quote,
+#map
 {
 
     -webkit-transition: opacity 0.5s ease-in;

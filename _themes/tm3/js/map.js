@@ -18,6 +18,7 @@ var initializeMap = function(callback) {
         infoWindow = new google.maps.InfoWindow(),
         initialZoomLevel = 3,
         logoHeight = parseInt(document.getElementById('logo').getStyle('height')),
+        mapWrapper = document.getElementById('map'),
         mapCanvas = document.getElementById('map-canvas'),
         mapOptions = {
             center: new google.maps.LatLng(23.0414243, -83.8188083),
@@ -65,7 +66,7 @@ var initializeMap = function(callback) {
 
     var selectFirstEvent = function() {
         setTimeout(function() {
-            var eventEl = performanceList.querySelector('.h-event.today') || performanceList.querySelector('.h-event.future');
+            var eventEl = performanceList.querySelector('.h-event.today') || performanceList.querySelector('.h-event.future') || performanceList.querySelector('.h-event:first-child');
             if (eventEl === null) return;
             performanceList.scrollTop = eventEl.getPosition()[1] - performanceList.getPosition()[1];
             eventEl.click();
@@ -108,6 +109,8 @@ var initializeMap = function(callback) {
 
     if (callback)
         callback();
+    else
+        mapWrapper.addClass('fadein');
 };
 
 var resizeMap = function() {
