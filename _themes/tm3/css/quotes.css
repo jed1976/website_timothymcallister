@@ -15,7 +15,8 @@
     font-style: normal;
 }
 
-.js .hero .quote { opacity: 0; }
+.hero .quote { opacity: 0; }
+
 .hero .quote:first-child { opacity: 1; }
 
 .hero .quotes

@@ -11,4 +11,5 @@ theme: dark
 title: Recordings
 _fieldset: hidden
 _template: recordings
+background_color: '#0A0A0A'
 ---

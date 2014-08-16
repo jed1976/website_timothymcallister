@@ -21,7 +21,7 @@
 
 #year-selector-wrapper a:hover
 {
-    background-color: #a42836;
+    background-color: #03a9f4;
     color: #fff;
 }
 
@@ -53,10 +53,13 @@
     display:none;
 }
 
+#year-selector-wrapper::before { content: ''; }
+
 .js #year-selector-wrapper::before
 {
     background-color: #FFF;
     bottom: 0;
+    content: "\e604";
     font-size: 28px;
     line-height: 44px;
     pointer-events: none;
