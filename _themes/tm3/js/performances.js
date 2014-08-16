@@ -24,6 +24,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (window.getScreenSize() > 1)
                 initializeMap();
+            else
+                map.addClass('fadein');
         });
 
         target.blur();
@@ -36,4 +38,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // @TODO Set date based on URL
     document.getElementById('year-selector').value = year;
+
+    map.addClass('fadein');
 });
