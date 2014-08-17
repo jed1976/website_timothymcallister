@@ -26,8 +26,8 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)\/(\?.*)?$ $1$2 [R=301,L]
 
 # Redirect old urls to new ones
-RewriteRule ^/?(discography/(.*))$ recordings [R=301,L]
-RewriteRule ^/?(schedule/(.*))$ performances [R=301,L]
+RewriteRule ^/?(discography(.*))$ recordings [R=301,L]
+RewriteRule ^/?(schedule(.*))$ performances [R=301,L]
 
 # Redirect /performances
 RewriteCond %{QUERY_STRING} !year [NC]
