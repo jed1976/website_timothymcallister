@@ -1,9 +1,7 @@
 .js body,
 .js .hero .quote,
-.js #map,
-.js #site-wrapper::before
+.js #map
 {
-
     -moz-transition: opacity 0.5s ease-in;
     -ms-transition: opacity 0.5s ease-in;
     -o-transition: opacity 0.5s ease-in;
@@ -17,8 +15,6 @@ textarea,
 #logo,
 #menu-toggle,
 #year-selector-wrapper a:hover,
-.js #site-wrapper,
-.js .fixed-hero,
 .js #menu,
 .button.border
 {

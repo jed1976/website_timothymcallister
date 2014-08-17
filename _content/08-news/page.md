@@ -16,7 +16,5 @@ quotes:
   -
     quote: /quotes/rob-barnett
 background_color: '#FBFBFB'
+enable_scrim: true
 ---
-
-
-

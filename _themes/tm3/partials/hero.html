@@ -1,10 +1,10 @@
 <div class="row">
-    <div class="hero">
+    <div class="hero{{ if enable_scrim }} scrim{{ /if }}">
         {{ if quotes }}
         <div class="quotes {{ quote_position }}">
             {{ quotes sort_by="random" }}
             {{ entries:listing conditions="url:{quote}" folder="quotes" limit="1" show_hidden="true" }}
-                {{ theme:partial src="quote" use_context="true" }}
+                {{ theme:partial src="quote"{{ if dark_quote }} dark_quote="true"{{ /if }} use_context="true" }}
             {{ /entries:listing }}
             {{ /quotes }}
         </div>

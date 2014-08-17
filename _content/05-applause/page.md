@@ -17,4 +17,5 @@ quotes:
   -
     quote: /quotes/robert-mccolley
 background_color: '#191817'
+enable_scrim: true
 ---
