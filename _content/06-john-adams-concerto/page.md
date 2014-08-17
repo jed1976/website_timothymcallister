@@ -28,13 +28,13 @@ booking_title: Booking Information
 downloads_title: Media
 downloads:
   -
-    photo_download: '{{ _site_root }}assets/img/downloads/tim-4.jpg'
+    photo_download: '{{ _site_root }}assets/img/downloads/Timothy McAllister - 1.jpg'
   -
-    photo_download: '{{ _site_root }}assets/img/downloads/tim-2.jpg'
+    photo_download: '{{ _site_root }}assets/img/downloads/Timothy McAllister - 2.jpg'
   -
-    photo_download: '{{ _site_root }}assets/img/downloads/tim-1.jpg'
+    photo_download: '{{ _site_root }}assets/img/downloads/Timothy McAllister - 3.jpg'
   -
-    photo_download: '{{ _site_root }}assets/img/downloads/tim-6.jpg'
+    photo_download: '{{ _site_root }}assets/img/downloads/Timothy McAllister - 4.jpg'
 quotes:
   -
     quote: /quotes/john-adams
