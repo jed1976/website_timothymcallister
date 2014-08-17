@@ -22,7 +22,7 @@
         {{ if downloads_title }}
         <h2 class="display-1">{{ downloads_title }}</h2>
 
-        <div class="pad-vertical margin-vertical">
+        <div class="pad-vertical">
             {{ if downloads }}
                 {{ downloads }}
                 {{ if index|%:2 == 1 and index > 1 }}</div>{{ /if }}
@@ -47,7 +47,7 @@
         {{ if video_title }}
         <h2 class="display-1">{{ video_title }}</h2>
 
-        <div class="pad-vertical margin-vertical">
+        <div class="pad-vertical">
             {{ theme:partial src="video" use_context="true" }}
         </div>
         {{ /if }}
@@ -55,7 +55,7 @@
         {{ if recording_title }}
         <h2 class="display-1">{{ recording_title }}</h2>
 
-        <div class="pad-vertical margin-vertical">
+        <div class="pad-vertical">
             {{ entries:listing conditions="slug:john-adams-city-noirsaxophone-concerto-david-robertsonst-louis-symphony" folder="recordings" limit="1" show_hidden="true" sort_by="datestamp" sort_dir="desc" }}
                 {{ theme:partial show_details="true" show_more_information="true" show_sample="true" src="recording" use_context="true" }}
             {{ /entries:listing }}
