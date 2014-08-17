@@ -15,8 +15,8 @@ body,
 
 /* Resets */
 a { text-decoration: none; }
-em { font-style: normal; }
-strong { font-weight: 400; }
+em { font-style: italic; }
+strong { font-weight: 700; }
 
 /* Standard Styles */
 .display-2
