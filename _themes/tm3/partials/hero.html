@@ -10,6 +10,15 @@
         </div>
         {{ theme:js src="quotes" tag="true" }}
         {{ /if }}
+
+        {{ if random_quotes }}
+        <div class="quotes {{ quote_position }}">
+        {{ entries:listing folder="quotes" limit="{ random_quote_total }" show_hidden="true" sort_by="random" }}
+        {{ theme:partial src="quote"{{ if dark_quote }} dark_quote="true"{{ /if }} use_context="true" }}
+        {{ /entries:listing }}
+        </div>
+        {{ theme:js src="quotes" tag="true" }}
+        {{ /if }}
     </div>
     <div class="hero-mask"></div>
 
