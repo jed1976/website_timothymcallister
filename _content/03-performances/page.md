@@ -11,11 +11,6 @@ _template: performances
 vertical_position: center
 horizontal_position: center
 quote_position: left
-quotes:
-  -
-    quote: /quotes/janos-gereben
-  -
-    quote: /quotes/andrew-clements
 artwork: '{{ _site_root }}assets/img/tim-2.jpg'
 background_color: '#FFFFFF'
 enable_scrim: true

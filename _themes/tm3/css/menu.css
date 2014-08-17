@@ -64,8 +64,6 @@
 
 body.checked { overflow: hidden; }
 
-body.checked #menu-toggle { right: 8px; }
-
 body.checked #menu-toggle::before { content: "\e60f"; }
 
 body.checked #menu { width: 320px; }
