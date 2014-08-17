@@ -823,7 +823,7 @@ class ContentSet
             // group by date
             if ($context['group_by_date'] && $data['datestamp']) {
                 $formatted_date = Date::format($context['group_by_date'], $data['datestamp']);
-                
+
                 if ($formatted_date !== $last_date) {
                     $last_date            = $formatted_date;
                     $data['grouped_date'] = $formatted_date;
