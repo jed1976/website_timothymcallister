@@ -11,7 +11,7 @@
                 {{ entries:listing folder="performances" group_by_date="Y" show_future="true" show_hidden="true" }}
                 {{ if grouped_date }}
                 <li><a class="link" href="?year={{ grouped_date }}">{{ grouped_date }}</a></li>
-                {{ endif }}
+                {{ /if }}
                 {{ /entries:listing }}
             </ol>
         </div>
