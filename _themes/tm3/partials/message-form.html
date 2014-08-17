@@ -12,7 +12,9 @@
     {{ /if }}
 
     {{ if {raven:success} }}
+    <div class="text-center">
         <h3 class="submission-confirmation">Your message has been sent.</h3>
+    </div>
     {{ else }}
         <div class="row">
             <input class="expand margin-half-vertical" name="name" placeholder="Name" required type="text" value="{{ value:name }}">
