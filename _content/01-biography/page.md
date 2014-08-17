@@ -7,26 +7,26 @@ artwork: '{{ _site_root }}assets/img/tim-7.jpg'
 _fieldset: biography
 _template: biography
 pdfs:
-  -
+  - 
     label: Short Biography
     pdf: '{{ _site_root }}assets/pdf/timothy-mcallister-short-biography.pdf'
-  -
+  - 
     label: Full Biography
     pdf: '{{ _site_root }}assets/pdf/timothy-mcallister-full-biography.pdf'
-vertical_position: top
+vertical_position: center
 horizontal_position: left
 quote_position: left
 quotes:
-  -
+  - 
     quote: /quotes/william-bolcom
-  -
+  - 
     quote: /quotes/leone-buyse
-  -
+  - 
     quote: /quotes/michael-segell
-  -
+  - 
     quote: /quotes/jean-marie-londeix
-background_color: '#000000'
-enable_scrim: true
+background_color: '#000'
+enable_scrim: "1"
 ---
 Soprano chair of the renowned PRISM Quartet and internationally-acclaimed soloist, **TIMOTHY McALLISTER** has been hailed as a **"virtuoso...one of the foremost saxophonists of his generation"** (The New York Times). Since his solo debut at age sixteen with the Houston Civic Symphony, his career has taken him throughout the United States, Australia, Canada, Japan, China, Mexico, France, Slovenia, Switzerland, Great Britain, The Netherlands, Belgium, and Austria, garnering prizes at many prestigious national and international competitions, with solo performances in such venues as the Sydney Opera House, Carnegie Hall's Isaac Stern Auditorium, Zankel Hall and Weill Recital Hall, Merkin Concert Hall, Boston's Jordan Hall, City Hall Concert Hall in Hong Kong, Los Angeles' Walt Disney Concert Hall, Sumida Triphony Hall in Tokyo, Dallas' Meyerson Center, and Rotterdam's Zaal de Unie.
 

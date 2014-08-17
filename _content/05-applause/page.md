@@ -10,12 +10,13 @@ vertical_position: top
 horizontal_position: right
 quote_position: left
 quotes:
-  -
+  - 
     quote: /quotes/mark-stryker
-  -
+  - 
     quote: /quotes/janos-gereben
-  -
+  - 
     quote: /quotes/robert-mccolley
 background_color: '#191817'
-enable_scrim: true
 ---
+
+
