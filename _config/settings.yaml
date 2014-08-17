@@ -42,7 +42,7 @@ _date_format: 'F j, Y'
 _time_format: 'g:i A'
 
 # Timezone
-_timezone: America/Detroit
+_timezone: America/New York
 
 # List of desired taxonomy triggers
 _taxonomy:
@@ -96,7 +96,7 @@ _parse_order:
 _fix_out_of_range_pagination: true
 
 # Experimental: Set http/browser cache length. Plain English is perfect. 1 hour, 1 day, 1 week, etc
-_http_cache_expires: false
+_http_cache_expires: 1 hour
 
 _enable_static_pipeline: false
 
