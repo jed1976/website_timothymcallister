@@ -5,19 +5,18 @@ class _Upload
     private static $files = array();
     
     /**
-     * Takes a $_FILES array and standardizes it to be the same regardless of number of uploads
+     * Grabs the contents of $_FILES and inserts a standardized array of them into $_POST
      * 
-     * @param array  $files  Files array to standardize
      * @return void
      */
-    public static function standardizeFileUploads($files=array())
+    public static function standardizeFileUploads()
     {
-        if (!count($files)) {
-            return $files;
+        if (!count($_FILES)) {
+            return;
         }
         
         // loop through files to standardize
-        foreach ($files as $field => $data) {
+        foreach ($_FILES as $field => $data) {
             if (!isset(self::$files[$field]) || !is_array(self::$files[$field])) {
                 self::$files[$field] = array();
             }
@@ -36,8 +35,8 @@ class _Upload
             }
         }
         
-        // return our cleaner version
-        return self::$files;
+        // overwrite $_FILES with our cleaner version
+        $_FILES = self::$files;
     }
 
 

@@ -186,20 +186,19 @@ class File
      * @param string  $filename  Name of new file
      * @return bool
      **/
-    public static function upload($file, $destination, $add_root_variable = false, $renamed_file = false)
+    public static function upload($file, $destination, $add_root_variable = false)
     {
         Folder::make($destination);
 
         $info      = pathinfo($file['name']);
         $extension = $info['extension'];
-        $filename  = $renamed_file ?: $info['filename'];
 
         // build filename
-        $new_filename = Path::assemble(BASE_PATH, $destination, $filename . '.' . $extension);
+        $new_filename = Path::assemble(BASE_PATH, $destination, $info['filename'] . '.' . $extension);
 
         // check for dupes
         if (File::exists($new_filename)) {
-            $new_filename = Path::assemble(BASE_PATH, $destination, $filename . '-' . date('YmdHis') . '.' . $extension);
+            $new_filename = Path::assemble(BASE_PATH, $destination, $info['filename'] . '-' . date('YmdHis') . '.' . $extension);
         }
 
         // Check if destination is writable

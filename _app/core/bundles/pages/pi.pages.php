@@ -90,6 +90,9 @@ class Plugin_pages extends Plugin
         // grab content set based on the common parameters
         $content_set = $this->getContentSet($settings);
 
+        // grab total entries for setting later
+        $total_entries = $content_set->count();
+
         // limit
         $limit     = $this->fetchParam('limit', null, 'is_numeric');
         $offset    = $this->fetchParam('offset', 0, 'is_numeric');
@@ -104,6 +107,9 @@ class Plugin_pages extends Plugin
                 $content_set->limit($limit, $offset);
             }
         }
+
+        // manually supplement
+        $content_set->supplement(array('total_found' => $total_entries));
 
         // check for results
         if (!$content_set->count()) {
@@ -326,14 +332,7 @@ class Plugin_pages extends Plugin
             'show_past'   => $this->fetchParam('show_past', true, null, true),
             'show_future' => $this->fetchParam('show_future', false, null, true),
             'type'        => 'pages',
-            'conditions'  => trim($this->fetchParam('conditions', null, false, false, false)),
-            'where'       => trim($this->fetchParam('where', null, false, false, false))
-        );
-
-        // determine supplemental data
-        $supplements = array(
-            'locate_with' => $this->fetchParam('locate_with', null, false, false, false),
-            'center_point' => $this->fetchParam('center_point', null, false, false, false)
+            'conditions'  => trim($this->fetchParam('conditions', null, false, false, false))
         );
 
         // determine other factors
@@ -343,7 +342,7 @@ class Plugin_pages extends Plugin
             'sort_dir'      => $this->fetchParam('sort_dir')
         );
 
-        return $other + $supplements + $filters + $folders;
+        return $other + $filters + $folders;
     }
 
 
@@ -375,12 +374,6 @@ class Plugin_pages extends Plugin
 
             // filter
             $content_set->filter($settings);
-
-            // grab total entries for setting later
-            $total_entries = $content_set->count();
-
-            // manually supplement
-            $content_set->supplement(array('total_found' => $total_entries) + $settings);
 
             // sort
             $content_set->sort($settings['sort_by'], $settings['sort_dir']);

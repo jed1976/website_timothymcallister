@@ -169,9 +169,6 @@ class Hooks_member extends Hooks
             
             // save member
             $member->save();
-            
-            // trigger a hook
-            $this->runHook('register', 'call', null, $member);
 
             // user saved
             $this->flash->set('register_success', 'Member created.');
@@ -276,9 +273,6 @@ class Hooks_member extends Hooks
         } else {
             // save member
             $member->save();
-            
-            // trigger a hook
-            $this->runHook('profile_update', 'call', null, $member);
 
             // user saved
             $this->flash->set('update_profile_success', 'Member profile updated.');

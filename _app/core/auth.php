@@ -36,9 +36,6 @@ class Auth
         $expires  = ($remember) ? '20 years' : $app->config['_cookies.lifetime'];
         $hash     = self::createHash($user);
         
-        // trigger a hook
-        Hook::run('auth', 'login', 'call', null, $user);
-        
         // ...set the cookie and return true
         $app->setEncryptedCookie('stat_auth_cookie', $hash, $expires);
         return true;
@@ -52,9 +49,6 @@ class Auth
      */
     public static function logout()
     {
-        // trigger a hook
-        Hook::run('auth', 'login', 'call', null, Auth::getCurrentMember());
-        
         $app = \Slim\Slim::getInstance();
         $app->deleteCookie('stat_auth_cookie');
     }

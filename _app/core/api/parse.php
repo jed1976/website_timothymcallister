@@ -205,28 +205,6 @@ class Parse
         return $output;
     }
 
-    /**
-     * Checks for and parses front matter
-     *
-     * @param string  $string  Content to parse
-     * @return array
-     */
-    public static function frontMatter($string, $yamlize = true)
-    {
-        $data = array();
-        $content = $string;
-
-        if (Pattern::startsWith($string, "---")) {
-            list($yaml, $content) = preg_split("/\n---/", $string, 2, PREG_SPLIT_NO_EMPTY);
-
-            if ($yamlize) {
-                $data = self::yaml($yaml);
-            }
-        }
-
-        return compact('data', 'content');
-    }
-
 
     /**
      * Parses a conditions string
@@ -239,14 +217,13 @@ class Parse
         // start measuring
         $hash = Debug::markStart('parsing', 'conditions');
         Debug::increment('parses', 'condition_statements');
-        $replacement = '__TEMP_COMMA_' . substr(md5(time()), 0, 12) . '__';
         
-        $conditions = explode(",", str_replace('\,', $replacement, $conditions));
+        $conditions = explode(",", $conditions);
         $output = array();
 
         foreach ($conditions as $condition) {
             Debug::increment('parses', 'conditions');
-            $result = Parse::condition(str_replace($replacement, ',', $condition));
+            $result = Parse::condition($condition);
             $output[$result['key']] = $result['value'];
         }
 

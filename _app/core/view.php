@@ -16,7 +16,6 @@ class Statamic_View extends \Slim\View
     protected static $_templates = null;
     protected static $_template_location = null;
     protected static $_control_panel = false;
-    protected static $_extra_data = null;
     public static $_dataStore = array();
 
 
@@ -43,10 +42,7 @@ class Statamic_View extends \Slim\View
      */
     public static function set_layout($layout = null)
     {
-        self::$_layout = Path::assemble(BASE_PATH, Config::getTemplatesPath(), $layout);
-
-        $layout = Parse::frontMatter(File::get(self::$_layout . '.html'));
-        self::$_extra_data = $layout['data'];
+        self::$_layout = $layout;
     }
 
     /**
@@ -101,20 +97,14 @@ class Statamic_View extends \Slim\View
                     'theme'             => Debug::getValue('theme'),
                     'environment'       => Debug::getValue('environment')
                 );
-
+                
                 # standard lex-parsed template
                 if (File::exists($template_path . '.html')) {
                     $template_type = 'html';
 
-                    $this->appendNewData($this->data);
+                    $this->mergeNewData($this->data);
 
-                    // Fetch template and parse any front matter
-                    $template = Parse::frontMatter(File::get($template_path . '.html'));
-                    
-                    self::$_extra_data = $template['data'] + self::$_extra_data;
-                    $this->prependNewData(self::$_extra_data);
-
-                    $html = Parse::template($template['content'], Statamic_View::$_dataStore, array($this, 'callback'));
+                    $html = Parse::template(File::get($template_path . '.html'), Statamic_View::$_dataStore, array($this, 'callback'));
                     break;
 
                 # lets forge into raw data
@@ -151,7 +141,7 @@ class Statamic_View extends \Slim\View
         if (Addon::getAPI('html_caching')->isEnabled()) {
             Addon::getAPI('html_caching')->putCachedPage($rendered);
         }
-
+        
         // return rendered HTML
         return $rendered;
     }
@@ -166,28 +156,25 @@ class Statamic_View extends \Slim\View
      */
     public function _render_layout($_html, $template_type = 'html')
     {
-        if (self::$_layout) {
+        if (self::$_layout != '') {
             $this->data['layout_content'] = $_html;
+            $layout_path = Path::assemble(BASE_PATH, Config::getTemplatesPath(), self::$_layout);
 
             if ($template_type != 'html' OR self::$_control_panel) {
                 extract($this->data);
                 ob_start();
-                require self::$_layout . ".php";
+                require $layout_path . ".php";
                 $html = ob_get_clean();
 
             } else {
-                if ( ! File::exists(self::$_layout . ".html")) {
+                if ( ! File::exists($layout_path . ".html")) {
                     Log::fatal("Can't find the specified theme.", 'core', 'template');
 
                     return '<p style="text-align:center; font-size:28px; font-style:italic; padding-top:50px;">We can\'t find your theme files. Please check your settings.';
                 }
 
-                $this->appendNewData($this->data);
-
-                // Fetch layout and parse any front matter
-                $layout = Parse::frontMatter(File::get(self::$_layout . '.html'), false);
-
-                $html = Parse::template($layout['content'], Statamic_View::$_dataStore, array($this, 'callback'));
+                $this->mergeNewData($this->data);
+                $html = Parse::template(File::get($layout_path . ".html"), Statamic_View::$_dataStore, array($this, 'callback'));
                 $html = Lex\Parser::injectNoparse($html);
 
             }
@@ -263,13 +250,8 @@ class Statamic_View extends \Slim\View
         } catch (\Slim\Exception\Stop $e) {
             // allow plugins to halt the app
             throw $e;
-        } catch (ResourceNotFoundException $e) {
-            // resource not found, do nothing
         } catch (Exception $e) {
-            // everything else, do nothing if debug is off
-            if (Config::get('debug')) {
-                throw $e;
-            }            
+            // everything else, do nothing
         }
 
         Debug::markEnd($hash);
@@ -279,12 +261,12 @@ class Statamic_View extends \Slim\View
 
 
     /**
-     * Appends any new data into this view's data store
+     * Merges any new data into this view's data store
      * 
      * @param $data  array  Array of data to merge
      * @return void
      */
-    function appendNewData($data)
+    function mergeNewData($data)
     {
         foreach ($data as $key => $item) {
             if (is_object($item)) {
@@ -293,22 +275,5 @@ class Statamic_View extends \Slim\View
         }
 
         Statamic_View::$_dataStore = $data + Statamic_View::$_dataStore;
-    }
-
-    /**
-     * Prepend any new data into this view's data store
-     * 
-     * @param $data  array  Array of data to merge
-     * @return void
-     */
-    public static function prependNewData($data)
-    {
-        foreach ($data as $key => $item) {
-            if (is_object($item)) {
-                unset($data[$key]);
-            }
-        }
-
-        Statamic_View::$_dataStore = Statamic_View::$_dataStore + $data;
     }
 }
