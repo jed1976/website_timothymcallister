@@ -22,15 +22,12 @@
 
 @media (min-width: 768px)
 {
-    #logo a { color: #111; }
-
     .fixed-hero { background-position: -500px center !important; }
 
     .hero
     {
         bottom: 0;
         position: fixed;
-        right: 0;
         top: 0;
         width: 50%;
     }
