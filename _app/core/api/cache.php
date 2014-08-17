@@ -37,7 +37,15 @@ class Cache
             'members'   => BASE_PATH . '/_cache/_app/members/members.php'
         );
         
-        foreach ($caches as $cache) {
+        foreach ($caches as $key => $cache) {
+            // special case for members
+            if ($key === 'members') {
+                if (Config::get('disable_member_cache')) {
+                    // member cache disabled, skip this check
+                    continue;
+                }
+            }
+            
             if (!File::exists($cache) || !strlen(File::get($cache))) {
                 return false;
             }

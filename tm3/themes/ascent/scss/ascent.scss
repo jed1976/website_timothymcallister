@@ -1167,8 +1167,8 @@ code textarea {
     line-height: 16px;
   }
 
-  .file-exists {
-
+  &.file-exists {
+    .btn-file-browse { display: none; }
   }
 
   img {
@@ -1187,6 +1187,23 @@ code textarea {
     margin:10px 10px 0 0;
     line-height:25px;
     padding:2px 15px;
+  }
+  .btn-file-browse {
+    position: absolute;
+    top: 13px;
+    right: 10px;
+    margin: 0;
+    padding: 5px;
+    line-height: 1;
+    cursor: pointer;
+
+    .ss-icon {
+      margin: 0;
+      padding: 0;
+    }
+  }
+  select {
+    width: 90%;
   }
 }
 

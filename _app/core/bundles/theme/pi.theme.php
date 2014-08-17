@@ -13,11 +13,16 @@ class Plugin_theme extends Plugin
 
     # Usage example: {{ theme:partial src="sidebar" }}
     public function partial()
-    {
+    {        
+        $start      = time();
         $src        = $this->fetchParam('src', null, null, false, false);
         $extensions = array(".html", ".md", ".markdown", ".textile");
-        $html     = null;
+        $html       = null;
 
+        // measurement
+        $hash = Debug::markStart('partials', $src, $start);
+        Debug::increment('partials', $src);
+        
         if ($src) {
             foreach ($extensions as $extension) {
                 $full_src = Path::assemble(BASE_PATH, $this->theme_root, 'partials', ltrim($src . $extension, '/'));
@@ -50,6 +55,8 @@ class Plugin_theme extends Plugin
                 $html = Parse::smartypants($html);
             }
         }
+        
+        Debug::markEnd($hash);
 
         return $html;
     }

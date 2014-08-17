@@ -6,7 +6,7 @@ title: News
 artwork: '{{ _site_root }}assets/img/prism.jpg'
 vertical_position: bottom
 horizontal_position: center
-quote_position: left
+quote_position: right
 _default_folder_template: article
 _fieldset: news
 _template: news

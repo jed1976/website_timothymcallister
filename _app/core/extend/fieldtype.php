@@ -34,7 +34,7 @@ abstract class Fieldtype extends Addon
      * @var boolean
      */
     public $has_error = false;
-
+    
 
 
     /**
@@ -81,7 +81,7 @@ abstract class Fieldtype extends Addon
 
     /**
      * Renders the error message
-     *
+     * 
      * @return string
      */
     public function render_error()

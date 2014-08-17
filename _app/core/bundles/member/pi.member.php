@@ -254,6 +254,11 @@ class Plugin_member extends Plugin
     
     public function listing()
     {
+        if (Config::get('disable_member_cache')) {
+            $this->log->error("Cannot use `member:listing` when `_disable_member_cache` is `true`.");
+            return Parse::template($this->content, array('no_results' => true));
+        }
+        
         // grab common parameters
         $settings = $this->parseCommonParameters();
 
@@ -341,7 +346,8 @@ class Plugin_member extends Plugin
         // determine filters
         $filters = array(
             'role'       => $this->fetchParam('role', null, false, false, false),
-            'conditions' => trim($this->fetchParam('conditions', null, false, false, false))
+            'conditions' => trim($this->fetchParam('conditions', null, false, false, false)),
+            'where'      => trim($this->fetchParam('where', null, false, false, false))
         );
 
         // determine other factors

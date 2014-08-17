@@ -7,7 +7,7 @@ fields:
 
   artwork:
     allowed: [jpg]
-    default: '{{ _site_root }}assets/img/tim-6.jpg'
+    default: '{{ _site_root }}assets/img/prism.jpg'
     destination: assets/img
     display: ''
     instructions: JPG format only
