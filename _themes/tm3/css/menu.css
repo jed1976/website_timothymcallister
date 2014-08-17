@@ -11,7 +11,7 @@
     text-transform: uppercase;
     top: 0;
     width: 100%;
-    z-index: 5;
+    z-index: 7;
 }
 
 #menu-toggle
@@ -42,7 +42,7 @@
     bottom: 0;
     overflow: auto;
     overflow-x: hidden;
-    padding-top: 4px;
+    padding-top: 50px;
     position: fixed;
     right: 0;
     top: 0;
@@ -86,5 +86,5 @@ body.checked #menu { width: 320px; }
         top: 22px;
     }
 
-    .js #menu { padding-top: 14px; }
+    .js #menu { padding-top: 74px; }
 }
