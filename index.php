@@ -1,36 +1,65 @@
-<html>
-<head>
+<?php
 
-<title>Site Offline</title>
+/*
+|--------------------------------------------------------------------------
+| Statamic
+|--------------------------------------------------------------------------
+|
+| Statamic is a flat-file, dynamic, and highly flexible publishing
+| engine, built for developers, designers, and clients alike.
+|
+| @author Jack McDade (jack@statamic.com)
+| @author Fred LeBlanc (fred@statamic.com)
+| @copyright 2013 Statamic
+|
+*/
 
-<style type="text/css">
 
-body { 
-background-color:	#111; 
-margin:				50px 30px 50px 30px; 
-font-family:		Verdana, Arial, Tahoma, Trebuchet MS, Sans-serif;
-font-size:			11px;
-color:				#fff;
-background-color:	#111;
-}
-#content  {
-padding:			22px 15px 25px 15px;
-border:				rgba(255, 255, 255, 0.1) 1px solid;
-text-align: center;
-}
-</style>
+/*
+|--------------------------------------------------------------------------
+| Web Root
+|--------------------------------------------------------------------------
+|
+| Lots of file level activities enjoy knowing right where web root is.
+|
+*/
 
-</head>
+define("BASE_PATH", str_replace('\\', '/',  __DIR__));
 
-<body>
+/*
+|--------------------------------------------------------------------------
+| Running Above Web Root
+|--------------------------------------------------------------------------
+|
+| To run Statamic above webroot, uncomment the following line. Make sure
+| to update the public folder setting in your site config.
+|
+*/
 
-<div id="content">
+// chdir('..');
 
-<p>This site will be offline momentarily while we perform some updates.</p>
-<p>We apologize for any inconvenience.</p>
 
-</div>
+/*
+|--------------------------------------------------------------------------
+| Autoloader
+|--------------------------------------------------------------------------
+|
+| "Autoload" the application dependencies and libraries
+|
+*/
 
-</body>
+require_once BASE_PATH . '/_app/autoload.php';
 
-</html>
+/*
+|--------------------------------------------------------------------------
+| Start the Engine
+|--------------------------------------------------------------------------
+|
+| All the heavy initialization and configuration happens right here.
+| Let's get going!
+|
+*/
+
+$app = require_once BASE_PATH . '/_app/start.php';
+
+$app->run();
