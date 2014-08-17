@@ -11,6 +11,7 @@ vertical_position: center
 horizontal_position: left
 quote_position: left
 background_color: '#0D1F48'
+enable_scrim: true
 quotes:
   -
     quote: /quotes/imagination-97
