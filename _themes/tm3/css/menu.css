@@ -72,19 +72,5 @@ body.checked #menu { width: 320px; }
 
 @media (min-width: 768px)
 {
-    #logo
-    {
-        font-size: 22px;
-        padding-bottom: 24px;
-        padding-left: 24px;
-        padding-top: 24px;
-    }
-
-    #menu-toggle
-    {
-        right: 16px;
-        top: 22px;
-    }
-
-    .js #menu { padding-top: 74px; }
+    #logo { font-size: 22px; }
 }
