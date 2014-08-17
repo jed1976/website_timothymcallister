@@ -6,6 +6,7 @@ textarea
 {
     border: 1px solid #DBDBDB;
     border-radius: 0;
+    color: #202020;
     font-size: 13px;
     overflow: auto;
     resize: none;

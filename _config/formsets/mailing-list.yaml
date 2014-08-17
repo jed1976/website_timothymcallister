@@ -32,7 +32,7 @@ messages:
 
 # Configure notification email
 email:
-  to: mcallitp@gmail.com
+  to: joe.dakroub@me
   from: mail@timothymcallister.com
   subject: Timothy McAllister Mailing List Submission
   automagic: true
