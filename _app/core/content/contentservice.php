@@ -182,7 +182,7 @@ class ContentService
             }
 
             // is this under the appropriate parent?
-            if (!Pattern::startsWith($data['parent'] . '/', $base_url . '/')) {
+            if (!Pattern::startsWith(Path::tidy($data['parent'] . '/'), Path::tidy($base_url . '/'))) {
                 continue;
             }
 

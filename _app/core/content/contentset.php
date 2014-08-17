@@ -248,6 +248,12 @@ class ContentSet
                 continue;
             }
 
+            // where
+            if ($where && !(bool) Parse::template("{{ if " . $where . " }}1{{ else }}0{{ endif }}", $data)) {
+                unset($this->content[$key]);
+                continue;
+            }
+
             // conditions
             if ($conditions) {
                 $case_sensitive_taxonomies  = Config::getTaxonomyCaseSensitive();
@@ -798,7 +804,7 @@ class ContentSet
                     if ($center_point) {
                         $location = array($data['latitude'], $data['longitude']);
                         $data['distance_km'] = Math::getDistanceInKilometers($center_point, $location);
-                        $data['distance_mi'] = Math::convertKilometersToMiles($data['distance_km']['distance_km']);
+                        $data['distance_mi'] = Math::convertKilometersToMiles($data['distance_km']);
                     }
                 }
             }

@@ -162,7 +162,7 @@ class Resource
         $class = ucwords($name) . "_" . $addon;
 
         if (!class_exists($class)) {
-            throw new Exception("Improperly formatted {$name} object.");
+            throw new ResourceNotFoundException("Improperly formatted {$name} object.");
         }
 
         return new $class();
