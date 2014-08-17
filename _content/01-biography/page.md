@@ -7,23 +7,23 @@ artwork: '{{ _site_root }}assets/img/tim-7.jpg'
 _fieldset: biography
 _template: biography
 pdfs:
-  - 
+  -
     label: Short Biography
     pdf: '{{ _site_root }}assets/pdf/timothy-mcallister-short-biography.pdf'
-  - 
+  -
     label: Full Biography
     pdf: '{{ _site_root }}assets/pdf/timothy-mcallister-full-biography.pdf'
 vertical_position: center
-horizontal_position: left
+horizontal_position: right
 quote_position: left
 quotes:
-  - 
+  -
     quote: /quotes/william-bolcom
-  - 
+  -
     quote: /quotes/leone-buyse
-  - 
+  -
     quote: /quotes/michael-segell
-  - 
+  -
     quote: /quotes/jean-marie-londeix
 background_color: '#000'
 enable_scrim: "1"
