@@ -25,7 +25,7 @@ quotes:
   -
     quote: /quotes/daniel-coombs
 background_color: '#ffffff'
-enable_scrim: false
+enable_scrim: "1"
 ---
 
 
