@@ -640,33 +640,14 @@ $(function() {
 
   $('.btn-remove-file').on('click', function(e) {
     e.preventDefault();
-    var btn = $(this);
-    var field = btn.closest('.file-field-container');
-    var name = field.find('select').attr('name');
+    var name = $(this).next('input').attr('name');
 
-    field.removeClass('file-exists').append(
-      $('<p><input type="file" name="'+name+'" />')
+    $(this).parent().parent().append(
+      $('<p />').append($('<input/>').attr('type', 'file').attr('name', name))
     );
 
-    btn.parent().remove();
+    $(this).parent().remove();
   });
-
-  $('body').on('click', '.btn-file-browse', function(e){
-    e.preventDefault();
-    var btn = $(this);
-    var file = btn.parent().find('input[type=file]');
-    var name = file.attr('name');
-    var select = btn.parent().find('select');
-    if (select.is(':hidden')) {
-      select.show();
-      file.hide().attr('name', '');
-      btn.find('span').text('upload');
-    } else {
-      select.hide();
-      file.show().attr('name', name);
-      btn.find('span').text('openfolder');
-    }
-  })
 
   /////////////////////////////////////////
   //

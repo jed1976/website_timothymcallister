@@ -8,7 +8,7 @@ $app->map('/TRIGGER/:namespace/:hook(/:segments+)', function ($namespace, $hook,
 
     // process uploaded files
     if ($app->request()->isPost()) {
-        $_FILES = _Upload::standardizeFileUploads($_FILES);
+        _Upload::standardizeFileUploads();
     }
     
     /*
@@ -137,7 +137,7 @@ $app->map('/(:segments+)', function ($segments = array()) use ($app) {
 
     // process uploaded files
     if ($app->request()->isPost()) {
-        $_FILES = _Upload::standardizeFileUploads($_FILES);
+        _Upload::standardizeFileUploads();
     }
     
     global $is_debuggable_route;
@@ -292,14 +292,11 @@ $app->map('/(:segments+)', function ($segments = array()) use ($app) {
         $data      = Content::get($complete_current_url) + $app->config;
 
         if (is_array($route)) {
-            $template = array_get($route, 'template', 'default');
+            $template = isset($route['template']) ? $route['template'] : 'default';
 
             if (isset($route['layout'])) {
                 $data['_layout'] = $route['layout'];
             }
-
-            // merge extra vars into data
-            $data = $route + $data;
         }
 
         $template_list = array($template);
@@ -539,9 +536,6 @@ $app->map('/(:segments+)', function ($segments = array()) use ($app) {
         $app->lastModified(Cache::getLastCacheUpdate());
         $app->expires('+'.Config::get('http_cache_expires', '30 minutes'));
     }
-    
-    // append the response code
-    $data['_http_status'] = $response_code;
 
     // and go!
     $app->render(null, $data, $response_code);
@@ -634,9 +628,6 @@ $app->map('/(:segments+)', function ($segments = array()) use ($app) {
         $app->lastModified(Cache::getLastCacheUpdate());
         $app->expires('+'.Config::get('http_cache_expires', '30 minutes'));
     }
-
-    // append the response code
-    $data['_http_status'] = $response_code;
 
     // and go!
     $app->render(null, $data, $response_code);

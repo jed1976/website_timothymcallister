@@ -18,19 +18,18 @@ class _Environment
      * @return mixed
      */
     public static function detect($config)
-    {        
+    {
         // get current URL, this is probably called before the config is ready,
         // so we cannot simply use Request::getURL()
-        $scheme = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']) ? 'https://' : 'http://';
+        $scheme = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 'https://' : 'http://';
         $port   = (int) $_SERVER['SERVER_PORT'];
         $host   = $_SERVER['HTTP_HOST'];
-        
-        
+
         $url = $scheme . $host;
         if (($scheme === 'https://' && $port !== 443) || ($scheme === 'http://' && $port !== 80)) {
             $url .= ':' . $port;
         }
-        
+
         // get configured environments
         $environments = array_get($config, '_environments', null);
 
@@ -60,7 +59,7 @@ class _Environment
         $config['environment'] = $environment;
         $config['is_' . $environment] = true;
         $environment_config = YAML::parse("_config/environments/{$environment}.yaml");
-        
+
         if (is_array($environment_config)) {
             $config = array_merge($config, $environment_config);
         }

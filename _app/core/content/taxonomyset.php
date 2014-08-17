@@ -73,7 +73,6 @@ class TaxonomySet
             'show_future'  => (isset($given_filters['show_future']))  ? $given_filters['show_future']      : null,
             'type'         => (isset($given_filters['type']))         ? strtolower($given_filters['type']) : null,
             'conditions'   => (isset($given_filters['conditions']))   ? $given_filters['conditions']       : null,
-            'where'        => (isset($given_filters['where']))        ? $given_filters['where']            : null,
             'folders'      => (isset($given_filters['folders']))      ? $given_filters['folders']          : null,
             'located'      => (isset($given_filters['located']))      ? $given_filters['located']          : null
         );
