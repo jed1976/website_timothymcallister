@@ -11,7 +11,7 @@ artwork: '{{ _site_root }}assets/img/tim-adams.jpg'
 vertical_position: top
 horizontal_position: left
 quote_position: right
-background_color: '#000000'
+background_color: '#0F0F0F'
 enable_scrim: true
 name: Andrew C. Elsesser
 position: Booking Manager
