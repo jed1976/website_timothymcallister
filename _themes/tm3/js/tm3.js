@@ -170,7 +170,7 @@ window.toggleLogoOpacity = function() {
         targetY = 500,
         opacity = (100 - ((targetY - y) / targetY) * 100) / 100,
         changeOpacity = function(opacity) {
-            logo.style.backgroundColor = 'rgba(0, 0, 0, ' + opacity + ')';
+            logo.style.backgroundColor = 'rgba(17, 17, 17, ' + opacity + ')';
         };
 
     if (y > targetY) {
