@@ -18,6 +18,7 @@ quotes:
     quote: /quotes/andrew-clements
 artwork: '{{ _site_root }}assets/img/tim-2.jpg'
 background_color: '#FFFFFF'
+enable_scrim: true
 ---
 
 
