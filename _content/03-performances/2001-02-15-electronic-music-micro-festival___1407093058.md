@@ -1,11 +1,11 @@
 ---
 title: 'Electronic Music Micro-Festival'
-event_time: 11:44 AM
-location: 
+event_time: 08:00 PM
+location:
 latitude: 0
 longitude: 0
-performance_url: 
-ticket_information_url: 
-ensemble: 
-conductor: 
+performance_url:
+ticket_information_url:
+ensemble:
+conductor:
 ---
