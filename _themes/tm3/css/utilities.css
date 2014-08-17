@@ -1,4 +1,5 @@
 .center { margin: 0 auto; }
+.clear-left { clear: left; }
 .display-none { display: none !important; }
 .expand { display: block; width: 100%; }
 .fixed { bottom: 0; left: 0; position: fixed; right: 0; top: 0; }

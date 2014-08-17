@@ -34,6 +34,8 @@
 
 .quote figcaption { margin-top: 24px; }
 
+.quotes .col-1-2:nth-child(even) { clear: left; }
+
 @media (min-width: 768px)
 {
     .quote
