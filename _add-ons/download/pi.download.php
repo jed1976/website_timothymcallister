@@ -9,7 +9,7 @@ class Plugin_download extends Plugin
 
 		$url  = '/TRIGGER/download/download?file='.$file;
 		if ($as) {
-			$url .= '&as='.$as;
+			$url .= '&amp;as='.$as;
 		}
 		return $url;
 	}
