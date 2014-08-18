@@ -14,6 +14,11 @@
     z-index: 7;
 }
 
+#logo.solid
+{
+    background: #000;
+}
+
 #menu-toggle
 {
     cursor: pointer;

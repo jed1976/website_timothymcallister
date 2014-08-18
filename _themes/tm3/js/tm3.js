@@ -165,20 +165,19 @@ window.queryHTML = function(html, selector) {
 };
 
 window.toggleLogoOpacity = function() {
-    var y = Math.abs(this.y) || window.pageYOffset,
-        logo = document.getElementById('logo'),
-        targetY = 500,
-        opacity = (100 - ((targetY - y) / targetY) * 100) / 100,
-        changeOpacity = function(opacity) {
-            logo.style.backgroundColor = 'rgba(0, 0, 0, ' + opacity + ')';
-        };
+    var targetY = 20,
+        y = Math.abs(this.y) || window.pageYOffset,
+        logo = document.getElementById('logo');
 
-    if (y > targetY) {
-        changeOpacity(1.0);
+    if (y >= targetY && logo.hasClass('solid') === false) {
+        logo.addClass('solid');
         return;
     }
 
-    changeOpacity(opacity);
+    if (y < targetY && logo.hasClass('solid')) {
+        logo.removeClass('solid');
+        return;
+    }
 };
 
 window.updateScreenSizeClass = function() {
