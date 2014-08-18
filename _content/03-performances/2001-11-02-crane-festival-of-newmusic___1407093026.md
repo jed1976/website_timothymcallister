@@ -1,11 +1,11 @@
 ---
 title: 'Crane Festival of NEWMUSIC'
-event_time: 12:20 PM
+event_time: 12:00 PM
 location: Potsdam
 latitude: 44.6697805
 longitude: -74.9813084
-performance_url: 
-ticket_information_url: 
-ensemble: 
-conductor: 
+performance_url:
+ticket_information_url:
+ensemble:
+conductor:
 ---

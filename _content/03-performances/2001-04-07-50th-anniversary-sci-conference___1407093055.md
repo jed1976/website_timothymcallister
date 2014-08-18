@@ -1,11 +1,11 @@
 ---
 title: '50th Anniversary SCI Conference'
-event_time: 11:48 AM
-location: 
+event_time: 08:00 PM
+location:
 latitude: 0
 longitude: 0
-performance_url: 
-ticket_information_url: 
-ensemble: 
-conductor: 
+performance_url:
+ticket_information_url:
+ensemble:
+conductor:
 ---

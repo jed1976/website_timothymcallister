@@ -1,13 +1,13 @@
 ---
 title: 'University Wind Ensemble TX Tour'
-event_time: 10:57 AM
-location: 
+event_time: 10:00 AM
+location:
 latitude: 0
 longitude: 0
-performance_url: 
-ticket_information_url: 
-ensemble: 
-conductor: 
+performance_url:
+ticket_information_url:
+ensemble:
+conductor:
 ---
 March 27 -- Abilene
 March 28 -- Temple
