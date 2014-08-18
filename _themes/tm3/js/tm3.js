@@ -167,7 +167,7 @@ window.queryHTML = function(html, selector) {
 window.toggleLogoOpacity = function() {
     var targetY = 20,
         y = Math.abs(this.y) || window.pageYOffset,
-        logo = document.getElementById('logo')
+        logo = document.getElementById('logo');
 
     if (y >= targetY && logo.hasClass('solid') === false) {
         logo.addClass('solid');
