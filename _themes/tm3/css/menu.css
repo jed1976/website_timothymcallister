@@ -60,7 +60,16 @@
 
 .js #menu-toggle { display: block; }
 
-#menu a { font-weight: 400; }
+#menu a,
+#menu a[data-icon]::before,
+#menu a:hover,
+#menu a[data-icon]:hover::before { color: #FFF; font-weight: 400; }
+
+#menu a:hover { background-color: #607d8b; }
+
+#menu a.active:hover { background-color: none; }
+
+#menu a.active, #menu a[data-icon].active::before { color: #607d8b; pointer-events: none; }
 
 body.checked { overflow: hidden; }
 
