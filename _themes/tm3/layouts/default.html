@@ -5,6 +5,9 @@
         {{ theme:css tag="true" }}
         {{ if enable_map }}{{ theme:css src="map" tag="true" }}{{ endif }}
         {{ if page_stylesheet }}{{ theme:css src="{ page_stylesheet }" tag="true" }}{{ endif }}
+        <style type="text/css">
+        .hero-mask::after, .hero-mask::before { border-bottom: 20px solid {{ background_color }}; }
+        </style>
 
         {{ theme:partial src="no-js" }}
 
