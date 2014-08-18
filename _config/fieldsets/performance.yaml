@@ -39,15 +39,5 @@ fields:
     display: Ticket Information URL
     type: text
 
-  section_2:
-    display: Performers
-    type: section
-
-  ensemble:
-    type: text
-
-  conductor:
-    type: text
-
 include:
   - hidden
