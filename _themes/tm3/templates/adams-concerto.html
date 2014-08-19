@@ -37,6 +37,28 @@
         </div>
         {{ /if }}
 
+        {{ if interview_links }}
+        <h2 class="display-1">{{ interviews_title }}</h2>
+
+        <div class="pad-vertical">
+            <table>
+                <tbody>
+                    {{ interview_links }}
+                    {{ entries:listing conditions="url:{interview_link}" folder="links" limit="1" show_hidden="true" }}
+                    <tr>
+                        <td>
+                            <h3 class="subhead float-left"><em>&ldquo;{{ title }}&rdquo;</em> &mdash; <small>{{ source }}, {{ month_year }}</small></h3>
+
+                            <a class="button float-right" href="{{ link }}" target="_blank">Visit Site</a>
+                        </td>
+                    </tr>
+                    {{ /entries:listing }}
+                    {{ /interview_links }}
+                </tbody>
+            </table>
+        </div>
+        {{ /if }}
+
         {{ if critics_title }}
         <h2 class="display-1">{{ critics_title }}</h2>
 

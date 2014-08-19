@@ -125,6 +125,31 @@ fields:
     type: text
 
   section_4:
+    display: Interviews/Features
+    type: section
+
+  interviews_title:
+    display: Section Heading
+    type: text
+
+  interview_links:
+    display: ''
+    fields:
+      interview_link:
+        content:
+          folder: links
+          show_hidden: true
+          sort_dir: asc
+          label: title
+          type: entries
+        display: ''
+        max_items: 1
+        type: suggest
+
+    min_rows: 1
+    type: grid
+
+  section_5:
     display: Critics
     type: section
 
