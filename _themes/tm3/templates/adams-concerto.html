@@ -47,7 +47,7 @@
                     {{ entries:listing conditions="url:{interview_link}" folder="links" limit="1" show_hidden="true" }}
                     <tr>
                         <th class="body-1 secondary-text">
-                            &ldquo;{{ title }}&rdquo;</h3> &mdash; <em><small>{{ source }}, {{ month_year }}</small></em>
+                            &ldquo;{{ title }}&rdquo;</h3> &mdash; {{ if source }}<em><small>{{ source }}{{ /if }}{{ if month_year}}{{ if source and month_year }}, {{ /if }}{{ month_year }}{{ /if }}</small></em>
                         </th>
                         <td>
                             <a class="button float-right" href="{{ link|specialchars }}" target="_blank">Visit Site</a>
