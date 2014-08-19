@@ -12,6 +12,7 @@
 
 input,
 textarea,
+[data-icon]::before,
 #logo,
 #menu a,
 #year-selector-wrapper a:hover,

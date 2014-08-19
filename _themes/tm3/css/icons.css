@@ -44,3 +44,6 @@
 [data-icon=menu]::before, #menu-toggle::before { content: "\e60f"; }
 [data-icon=close]::before { content: "\e610"; }
 [data-icon=down]::before { content: "\e611"; }
+
+[data-icon=twitter]:hover::before { color: #53A8E0 !important; }
+[data-icon=facebook]:hover::before { color: #3D539B !important; }
