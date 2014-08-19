@@ -1,10 +1,12 @@
 {{ if pdfs }}
-<table class="margin-vertical">
+<table class="margin-vertical{{ if light }} light{{ /if }}">
     <tbody>
         {{ pdfs }}
         <tr>
             <th class="body-1 secondary-text">{{ label }}</th>
-            <td class="body-1 primary-text text-right width-50"><a class="button download" href="{{ download file="{pdf}" as="{pdf}" }}">Download</a></td>
+            <td class="body-1 primary-text text-right width-50">
+                <a class="button download" href="{{ download file="{pdf}" as="{pdf}" }}">Download</a>
+            </td>
         </tr>
         {{ /pdfs }}
     </tbody>

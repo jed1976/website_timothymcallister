@@ -23,19 +23,10 @@
         </div>
         {{ /if }}
 
+        {{ get_content from="biography" }}
         <div class="pad-vertical">
-            {{ get_content from="biography" }}
-            <table class="light margin-vertical">
-                <tbody>
-                    {{ pdfs }}
-                    <tr>
-                        <th class="body-1 secondary-text">{{ label }}</th>
-                        <td class="body-1 primary-text text-right width-50"><a class="button download" href="{{ download file="{pdf}" as="{pdf}" }}">Download</a></td>
-                    </tr>
-                    {{ /pdfs }}
-                </tbody>
-            </table>
-            {{ /get_content }}
+            {{ theme:partial light="true" src="biography-downloads" use_context="true" }}
         </div>
+        {{ /get_content }}
     </div>
 </main>
