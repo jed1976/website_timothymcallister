@@ -1,0 +1,17 @@
+title: Link
+
+hide: true
+
+fields:
+  month_year:
+    display: Month/Year
+    type: text
+
+  source:
+    type: text
+
+  link:
+    type: text
+
+include:
+  - hidden
