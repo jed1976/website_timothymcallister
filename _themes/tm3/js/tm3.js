@@ -211,7 +211,12 @@ document.addEventListener('DOMContentLoaded', function() {
         var target = event.target,
             waitDuration = 350;
 
-        if (target.nodeName != 'A' && target.nodeName != 'SPAN') return;
+        if (target.nodeName != 'A' && target.nodeName != 'SPAN') {
+            if (body.hasClass('checked'))
+                body.removeClass('checked');
+
+            return;
+        }
 
         if (target.nodeName === 'SPAN')
             target = target.parentNode;
