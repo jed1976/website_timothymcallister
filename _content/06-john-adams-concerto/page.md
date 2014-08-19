@@ -14,7 +14,7 @@ quote_position: right
 background_color: '#0F0F0F'
 enable_scrim: "1"
 name: Andrew C. Elsesser
-position: Booking Manager
+role: Booking Manager
 organization: IMG Artists
 address_1: Carnegie Hall Tower
 address_2: '152 West 57th Street - 5th Floor'
