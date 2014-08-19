@@ -14,11 +14,6 @@
     z-index: 7;
 }
 
-#logo.solid
-{
-    background: #000;
-}
-
 #menu-toggle
 {
     cursor: pointer;
@@ -60,6 +55,8 @@
     font-size: 2rem;
     margin-right: 16px;
 }
+
+#logo.solid { background: #000; }
 
 #menu-toggle::before { font-size: 2.07rem; }
 
