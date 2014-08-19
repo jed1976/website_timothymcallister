@@ -35,18 +35,18 @@
         <a class="button link" href="/performances">All Performances</a>
     </div>
 
-    {{ get_content from="live-recordings" show_hidden="true" }}
+    {{ get_content from="live-excerpts" show_hidden="true" }}
     <div class="row pad">
         <h2 class="display-1">{{ title }}</h2>
     </div>
 
-    <div class="row" id="live-recordings">
+    <div class="row" id="live-excerpts">
         <div class="col-1-2">
             <img alt="" src="{{ artwork }}">
         </div>
         <div class="col-1-2">
-            <ul class="list dark-borders" id="live-recordings-list">
-                {{ entries:listing folder="live-recordings" show_hidden="true" sort_dir="asc" }}
+            <ul class="list dark-borders" id="live-excerpts-list">
+                {{ entries:listing folder="live-excerpts" show_hidden="true" sort_dir="asc" }}
                 <li>
                     <article class="row pad-half-icon-right" id="{{ slug }}">
                         <h4 class="title">{{ title }}</h4>
