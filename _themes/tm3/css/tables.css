@@ -12,7 +12,7 @@ td, th
     font-weight: 400;
     padding: 6px 0;
     text-align: left;
-    vertical-align: top;
+    vertical-align: middle;
 }
 
 tr:last-child td, tr:last-child th { border-bottom: 0; }
