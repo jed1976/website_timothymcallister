@@ -14,33 +14,8 @@
                 {{ theme:partial src="vcard" use_context="true" }}
             </div>
             <div class="col-1-2">
-                {{ theme:partial src="message-form" }}
+                {{ theme:partial src="message-form" use_context="true" }}
             </div>
-        </div>
-        {{ /if }}
-
-        {{ if downloads_title }}
-        <h2 class="display-1">{{ downloads_title }}</h2>
-
-        <div class="pad-vertical">
-            {{ if downloads }}
-                {{ downloads }}
-                {{ if index|%:2 == 1 and index > 1 }}</div>{{ /if }}
-                {{ if index|%:2 == 1 }}<div class="row">{{ /if }}
-                    <div class="col-1-2">
-                        <a href="{{ download file="{photo_download}" as="{photo_download}" }}" title="Click to download this photo">
-                            <img alt="" src="{{ photo_download }}" />
-                        </a>
-                    </div>
-                {{ /downloads }}
-            {{ /if }}
-            </div>
-
-            {{ get_content from="biography" }}
-            <div class="row pad-vertical">
-                {{ theme:partial src="biography-downloads" use_context="true" }}
-           </div>
-            {{ /get_content }}
         </div>
         {{ /if }}
 

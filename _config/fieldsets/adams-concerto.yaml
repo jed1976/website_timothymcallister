@@ -9,11 +9,12 @@ fields:
     height: 100
     type: markitup
 
+fields:
   thank_you_message:
     type: text
 
   section_1:
-    display: Artist Management
+    display: Booking Information
     type: section
 
   booking_title:
@@ -105,26 +106,6 @@ fields:
     type: text
 
   section_2:
-    display: Downloads
-    type: section
-
-  downloads_title:
-    display: Section Heading
-    type: text
-
-  downloads:
-    display: ''
-    fields:
-      photo_download:
-        allowed: [jpg]
-        destination: assets/img/downloads
-        display: Photo
-        instructions: JPG format only
-        type: file
-    min_rows: 1
-    type: grid
-
-  section_3:
     display: Video
     type: section
 
@@ -135,7 +116,7 @@ fields:
   video_url:
     type: text
 
-  section_4:
+  section_3:
     display: Recording
     type: section
 
@@ -143,7 +124,7 @@ fields:
     display: Section Heading
     type: text
 
-  section_5:
+  section_4:
     display: Critics
     type: section
 

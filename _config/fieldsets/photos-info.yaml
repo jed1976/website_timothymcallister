@@ -1,0 +1,27 @@
+title: Photos & Info
+
+fields:
+  section_1:
+    display: Downloads
+    type: section
+
+  downloads_title:
+    display: Section Heading
+    type: text
+
+  downloads:
+    display: ''
+    fields:
+      photo_download:
+        allowed: [jpg]
+        destination: assets/img/downloads
+        display: Photo
+        instructions: JPG format only
+        type: file
+    min_rows: 1
+    type: grid
+
+hide: true
+
+include:
+  - hidden
