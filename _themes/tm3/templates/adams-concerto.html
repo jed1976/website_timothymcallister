@@ -38,7 +38,7 @@
         {{ /if }}
 
         {{ if interview_links }}
-        <h2 class="display-1">{{ interviews_title }}</h2>
+        <h2 class="display-1">{{ interviews_title|specialchars }}</h2>
 
         <div class="pad-vertical">
             <table>
@@ -46,10 +46,11 @@
                     {{ interview_links }}
                     {{ entries:listing conditions="url:{interview_link}" folder="links" limit="1" show_hidden="true" }}
                     <tr>
+                        <th class="body-1 secondary-text">
+                            <em>&ldquo;{{ title }}&rdquo;</em></h3> &mdash; <small>{{ source }}, {{ month_year }}</small>
+                        </th>
                         <td>
-                            <h3 class="subhead float-left"><em>&ldquo;{{ title }}&rdquo;</em> &mdash; <small>{{ source }}, {{ month_year }}</small></h3>
-
-                            <a class="button float-right" href="{{ link }}" target="_blank">Visit Site</a>
+                            <a class="button float-right" href="{{ link|specialchars }}" target="_blank">Visit Site</a>
                         </td>
                     </tr>
                     {{ /entries:listing }}
