@@ -2,3 +2,6 @@ _datetime_format: 'Y-m-d'
 publisher_title: 'Visit Publisher site for more information about this recording'
 upcoming_performances_total: 5
 random_quote_total: 20
+download_large_size: 2048
+download_medium_size: 1024
+download_small_size: 512

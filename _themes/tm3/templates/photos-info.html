@@ -1,0 +1,41 @@
+<main id="content" role="main" style="background-color: {{ background_color }};">
+    <div class="center-layout pad">
+        <h2 class="display-1">{{ title }}</h2>
+
+        {{ if photos_title }}
+        <div class="pad-vertical">
+            {{ if downloads }}
+                {{ downloads }}
+                {{ if index|%:2 == 1 and index > 1 }}</div>{{ /if }}
+                {{ if index|%:2 == 1 }}<div class="row">{{ /if }}
+                    <div class="col-1-2">
+                        <img alt="" src="{{ transform src="{ photo_download }" quality="100" width="{ download_small_size }" }}" />
+
+                        <div class="text-center pad-half-vertical">
+                            <a class="button download inline" href="/TRIGGER/download/download?file={{ transform src="{ photo_download }" quality="100" width="{ download_medium_size }" }}">Low</a>
+
+                            <a class="button download inline" href="/TRIGGER/download/download?file={{ transform src="{ photo_download }" quality="100" width="{ download_large_size }" }}">High</a>
+                        </div>
+                    </div>
+                {{ /downloads }}
+            {{ /if }}
+            </div>
+        </div>
+        {{ /if }}
+
+        <div class="pad-vertical">
+            {{ get_content from="biography" }}
+            <table class="light margin-vertical">
+                <tbody>
+                    {{ pdfs }}
+                    <tr>
+                        <th class="body-1 secondary-text">{{ label }}</th>
+                        <td class="body-1 primary-text text-right width-50"><a class="button download" href="{{ download file="{pdf}" as="{pdf}" }}">Download</a></td>
+                    </tr>
+                    {{ /pdfs }}
+                </tbody>
+            </table>
+            {{ /get_content }}
+        </div>
+    </div>
+</main>

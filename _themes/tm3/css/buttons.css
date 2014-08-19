@@ -23,6 +23,12 @@
     width: 100%;
 }
 
+.button.inline
+{
+    display: inline;
+    width: auto;
+}
+
 .button.sample.center
 {
     left: 50%;

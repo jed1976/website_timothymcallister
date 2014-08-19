@@ -1,9 +1,12 @@
 {{ if pdfs }}
-<div class="row">
-    {{ pdfs }}
-    <div class="col-1-2 pad-half-vertical text-center">
-        <a class="button download" href="{{ download file="{pdf}" as="{pdf}" }}">{{ label }}</a>
-    </div>
-    {{ /pdfs }}
-</div>
+<table class="margin-vertical">
+    <tbody>
+        {{ pdfs }}
+        <tr>
+            <th class="body-1 secondary-text">{{ label }}</th>
+            <td class="body-1 primary-text text-right width-50"><a class="button download" href="{{ download file="{pdf}" as="{pdf}" }}">Download</a></td>
+        </tr>
+        {{ /pdfs }}
+    </tbody>
+</table>
 {{ endif }}
