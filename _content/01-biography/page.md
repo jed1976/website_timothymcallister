@@ -9,10 +9,10 @@ _template: biography
 pdfs:
   -
     label: Short Biography
-    pdf: '{{ _site_root }}assets/docs/Timothy-McAllister-Biography-Short.doc'
+    pdf: '{{ _site_root }}assets/docs/Timothy-McAllister-Biography-Short.docx'
   -
     label: Full Biography
-    pdf: '{{ _site_root }}assets/docs/Timothy-McAllister-Biography-Full.doc'
+    pdf: '{{ _site_root }}assets/docs/Timothy-McAllister-Biography-Full.docx'
 vertical_position: center
 horizontal_position: right
 quote_position: left
