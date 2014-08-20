@@ -1,25 +1,21 @@
 title: Adams Concerto
 
+hide: true
+
 fields:
+  content:
+    type: markitup
+
   section_0:
     display: Message Form
     type: section
 
-  message_form_content:
-    height: 100
-    type: markitup
-
-fields:
   thank_you_message:
     type: text
 
   section_1:
     display: Booking Information
     type: section
-
-  booking_title:
-    display: Section Heading
-    type: text
 
   name:
     type: text
@@ -109,28 +105,12 @@ fields:
     display: Video
     type: section
 
-  video_title:
-    display: Section Heading
-    type: text
-
   video_url:
     type: text
 
-  section_3:
-    display: Recording
-    type: section
-
-  recording_title:
-    display: Section Heading
-    type: text
-
   section_4:
-    display: Interviews/Features
+    display: 'Interviews & Features'
     type: section
-
-  interviews_title:
-    display: Section Heading
-    type: text
 
   interview_links:
     display: ''
@@ -150,14 +130,28 @@ fields:
     type: grid
 
   section_5:
-    display: Critics
+    display: Page Sections
     type: section
 
-  critics_title:
-    display: Section Heading
+  booking_title:
+    display: Booking Section
     type: text
 
-hide: true
+  video_title:
+    display: Video Section
+    type: text
+
+  recording_title:
+    display: Recording Section
+    type: text
+
+  interviews_title:
+    display: 'Interviews & Features Section'
+    type: text
+
+  critics_title:
+    display: Critics Sections
+    type: text
 
 include:
   - hidden

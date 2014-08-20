@@ -99,6 +99,9 @@ var initializeMap = function(callback) {
         infoWindow.open(map, performanceData.marker);
 
         map.setCenter(performanceData.coordinates);
+
+        if (document.querySelector('.gm-style-iw') === null) return;
+
         map.panBy(-(performanceList.offsetWidth / 2), -((document.querySelector('.gm-style-iw').offsetHeight / 2) + logoHeight));
     });
 
