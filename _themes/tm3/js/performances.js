@@ -17,13 +17,19 @@ document.addEventListener('DOMContentLoaded', function() {
         map.removeClass('fadein');
 
         var target = event.target,
-            url = '?year=' + target.options[target.selectedIndex].getAttribute('value');
+            year = target.options[target.selectedIndex].getAttribute('value'),
+            url = '?year=' + year;
 
         window.getUrl(url, function(response) {
             map.innerHTML = queryHTML(response, '#map').innerHTML;
 
-            if (window.getScreenSize() > 0)
+            if (window.getScreenSize() > 0) {
+                if (window.history.pushState) {
+                    window.history.pushState(null, year, url);
+                }
+
                 initializeMap();
+            }
             else
                 map.addClass('fadein');
         });
