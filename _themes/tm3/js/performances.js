@@ -24,14 +24,14 @@ document.addEventListener('DOMContentLoaded', function() {
             map.innerHTML = queryHTML(response, '#map').innerHTML;
 
             if (window.getScreenSize() > 0) {
-                if (window.history.pushState) {
-                    window.history.pushState(null, year, url);
-                }
-
                 initializeMap();
             }
             else
                 map.addClass('fadein');
+
+            if (window.history.pushState) {
+                window.history.pushState(null, year, url);
+            }
         });
 
         target.blur();
