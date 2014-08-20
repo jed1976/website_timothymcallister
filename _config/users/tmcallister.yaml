@@ -4,6 +4,7 @@ last_name: McAllister
 roles:
   - admin
 email: mcallitp@gmail.com
-password: p@ssw0rd
+password: ""
 _uid: pzTwwL53e574577e0744RrRY1sw
+password_hash: $2a$08$ySV/k.nOpJpcIG7PBUmaU.6HAXqM0bolrJp1acJe2KqMCcJDrK3hq
 ---
