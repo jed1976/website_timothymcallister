@@ -13,7 +13,7 @@ pdfs:
   - 
     label: Full Biography
     pdf: '{{ _site_root }}assets/docs/Timothy-McAllister-Biography-Full.docx'
-vertical_position: center
+vertical_position: top
 horizontal_position: right
 quote_position: left
 quotes:
