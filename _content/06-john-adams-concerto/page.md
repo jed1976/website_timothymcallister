@@ -41,6 +41,8 @@ quotes:
     quote: /quotes/murray-black
   - 
     quote: /quotes/corinna-da-fonseca-wollheim
+  - 
+    quote: /quotes/anastasia-tsioulcas
 critics_title: The Critics Speak
 interview_links:
   - 
