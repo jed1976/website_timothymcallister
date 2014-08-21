@@ -39,6 +39,8 @@ quotes:
     quote: /quotes/anne-midgette
   - 
     quote: /quotes/murray-black
+  - 
+    quote: /quotes/corinna-da-fonseca-wollheim
 critics_title: The Critics Speak
 interview_links:
   - 
