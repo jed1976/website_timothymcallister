@@ -1,13 +1,12 @@
 ---
-title: 'Featured Soloist with the Hong Kong Wind Philharmonia'
+title: Featured Soloist with the Hong Kong Wind Philharmonia
 event_time: 03:00 PM
-location: 
-latitude: 0
-longitude: 0
+location: Hong Kong City Hall
+latitude: "22.282331"
+longitude: "114.16154800000004"
 performance_url: http://www.hkwp.org/eng/events.html
-ticket_information_url: 
-ensemble: 
-conductor: 
+ensemble: ""
+conductor: ""
 ---
 Hong Kong Wind Philharmonia
 
