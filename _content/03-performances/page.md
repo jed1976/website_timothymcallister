@@ -13,8 +13,20 @@ horizontal_position: center
 quote_position: left
 artwork: '{{ _site_root }}assets/img/tim-2.jpg'
 background_color: '#FFFFFF'
-enable_scrim: true
+enable_scrim: "1"
+quotes:
+  - 
+    quote: /quotes/richard-morrison
+  - 
+    quote: /quotes/lewis-whittington
+  - 
+    quote: /quotes/janos-gereben
+  - 
+    quote: /quotes/fred-child
+  - 
+    quote: /quotes/scott-cantrell
 ---
+
 
 
 
