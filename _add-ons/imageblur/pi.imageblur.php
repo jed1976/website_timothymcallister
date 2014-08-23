@@ -121,8 +121,6 @@ class Plugin_imageblur extends Plugin
 
         try {
             exec('/usr/local/bin/convert '. $image_path . ' -blur 0x'. $strength .' '. $new_image_path);
-            //echo 'convert '. $image_path . ' -blur 0x'. $strength .' '. $new_image_path;
-            //die();
         } catch(Exception $e) {
             Log::fatal('Could not write new images. Try checking your file permissions.', 'core', 'Transform');
             throw new Exception('Could not write new images. Try checking your file permissions.');
