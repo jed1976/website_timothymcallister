@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var content = document.getElementById('content'),
-        map = document.getElementById('map'),
+    var year,
         yearParam = 'year=',
+        title = document.title + ' - ';
+        content = document.getElementById('content'),
+        map = document.getElementById('map'),
         URLQueryString = '?' + yearParam,
-        year,
         yearSelector = '<select id="year-selector">',
         yearSelectorWrapper = document.getElementById('year-selector-wrapper'),
-        title = document.title + ' - ';
 
     [].forEach.call(yearSelectorWrapper.querySelectorAll('a'), function(el) {
         year = el.innerHTML;
