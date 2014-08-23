@@ -11,7 +11,7 @@
 
         {{ else }}
 
-        {{ entries:listing folder="quotes" limit="{ random_quote_total }" show_hidden="true" sort_by="random" }}
+        {{ entries:listing conditions="adams_press:!1" folder="quotes" limit="{ random_quote_total }" show_hidden="true" sort_by="random" }}
             {{ theme:partial src="quote"{{ if dark_quote }} dark_quote="true"{{ /if }} use_context="true" }}
         {{ /entries:listing }}
         {{ /if }}
