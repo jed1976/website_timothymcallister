@@ -5,7 +5,7 @@
         <tr>
             <th class="secondary-text">{{ label }}</th>
             <td class="primary-text text-right width-50">
-                <a class="button download" href="{{ download file="{pdf}" as="{pdf}" }}" title="Download this file in Word format">Download</a>
+                <a class="button" data-actionlink="true" href="{{ download file="{pdf}" as="{pdf}" }}" title="Download this file in Word format">Download</a>
             </td>
         </tr>
         {{ /pdfs }}

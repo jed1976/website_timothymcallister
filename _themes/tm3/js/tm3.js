@@ -82,8 +82,12 @@ HTMLElement.prototype.toggleClass = function(string) {
     }
 };
 
-// Functions
-window.addFormSubmissionHandler = function(form, action, callback) {
+// TM Namespace
+var TM = {};
+TM.util = {};
+
+// Utilities
+TM.util.addFormSubmissionHandler = function(form, action, callback) {
     form.addEventListener('submit', function(event) {
         event.preventDefault();
 
@@ -108,7 +112,9 @@ window.addFormSubmissionHandler = function(form, action, callback) {
     });
 };
 
-window.getDocumentHeight = function() {
+TM.util.emptyFn = function() {};
+
+TM.util.getDocumentHeight = function() {
     return Math.max(
         document.body.scrollHeight, document.documentElement.scrollHeight,
         document.body.offsetHeight, document.documentElement.offsetHeight,
@@ -116,7 +122,7 @@ window.getDocumentHeight = function() {
     );
 };
 
-window.getUrl = function(url, callback) {
+TM.util.getUrl = function(url, callback) {
     var request = new XMLHttpRequest();
     request.open('GET', url, true);
     request.onreadystatechange = function() {
@@ -127,7 +133,7 @@ window.getUrl = function(url, callback) {
     request.send();
 };
 
-window.getSizeBasedOnWidth = function(width) {
+TM.util.getSizeBasedOnWidth = function(width) {
     if (width <= 640)
         return 0;
     else if (width <= 1024)
@@ -138,16 +144,16 @@ window.getSizeBasedOnWidth = function(width) {
     return 3;
 }
 
-window.getScreenSize = function() {
-    return window.getSizeBasedOnWidth(screen.width);
+TM.util.getScreenSize = function() {
+    return TM.util.getSizeBasedOnWidth(screen.width);
 };
 
-window.getWindowSize = function() {
-    return window.getSizeBasedOnWidth(window.innerWidth);
+TM.util.getWindowSize = function() {
+    return TM.util.getSizeBasedOnWidth(window.innerWidth);
 };
 
-window.loadFastClick = function() {
-    if (getScreenSize() > 1) return;
+TM.util.loadFastClick = function() {
+    if (TM.util.getScreenSize() > 1) return;
 
     var script = document.createElement('script');
     script.addEventListener('load', function() {
@@ -157,14 +163,19 @@ window.loadFastClick = function() {
     document.body.appendChild(script);
 };
 
-window.queryHTML = function(html, selector) {
+TM.util.mergeObjects = function(a, b, c) {
+    for (c in b)
+        b.hasOwnProperty(c) && ((typeof a[c])[0] == 'o' ? TM.util.mergeObjects(a[c], b[c]) : a[c] = b[c]);
+};
+
+TM.util.queryHTML = function(html, selector) {
     var root = document.createElement('DIV');
     root.innerHTML = html;
 
     return root.querySelector(selector);
 };
 
-window.toggleLogoOpacity = function() {
+TM.util.toggleLogoOpacity = function() {
     var targetY = 20,
         y = Math.abs(this.y) || window.pageYOffset,
         logo = document.getElementById('logo');
@@ -180,7 +191,7 @@ window.toggleLogoOpacity = function() {
     }
 };
 
-window.updateScreenSizeClass = function() {
+TM.util.updateScreenSizeClass = function() {
     var className,
         html = document.querySelector('html'),
         screenPrefix = 'screen-size-',
@@ -189,89 +200,202 @@ window.updateScreenSizeClass = function() {
 
     className = html.className;
     className = className.replace(new RegExp(regex), '').trim();
-    className += space + screenPrefix + getScreenSize();
+    className += space + screenPrefix + TM.util.getScreenSize();
     html.className = className;
 };
 
-document.addEventListener('DOMContentLoaded', function() {
-    var body = document.body;
+// Page Object
+TM.Page = (function() {
+    var pageObject = {
+        el: {
+            body: document.body,
+            menuToggle: document.getElementById('menu-toggle')
+        },
 
-    updateScreenSizeClass();
-    loadFastClick();
+        pageEvents: {},
 
-    addFormSubmissionHandler(document.getElementById('mailing-list-form'), window.location.href, function(form, request) {
-        form.innerHTML = queryHTML(request.responseText, '#' + form.id).innerHTML;
-    });
+        customEvents: {},
 
-    document.addEventListener('scroll', function() {
-        toggleLogoOpacity();
-    });
-
-    document.body.addEventListener('click', function(event) {
-        var target = event.target,
-            waitDuration = 350;
-
-        if (target.nodeName != 'A' && target.nodeName != 'SPAN') {
-            if (body.hasClass('checked'))
-                body.removeClass('checked');
-
-            return;
+        init: function(customPage) {
+            validatePage(customPage);
+            mergePageObjects(customPage);
+            registerPageEvents();
+            registerCustomEvents();
         }
+    };
 
-        if (target.nodeName === 'SPAN')
-            target = target.parentNode;
+    // Page Events
+    var onBodyClick =
+        onBodyFadeIn =
+        onBodyFadeOut =
+        onUnload =
+        onReady = TM.util.emptyFn,
 
-        if (target.getAttribute('href') === null) return;
+        onLoad = function() {
+            pageObject.el.body.addClass('fadein');
+            TM.util.toggleLogoOpacity();
+        },
 
-        if (target.hasClass('u-url') ||
-            target.hasClass('email') ||
-            target.hasClass('sample') ||
-            target.hasClass('download')) return;
+        onBeforeUnload = function(event) {
+            if (this.actionLinkEnabled) return;
 
-        linkLocation = target.getAttribute('href');
+            pageObject.el.body.removeClass('fadein');
+        },
 
-        event.preventDefault();
+        onScroll = function(event) {
+            TM.util.toggleLogoOpacity(event);
+        };
 
-        if (linkLocation.indexOf('#') > -1) return;
-
-        if (body.hasClass('checked')) {
-            body.removeClass('checked');
-            setTimeout(function() {
-                body.removeClass('fadein');
-                setTimeout(function() {
-                    window.location = linkLocation;
-                }, waitDuration);
-            }, waitDuration);
-        }
-        else {
-            body.removeClass('fadein');
-
-            setTimeout(function() {
-                window.location = linkLocation;
-            }, waitDuration);
-        }
-    });
-
-    // Update screen size classes on resize
-    window.addEventListener('resize', function() {
-        updateScreenSizeClass();
-    });
-
-    // Menu toggle listener
-    document.getElementById('menu-toggle').addEventListener('click', function() {
-        body.toggleClass('checked');
-    });
-
-    if (window.getScreenSize() < 2) {
-        body.addEventListener('touchmove', function(event) {
+        onTouchMove = function(event) {
             if (event.target.hasClass('scrollable'))
                 event.preventDefault();
+        },
+
+        onWindowResize = function(event) {
+            TM.util.updateScreenSizeClass();
+        };
+
+    // Methods
+    var callMethodIfExists = function(method, arguments) {
+        if (typeof pageObject.pageEvents[method] !== 'undefined') {
+            pageObject.pageEvents[method].apply(pageObject, arguments);
+        }
+    };
+
+    var mergePageObjects = function(customPage) {
+        TM.util.mergeObjects(pageObject, customPage);
+    };
+
+    var registerCustomEvents = function() {
+        for (element in pageObject.customEvents) {
+            if (typeof pageObject.el[element] !== 'undefined') {
+                for (eventName in pageObject.customEvents[element]) {
+                    var customEvent = pageObject.customEvents[element][eventName];
+
+                    if (eventName === 'submit')
+                        TM.util.addFormSubmissionHandler(pageObject.el[element], customEvent.action, customEvent.callback);
+                    else {
+                        pageObject.el[element].addEventListener(eventName, customEvent.bind(pageObject));
+                    }
+                }
+            }
+        }
+    };
+
+    var registerPageEvents = function() {
+        window.addEventListener('load', function internalOnLoad() {
+            onLoad.call(pageObject);
+            callMethodIfExists('onLoad')
+            window.removeEventListener('load', internalOnLoad);
+        });
+
+        window.addEventListener('resize', function internalOnWindowResize(event) {
+            onWindowResize.call(pageObject, event);
+            callMethodIfExists('onWindowResize', [event]);
+        });
+
+        window.addEventListener('beforeunload', function internalOnBeforeUnload(event) {
+            onBeforeUnload.call(pageObject, event);
+            callMethodIfExists('onBeforeUnload', [event]);
+            window.removeEventListener('unload', internalOnBeforeUnload);
+        });
+
+        window.addEventListener('unload', function internalOnUnload(event) {
+            onUnload.call(pageObject);
+            callMethodIfExists('onUnload');
+            window.removeEventListener('unload', internalOnUnload);
+        });
+
+        document.addEventListener('DOMContentLoaded', function internalOnReady() {
+            onReady.call(pageObject);
+            callMethodIfExists('onReady');
+            document.removeEventListener('DOMContentLoaded', internalOnReady);
+        });
+
+        document.addEventListener('scroll', function internalOnScroll(event) {
+            onScroll.call(pageObject, event);
+            callMethodIfExists('onScroll', [event]);
+        });
+
+        document.addEventListener('touchmove', function(event) {
+            onTouchMove.call(pageObject, event);
+            callMethodIfExists('onTouchMove', [event]);
+        });
+
+        pageObject.el.body.addEventListener('click', function(event) {
+            onBodyClick.call(pageObject, event);
+            callMethodIfExists('onBodyClick', [event]);
+        });
+
+        pageObject.el.menuToggle.addEventListener('click', function(event) {
+            event.stopPropagation();
+            pageObject.el.body.toggleClass('checked');
+        });
+
+        pageObject.el.body.addEventListener('transitionend', function(event) {
+            var target = event.target;
+
+            switch (target) {
+                case pageObject.el.body:
+                    if (target.hasClass('fadein')) {
+                        onBodyFadeIn.call(pageObject);
+                        callMethodIfExists('onBodyFadeIn');
+                    } else {
+                        onBodyFadeOut.call(pageObject);
+                        callMethodIfExists('onBodyFadeOut');
+                    }
+                break;
+
+                case pageObject.el.menuToggle:
+
+                break;
+            }
         });
     };
-});
 
-window.addEventListener('load', function load() {
-    window.removeEventListener('load', load, false);
-    document.body.addClass('fadein');
-    window.toggleLogoOpacity();
+    var validatePage = function(page) {
+        if (page === false)
+            throw new Error('A Page object must be specified.');
+
+        if (page && typeof page !== 'object')
+            throw new Error('The Page parameter must be an object.');
+    };
+
+    return pageObject;
+}());
+
+TM.Page.init({
+    actionLinkEnabled: false,
+
+    el: {
+        mailingListForm: document.getElementById('mailing-list-form')
+    },
+
+    pageEvents: {
+        onBodyClick: function(event) {
+            var target = event.target;
+
+            if (this.el.body.hasClass('checked'))
+                this.el.body.toggleClass('checked');
+
+            if (target.nodeName === 'A')
+                this.actionLinkEnabled = target.getAttribute('data-actionlink');
+        },
+
+        onReady: function() {
+            TM.util.updateScreenSizeClass();
+            TM.util.loadFastClick();
+        }
+    },
+
+    customEvents: {
+        mailingListForm: {
+            submit: {
+                action: window.location.href,
+                callback: function(form, request) {
+                    form.innerHTML = TM.util.queryHTML(request.responseText, '#' + form.id).innerHTML;
+                }
+            }
+        }
+    }
 });
