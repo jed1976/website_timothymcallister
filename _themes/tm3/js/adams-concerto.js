@@ -1,6 +1,33 @@
-document.addEventListener('DOMContentLoaded', function() {
-    var resizeVideos = function(el) {
-        var paddingOffset = window.getWindowSize() > 1 ? 12 : 0;
+new TM.Module({
+	el: {
+		messageForm: document.getElementById('message-form')
+	},
+
+	padding: 12,
+
+	callbacks: {
+		onReady: function() {
+			this.resizeVideos();
+		},
+
+		onWindowResize: function() {
+			this.resizeVideos();
+		}
+	},
+
+	events: {
+        messageForm: {
+            submit: {
+                action: window.location.href,
+                callback: function(form, request) {
+                    form.innerHTML = TM.util.queryHTML(request.responseText, '#' + form.id).innerHTML;
+                }
+            }
+        }
+	},
+
+    resizeVideos: function() {
+        var paddingOffset = TM.util.getWindowSize() > 1 ? this.padding : 0;
 
         [].forEach.call(document.querySelectorAll('.video'), function(el) {
             var aspectRatio = parseInt(el.getStyle('height')) / parseInt(el.getStyle('width'));
@@ -12,14 +39,5 @@ document.addEventListener('DOMContentLoaded', function() {
             el.style.width = (parentWidth - paddingOffset) + 'px';
             el.style.height = ((parentWidth - paddingOffset) * aspectRatio) + 'px';
         });
-    };
-
-    resizeVideos();
-
-    // Listeners
-    window.addEventListener('resize', resizeVideos);
-
-    addFormSubmissionHandler(document.getElementById('message-form'), window.location.href, function(form, request) {
-        form.innerHTML = queryHTML(request.responseText, '#' + form.id).innerHTML;
-    });
+    }
 });
