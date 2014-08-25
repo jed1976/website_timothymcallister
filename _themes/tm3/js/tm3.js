@@ -1,6 +1,6 @@
 // Prototypes
 // https://gist.github.com/Maksims/5356227
-HTMLElement = typeof(HTMLElement) != 'undefiend' ? HTMLElement : Element;
+HTMLElement = typeof HTMLElement != 'undefined' ? HTMLElement : Element;
 
 HTMLElement.prototype.addClass = function(string) {
     if (!(string instanceof Array)) {
@@ -82,11 +82,224 @@ HTMLElement.prototype.toggleClass = function(string) {
     }
 };
 
-// TM Namespace
-var TM = {};
+
+// TM Namespace and objects
+TM = {};
+
+// Map Object
+TM.Map = function(mapCanvas) {
+	if (TM.util.getScreenSize() < 1) return;
+
+	var _this = this;
+
+	this.featureOptions = [{
+        featureType: 'water',
+        stylers: [{ color: '#81d4fa' }]
+    }];
+
+	this.mapConfig = {
+        disableDefaultUI: true,
+        draggable: false,
+        scrollwheel: false,
+        zoom: 3
+    };
+
+	this.callback = 'mapCallback';
+	this.customMapType = null;
+	this.defaultLatitude = 23.0414243;
+	this.defaultLongitude = -83.8188083;
+    this.infoWindow = null;
+	this.mapCanvas = mapCanvas;
+	this.mapObj = null;
+    this.mapTypeID = 'custom_style';
+	this.markerIcon = null;
+	this.markerIconPath = '/_themes/tm3/img/marker.png';
+	this.markerIconHeight = 45;
+	this.markerIconWidth = 25;
+    this.markers = {};
+    this.maxInfoWindowWidth = 320;
+
+	TM[this.callback] = function(event) {
+	    _this.initialize();
+	};
+
+    var script = document.createElement('script');
+    script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyA2Kd093BDPlBJhWykIlVOEHamfG4_8WKo&callback=TM.' + this.callback;
+    document.body.appendChild(script);
+};
+
+TM.Map.prototype.initialize = function() {
+    this.markerIcon = new google.maps.MarkerImage(this.markerIconPath, null, null, null, new google.maps.Size(this.markerIconWidth, this.markerIconHeight));
+    this.infoWindow = new google.maps.InfoWindow();
+
+	TM.util.mergeObjects(this.mapConfig, {
+        center: new google.maps.LatLng(this.defaultLatitude, this.defaultLongitude),
+        mapTypeControlOptions: {
+            mapTypeIds: [google.maps.MapTypeId.ROADMAP, this.mapTypeID]
+        },
+        mapTypeId: this.mapTypeID
+    });
+
+    this.googleMap = new google.maps.Map(this.mapCanvas, this.mapConfig);
+    this.customMapType = new google.maps.StyledMapType(this.featureOptions, { name: '' });
+    this.googleMap.mapTypes.set(this.mapTypeID, this.customMapType);
+};
+
+TM.Map.prototype.addMarker = function(title, latitude, longitude) {
+	if (typeof this.markers[title] !== 'undefined') return;
+
+	var marker = marker = new google.maps.Marker({
+	        animation: google.maps.Animation.DROP,
+	        icon: this.markerIcon,
+	        position: new google.maps.LatLng(latitude, longitude),
+	        map: this.googleMap,
+	        title: title
+	    });
+
+    this.markers[title] = marker;
+};
+
+TM.Map.prototype.setAllMap = function(map) {
+	for (prop in this.markers)
+		this.markers[prop].setMap(map);
+};
+
+TM.Map.prototype.clearMarkers = function() {
+	this.setAllMap(null);
+};
+
+TM.Map.prototype.deleteMarkers = function() {
+	this.clearMarkers();
+	this.markers = {};
+};
+
+TM.Map.prototype.showMarkers = function() {
+	this.setAllMap(this.googleMap);
+};
+
+
+// Module Object
+TM.Module = function(customModule) {
+    if (customModule === false || typeof customModule !== 'object')
+        throw new Error('A Module object must be specified.');
+
+	// Variables
+    var _this = this, module = {
+        actionLinkEnabled: false,
+
+        el: {
+            body: document.body,
+			content: document.getElementById('content'),
+            html: document.querySelector('html'),
+            logo: document.getElementById('logo'),
+            menuToggle: document.getElementById('menu-toggle')
+        },
+
+        callbacks: {},
+
+        events: {}
+    };
+
+	TM.util.mergeObjects(module, customModule);
+
+	// Methods
+	this.methodExists = function(method) {
+		return typeof module.callbacks[method] !== 'undefined';
+	};
+
+	this.callModuleMethod = function(method, arguments) {
+        module.callbacks[method].apply(module, arguments);
+    };
+
+	this.callCustomMethod = function(method, arguments) {
+        module.events[method].apply(module, arguments);
+    };
+
+	// Register custom events
+    for (element in module.events) {
+        if (typeof module.el[element] !== 'undefined') {
+            for (eventName in module.events[element]) {
+                var event = module.events[element][eventName];
+
+                if (eventName === 'submit')
+                    TM.util.addFormSubmissionHandler(module.el[element], event.action, event.callback);
+                else {
+                    module.el[element].addEventListener(eventName, event.bind(module));
+                }
+            }
+        }
+    }
+
+	// Register page events
+	if (_this.methodExists('onBeforeUnload'))
+        window.addEventListener('beforeunload', function internalOnBeforeUnload(event) {
+            _this.callModuleMethod('onBeforeUnload', [event]);
+            window.removeEventListener('unload', internalOnBeforeUnload);
+        });
+
+	if (_this.methodExists('onLoad'))
+		window.addEventListener('load', function internalOnLoad(event) {
+        	_this.callModuleMethod('onLoad', [event])
+			window.removeEventListener('load', internalOnLoad);
+		});
+
+	if (_this.methodExists('onPopState'))
+	    window.addEventListener('popstate', function(event) {
+	        _this.callModuleMethod('onPopState', [event]);
+	    });
+
+	if (_this.methodExists('onReady'))
+        document.addEventListener('DOMContentLoaded', function internalOnReady(event) {
+            _this.callModuleMethod('onReady', [event]);
+            document.removeEventListener('DOMContentLoaded', internalOnReady);
+        });
+
+	if (_this.methodExists('onScroll'))
+        document.addEventListener('scroll', function internalOnScroll(event) {
+            _this.callModuleMethod('onScroll', [event]);
+        });
+
+	if (_this.methodExists('onTouchMove'))
+        document.addEventListener('touchmove', function(event) {
+            _this.callModuleMethod('onTouchMove', [event]);
+        });
+
+	if (_this.methodExists('onUnload'))
+        window.addEventListener('unload', function internalOnUnload(event) {
+            _this.callModuleMethod('onUnload', [event]);
+            window.removeEventListener('unload', internalOnUnload);
+        });
+
+	if (_this.methodExists('onWindowResize'))
+        window.addEventListener('resize', function internalOnWindowResize(event) {
+            _this.callModuleMethod('onWindowResize', [event]);
+        });
+
+	if (_this.methodExists('onBodyFadeIn') || _this.methodExists('onBodyFadeOut'))
+        module.el.body.addEventListener('transitionend', function(event) {
+            var target = event.target;
+
+            if (target !== module.el.body) return;
+
+            if (target.hasClass('fadein'))
+                _this.callModuleMethod('onBodyFadeIn');
+			else
+                _this.callModuleMethod('onBodyFadeOut');
+        });
+};
+
 
 // Utilities
 TM.util = {};
+
+TM.util.screens = {
+	small: 640,
+	medium: 1024,
+	large: 1366
+}
+
+TM.util.emptyFn = function() {};
+
 TM.util.addFormSubmissionHandler = function(form, action, callback) {
     form.addEventListener('submit', function(event) {
         event.preventDefault();
@@ -112,8 +325,6 @@ TM.util.addFormSubmissionHandler = function(form, action, callback) {
     });
 };
 
-TM.util.emptyFn = function() {};
-
 TM.util.getDocumentHeight = function() {
     return Math.max(
         document.body.scrollHeight, document.documentElement.scrollHeight,
@@ -134,11 +345,11 @@ TM.util.getUrl = function(url, callback) {
 };
 
 TM.util.getSizeBasedOnWidth = function(width) {
-    if (width <= 640)
+    if (width <= TM.util.screens.small)
         return 0;
-    else if (width <= 1024)
+    else if (width <= TM.util.screens.medium)
         return 1;
-    else if (width <= 1366)
+    else if (width <= TM.util.screens.large)
         return 2
 
     return 3;
@@ -203,192 +414,3 @@ TM.util.updateScreenSizeClass = function() {
     className += space + screenPrefix + TM.util.getScreenSize();
     html.className = className;
 };
-
-// Page Object
-TM.Page = function(customPage) {
-    if (customPage === false || typeof customPage !== 'object')
-        throw new Error('A Page object must be specified.');
-
-	// Page object
-    var _this = this, pageObject = {
-        actionLinkEnabled: false,
-
-		enableMap: false,
-
-        el: {
-            body: document.body,
-            googleMap: document.getElementById('map'),
-            googleMapCanvas: document.getElementById('map-canvas'),
-            html: document.querySelector('html'),
-            logo: document.getElementById('logo'),
-            menuToggle: document.getElementById('menu-toggle')
-        },
-
-		logoHeight: 0,
-
-        pageEvents: {},
-
-        customEvents: {}
-    };
-
-	TM.util.mergeObjects(pageObject, customPage);
-
-	// Methods
-	this.methodExists = function(method) {
-		return typeof pageObject.pageEvents[method] !== 'undefined';
-	};
-
-	this.callPageMethod = function(method, arguments) {
-        pageObject.pageEvents[method].apply(pageObject, arguments);
-    };
-
-	this.callCustomMethod = function(method, arguments) {
-        pageObject.customEvents[method].apply(pageObject, arguments);
-    };
-
-	// Register custom events
-    for (element in pageObject.customEvents) {
-        if (typeof pageObject.el[element] !== 'undefined') {
-            for (eventName in pageObject.customEvents[element]) {
-                var customEvent = pageObject.customEvents[element][eventName];
-
-                if (eventName === 'submit')
-                    TM.util.addFormSubmissionHandler(pageObject.el[element], customEvent.action, customEvent.callback);
-                else {
-                    pageObject.el[element].addEventListener(eventName, customEvent.bind(pageObject));
-                }
-            }
-        }
-    }
-
-	// Register page events
-	if (_this.methodExists('onBeforeUnload'))
-        window.addEventListener('beforeunload', function internalOnBeforeUnload(event) {
-            _this.callPageMethod('onBeforeUnload', [event]);
-            window.removeEventListener('unload', internalOnBeforeUnload);
-        });
-
-	if (_this.methodExists('onLoad'))
-		window.addEventListener('load', function internalOnLoad(event) {
-        	_this.callPageMethod('onLoad', [event])
-			window.removeEventListener('load', internalOnLoad);
-		});
-
-	if (_this.methodExists('onReady'))
-        document.addEventListener('DOMContentLoaded', function internalOnReady(event) {
-            _this.callPageMethod('onReady', [event]);
-            document.removeEventListener('DOMContentLoaded', internalOnReady);
-        });
-
-	if (_this.methodExists('onScroll'))
-        document.addEventListener('scroll', function internalOnScroll(event) {
-            _this.callPageMethod('onScroll', [event]);
-        });
-
-	if (_this.methodExists('onTouchMove'))
-        document.addEventListener('touchmove', function(event) {
-            _this.callPageMethod('onTouchMove', [event]);
-        });
-
-	if (_this.methodExists('onUnload'))
-        window.addEventListener('unload', function internalOnUnload(event) {
-            _this.callPageMethod('onUnload', [event]);
-            window.removeEventListener('unload', internalOnUnload);
-        });
-
-	if (_this.methodExists('onWindowResize'))
-        window.addEventListener('resize', function internalOnWindowResize(event) {
-            _this.callPageMethod('onWindowResize', [event]);
-        });
-
-	if (pageObject.enableMap)
-        window.initMap = function(event) {
-            _this.callPageMethod('onMapLoad', [event]);
-        };
-
-	if (_this.methodExists('onBodyFadeIn') || _this.methodExists('onBodyFadeOut'))
-        pageObject.el.body.addEventListener('transitionend', function(event) {
-            var target = event.target;
-
-            if (target !== pageObject.el.body) return;
-
-            if (target.hasClass('fadein'))
-                _this.callPageMethod('onBodyFadeIn');
-			else
-                _this.callPageMethod('onBodyFadeOut');
-        });
-};
-
-
-new TM.Page({
-    el: {
-        mailingListForm: document.getElementById('mailing-list-form')
-    },
-
-    pageEvents: {
-		onBeforeUnload: function() {
-            if (this.actionLinkEnabled) return;
-
-            this.el.body.removeClass('fadein');
-		},
-
-		onLoad: function() {
-            this.el.body.addClass('fadein');
-            TM.util.toggleLogoOpacity();
-
-            this.logoHeight = parseInt(this.el.logo.getStyle('height'));
-		},
-
-		onMapLoad: function() {
-			this.callCustomMethod('onMapLoad');
-		},
-
-        onReady: function() {
-            TM.util.updateScreenSizeClass();
-            TM.util.loadFastClick();
-        },
-
-        onScroll: function(event) {
-            TM.util.toggleLogoOpacity(event);
-        },
-
-        onTouchMove: function(event) {
-            if (event.target.hasClass('scrollable'))
-                event.preventDefault();
-        },
-
-        onWindowResize: function(event) {
-            TM.util.updateScreenSizeClass();
-        }
-    },
-
-    customEvents: {
-        body: {
-            click: function(event) {
-                var target = event.target;
-
-                if (target.nodeName !== 'A' && this.el.body.hasClass('checked'))
-                    this.el.body.toggleClass('checked');
-
-                if (target.nodeName === 'A')
-                    this.actionLinkEnabled = target.getAttribute('data-actionlink');
-            }
-        },
-
-        mailingListForm: {
-            submit: {
-                action: window.location.href,
-                callback: function(form, request) {
-                    form.innerHTML = TM.util.queryHTML(request.responseText, '#' + form.id).innerHTML;
-                }
-            }
-        },
-
-        menuToggle: {
-            click: function(event) {
-                event.preventDefault();
-                this.el.body.toggleClass('checked');
-            }
-        }
-    }
-});

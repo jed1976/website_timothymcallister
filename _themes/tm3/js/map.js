@@ -1,85 +1,63 @@
-new TM.Page({
-    el: {
-        performanceList: document.getElementById('performance-list')
-    },
+new TM.Module({
+	el: {
+		mapContainer: document.getElementById('map'),
+		mapCanvas: document.getElementById('map-canvas'),
+		performanceList: document.getElementById('performance-list'),
+		yearSelectorWrapper: document.getElementById('year-selector-wrapper'),
+		yearSelector: null
+	},
 
-    activeClass: 'active',
+	callbacks: {
+		onPopState: function(event) {
+			this.updateYearSelectorValue(event.state);
+		},
 
-    enableMap: true,
+		onReady: function() {
+			var _this = this;
 
-    currentPerformance: null,
+			this.logoHeight = parseInt(this.el.logo.getStyle('height'));
+			this.year = null;
+	        this.yearParam = 'year=';
+	        this.title = document.title + ' - ';
+	        this.URLQueryString = '?' + this.yearParam;
 
-    currentRow: null,
+			// Create year selector
+			this.yearSelector = '<select id="year-selector">';
 
-    customMapType: null,
+		    [].forEach.call(this.el.yearSelectorWrapper.querySelectorAll('a'), function(el) {
+		        _this.year = el.innerHTML;
+		        _this.yearSelector += '<option value="' + _this.year + '">' + _this.year + '</option>';
+		    });
 
-    featureOpts: [{
-        featureType: 'water',
-        stylers: [
-            { color: '#81d4fa' }
-        ]
-    }],
+		    this.yearSelector += '</select>';
+		    this.el.yearSelectorWrapper.innerHTML = this.yearSelector;
 
-    googleMap: null,
+		    this.el.yearSelector = document.getElementById('year-selector');
+		    this.el.yearSelector.onchange = function(event) {
+		    	_this.refreshMap.call(_this, event);
+		    };
 
-    googleMapInfoWindow: null,
+			// Set year selector value
+		    var queryString = window.location.search;
+		    queryString = queryString.substring(1);
 
-    initialZoomLevel: 3,
+		    this.year = queryString.replace('year=', '') || new Date().getFullYear();
+		    this.updateYearSelectorValue(this.year);
 
-    mapTypeID: 'custom_style',
+			// Create map
+			this.googleMap = new TM.Map(this.el.mapCanvas);
+			this.resizeMap();
 
-    markers: {},
-
-    maxGoogleMapInfoWindowWidth: 320,
-
-    maxSummaryLength: 250,
-
-    performanceTitleSelector: '.p-location .p-name',
-
-    performanceSummarySelector: '.p-summary',
-
-    pageEvents: {
-        onLoad: function() {
-            if (TM.util.getScreenSize() < 1) return;
-            this.el.html.addClass('map');
-
-            var script = document.createElement('script');
-            script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyA2Kd093BDPlBJhWykIlVOEHamfG4_8WKo&callback=initMap';
-            document.body.appendChild(script);
-
-            this.resizeMap();
-        },
-
-        onMapLoad: function() {
-            this.icon = new google.maps.MarkerImage('/_themes/tm3/img/marker.png', null, null, null, new google.maps.Size(25, 45));
-
-            this.googleMapInfoWindow = new google.maps.InfoWindow();
-
-            this.createMap(this.el.googleMapCanvas, {
-                center: new google.maps.LatLng(23.0414243, -83.8188083),
-                disableDefaultUI: true,
-                draggable: false,
-                mapTypeControlOptions: {
-                    mapTypeIds: [google.maps.MapTypeId.ROADMAP, this.mapTypeID]
-                },
-                mapTypeId: this.mapTypeID,
-                scrollwheel: false,
-                zoom: this.initialZoomLevel
-            }, {
-                name: 'Custom Style'
-            });
-
-            this.createMarkers();
-            this.selectFirstEvent();
-        },
+			this.el.html.addClass('map');
+		},
 
         onWindowResize: function() {
             this.resizeMap();
             this.centerAndPanMap();
         }
-    },
+	},
 
-    customEvents: {
+	events: {
         performanceList: {
             click: function(event) {
                 event.preventDefault();
@@ -102,56 +80,63 @@ new TM.Page({
                 this.displayInfoWindow(performance.outerHTML);
             }
         }
-    },
+	},
 
     centerAndPanMap: function() {
-        this.googleMapInfoWindow.close();
-        this.googleMapInfoWindow.open(this.googleMap, this.currentPerformance.marker);
-        this.el.googleMapInfoWindow = document.querySelector('.gm-style-iw');
-        this.googleMap.setCenter(this.currentPerformance.coordinates);
-        this.googleMap.panBy(-(this.el.performanceList.offsetWidth / 2), -((this.el.googleMapInfoWindow.offsetHeight / 2) + this.logoHeight));
+        // this.googleMapInfoWindow.close();
+        // this.googleMapInfoWindow.open(this.googleMap, this.currentPerformance.marker);
+        // this.el.googleMapInfoWindow = document.querySelector('.gm-style-iw');
+        // this.googleMap.setCenter(this.currentPerformance.coordinates);
+//        this.googleMap.panBy(-(this.el.performanceList.offsetWidth / 2), -((this.el.googleMapInfoWindow.offsetHeight / 2) + this.logoHeight));
     },
 
-    createMap: function(mapCanvas, mapOptions, styledMapOptions) {
-        this.googleMap = new google.maps.Map(mapCanvas, mapOptions);
-        this.customMapType = new google.maps.StyledMapType(this.featureOpts, styledMapOptions);
-        this.googleMap.mapTypes.set(this.mapTypeID, this.customMapType);
-        this.el.googleMap.addClass('fadein');
-    },
+	addMarkers: function() {
+		var _this = this;
 
-    createMarkers: function() {
-        var eventEl, coordinates, marker, title, _this = this;
+		[].forEach.call(this.el.performanceList.querySelectorAll('.h-event'), function(el) {
+			var title = el.querySelector('.p-location .p-name');
+			title = title ? title.innerHTML : '';
 
-        [].forEach.call(this.el.performanceList.querySelectorAll('.h-event'), function(el) {
-            title = el.querySelector('.p-location .p-name');
-            title = title ? title.innerHTML : '';
-            coordinates = new google.maps.LatLng(el.getAttribute('data-latitude'), el.getAttribute('data-longitude'));
-            marker = new google.maps.Marker({
-                animation: google.maps.Animation.DROP,
-                icon: _this.icon,
-                position: coordinates,
-                map: _this.googleMap,
-                title: title
-            });
-
-            if (typeof _this.markers[title] === 'undefined') {
-                _this.markers[title] = {
-                    coordinates: coordinates,
-                    marker: marker
-                };
-            }
-        });
-    },
+			_this.googleMap.addMarker(title, el.getAttribute('data-latitude'), el.getAttribute('data-longitude'));
+		});
+	},
 
     displayInfoWindow: function(content) {
         this.googleMapInfoWindow.setContent(content);
-
         this.centerAndPanMap();
     },
 
+	refreshMap: function(event) {
+		var _this = this,
+			target = event.target,
+            year = target.options[target.selectedIndex].getAttribute('value'),
+            url = this.URLQueryString + year;
+
+        this.el.mapContainer.removeClass('fadein');
+
+        TM.util.getUrl(url, function(response) {
+            _this.el.performanceList.innerHTML = TM.util.queryHTML(response, '#performance-list').innerHTML;
+
+            if (TM.util.getScreenSize() > 0) {
+            	_this.googleMap.deleteMarkers();
+				_this.addMarkers();
+            }
+
+			_this.saveHistory(year);
+			_this.el.mapContainer.addClass('fadein');
+        });
+
+        target.blur();
+    },
+
     resizeMap: function() {
-        var yearSelectorHeight = 0;
-        this.el.googleMap.style.height = TM.util.getWindowSize() >= 1 ? (window.innerHeight - this.logoHeight) + 'px' : 'auto';
+		this.el.mapContainer.style.height = TM.util.getWindowSize() >= 1 ? (window.innerHeight - this.logoHeight) + 'px' : 'auto';
+    },
+
+	saveHistory: function(year) {
+        if (window.history.pushState) {
+            window.history.pushState(this.year, this.title + this.year, this.URLQueryString + this.year);
+        }
     },
 
     selectFirstEvent: function() {
@@ -167,5 +152,18 @@ new TM.Page({
             _this.el.performanceList.scrollTop = eventEl.getPosition()[1] - _this.el.performanceList.getPosition()[1];
             eventEl.click();
         }, 500);
+    },
+
+	updateYearSelectorValue: function(year) {
+		var _this = this;
+
+        [].forEach.call(this.el.yearSelector.options, function(option, index) {
+            if (parseInt(option.label) === parseInt(year)) {
+                _this.el.yearSelector.selectedIndex = index;
+                _this.el.yearSelector.onchange({ target: _this.el.yearSelector });
+                return;
+            }
+        });
     }
+
 });

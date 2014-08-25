@@ -38,10 +38,11 @@
 
         <!-- Scripts -->
         {{ theme:js tag="true" }}
-        {{ if enable_audio }}{{ theme:js src="audio" tag="true" }}{{ endif }}
+		{{ theme:js src="site.js" tag="true" }}
         {{ if enable_map }}{{ theme:js src="map" tag="true" }}{{ endif }}
-        {{ if enable_promises }}{{ theme:js src="promise.min" tag="true" }}{{ endif }}
-        {{ if enable_blur }}{{ theme:js src="stackblur.min" tag="true" }}{{ endif }}
+        {{ if enable_audio }}{{ theme:js src="audio" tag="true" }}{{ endif }}
+        {{ if enable_promises }}{{ theme:js src="promise" tag="true" }}{{ endif }}
+        {{ if enable_blur }}{{ theme:js src="stackblur" tag="true" }}{{ endif }}
         {{ if page_js }}{{ theme:js src="{ page_js }" tag="true" }}{{ endif }}
     </body>
 </html>
