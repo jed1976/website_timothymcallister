@@ -35,7 +35,7 @@ new TM.Module({
 		},
 
 		onReady: function() {
-			var _this = this;
+			var _this = this, yearSelectorValue;
 
 			this.logoHeight = parseInt(this.el.logo.getStyle('height'));
 			this.URLQueryString = '?' + this.yearParam;
@@ -52,8 +52,8 @@ new TM.Module({
 				this.yearSelector = '<select id="year-selector">';
 
 			    [].forEach.call(this.el.yearSelectorWrapper.querySelectorAll('a'), function(el) {
-			        _this.year = el.innerHTML;
-			        _this.yearSelector += '<option value="' + _this.year + '">' + _this.year + '</option>';
+			        yearSelectorValue = el.innerHTML;
+			        _this.yearSelector += '<option value="' + yearSelectorValue + '">' + yearSelectorValue + '</option>';
 			    });
 
 			    this.yearSelector += '</select>';
@@ -165,7 +165,7 @@ new TM.Module({
 
 	saveHistory: function(year) {
         if (window.history.pushState) {
-            window.history.pushState(this.year, this.title + this.year, this.URLQueryString + this.year);
+            window.history.pushState(year, this.title + year, this.URLQueryString + year);
         }
     },
 
