@@ -108,16 +108,16 @@ TM.Map = function(mapCanvas) {
 	this.customMapType = null;
 	this.defaultLatitude = 23.0414243;
 	this.defaultLongitude = -83.8188083;
+	this.googleMap = null;
     this.infoWindow = null;
 	this.mapCanvas = mapCanvas;
-	this.mapObj = null;
     this.mapTypeID = 'custom_style';
 	this.markerIcon = null;
 	this.markerIconPath = '/_themes/tm3/img/marker.png';
 	this.markerIconHeight = 45;
 	this.markerIconWidth = 25;
     this.markers = {};
-    this.maxInfoWindowWidth = 320;
+	this.maxInfoWindowWidth = 320;
 
 	TM[this.callback] = function(event) {
 	    _this.initialize();
@@ -148,7 +148,7 @@ TM.Map.prototype.initialize = function() {
 TM.Map.prototype.addMarker = function(title, latitude, longitude) {
 	if (typeof this.markers[title] !== 'undefined') return;
 
-	var marker = marker = new google.maps.Marker({
+	var marker = new google.maps.Marker({
 	        animation: google.maps.Animation.DROP,
 	        icon: this.markerIcon,
 	        position: new google.maps.LatLng(latitude, longitude),
@@ -159,11 +159,6 @@ TM.Map.prototype.addMarker = function(title, latitude, longitude) {
     this.markers[title] = marker;
 };
 
-TM.Map.prototype.setAllMap = function(map) {
-	for (prop in this.markers)
-		this.markers[prop].setMap(map);
-};
-
 TM.Map.prototype.clearMarkers = function() {
 	this.setAllMap(null);
 };
@@ -171,6 +166,23 @@ TM.Map.prototype.clearMarkers = function() {
 TM.Map.prototype.deleteMarkers = function() {
 	this.clearMarkers();
 	this.markers = {};
+};
+
+TM.Map.prototype.displayInfoWindow = function(content, marker, maxWidth) {
+	this.infoWindow.close();
+    this.infoWindow.setContent(content);
+    this.infoWindow.setOptions({ maxWidth: maxWidth || this.maxInfoWindowWidth });
+	this.infoWindow.open(this.googleMap, marker);
+};
+
+TM.Map.prototype.setAllMap = function(map) {
+	for (prop in this.markers)
+		this.markers[prop].setMap(map);
+};
+
+TM.Map.prototype.centerAndPanMap = function(center, x, y) {
+	this.googleMap.setCenter(center);
+	this.googleMap.panBy(x, y);
 };
 
 TM.Map.prototype.showMarkers = function() {

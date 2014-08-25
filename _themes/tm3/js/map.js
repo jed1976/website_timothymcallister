@@ -7,6 +7,28 @@ new TM.Module({
 		yearSelector: null
 	},
 
+	activeClass: 'active',
+
+    currentRow: null,
+
+	infoWindowDelay: 250,
+
+	marker: null,
+
+	maxSummaryLength: 250,
+
+    performanceTitleSelector: '.p-location .p-name',
+
+    performanceSummarySelector: '.p-summary',
+
+    title: document.title + ' - ',
+
+    URLQueryString: null,
+
+	year: null,
+
+    yearParam: 'year=',
+
 	callbacks: {
 		onPopState: function(event) {
 			this.updateYearSelectorValue(event.state);
@@ -16,36 +38,37 @@ new TM.Module({
 			var _this = this;
 
 			this.logoHeight = parseInt(this.el.logo.getStyle('height'));
-			this.year = null;
-	        this.yearParam = 'year=';
-	        this.title = document.title + ' - ';
-	        this.URLQueryString = '?' + this.yearParam;
-
-			// Create year selector
-			this.yearSelector = '<select id="year-selector">';
-
-		    [].forEach.call(this.el.yearSelectorWrapper.querySelectorAll('a'), function(el) {
-		        _this.year = el.innerHTML;
-		        _this.yearSelector += '<option value="' + _this.year + '">' + _this.year + '</option>';
-		    });
-
-		    this.yearSelector += '</select>';
-		    this.el.yearSelectorWrapper.innerHTML = this.yearSelector;
-
-		    this.el.yearSelector = document.getElementById('year-selector');
-		    this.el.yearSelector.onchange = function(event) {
-		    	_this.refreshMap.call(_this, event);
-		    };
+			this.URLQueryString = '?' + this.yearParam;
 
 			// Set year selector value
-		    var queryString = window.location.search;
-		    queryString = queryString.substring(1);
-
+		    var queryString = window.location.search.substring(1);
 		    this.year = queryString.replace('year=', '') || new Date().getFullYear();
-		    this.updateYearSelectorValue(this.year);
 
 			// Create map
 			this.googleMap = new TM.Map(this.el.mapCanvas);
+
+			// Create year selector (if applicable)
+			if (this.el.yearSelectorWrapper) {
+				this.yearSelector = '<select id="year-selector">';
+
+			    [].forEach.call(this.el.yearSelectorWrapper.querySelectorAll('a'), function(el) {
+			        _this.year = el.innerHTML;
+			        _this.yearSelector += '<option value="' + _this.year + '">' + _this.year + '</option>';
+			    });
+
+			    this.yearSelector += '</select>';
+			    this.el.yearSelectorWrapper.innerHTML = this.yearSelector;
+
+			    this.el.yearSelector = document.getElementById('year-selector');
+			    this.el.yearSelector.onchange = function(event) {
+			    	_this.refreshMap.call(_this, event);
+			    };
+
+			    this.updateYearSelectorValue(this.year);
+			} else {
+				this.refreshMap.call(this);
+			}
+
 			this.resizeMap();
 
 			this.el.html.addClass('map');
@@ -62,14 +85,13 @@ new TM.Module({
             click: function(event) {
                 event.preventDefault();
 
-                var target = event.target.findParentNodeWithName('ARTICLE'),
+                var _this = this,
+					target = event.target.findParentNodeWithName('ARTICLE'),
                     performance = target,
                     titleEl = performance.querySelector(this.performanceTitleSelector),
-                    title = titleEl ? titleEl.innerHTML : '',
-                    summary = performance.querySelector(this.performanceSummarySelector),
-                    maxGoogleMapInfoWindowWidth = (summary && summary.innerHTML.length > this.maxSummaryLength) ? Math.round(window.innerWidth / 2) : this.maxGoogleMapInfoWindowWidth;
+                    title = titleEl ? titleEl.innerHTML : '';
 
-                this.currentPerformance = this.markers[title];
+                this.marker = this.googleMap.markers[title];
 
                 if (this.currentRow)
                     this.currentRow.toggleClass(this.activeClass);
@@ -77,18 +99,12 @@ new TM.Module({
                 this.currentRow = performance;
                 this.currentRow.toggleClass(this.activeClass);
 
-                this.displayInfoWindow(performance.outerHTML);
+				setTimeout(function() {
+	                _this.displayInfoWindow(performance);
+				}, this.infoWindowDelay);
             }
         }
 	},
-
-    centerAndPanMap: function() {
-        // this.googleMapInfoWindow.close();
-        // this.googleMapInfoWindow.open(this.googleMap, this.currentPerformance.marker);
-        // this.el.googleMapInfoWindow = document.querySelector('.gm-style-iw');
-        // this.googleMap.setCenter(this.currentPerformance.coordinates);
-//        this.googleMap.panBy(-(this.el.performanceList.offsetWidth / 2), -((this.el.googleMapInfoWindow.offsetHeight / 2) + this.logoHeight));
-    },
 
 	addMarkers: function() {
 		var _this = this;
@@ -101,16 +117,28 @@ new TM.Module({
 		});
 	},
 
-    displayInfoWindow: function(content) {
-        this.googleMapInfoWindow.setContent(content);
-        this.centerAndPanMap();
+	centerAndPanMap: function() {
+		var infoWindow = document.querySelector('.gm-style-iw');
+		this.googleMap.centerAndPanMap(this.marker.position, -(this.el.performanceList.offsetWidth / 2), -((infoWindow.offsetHeight / 2) + this.logoHeight));
+	},
+
+    displayInfoWindow: function(performance) {
+        var summary = performance.querySelector(this.performanceSummarySelector),
+        	maxWidth = (summary && summary.innerHTML.length > this.maxSummaryLength) ? Math.round(window.innerWidth / 2) : null;
+
+		this.googleMap.displayInfoWindow(performance.outerHTML, this.marker, maxWidth);
+		this.centerAndPanMap();
     },
 
 	refreshMap: function(event) {
-		var _this = this,
-			target = event.target,
-            year = target.options[target.selectedIndex].getAttribute('value'),
-            url = this.URLQueryString + year;
+		var _this = this, target, url, year = this.year;
+
+		if (event) {
+			target = event.target;
+			year = target.options[target.selectedIndex].getAttribute('value');
+		}
+
+		url = this.URLQueryString + year;
 
         this.el.mapContainer.removeClass('fadein');
 
@@ -120,13 +148,15 @@ new TM.Module({
             if (TM.util.getScreenSize() > 0) {
             	_this.googleMap.deleteMarkers();
 				_this.addMarkers();
+				_this.selectFirstEvent();
             }
 
 			_this.saveHistory(year);
 			_this.el.mapContainer.addClass('fadein');
         });
 
-        target.blur();
+		if (target)
+			target.blur();
     },
 
     resizeMap: function() {
@@ -140,18 +170,14 @@ new TM.Module({
     },
 
     selectFirstEvent: function() {
-        var _this = this;
+        var eventElement =  this.el.performanceList.querySelector('.h-event.today') ||
+                      		this.el.performanceList.querySelector('.h-event.future') ||
+                     	    this.el.performanceList.querySelector('.h-event:first-child');
 
-        setTimeout(function() {
-            var eventEl = _this.el.performanceList.querySelector('.h-event.today') ||
-                          _this.el.performanceList.querySelector('.h-event.future') ||
-                         _this.el.performanceList.querySelector('.h-event:first-child');
+        if (eventElement === null) return;
 
-            if (eventEl === null) return;
-
-            _this.el.performanceList.scrollTop = eventEl.getPosition()[1] - _this.el.performanceList.getPosition()[1];
-            eventEl.click();
-        }, 500);
+        this.el.performanceList.scrollTop = eventElement.getPosition()[1] - this.el.performanceList.getPosition()[1];
+        eventElement.click();
     },
 
 	updateYearSelectorValue: function(year) {
