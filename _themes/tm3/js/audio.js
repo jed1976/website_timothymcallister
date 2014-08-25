@@ -1,111 +1,59 @@
-var currentPlayButton = null,
-    playSampleLabel = 'play',
-    playingClass = 'playing',
-    previousSound = null,
-    stopSampleLabel = 'stop',
-    soundFadeDuration = 1000,
-    soundToUnload = null,
-    timer = null,
-    volumeMax = 1.0,
-    volumeMin = 0.0;
+new TM.Module({
+	audioPlayer: null,
 
-var playRecording = function(id) {
-    if (previousSound) {
-        soundToUnload = previousSound;
-        soundToUnload.fade(volumeMax, volumeMin, soundFadeDuration, function() {
-            clearTimeout(soundToUnload.timer1ID);
+	currentPlayButton: null,
 
-            soundToUnload.stop();
-            soundToUnload.unload();
-        });
-    }
+	playingClass: 'playing',
 
-    playSound(id);
-};
+	playSampleLabel: 'play',
 
-var playSound = function(id) {
-    var basePath = 'assets/audio/' + id;
+	stopSampleLabel: 'stop',
 
-    currentSound = new Howl({
-        onplay: function() {
-            previousSound = currentSound;
+	callbacks: {
+		onReady: function() {
+			this.audioPlayer = new TM.AudioPlayer();
+		}
+	},
 
-            var duration = (Math.round(this._duration) * 1000) - soundFadeDuration,
-                _this = this;
+	events: {
+        body: {
+            click: function(event) {
+				var target = event.target;
 
-            currentSound.timer1ID = setTimeout(function() {
-                _this.fade(volumeMax, volumeMin, soundFadeDuration, function() {
-                    clearTimeout(currentSound.timer1ID);
-                    _this.stop();
-                });
-            }, duration);
-        },
-        urls: [basePath + '.mp3', basePath + '.ogg']
-    }).play().fade(volumeMin, volumeMax, soundFadeDuration);
-};
+				if (target.hasClass('sample') === false) return;
 
-var primeAudioPlayer = function() {
-    // Play an empty sound file to prime the audio engine in iOS
-    new Howl({
-        urls: ['assets/audio/empty.mp3', 'assets/audio/empty.ogg']
-    }).play();
-};
+				event.preventDefault();
 
-var stopSound = function(sound) {
-    soundToUnload = sound;
-    soundToUnload.fade(volumeMax, volumeMin, soundFadeDuration, function() {
-        clearTimeout(soundToUnload.timer1ID);
+				this.toggleRecordingPlayback(target);
+			}
+		}
+	},
 
-        soundToUnload.stop();
-        soundToUnload.unload();
-    });
-};
+	togglePlayButtonLabel: function(button) {
+	    button.setAttribute('data-icon', button.hasClass(this.playingClass) ? this.playSampleLabel : this.stopSampleLabel);
+	    button.toggleClass(this.playingClass);
+	},
 
-var togglePlayButtonLabel = function(button) {
-    button.setAttribute('data-icon', button.hasClass(playingClass) ? playSampleLabel : stopSampleLabel);
-    button.toggleClass(playingClass);
-};
+	toggleRecordingPlayback: function(el) {
+	    if (this.currentPlayButton) {
+	        this.togglePlayButtonLabel(this.currentPlayButton);
+			this.audioPlayer.stop();
+	    }
 
-var toggleRecordingPlayback = function(el) {
-    if (currentPlayButton) {
-        togglePlayButtonLabel(currentPlayButton);
-        stopSound(currentSound);
-    }
+	    var listItem = el.findParentNodeWithName('article');
 
-    var listItem = el.findParentNodeWithName('ARTICLE');
+	    if (el === this.currentPlayButton) {
+	        this.currentPlayButton = null;
+	        return;
+	    }
 
-    if (el === currentPlayButton) {
-        currentPlayButton = null;
-        return;
-    }
+	    this.currentPlayButton = el;
 
-    currentPlayButton = el;
+	    if (el.hasClass(this.playingClass))
+	        this.audioPlayer.stop();
+	    else
+	        this.audioPlayer.play(listItem.getAttribute('id'));
 
-    if (el.hasClass(playingClass))
-        stopSound(currentSound);
-    else
-        playRecording(listItem.getAttribute('id'));
-
-    togglePlayButtonLabel(el);
-};
-
-var init = function() {
-    var script = document.createElement('script');
-    script.src = '/_themes/tm3/js/howler.min.js';
-    script.addEventListener('load', function() {
-        primeAudioPlayer();
-    });
-    document.body.appendChild(script);
-};
-
-document.addEventListener('click', function(event) {
-    var target = event.target;
-
-    if (target.hasClass('sample') === false) return;
-
-    event.preventDefault();
-
-    toggleRecordingPlayback(target);
+	    this.togglePlayButtonLabel(el);
+	}
 });
-
-init();
