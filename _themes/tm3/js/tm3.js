@@ -84,9 +84,9 @@ HTMLElement.prototype.toggleClass = function(string) {
 
 // TM Namespace
 var TM = {};
-TM.util = {};
 
 // Utilities
+TM.util = {};
 TM.util.addFormSubmissionHandler = function(form, action, callback) {
     form.addEventListener('submit', function(event) {
         event.preventDefault();
@@ -205,196 +205,189 @@ TM.util.updateScreenSizeClass = function() {
 };
 
 // Page Object
-TM.Page = (function() {
-    var pageObject = {
+TM.Page = function(customPage) {
+    if (customPage === false || typeof customPage !== 'object')
+        throw new Error('A Page object must be specified.');
+
+	// Page object
+    var _this = this, pageObject = {
+        actionLinkEnabled: false,
+
+		enableMap: false,
+
         el: {
             body: document.body,
+            googleMap: document.getElementById('map'),
+            googleMapCanvas: document.getElementById('map-canvas'),
+            html: document.querySelector('html'),
+            logo: document.getElementById('logo'),
             menuToggle: document.getElementById('menu-toggle')
         },
 
+		logoHeight: 0,
+
         pageEvents: {},
 
-        customEvents: {},
-
-        init: function(customPage) {
-            validatePage(customPage);
-            mergePageObjects(customPage);
-            registerPageEvents();
-            registerCustomEvents();
-        }
+        customEvents: {}
     };
 
-    // Page Events
-    var onBodyClick =
-        onBodyFadeIn =
-        onBodyFadeOut =
-        onUnload =
-        onReady = TM.util.emptyFn,
+	TM.util.mergeObjects(pageObject, customPage);
 
-        onLoad = function() {
-            pageObject.el.body.addClass('fadein');
-            TM.util.toggleLogoOpacity();
-        },
+	// Methods
+	this.methodExists = function(method) {
+		return typeof pageObject.pageEvents[method] !== 'undefined';
+	};
 
-        onBeforeUnload = function(event) {
-            if (this.actionLinkEnabled) return;
-
-            pageObject.el.body.removeClass('fadein');
-        },
-
-        onScroll = function(event) {
-            TM.util.toggleLogoOpacity(event);
-        };
-
-        onTouchMove = function(event) {
-            if (event.target.hasClass('scrollable'))
-                event.preventDefault();
-        },
-
-        onWindowResize = function(event) {
-            TM.util.updateScreenSizeClass();
-        };
-
-    // Methods
-    var callMethodIfExists = function(method, arguments) {
-        if (typeof pageObject.pageEvents[method] !== 'undefined') {
-            pageObject.pageEvents[method].apply(pageObject, arguments);
-        }
+	this.callPageMethod = function(method, arguments) {
+        pageObject.pageEvents[method].apply(pageObject, arguments);
     };
 
-    var mergePageObjects = function(customPage) {
-        TM.util.mergeObjects(pageObject, customPage);
+	this.callCustomMethod = function(method, arguments) {
+        pageObject.customEvents[method].apply(pageObject, arguments);
     };
 
-    var registerCustomEvents = function() {
-        for (element in pageObject.customEvents) {
-            if (typeof pageObject.el[element] !== 'undefined') {
-                for (eventName in pageObject.customEvents[element]) {
-                    var customEvent = pageObject.customEvents[element][eventName];
+	// Register custom events
+    for (element in pageObject.customEvents) {
+        if (typeof pageObject.el[element] !== 'undefined') {
+            for (eventName in pageObject.customEvents[element]) {
+                var customEvent = pageObject.customEvents[element][eventName];
 
-                    if (eventName === 'submit')
-                        TM.util.addFormSubmissionHandler(pageObject.el[element], customEvent.action, customEvent.callback);
-                    else {
-                        pageObject.el[element].addEventListener(eventName, customEvent.bind(pageObject));
-                    }
+                if (eventName === 'submit')
+                    TM.util.addFormSubmissionHandler(pageObject.el[element], customEvent.action, customEvent.callback);
+                else {
+                    pageObject.el[element].addEventListener(eventName, customEvent.bind(pageObject));
                 }
             }
         }
-    };
+    }
 
-    var registerPageEvents = function() {
-        window.addEventListener('load', function internalOnLoad() {
-            onLoad.call(pageObject);
-            callMethodIfExists('onLoad')
-            window.removeEventListener('load', internalOnLoad);
-        });
-
-        window.addEventListener('resize', function internalOnWindowResize(event) {
-            onWindowResize.call(pageObject, event);
-            callMethodIfExists('onWindowResize', [event]);
-        });
-
+	// Register page events
+	if (_this.methodExists('onBeforeUnload'))
         window.addEventListener('beforeunload', function internalOnBeforeUnload(event) {
-            onBeforeUnload.call(pageObject, event);
-            callMethodIfExists('onBeforeUnload', [event]);
+            _this.callPageMethod('onBeforeUnload', [event]);
             window.removeEventListener('unload', internalOnBeforeUnload);
         });
 
-        window.addEventListener('unload', function internalOnUnload(event) {
-            onUnload.call(pageObject);
-            callMethodIfExists('onUnload');
-            window.removeEventListener('unload', internalOnUnload);
-        });
+	if (_this.methodExists('onLoad'))
+		window.addEventListener('load', function internalOnLoad(event) {
+        	_this.callPageMethod('onLoad', [event])
+			window.removeEventListener('load', internalOnLoad);
+		});
 
-        document.addEventListener('DOMContentLoaded', function internalOnReady() {
-            onReady.call(pageObject);
-            callMethodIfExists('onReady');
+	if (_this.methodExists('onReady'))
+        document.addEventListener('DOMContentLoaded', function internalOnReady(event) {
+            _this.callPageMethod('onReady', [event]);
             document.removeEventListener('DOMContentLoaded', internalOnReady);
         });
 
+	if (_this.methodExists('onScroll'))
         document.addEventListener('scroll', function internalOnScroll(event) {
-            onScroll.call(pageObject, event);
-            callMethodIfExists('onScroll', [event]);
+            _this.callPageMethod('onScroll', [event]);
         });
 
+	if (_this.methodExists('onTouchMove'))
         document.addEventListener('touchmove', function(event) {
-            onTouchMove.call(pageObject, event);
-            callMethodIfExists('onTouchMove', [event]);
+            _this.callPageMethod('onTouchMove', [event]);
         });
 
-        pageObject.el.body.addEventListener('click', function(event) {
-            onBodyClick.call(pageObject, event);
-            callMethodIfExists('onBodyClick', [event]);
+	if (_this.methodExists('onUnload'))
+        window.addEventListener('unload', function internalOnUnload(event) {
+            _this.callPageMethod('onUnload', [event]);
+            window.removeEventListener('unload', internalOnUnload);
         });
 
-        pageObject.el.menuToggle.addEventListener('click', function(event) {
-            event.stopPropagation();
-            pageObject.el.body.toggleClass('checked');
+	if (_this.methodExists('onWindowResize'))
+        window.addEventListener('resize', function internalOnWindowResize(event) {
+            _this.callPageMethod('onWindowResize', [event]);
         });
 
+	if (pageObject.enableMap)
+        window.initMap = function(event) {
+            _this.callPageMethod('onMapLoad', [event]);
+        };
+
+	if (_this.methodExists('onBodyFadeIn') || _this.methodExists('onBodyFadeOut'))
         pageObject.el.body.addEventListener('transitionend', function(event) {
             var target = event.target;
 
-            switch (target) {
-                case pageObject.el.body:
-                    if (target.hasClass('fadein')) {
-                        onBodyFadeIn.call(pageObject);
-                        callMethodIfExists('onBodyFadeIn');
-                    } else {
-                        onBodyFadeOut.call(pageObject);
-                        callMethodIfExists('onBodyFadeOut');
-                    }
-                break;
+            if (target !== pageObject.el.body) return;
 
-                case pageObject.el.menuToggle:
-
-                break;
-            }
+            if (target.hasClass('fadein'))
+                _this.callPageMethod('onBodyFadeIn');
+			else
+                _this.callPageMethod('onBodyFadeOut');
         });
-    };
+};
 
-    var validatePage = function(page) {
-        if (page === false)
-            throw new Error('A Page object must be specified.');
 
-        if (page && typeof page !== 'object')
-            throw new Error('The Page parameter must be an object.');
-    };
-
-    return pageObject;
-}());
-
-TM.Page.init({
-    actionLinkEnabled: false,
-
+new TM.Page({
     el: {
         mailingListForm: document.getElementById('mailing-list-form')
     },
 
     pageEvents: {
-        onBodyClick: function(event) {
-            var target = event.target;
+		onBeforeUnload: function() {
+            if (this.actionLinkEnabled) return;
 
-            if (this.el.body.hasClass('checked'))
-                this.el.body.toggleClass('checked');
+            this.el.body.removeClass('fadein');
+		},
 
-            if (target.nodeName === 'A')
-                this.actionLinkEnabled = target.getAttribute('data-actionlink');
-        },
+		onLoad: function() {
+            this.el.body.addClass('fadein');
+            TM.util.toggleLogoOpacity();
+
+            this.logoHeight = parseInt(this.el.logo.getStyle('height'));
+		},
+
+		onMapLoad: function() {
+			this.callCustomMethod('onMapLoad');
+		},
 
         onReady: function() {
             TM.util.updateScreenSizeClass();
             TM.util.loadFastClick();
+        },
+
+        onScroll: function(event) {
+            TM.util.toggleLogoOpacity(event);
+        },
+
+        onTouchMove: function(event) {
+            if (event.target.hasClass('scrollable'))
+                event.preventDefault();
+        },
+
+        onWindowResize: function(event) {
+            TM.util.updateScreenSizeClass();
         }
     },
 
     customEvents: {
+        body: {
+            click: function(event) {
+                var target = event.target;
+
+                if (target.nodeName !== 'A' && this.el.body.hasClass('checked'))
+                    this.el.body.toggleClass('checked');
+
+                if (target.nodeName === 'A')
+                    this.actionLinkEnabled = target.getAttribute('data-actionlink');
+            }
+        },
+
         mailingListForm: {
             submit: {
                 action: window.location.href,
                 callback: function(form, request) {
                     form.innerHTML = TM.util.queryHTML(request.responseText, '#' + form.id).innerHTML;
                 }
+            }
+        },
+
+        menuToggle: {
+            click: function(event) {
+                event.preventDefault();
+                this.el.body.toggleClass('checked');
             }
         }
     }

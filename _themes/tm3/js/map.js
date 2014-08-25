@@ -1,142 +1,171 @@
-var initializeMap = function(callback) {
-    // Variables
-    var activeClass = 'active',
-        currentRow,
-        featureOpts = [
-            {
-                featureType: 'water',
-                stylers: [
-                    { color: '#81d4fa' }
-                ]
-            }
-        ],
-        MY_MAPTYPE_ID = 'custom_style',
-        markers = {},
-        icon = new google.maps.MarkerImage('/_themes/tm3/img/marker.png', null, null, null, new google.maps.Size(25, 45)),
-        infoWindow = new google.maps.InfoWindow(),
-        initialZoomLevel = 3,
-        logoHeight = parseInt(document.getElementById('logo').getStyle('height')),
-        mapWrapper = document.getElementById('map'),
-        mapCanvas = document.getElementById('map-canvas'),
-        mapOptions = {
-            center: new google.maps.LatLng(23.0414243, -83.8188083),
-            disableDefaultUI: true,
-            draggable: false,
-            mapTypeControlOptions: {
-                mapTypeIds: [google.maps.MapTypeId.ROADMAP, MY_MAPTYPE_ID]
-            },
-            mapTypeId: MY_MAPTYPE_ID,
-            scrollwheel: false,
-            zoom: initialZoomLevel
+new TM.Page({
+    el: {
+        performanceList: document.getElementById('performance-list')
+    },
+
+    activeClass: 'active',
+
+    enableMap: true,
+
+    currentPerformance: null,
+
+    currentRow: null,
+
+    customMapType: null,
+
+    featureOpts: [{
+        featureType: 'water',
+        stylers: [
+            { color: '#81d4fa' }
+        ]
+    }],
+
+    googleMap: null,
+
+    googleMapInfoWindow: null,
+
+    initialZoomLevel: 3,
+
+    mapTypeID: 'custom_style',
+
+    markers: {},
+
+    maxGoogleMapInfoWindowWidth: 320,
+
+    maxSummaryLength: 250,
+
+    performanceTitleSelector: '.p-location .p-name',
+
+    performanceSummarySelector: '.p-summary',
+
+    pageEvents: {
+        onLoad: function() {
+            if (TM.util.getScreenSize() < 1) return;
+            this.el.html.addClass('map');
+
+            var script = document.createElement('script');
+            script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyA2Kd093BDPlBJhWykIlVOEHamfG4_8WKo&callback=initMap';
+            document.body.appendChild(script);
+
+            this.resizeMap();
         },
-        performanceList = document.getElementById('performance-list'),
-        styledMapOptions = {
-            name: 'Custom Style'
-        };
 
-    var map = new google.maps.Map(mapCanvas, mapOptions);
-    var customMapType = new google.maps.StyledMapType(featureOpts, styledMapOptions);
-    map.mapTypes.set(MY_MAPTYPE_ID, customMapType);
+        onMapLoad: function() {
+            this.icon = new google.maps.MarkerImage('/_themes/tm3/img/marker.png', null, null, null, new google.maps.Size(25, 45));
 
-    var createMarkers = function() {
-        var eventEl, coordinates, marker, title;
+            this.googleMapInfoWindow = new google.maps.InfoWindow();
 
-        [].forEach.call(performanceList.querySelectorAll('.h-event'), function(el) {
+            this.createMap(this.el.googleMapCanvas, {
+                center: new google.maps.LatLng(23.0414243, -83.8188083),
+                disableDefaultUI: true,
+                draggable: false,
+                mapTypeControlOptions: {
+                    mapTypeIds: [google.maps.MapTypeId.ROADMAP, this.mapTypeID]
+                },
+                mapTypeId: this.mapTypeID,
+                scrollwheel: false,
+                zoom: this.initialZoomLevel
+            }, {
+                name: 'Custom Style'
+            });
+
+            this.createMarkers();
+            this.selectFirstEvent();
+        },
+
+        onWindowResize: function() {
+            this.resizeMap();
+            this.centerAndPanMap();
+        }
+    },
+
+    customEvents: {
+        performanceList: {
+            click: function(event) {
+                event.preventDefault();
+
+                var target = event.target.findParentNodeWithName('ARTICLE'),
+                    performance = target,
+                    titleEl = performance.querySelector(this.performanceTitleSelector),
+                    title = titleEl ? titleEl.innerHTML : '',
+                    summary = performance.querySelector(this.performanceSummarySelector),
+                    maxGoogleMapInfoWindowWidth = (summary && summary.innerHTML.length > this.maxSummaryLength) ? Math.round(window.innerWidth / 2) : this.maxGoogleMapInfoWindowWidth;
+
+                this.currentPerformance = this.markers[title];
+
+                if (this.currentRow)
+                    this.currentRow.toggleClass(this.activeClass);
+
+                this.currentRow = performance;
+                this.currentRow.toggleClass(this.activeClass);
+
+                this.displayInfoWindow(performance.outerHTML);
+            }
+        }
+    },
+
+    centerAndPanMap: function() {
+        this.googleMapInfoWindow.close();
+        this.googleMapInfoWindow.open(this.googleMap, this.currentPerformance.marker);
+        this.el.googleMapInfoWindow = document.querySelector('.gm-style-iw');
+        this.googleMap.setCenter(this.currentPerformance.coordinates);
+        this.googleMap.panBy(-(this.el.performanceList.offsetWidth / 2), -((this.el.googleMapInfoWindow.offsetHeight / 2) + this.logoHeight));
+    },
+
+    createMap: function(mapCanvas, mapOptions, styledMapOptions) {
+        this.googleMap = new google.maps.Map(mapCanvas, mapOptions);
+        this.customMapType = new google.maps.StyledMapType(this.featureOpts, styledMapOptions);
+        this.googleMap.mapTypes.set(this.mapTypeID, this.customMapType);
+        this.el.googleMap.addClass('fadein');
+    },
+
+    createMarkers: function() {
+        var eventEl, coordinates, marker, title, _this = this;
+
+        [].forEach.call(this.el.performanceList.querySelectorAll('.h-event'), function(el) {
             title = el.querySelector('.p-location .p-name');
             title = title ? title.innerHTML : '';
             coordinates = new google.maps.LatLng(el.getAttribute('data-latitude'), el.getAttribute('data-longitude'));
             marker = new google.maps.Marker({
                 animation: google.maps.Animation.DROP,
-                icon: icon,
+                icon: _this.icon,
                 position: coordinates,
-                map: map,
+                map: _this.googleMap,
                 title: title
             });
 
-            if (typeof markers[title] === 'undefined') {
-                markers[title] = {
+            if (typeof _this.markers[title] === 'undefined') {
+                _this.markers[title] = {
                     coordinates: coordinates,
                     marker: marker
                 };
             }
         });
-    };
+    },
 
-    var selectFirstEvent = function() {
+    displayInfoWindow: function(content) {
+        this.googleMapInfoWindow.setContent(content);
+
+        this.centerAndPanMap();
+    },
+
+    resizeMap: function() {
+        var yearSelectorHeight = 0;
+        this.el.googleMap.style.height = TM.util.getWindowSize() >= 1 ? (window.innerHeight - this.logoHeight) + 'px' : 'auto';
+    },
+
+    selectFirstEvent: function() {
+        var _this = this;
+
         setTimeout(function() {
-            var eventEl = performanceList.querySelector('.h-event.today') || performanceList.querySelector('.h-event.future') || performanceList.querySelector('.h-event:first-child');
+            var eventEl = _this.el.performanceList.querySelector('.h-event.today') ||
+                          _this.el.performanceList.querySelector('.h-event.future') ||
+                         _this.el.performanceList.querySelector('.h-event:first-child');
+
             if (eventEl === null) return;
-            performanceList.scrollTop = eventEl.getPosition()[1] - performanceList.getPosition()[1];
+
+            _this.el.performanceList.scrollTop = eventEl.getPosition()[1] - _this.el.performanceList.getPosition()[1];
             eventEl.click();
         }, 500);
-    };
-
-    performanceList.addEventListener('click', function(event) {
-        event.preventDefault();
-
-        var target = event.target.findParentNodeWithName('ARTICLE');
-
-        var performance = target,
-            titleEl = performance.querySelector('.p-location .p-name'),
-            title = titleEl ? titleEl.innerHTML : '',
-            performanceData = markers[title],
-            infoWindowEl = null,
-            summary = performance.querySelector('.p-summary'),
-            maxWidth = 320;
-
-        if (summary && summary.innerHTML.length > 250)
-            maxWidth = window.innerWidth / 2;
-
-        if (currentRow)
-            currentRow.toggleClass(activeClass);
-
-        currentRow = performance;
-        currentRow.toggleClass(activeClass);
-
-        infoWindow.close();
-        infoWindow.setContent(performance.outerHTML);
-        infoWindow.setOptions({ maxWidth: maxWidth });
-        infoWindow.open(map, performanceData.marker);
-
-        map.setCenter(performanceData.coordinates);
-
-        if (document.querySelector('.gm-style-iw') === null) return;
-
-        map.panBy(-(performanceList.offsetWidth / 2), -((document.querySelector('.gm-style-iw').offsetHeight / 2) + logoHeight));
-    });
-
-    createMarkers();
-    selectFirstEvent();
-
-    if (callback)
-        callback();
-    else
-        mapWrapper.addClass('fadein');
-};
-
-var resizeMap = function() {
-    var logo = document.getElementById('logo');
-        logoHeight = yearSelectorHeight = 0;
-
-    if (logo) logoHeight = parseInt(logo.getStyle('height'));
-
-    document.getElementById('map').style.height = window.getWindowSize() >= 1 ? (window.innerHeight - logoHeight) + 'px' : 'auto';
-};
-
-window.addEventListener('load', function load() {
-    window.removeEventListener('load', load, false);
-
-    if (getScreenSize() < 1) return;
-
-    document.querySelector('html').addClass('map');
-
-    var script = document.createElement('script');
-    script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyA2Kd093BDPlBJhWykIlVOEHamfG4_8WKo&callback=initializeMap';
-    document.body.appendChild(script);
-
-    resizeMap();
-});
-
-window.addEventListener('resize', function load() {
-    resizeMap();
+    }
 });

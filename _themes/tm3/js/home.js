@@ -1,3 +1,7 @@
-document.addEventListener('DOMContentLoaded', function() {
-    map.addClass('fadein');
+new TM.Page({
+    pageEvents: {
+        onReady: function() {
+            this.el.googleMap.addClass('fadein');
+        }
+    }
 });
