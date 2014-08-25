@@ -8,4 +8,4 @@ performance_url: ""
 ensemble: ""
 conductor: ""
 ---
-Season Opening Concerto for the CityMusic Cleveland Chamber Orchestra 2014-2015 Season under the direction of Avner Dorman. Featured will be his Soprano Saxophone Concerto performed by acclaimed virtuoso Timothy McAllister. 
+Season Opening Concerts for the CityMusic Cleveland Chamber Orchestra 2014-2015 Season under the direction of Avner Dorman. Featured will be his Soprano Saxophone Concerto performed by acclaimed virtuoso Timothy McAllister. 
