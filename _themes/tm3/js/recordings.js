@@ -1,4 +1,43 @@
-var canvasDimension = 28,
+new TM.Module({
+	el: {
+
+	},
+
+	blurredImagePath: '/blurred-recording-images',
+
+	blurredImages: [],
+
+	callbacks: {
+		onReady: function() {
+			this.parseBlurredImages();
+		}
+	},
+
+	events: {
+
+	},
+
+	// Custom Methods
+	parseBlurredImages: function() {
+        var _this = this,
+			request = new XMLHttpRequest();
+
+        request.open('GET', this.blurredImagePath, true);
+        request.onreadystatechange = function() {
+            if (request.readyState == 4 && request.status == 200) {
+				var response = request.responseXML,
+					xmlImages = response.getElementsByTagName('image');
+
+				for (var i = 0, l = xmlImages.length; i < l; i++) {
+					_this.blurredImages.push(xmlImages[i].getAttribute('src'));
+				}
+            }
+        };
+        request.send();
+	}
+});
+
+/*var canvasDimension = 28,
     overlays = [
         '<canvas class="display-none" height="' + canvasDimension + '" id="blur-context" width="' + canvasDimension + '"></canvas>',
         '<div id="current-recording-overlay"></div>',
@@ -228,3 +267,4 @@ var updateBackgroundImages = function() {
 window.addEventListener('load', function() {
     init();
 });
+*/
