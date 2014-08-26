@@ -90,7 +90,7 @@ TM = {};
 TM.AudioPlayer = function() {
 	this.emptyFile = 'assets/audio/empty.mp3';
 	this.fileExtension = '.mp3';
-	this.howlerPath = '/_themes/tm3/js/howler.min.js';
+	this.howlerPath = '/_themes/tm3/js/libs/howler.min.js';
 	this.previousSound = null;
     this.soundFadeDuration = 1000;
     this.soundToUnload = null;
@@ -446,7 +446,7 @@ TM.util.loadFastClick = function() {
     script.addEventListener('load', function() {
         FastClick.attach(document.body);
     });
-    script.src = '/_themes/tm3/js/fastclick.js';
+    script.src = '/_themes/tm3/js/fastclick.min.js';
     document.body.appendChild(script);
 };
 

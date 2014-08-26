@@ -186,7 +186,7 @@ var loadScroller = function() {
     });
 
     var script = document.createElement('script');
-    script.src = '/_themes/tm3/js/iscroll-probe.js';
+    script.src = '/_themes/tm3/js/libs/iscroll-probe.min.js';
     script.addEventListener('load', function() {
         window.addEventListener('orientationchange', function() {
             updateBackgroundImages();
