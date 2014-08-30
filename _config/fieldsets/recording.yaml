@@ -46,31 +46,5 @@ fields:
     instructions: Sample must be in MP3 format
     type: file
 
-  section_3:
-    display: Performers
-    type: section
-
-  ensemble:
-    content:
-      folder: ensembles
-      show_hidden: true
-      type: entries
-    display: Ensemble
-    max_items: 1
-    options:
-      - ''
-    type: suggest
-
-  conductor:
-    content:
-      folder: conductors
-      show_hidden: true
-      type: entries
-    display: Conductor
-    max_items: 1
-    options:
-      - ''
-    type: suggest
-
 include:
  - hidden
