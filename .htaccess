@@ -27,6 +27,11 @@ RewriteRule ^(.*)\/(\?.*)?$ $1$2 [R=301,L]
 
 # Redirect old urls to new ones
 RewriteRule ^/?(applause/(.*))$ applause [R=301,L]
+RewriteRule ^/?(applause.asp)$ applause [R=301,L]
+RewriteRule ^/?(biography.asp)$ biography [R=301,L]
+RewriteRule ^/?(discography.asp)$ discography [R=301,L]
+RewriteRule ^/?(links.asp)$ / [R=301,L]
+RewriteRule ^/?(premieres.asp)$ premieres [R=301,L]
 RewriteRule ^/?(discography(.*))$ recordings [R=301,L]
 RewriteRule ^/?(schedule(.*))$ performances [R=301,L]
 
