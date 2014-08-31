@@ -61,36 +61,3 @@
 
 .calendar { float: left; width: 25% !important; }
 .event-headlines { float: left; width: 75% !important; }
-
-@media (min-width: 768px)
-{
-    .map #performance-list
-    {
-        bottom: 32px;
-        left: 16px;
-        margin: 0;
-        overflow: auto;
-        position: absolute;
-        right: 0;
-        top: 16px;
-        width: 320px;
-        z-index: 1;
-    }
-
-    .map #performance-list .h-event
-    {
-        cursor: pointer;
-        padding: 12px;
-        overflow: hidden;
-    }
-
-    .map #performance-list .h-event .button { display: none; }
-
-    .map #performance-list .h-event tr,
-    .map #performance-list .h-event .p-summary { display: none; }
-
-    .map #performance-list .h-event tr:first-child { display: table-row; }
-
-    .map #performance-list .h-event.active { background-color: #01579b; }
-    .map #performance-list .h-event.active * { color: #fff; }
-}

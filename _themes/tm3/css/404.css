@@ -32,6 +32,12 @@
         width: 50%;
     }
 
+    .hero .quotes
+    {
+        right: 24px;
+        width: auto;
+    }
+
     #content
     {
         float: right;

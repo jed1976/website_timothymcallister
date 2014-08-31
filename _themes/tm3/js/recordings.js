@@ -88,7 +88,7 @@ var getRecording = function(index) {
 };
 
 var getNextRecordingIndex = function(direction) {
-    currentPosition = window.getScreenSize() < 2 ? Math.abs(scroller.y) : window.pageYOffset;
+    currentPosition = TM.util.getScreenSize() < 2 ? Math.abs(scroller.y) : window.pageYOffset;
 
     if (direction === 1) {
         for (var i = 0, l = recordingItems.length; i < l; i++) {
@@ -139,7 +139,7 @@ var init = function() {
 };
 
 var loadScroller = function() {
-    if (window.getScreenSize() > 1) return;
+    if (TM.util.getScreenSize() > 1) return;
 
     document.addEventListener('touchmove', function(e) {
         if (document.querySelector('#menu-toggle').hasClass('checked') === false)
@@ -147,7 +147,7 @@ var loadScroller = function() {
     });
 
     var script = document.createElement('script');
-    script.src = '/_themes/tm3/js/iscroll-probe.js';
+    script.src = '/_themes/tm3/js/libs/iscroll-probe.min.js';
     script.addEventListener('load', function() {
         window.addEventListener('orientationchange', function() {
             updateBackgroundImages();
@@ -214,7 +214,7 @@ var setNextRecordingBackground = function(recording) {
 
 var updateBackgroundImages = function() {
     previousPosition = currentPosition;
-    currentPosition = window.getScreenSize() < 2 ? Math.abs(this.y) : window.pageYOffset;
+    currentPosition = TM.util.getScreenSize() < 2 ? Math.abs(this.y) : window.pageYOffset;
 
     if (currentPosition > nextRecording.dom.getPosition()[1])
         prepareNextRecording();

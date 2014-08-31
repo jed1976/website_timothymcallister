@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html class="no-js{{ if theme }} {{ theme }}{{ endif }}" dir="ltr" id="{{ page_id }}" lang="en">
+<html class="no-js{{ if theme }} {{ theme }}{{ /if }}" dir="ltr" id="{{ page_id }}" lang="en">
     <head>
         <!-- Styles -->
         {{ theme:css tag="true" }}
-        {{ if enable_map }}{{ theme:css src="map" tag="true" }}{{ endif }}
-        {{ if page_stylesheet }}{{ theme:css src="{ page_stylesheet }" tag="true" }}{{ endif }}
+        {{ if enable_map }}{{ theme:css src="map" tag="true" }}{{ /if }}
+        {{ if page_stylesheet }}{{ theme:css src="{ page_stylesheet }" tag="true" }}{{ /if }}
         <style type="text/css">
         .hero-mask::after, .hero-mask::before { border-bottom: 20px solid {{ background_color }}; }
         </style>
@@ -17,12 +17,12 @@
 
         {{ theme:partial src="favicons" }}
 
-        <title>{{ _site_name }}{{ if segment_1 }} – {{ title }}{{ endif }}</title>
+        <title>{{ _site_name }}{{ if segment_1 }} – {{ title }}{{ /if }}</title>
     </head>
     <body style="background-color: {{ background_color }};">
         {{ if enable_analytics }}
         {{ theme:partial src="google-analytics" }}
-        {{ endif}}
+        {{ /if}}
 
         <div class="fixed-hero" style="background-image: url({{ artwork }}); background-position: {{ vertical_position }} {{ horizontal_position }};"></div>
 
@@ -38,10 +38,11 @@
 
         <!-- Scripts -->
         {{ theme:js tag="true" }}
-        {{ if enable_audio }}{{ theme:js src="audio" tag="true" }}{{ endif }}
-        {{ if enable_map }}{{ theme:js src="map" tag="true" }}{{ endif }}
-        {{ if enable_promises }}{{ theme:js src="promise.min" tag="true" }}{{ endif }}
-        {{ if enable_blur }}{{ theme:js src="stackblur.min" tag="true" }}{{ endif }}
-        {{ if page_js }}{{ theme:js src="{ page_js }" tag="true" }}{{ endif }}
+        {{ if enable_map }}{{ theme:js src="map" tag="true" }}{{ /if }}
+        {{ if enable_audio }}{{ theme:js src="audio" tag="true" }}{{ /if }}
+        {{ if enable_blur }}{{ theme:js src="libs/stackblur.min.js" tag="true" }}{{ /if }}
+		{{ if enable_promises }}{{ theme:js src="libs/promise.min.js" tag="true" }}{{ /if }}
+		{{ theme:js src="site.js" tag="true" }}
+        {{ if page_js }}{{ theme:js src="{ page_js }" tag="true" }}{{ /if }}
     </body>
 </html>

@@ -14,4 +14,4 @@ _cache/*
 !_cache/index.html
 _logs/*
 !_logs/index.html
-tm3/themes/tm3/.sass-cache/*
+assets/img/transforms/*

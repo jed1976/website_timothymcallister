@@ -1,6 +1,6 @@
 // Prototypes
 // https://gist.github.com/Maksims/5356227
-HTMLElement = typeof(HTMLElement) != 'undefiend' ? HTMLElement : Element;
+HTMLElement = typeof HTMLElement != 'undefined' ? HTMLElement : Element;
 
 HTMLElement.prototype.addClass = function(string) {
     if (!(string instanceof Array)) {
@@ -15,7 +15,7 @@ HTMLElement.prototype.addClass = function(string) {
 };
 
 HTMLElement.prototype.findParentNodeWithName = function(name) {
-    if (this.nodeName === name) return this;
+    if (this.nodeName.toLowerCase() === name.toLowerCase()) return this;
     return this.parentNode.findParentNodeWithName(name);
 };
 
@@ -82,8 +82,301 @@ HTMLElement.prototype.toggleClass = function(string) {
     }
 };
 
-// Functions
-window.addFormSubmissionHandler = function(form, action, callback) {
+
+// TM Namespace and objects
+TM = {};
+
+// AudioPlayer Object
+TM.AudioPlayer = function() {
+	this.emptyFile = 'assets/audio/empty.mp3';
+	this.fileExtension = '.mp3';
+	this.howlerPath = '/_themes/tm3/js/libs/howler.min.js';
+	this.previousSound = null;
+    this.soundFadeDuration = 1000;
+    this.soundToUnload = null;
+    this.timer = null;
+    this.volumeMax = 1.0;
+    this.volumeMin = 0.0;
+
+	var _this = this,
+		script = document.createElement('script');
+
+    script.src = this.howlerPath;
+    script.addEventListener('load', function() {
+        new Howl({ urls: [_this.emptyFile] }).play();
+    });
+    document.body.appendChild(script);
+};
+
+TM.AudioPlayer.prototype.play = function(id) {
+    var basePath = 'assets/audio/' + id,
+		_this = this;
+
+    if (this.previousSound) {
+        this.soundToUnload = this.previousSound;
+        this.soundToUnload.fade(this.volumeMax, this.volumeMin, this.soundFadeDuration, function() {
+            clearTimeout(_this.soundToUnload.timer1ID);
+            _this.soundToUnload.stop();
+            _this.soundToUnload.unload();
+        });
+    }
+
+    this.currentSound = new Howl({
+        onplay: function() {
+            _this.previousSound = _this.currentSound;
+
+            var duration = (Math.round(this._duration) * 1000) - _this.soundFadeDuration,
+                howl = this;
+
+            _this.currentSound.timer1ID = setTimeout(function() {
+                howl.fade(_this.volumeMax, _this.volumeMin, _this.soundFadeDuration, function() {
+                    clearTimeout(_this.currentSound.timer1ID);
+                    howl.stop();
+                });
+            }, duration);
+        },
+        urls: [basePath + this.fileExtension]
+    }).play().fade(this.volumeMin, this.volumeMax, this.soundFadeDuration);
+};
+
+TM.AudioPlayer.prototype.stop = function() {
+	var _this = this;
+
+    this.soundToUnload = this.currentSound;
+    this.soundToUnload.fade(this.volumeMax, this.volumeMin, this.soundFadeDuration, function() {
+        clearTimeout(_this.soundToUnload.timer1ID);
+        _this.soundToUnload.stop();
+        _this.soundToUnload.unload();
+    });
+};
+
+// Map Object
+TM.Map = function(mapCanvas) {
+	if (TM.util.getScreenSize() < 1) return;
+
+	var _this = this;
+
+	this.featureOptions = [{
+        featureType: 'water',
+        stylers: [{ color: '#81d4fa' }]
+    }];
+
+	this.mapConfig = {
+        disableDefaultUI: true,
+        draggable: false,
+        scrollwheel: false,
+        zoom: 3
+    };
+
+	this.callback = 'mapCallback';
+	this.customMapType = null;
+	this.defaultLatitude = 23.0414243;
+	this.defaultLongitude = -83.8188083;
+	this.googleMap = null;
+    this.infoWindow = null;
+	this.mapCanvas = mapCanvas;
+    this.mapTypeID = 'custom_style';
+	this.markerIcon = null;
+	this.markerIconPath = '/_themes/tm3/img/marker.png';
+	this.markerIconHeight = 45;
+	this.markerIconWidth = 25;
+    this.markers = {};
+	this.maxInfoWindowWidth = 320;
+
+	TM[this.callback] = function(event) {
+	    _this.initialize();
+	};
+
+    var script = document.createElement('script');
+    script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyA2Kd093BDPlBJhWykIlVOEHamfG4_8WKo&callback=TM.' + this.callback;
+    document.body.appendChild(script);
+};
+
+TM.Map.prototype.initialize = function() {
+    this.markerIcon = new google.maps.MarkerImage(this.markerIconPath, null, null, null, new google.maps.Size(this.markerIconWidth, this.markerIconHeight));
+    this.infoWindow = new google.maps.InfoWindow();
+
+	TM.util.mergeObjects(this.mapConfig, {
+        center: new google.maps.LatLng(this.defaultLatitude, this.defaultLongitude),
+        mapTypeControlOptions: {
+            mapTypeIds: [google.maps.MapTypeId.ROADMAP, this.mapTypeID]
+        },
+        mapTypeId: this.mapTypeID
+    });
+
+    this.googleMap = new google.maps.Map(this.mapCanvas, this.mapConfig);
+    this.customMapType = new google.maps.StyledMapType(this.featureOptions, { name: '' });
+    this.googleMap.mapTypes.set(this.mapTypeID, this.customMapType);
+};
+
+TM.Map.prototype.addMarker = function(title, latitude, longitude) {
+	if (typeof this.markers[title] !== 'undefined') return;
+
+	var marker = new google.maps.Marker({
+	        animation: google.maps.Animation.DROP,
+	        icon: this.markerIcon,
+	        position: new google.maps.LatLng(latitude, longitude),
+	        map: this.googleMap,
+	        title: title
+	    });
+
+    this.markers[title] = marker;
+};
+
+TM.Map.prototype.clearMarkers = function() {
+	this.setAllMap(null);
+};
+
+TM.Map.prototype.deleteMarkers = function() {
+	this.clearMarkers();
+	this.markers = {};
+};
+
+TM.Map.prototype.displayInfoWindow = function(content, marker, maxWidth) {
+	this.infoWindow.close();
+    this.infoWindow.setContent(content);
+    this.infoWindow.setOptions({ maxWidth: maxWidth || this.maxInfoWindowWidth });
+	this.infoWindow.open(this.googleMap, marker);
+};
+
+TM.Map.prototype.setAllMap = function(map) {
+	for (prop in this.markers)
+		this.markers[prop].setMap(map);
+};
+
+TM.Map.prototype.centerAndPanMap = function(center, x, y) {
+	this.googleMap.setCenter(center);
+	this.googleMap.panBy(x, y);
+};
+
+TM.Map.prototype.showMarkers = function() {
+	this.setAllMap(this.googleMap);
+};
+
+
+// Module Object
+TM.Module = function(customModule) {
+    if (customModule === false || typeof customModule !== 'object')
+        throw new Error('A Module object must be specified.');
+
+	// Variables
+    var _this = this, module = {
+        actionLinkEnabled: false,
+
+        el: {
+            body: document.body,
+			content: document.getElementById('content'),
+            html: document.querySelector('html'),
+            logo: document.getElementById('logo'),
+            menuToggle: document.getElementById('menu-toggle')
+        },
+
+        callbacks: {},
+
+        events: {}
+    };
+
+	TM.util.mergeObjects(module, customModule);
+
+	// Methods
+	this.methodExists = function(method) {
+		return typeof module.callbacks[method] !== 'undefined';
+	};
+
+	this.callModuleMethod = function(method, arguments) {
+        module.callbacks[method].apply(module, arguments);
+    };
+
+	this.callCustomMethod = function(method, arguments) {
+        module.events[method].apply(module, arguments);
+    };
+
+	// Register custom events
+    for (element in module.events) {
+        if (typeof module.el[element] !== 'undefined') {
+            for (eventName in module.events[element]) {
+                var event = module.events[element][eventName];
+
+                if (eventName === 'submit')
+                    TM.util.addFormSubmissionHandler(module.el[element], event.action, event.callback);
+                else {
+                    module.el[element].addEventListener(eventName, event.bind(module));
+                }
+            }
+        }
+    }
+
+	// Register page events
+	if (_this.methodExists('onBeforeUnload'))
+        window.addEventListener('beforeunload', function internalOnBeforeUnload(event) {
+            _this.callModuleMethod('onBeforeUnload', [event]);
+            window.removeEventListener('unload', internalOnBeforeUnload);
+        });
+
+	if (_this.methodExists('onLoad'))
+		window.addEventListener('load', function internalOnLoad(event) {
+        	_this.callModuleMethod('onLoad', [event])
+			window.removeEventListener('load', internalOnLoad);
+		});
+
+	if (_this.methodExists('onPopState'))
+	    window.addEventListener('popstate', function(event) {
+	        _this.callModuleMethod('onPopState', [event]);
+	    });
+
+	if (_this.methodExists('onReady'))
+        document.addEventListener('DOMContentLoaded', function internalOnReady(event) {
+            _this.callModuleMethod('onReady', [event]);
+            document.removeEventListener('DOMContentLoaded', internalOnReady);
+        });
+
+	if (_this.methodExists('onScroll'))
+        document.addEventListener('scroll', function internalOnScroll(event) {
+            _this.callModuleMethod('onScroll', [event]);
+        });
+
+	if (_this.methodExists('onTouchMove'))
+        document.addEventListener('touchmove', function(event) {
+            _this.callModuleMethod('onTouchMove', [event]);
+        });
+
+	if (_this.methodExists('onUnload'))
+        window.addEventListener('unload', function internalOnUnload(event) {
+            _this.callModuleMethod('onUnload', [event]);
+            window.removeEventListener('unload', internalOnUnload);
+        });
+
+	if (_this.methodExists('onWindowResize'))
+        window.addEventListener('resize', function internalOnWindowResize(event) {
+            _this.callModuleMethod('onWindowResize', [event]);
+        });
+
+	if (_this.methodExists('onBodyFadeIn') || _this.methodExists('onBodyFadeOut'))
+        module.el.body.addEventListener('transitionend', function(event) {
+            var target = event.target;
+
+            if (target !== module.el.body) return;
+
+            if (target.hasClass('fadein'))
+                _this.callModuleMethod('onBodyFadeIn');
+			else
+                _this.callModuleMethod('onBodyFadeOut');
+        });
+};
+
+
+// Utilities
+TM.util = {};
+
+TM.util.screens = {
+	small: 640,
+	medium: 1024,
+	large: 1366
+}
+
+TM.util.emptyFn = function() {};
+
+TM.util.addFormSubmissionHandler = function(form, action, callback) {
     form.addEventListener('submit', function(event) {
         event.preventDefault();
 
@@ -108,7 +401,7 @@ window.addFormSubmissionHandler = function(form, action, callback) {
     });
 };
 
-window.getDocumentHeight = function() {
+TM.util.getDocumentHeight = function() {
     return Math.max(
         document.body.scrollHeight, document.documentElement.scrollHeight,
         document.body.offsetHeight, document.documentElement.offsetHeight,
@@ -116,7 +409,7 @@ window.getDocumentHeight = function() {
     );
 };
 
-window.getUrl = function(url, callback) {
+TM.util.getUrl = function(url, callback) {
     var request = new XMLHttpRequest();
     request.open('GET', url, true);
     request.onreadystatechange = function() {
@@ -127,44 +420,49 @@ window.getUrl = function(url, callback) {
     request.send();
 };
 
-window.getSizeBasedOnWidth = function(width) {
-    if (width <= 640)
+TM.util.getSizeBasedOnWidth = function(width) {
+    if (width <= TM.util.screens.small)
         return 0;
-    else if (width <= 1024)
+    else if (width <= TM.util.screens.medium)
         return 1;
-    else if (width <= 1366)
+    else if (width <= TM.util.screens.large)
         return 2
 
     return 3;
 }
 
-window.getScreenSize = function() {
-    return window.getSizeBasedOnWidth(screen.width);
+TM.util.getScreenSize = function() {
+    return TM.util.getSizeBasedOnWidth(screen.width);
 };
 
-window.getWindowSize = function() {
-    return window.getSizeBasedOnWidth(window.innerWidth);
+TM.util.getWindowSize = function() {
+    return TM.util.getSizeBasedOnWidth(window.innerWidth);
 };
 
-window.loadFastClick = function() {
-    if (getScreenSize() > 1) return;
+TM.util.loadFastClick = function() {
+    if (TM.util.getScreenSize() > 1) return;
 
     var script = document.createElement('script');
     script.addEventListener('load', function() {
         FastClick.attach(document.body);
     });
-    script.src = '/_themes/tm3/js/fastclick.js';
+    script.src = '/_themes/tm3/js/libs/fastclick.min.js';
     document.body.appendChild(script);
 };
 
-window.queryHTML = function(html, selector) {
+TM.util.mergeObjects = function(a, b, c) {
+    for (c in b)
+        b.hasOwnProperty(c) && ((typeof a[c])[0] == 'o' ? TM.util.mergeObjects(a[c], b[c]) : a[c] = b[c]);
+};
+
+TM.util.queryHTML = function(html, selector) {
     var root = document.createElement('DIV');
     root.innerHTML = html;
 
     return root.querySelector(selector);
 };
 
-window.toggleLogoOpacity = function() {
+TM.util.toggleLogoOpacity = function() {
     var targetY = 20,
         y = Math.abs(this.y) || window.pageYOffset,
         logo = document.getElementById('logo');
@@ -180,7 +478,7 @@ window.toggleLogoOpacity = function() {
     }
 };
 
-window.updateScreenSizeClass = function() {
+TM.util.updateScreenSizeClass = function() {
     var className,
         html = document.querySelector('html'),
         screenPrefix = 'screen-size-',
@@ -189,89 +487,6 @@ window.updateScreenSizeClass = function() {
 
     className = html.className;
     className = className.replace(new RegExp(regex), '').trim();
-    className += space + screenPrefix + getScreenSize();
+    className += space + screenPrefix + TM.util.getScreenSize();
     html.className = className;
 };
-
-document.addEventListener('DOMContentLoaded', function() {
-    var body = document.body;
-
-    updateScreenSizeClass();
-    loadFastClick();
-
-    addFormSubmissionHandler(document.getElementById('mailing-list-form'), window.location.href, function(form, request) {
-        form.innerHTML = queryHTML(request.responseText, '#' + form.id).innerHTML;
-    });
-
-    document.addEventListener('scroll', function() {
-        toggleLogoOpacity();
-    });
-
-    document.body.addEventListener('click', function(event) {
-        var target = event.target,
-            waitDuration = 350;
-
-        if (target.nodeName != 'A' && target.nodeName != 'SPAN') {
-            if (body.hasClass('checked'))
-                body.removeClass('checked');
-
-            return;
-        }
-
-        if (target.nodeName === 'SPAN')
-            target = target.parentNode;
-
-        if (target.getAttribute('href') === null) return;
-
-        if (target.hasClass('u-url') ||
-            target.hasClass('email') ||
-            target.hasClass('sample') ||
-            target.hasClass('download')) return;
-
-        linkLocation = target.getAttribute('href');
-
-        event.preventDefault();
-
-        if (linkLocation.indexOf('#') > -1) return;
-
-        if (body.hasClass('checked')) {
-            body.removeClass('checked');
-            setTimeout(function() {
-                body.removeClass('fadein');
-                setTimeout(function() {
-                    window.location = linkLocation;
-                }, waitDuration);
-            }, waitDuration);
-        }
-        else {
-            body.removeClass('fadein');
-
-            setTimeout(function() {
-                window.location = linkLocation;
-            }, waitDuration);
-        }
-    });
-
-    // Update screen size classes on resize
-    window.addEventListener('resize', function() {
-        updateScreenSizeClass();
-    });
-
-    // Menu toggle listener
-    document.getElementById('menu-toggle').addEventListener('click', function() {
-        body.toggleClass('checked');
-    });
-
-    if (window.getScreenSize() < 2) {
-        body.addEventListener('touchmove', function(event) {
-            if (event.target.hasClass('scrollable'))
-                event.preventDefault();
-        });
-    };
-});
-
-window.addEventListener('load', function load() {
-    window.removeEventListener('load', load, false);
-    document.body.addClass('fadein');
-    window.toggleLogoOpacity();
-});
