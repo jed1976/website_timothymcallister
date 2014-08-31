@@ -4,16 +4,18 @@ new TM.Module({
     },
 
     callbacks: {
-		onBeforeUnload: function() {
-            if (this.actionLinkEnabled) return;
+        onBeforeUnload: function() {
+            if (this.actionLinkEnabled) {
+                return;
+            }
 
             this.el.body.removeClass('fadein');
-		},
+        },
 
-		onLoad: function() {
+        onLoad: function() {
             this.el.body.addClass('fadein');
             TM.util.toggleLogoOpacity();
-		},
+        },
 
         onReady: function() {
             TM.util.updateScreenSizeClass();
@@ -25,8 +27,9 @@ new TM.Module({
         },
 
         onTouchMove: function(event) {
-            if (event.target.hasClass('scrollable'))
+            if (event.target.hasClass('scrollable')) {
                 event.preventDefault();
+            }
         },
 
         onWindowResize: function(event) {
@@ -39,11 +42,13 @@ new TM.Module({
             click: function(event) {
                 var target = event.target;
 
-                if (target.nodeName !== 'A' && this.el.body.hasClass('checked'))
+                if (target.nodeName !== 'A' && this.el.body.hasClass('checked')) {
                     this.el.body.toggleClass('checked');
+                }
 
-                if (target.nodeName === 'A')
+                if (target.nodeName === 'A') {
                     this.actionLinkEnabled = target.getAttribute('data-actionlink');
+                }
             }
         },
 

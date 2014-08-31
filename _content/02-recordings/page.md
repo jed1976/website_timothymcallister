@@ -1,5 +1,6 @@
 ---
 enable_audio: true
+enable_blur: true
 enable_promises: true
 page_icon: recordings
 page_id: recordings

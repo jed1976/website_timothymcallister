@@ -446,7 +446,7 @@ TM.util.loadFastClick = function() {
     script.addEventListener('load', function() {
         FastClick.attach(document.body);
     });
-    script.src = '/_themes/tm3/js/fastclick.min.js';
+    script.src = '/_themes/tm3/js/libs/fastclick.min.js';
     document.body.appendChild(script);
 };
 

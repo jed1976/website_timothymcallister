@@ -1,43 +1,4 @@
-new TM.Module({
-	el: {
-
-	},
-
-	blurredImagePath: '/blurred-recording-images',
-
-	blurredImages: [],
-
-	callbacks: {
-		onReady: function() {
-			this.parseBlurredImages();
-		}
-	},
-
-	events: {
-
-	},
-
-	// Custom Methods
-	parseBlurredImages: function() {
-        var _this = this,
-			request = new XMLHttpRequest();
-
-        request.open('GET', this.blurredImagePath, true);
-        request.onreadystatechange = function() {
-            if (request.readyState == 4 && request.status == 200) {
-				var response = request.responseXML,
-					xmlImages = response.getElementsByTagName('image');
-
-				for (var i = 0, l = xmlImages.length; i < l; i++) {
-					_this.blurredImages.push(xmlImages[i].getAttribute('src'));
-				}
-            }
-        };
-        request.send();
-	}
-});
-
-/*var canvasDimension = 28,
+var canvasDimension = 28,
     overlays = [
         '<canvas class="display-none" height="' + canvasDimension + '" id="blur-context" width="' + canvasDimension + '"></canvas>',
         '<div id="current-recording-overlay"></div>',
@@ -127,7 +88,7 @@ var getRecording = function(index) {
 };
 
 var getNextRecordingIndex = function(direction) {
-    currentPosition = window.getScreenSize() < 2 ? Math.abs(scroller.y) : window.pageYOffset;
+    currentPosition = TM.util.getScreenSize() < 2 ? Math.abs(scroller.y) : window.pageYOffset;
 
     if (direction === 1) {
         for (var i = 0, l = recordingItems.length; i < l; i++) {
@@ -178,7 +139,7 @@ var init = function() {
 };
 
 var loadScroller = function() {
-    if (window.getScreenSize() > 1) return;
+    if (TM.util.getScreenSize() > 1) return;
 
     document.addEventListener('touchmove', function(e) {
         if (document.querySelector('#menu-toggle').hasClass('checked') === false)
@@ -253,7 +214,7 @@ var setNextRecordingBackground = function(recording) {
 
 var updateBackgroundImages = function() {
     previousPosition = currentPosition;
-    currentPosition = window.getScreenSize() < 2 ? Math.abs(this.y) : window.pageYOffset;
+    currentPosition = TM.util.getScreenSize() < 2 ? Math.abs(this.y) : window.pageYOffset;
 
     if (currentPosition > nextRecording.dom.getPosition()[1])
         prepareNextRecording();
@@ -267,4 +228,3 @@ var updateBackgroundImages = function() {
 window.addEventListener('load', function() {
     init();
 });
-*/

@@ -164,6 +164,8 @@ new TM.Module({
     },
 
 	saveHistory: function(year) {
+        if (window.location.pathname === '/') return;
+
         if (window.history.pushState) {
             window.history.pushState(year, this.title + year, this.URLQueryString + year);
         }

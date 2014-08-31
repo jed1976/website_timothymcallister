@@ -40,7 +40,8 @@
         {{ theme:js tag="true" }}
         {{ if enable_map }}{{ theme:js src="map" tag="true" }}{{ /if }}
         {{ if enable_audio }}{{ theme:js src="audio" tag="true" }}{{ /if }}
-		{{ if enable_promises }}{{ theme:js src="libs/promise-1.0.0.min" tag="true" }}{{ /if }}
+        {{ if enable_blur }}{{ theme:js src="libs/stackblur.min.js" tag="true" }}{{ /if }}
+		{{ if enable_promises }}{{ theme:js src="libs/promise.min.js" tag="true" }}{{ /if }}
 		{{ theme:js src="site.js" tag="true" }}
         {{ if page_js }}{{ theme:js src="{ page_js }" tag="true" }}{{ /if }}
     </body>
