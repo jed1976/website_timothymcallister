@@ -188,7 +188,7 @@ TM.Map = function(mapCanvas) {
 	};
 
     var script = document.createElement('script');
-    script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyA2Kd093BDPlBJhWykIlVOEHamfG4_8WKo&callback=TM.' + this.callback;
+    script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDx7jdJynOTYIQ6tmBymyp_DsA2Futwlj4&callback=TM.' + this.callback;
     document.body.appendChild(script);
 };
 
