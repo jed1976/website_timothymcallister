@@ -31,6 +31,8 @@ new TM.Module({
 
 	callbacks: {
         onMapLoad: function() {
+            var _this = this;
+
             // Create year selector (if applicable)
             if (this.el.yearSelectorWrapper) {
                 this.yearSelector = '<select id="year-selector">';
