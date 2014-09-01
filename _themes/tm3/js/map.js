@@ -30,7 +30,39 @@ new TM.Module({
     yearParam: 'year=',
 
 	callbacks: {
+        onMapLoad: function() {
+            var _this = this;
+
+            // Create year selector (if applicable)
+            if (this.el.yearSelectorWrapper) {
+                this.yearSelector = '<select id="year-selector">';
+
+                [].forEach.call(this.el.yearSelectorWrapper.querySelectorAll('a'), function(el) {
+                    yearSelectorValue = el.innerHTML;
+                    _this.yearSelector += '<option value="' + yearSelectorValue + '">' + yearSelectorValue + '</option>';
+                });
+
+                this.yearSelector += '</select>';
+                this.el.yearSelectorWrapper.innerHTML = this.yearSelector;
+
+                this.el.yearSelector = document.getElementById('year-selector');
+                this.el.yearSelector.onchange = function(event) {
+                    _this.refreshMap.call(_this, event);
+                };
+
+                this.updateYearSelectorValue(this.year);
+            } else {
+                this.refreshMap.call(this);
+            }
+
+            this.resizeMap();
+
+            this.el.html.addClass('map');
+        },
+
 		onPopState: function(event) {
+            if (window.location.pathname === '/') return;
+
 			this.updateYearSelectorValue(event.state);
 		},
 
@@ -45,33 +77,11 @@ new TM.Module({
 		    this.year = queryString.replace('year=', '') || new Date().getFullYear();
 
 			// Create map
-			this.googleMap = new TM.Map(this.el.mapCanvas);
-
-			// Create year selector (if applicable)
-			if (this.el.yearSelectorWrapper) {
-				this.yearSelector = '<select id="year-selector">';
-
-			    [].forEach.call(this.el.yearSelectorWrapper.querySelectorAll('a'), function(el) {
-			        yearSelectorValue = el.innerHTML;
-			        _this.yearSelector += '<option value="' + yearSelectorValue + '">' + yearSelectorValue + '</option>';
-			    });
-
-			    this.yearSelector += '</select>';
-			    this.el.yearSelectorWrapper.innerHTML = this.yearSelector;
-
-			    this.el.yearSelector = document.getElementById('year-selector');
-			    this.el.yearSelector.onchange = function(event) {
-			    	_this.refreshMap.call(_this, event);
-			    };
-
-			    this.updateYearSelectorValue(this.year);
-			} else {
-				this.refreshMap.call(this);
-			}
-
-			this.resizeMap();
-
-			this.el.html.addClass('map');
+			this.googleMap = new TM.Map({
+                canvas: this.el.mapCanvas,
+                callback: this.callbacks.onMapLoad,
+                scope: this
+            });
 		},
 
         onWindowResize: function() {

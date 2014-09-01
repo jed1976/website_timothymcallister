@@ -151,7 +151,7 @@ TM.AudioPlayer.prototype.stop = function() {
 };
 
 // Map Object
-TM.Map = function(mapCanvas) {
+TM.Map = function(config) {
 	if (TM.util.getScreenSize() < 1) return;
 
 	var _this = this;
@@ -168,13 +168,13 @@ TM.Map = function(mapCanvas) {
         zoom: 3
     };
 
-	this.callback = 'mapCallback';
 	this.customMapType = null;
 	this.defaultLatitude = 23.0414243;
 	this.defaultLongitude = -83.8188083;
 	this.googleMap = null;
     this.infoWindow = null;
-	this.mapCanvas = mapCanvas;
+    this.initializeCallback = 'mapCallback';
+	this.mapCanvas = config.canvas;
     this.mapTypeID = 'custom_style';
 	this.markerIcon = null;
 	this.markerIconPath = '/_themes/tm3/img/marker.png';
@@ -183,16 +183,16 @@ TM.Map = function(mapCanvas) {
     this.markers = {};
 	this.maxInfoWindowWidth = 320;
 
-	TM[this.callback] = function(event) {
-	    _this.initialize();
+	TM[this.initializeCallback] = function(event) {
+	    _this.initialize(config);
 	};
 
     var script = document.createElement('script');
-    script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDx7jdJynOTYIQ6tmBymyp_DsA2Futwlj4&callback=TM.' + this.callback;
+    script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDx7jdJynOTYIQ6tmBymyp_DsA2Futwlj4&callback=TM.' + this.initializeCallback;
     document.body.appendChild(script);
 };
 
-TM.Map.prototype.initialize = function() {
+TM.Map.prototype.initialize = function(config) {
     this.markerIcon = new google.maps.MarkerImage(this.markerIconPath, null, null, null, new google.maps.Size(this.markerIconWidth, this.markerIconHeight));
     this.infoWindow = new google.maps.InfoWindow();
 
@@ -207,10 +207,13 @@ TM.Map.prototype.initialize = function() {
     this.googleMap = new google.maps.Map(this.mapCanvas, this.mapConfig);
     this.customMapType = new google.maps.StyledMapType(this.featureOptions, { name: '' });
     this.googleMap.mapTypes.set(this.mapTypeID, this.customMapType);
+
+    if (config.callback)
+        config.callback.call(config.scope);
 };
 
 TM.Map.prototype.addMarker = function(title, latitude, longitude) {
-	if (typeof this.markers[title] !== 'undefined') return;
+    if (typeof this.markers[title] !== 'undefined') return;
 
 	var marker = new google.maps.Marker({
 	        animation: google.maps.Animation.DROP,
@@ -319,7 +322,7 @@ TM.Module = function(customModule) {
 			window.removeEventListener('load', internalOnLoad);
 		});
 
-	if (_this.methodExists('onPopState'))
+    if (_this.methodExists('onPopState'))
 	    window.addEventListener('popstate', function(event) {
 	        _this.callModuleMethod('onPopState', [event]);
 	    });
