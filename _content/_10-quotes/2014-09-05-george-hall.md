@@ -1,6 +1,6 @@
 ---
 title: George Hall
-source: The Guardian (UK)
+source: The Guardian (UK) (9/5/14)
 adams_press: "1"
 ---
 [REVIEW: "PROMS 2014 - BBCSO/Alsop - masterful and brilliantly effective"]
