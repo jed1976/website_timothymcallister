@@ -42,7 +42,9 @@ quotes:
   - 
     quote: /quotes/corinna-da-fonseca-wollheim
   - 
-    quote: /quotes/anastasia-tsioulcas
+    quote: /quotes/hugo-shirley
+  - 
+    quote: /quotes/matthew-wright
 critics_title: The Critics Speak
 interview_links:
   - 
