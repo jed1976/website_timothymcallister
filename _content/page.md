@@ -23,9 +23,12 @@ quotes:
     quote: /quotes/pwyll-ap-sion
   - 
     quote: /quotes/daniel-coombs
+  - 
+    quote: /quotes/hugo-shirley
 background_color: '#ffffff'
 enable_scrim: "1"
 ---
+
 
 
 
