@@ -31,33 +31,9 @@ new TM.Module({
 
 	callbacks: {
         onMapLoad: function() {
-            var _this = this;
-
-            // Create year selector (if applicable)
-            if (this.el.yearSelectorWrapper) {
-                this.yearSelector = '<select id="year-selector">';
-
-                [].forEach.call(this.el.yearSelectorWrapper.querySelectorAll('a'), function(el) {
-                    yearSelectorValue = el.innerHTML;
-                    _this.yearSelector += '<option value="' + yearSelectorValue + '">' + yearSelectorValue + '</option>';
-                });
-
-                this.yearSelector += '</select>';
-                this.el.yearSelectorWrapper.innerHTML = this.yearSelector;
-
-                this.el.yearSelector = document.getElementById('year-selector');
-                this.el.yearSelector.onchange = function(event) {
-                    _this.refreshMap.call(_this, event);
-                };
-
-                this.updateYearSelectorValue(this.year);
-            } else {
-                this.refreshMap.call(this);
-            }
-
-            this.resizeMap();
-
             this.el.html.addClass('map');
+            this.refreshMap.call(this);
+            this.resizeMap();
         },
 
 		onPopState: function(event) {
@@ -82,6 +58,26 @@ new TM.Module({
                 callback: this.callbacks.onMapLoad,
                 scope: this
             });
+
+            // Create year selector (if applicable)
+            if (this.el.yearSelectorWrapper) {
+                this.yearSelector = '<select id="year-selector">';
+
+                [].forEach.call(this.el.yearSelectorWrapper.querySelectorAll('a'), function(el) {
+                    yearSelectorValue = el.innerHTML;
+                    _this.yearSelector += '<option value="' + yearSelectorValue + '">' + yearSelectorValue + '</option>';
+                });
+
+                this.yearSelector += '</select>';
+                this.el.yearSelectorWrapper.innerHTML = this.yearSelector;
+
+                this.el.yearSelector = document.getElementById('year-selector');
+                this.el.yearSelector.onchange = function(event) {
+                    _this.refreshMap.call(_this, event);
+                };
+
+                this.updateYearSelectorValue(this.year);
+            }
 		},
 
         onWindowResize: function() {
@@ -129,6 +125,8 @@ new TM.Module({
 
 	centerAndPanMap: function() {
 		var infoWindow = document.querySelector('.gm-style-iw');
+
+        if (!infoWindow) return;
 		this.googleMap.centerAndPanMap(this.marker.position, -(this.el.performanceList.offsetWidth / 2), -((infoWindow.offsetHeight / 2) + this.logoHeight));
 	},
 
@@ -155,7 +153,7 @@ new TM.Module({
         TM.util.getUrl(url, function(response) {
             _this.el.performanceList.innerHTML = TM.util.queryHTML(response, '#performance-list').innerHTML;
 
-            if (TM.util.getScreenSize() > 0) {
+            if (TM.util.getWindowSize() > 0) {
             	_this.googleMap.deleteMarkers();
 				_this.addMarkers();
 				_this.selectFirstEvent();
