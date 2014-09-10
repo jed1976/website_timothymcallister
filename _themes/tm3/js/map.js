@@ -79,6 +79,9 @@ new TM.Module({
 
                 this.updateYearSelectorValue(this.year);
             }
+
+            if (TM.util.getWindowSize() < 1)
+                this.el.mapContainer.addClass('fadein');
 		},
 
         onWindowResize: function() {
