@@ -31,7 +31,6 @@ new TM.Module({
 
 	callbacks: {
         onMapLoad: function() {
-            this.el.html.addClass('map');
             this.refreshMap.call(this);
             this.resizeMap();
         },
@@ -44,6 +43,8 @@ new TM.Module({
 
 		onReady: function() {
 			var _this = this, yearSelectorValue;
+
+            this.el.html.addClass('map');
 
 			this.logoHeight = parseInt(this.el.logo.getStyle('height'));
 			this.URLQueryString = '?' + this.yearParam;
@@ -78,6 +79,9 @@ new TM.Module({
 
                 this.updateYearSelectorValue(this.year);
             }
+
+            if (TM.util.getWindowSize() < 1)
+                this.el.mapContainer.addClass('fadein');
 		},
 
         onWindowResize: function() {
