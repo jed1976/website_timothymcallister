@@ -13,7 +13,7 @@ class Fieldtype_Google extends Fieldtype
 
         <script>
         var script = document.createElement("script");
-        script.src = "https://maps.googleapis.com/maps/api/js?libraries=places&callback=initialize&key=AIzaSyA2Kd093BDPlBJhWykIlVOEHamfG4_8WKo";
+        script.src = "https://maps.googleapis.com/maps/api/js?libraries=places&callback=initialize&key=AIzaSyDx7jdJynOTYIQ6tmBymyp_DsA2Futwlj4";
         document.body.appendChild(script);
 
         function initialize() {
