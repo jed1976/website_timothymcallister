@@ -3,7 +3,10 @@
 
     <time class="body-1 dt-start" datetime="{{ datestamp format="{{ _datetime_format }}" }}">{{ datestamp format="{{ _date_format }}" }}</time>
     {{ if truncate }}
-    {{ content|markdown|truncate:400 }}
+    {{ content|markdown|truncate:480 }}
+    <div class="text-center">
+        <a class="button" href="{{ url }}" title="Read the full article">Full Article</a>
+    </div>
     {{ else }}
     {{ content|markdown }}
     {{ /if }}
