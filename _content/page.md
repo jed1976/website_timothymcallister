@@ -25,9 +25,12 @@ quotes:
     quote: /quotes/daniel-coombs
   - 
     quote: /quotes/hugo-shirley
+  - 
+    quote: /quotes/zachary-lewis
 background_color: '#ffffff'
 enable_scrim: "1"
 ---
+
 
 
 
