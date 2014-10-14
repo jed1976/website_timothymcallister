@@ -44,7 +44,7 @@ class CP_Helper
 
 	/**
 	 * Returns whether or not the specified page is visible to the user
-	 * 
+	 *
 	 * @param  array $page  Page data
 	 * @return boolean      Access
 	 */
@@ -76,13 +76,13 @@ class CP_Helper
 				// Flag as hidden if `hide: true|yes|1` is specified
 				$show_page = false;
 			} else {
-				// Flat as hidden if the member's role is in scheme's "hide" list 
+				// Flat as hidden if the member's role is in scheme's "hide" list
 				$show_page = array_intersect($scheme['hide'], $roles) ? false : true;
 			}
 		}
 
 		if (array_get($scheme, 'show')) {
-			// Flat as showable if the member's role is in scheme's "show" list 
+			// Flat as showable if the member's role is in scheme's "show" list
 			$show_page = (bool) array_intersect(array_get($scheme, 'show', array()), $roles);
 		}
 
