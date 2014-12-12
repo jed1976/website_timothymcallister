@@ -272,7 +272,7 @@ $admin_app->get('/entries', function() use ($admin_app) {
 
   $path = $admin_app->request()->get('path');
   $errors = array();
-
+    
   if ($path) {
     $entry_type = Statamic::get_entry_type($path);
 
@@ -286,7 +286,7 @@ $admin_app->get('/entries', function() use ($admin_app) {
       'app'      => $admin_app,
       'errors'   => $errors,
       'path'     => $path,
-      'folder'   => preg_replace(Pattern::NUMERIC, '', $path),
+      'folder'   => Path::addStartingSlash(preg_replace(Pattern::NUMERIC, '', $path)),
       'entries'  => $entries,
       'type'     => $entry_type,
       'listings' => Statamic::get_listings()
@@ -556,9 +556,7 @@ $admin_app->post('/publish', function() use ($admin_app) {
       $file = $content_root."/".$path."/".$status_prefix.$date_or_datetime."-".$slug.".".$content_type;
 
     } elseif ($form_data['type'] == 'number') {
-      if (!preg_match(Pattern::NUMERIC, $slug, $matches)) {
-        $slug = $numeric.".".$slug;
-      }
+      $slug = $numeric.".".$slug;
       $file = $content_root."/".$path."/".$status_prefix.$slug.".".$content_type;
 
     } elseif ($form_data['type'] == 'none') {
@@ -566,7 +564,7 @@ $admin_app->post('/publish', function() use ($admin_app) {
         $numeric = Statamic::get_next_numeric_folder($path);
         $slug = $numeric."-".$slug;
       }
-
+        
       $file = $content_root."/".$path."/".$status_prefix.$slug."/page.".$content_type;
       $file = Path::tidy($file);
 
@@ -671,8 +669,8 @@ $admin_app->post('/publish', function() use ($admin_app) {
       $fields_data = $fs->get_data();
       $field_settings = $fields_data['fields'];
     }
-  } elseif (count($data['field']) >= 1) {
-    $field_settings = $data['fields'];
+  } else {
+    $field_settings = array_get($data, 'fields', array());
   }
 
   /*
@@ -691,48 +689,8 @@ $admin_app->post('/publish', function() use ($admin_app) {
       $form_data['yaml'][$field] = 0;
     }
   }
-  /*
-  |--------------------------------------------------------------------------
-  | File uploads
-  |--------------------------------------------------------------------------
-  |
-  | This isn't great. We need to rewrite this. AJAX would probably be
-  | best course of action.
-  |
-  */
 
 
-  if (isset($_FILES['page']['name']['yaml'])) {
-    $form_data['yaml'] = Helper::arrayCombineRecursive($form_data['yaml'], $_FILES['page']['name']['yaml']);
-
-    foreach ($_FILES['page']['name']['yaml'] as $field => $value) {
-      if (array_get($field_settings[$field], 'type') === 'file') {
-        if ($value != '') {
-          $file_values = array();
-          $file_values['name'] = $_FILES['page']['name']['yaml'][$field];
-          $file_values['type'] = $_FILES['page']['type']['yaml'][$field];
-          $file_values['tmp_name'] = $_FILES['page']['tmp_name']['yaml'][$field];
-          $file_values['error'] = $_FILES['page']['error']['yaml'][$field];
-          $file_values['size'] = $_FILES['page']['size']['yaml'][$field];
-          $val = Fieldtype::process_field_data('file', $file_values, $field_settings[$field]);
-          $file_data[$field] = $val;
-
-          $form_data['yaml'][$field] = $val;
-        } else {
-          if (isset($form_data['yaml'][$field.'_remove'])) {
-            $form_data['yaml'][$field] = '';
-            $file_data[$field] = '';
-          } else {
-            $file_data[$field] = isset($form_data['yaml'][$field]) ? $form_data['yaml'][$field] : '';
-          }
-        }
-        // unset the remove column
-        if (isset($form_data['yaml']["{$field}_remove"])) {
-          unset($form_data['yaml']["{$field}_remove"]);
-        }
-      }
-    }
-  }
   /*
   |--------------------------------------------------------------------------
   | Fieldtype Process Method
@@ -744,7 +702,7 @@ $admin_app->post('/publish', function() use ($admin_app) {
   */
 
   foreach ($form_data['yaml'] as $field => $value) {
-    if (isset($field_settings[$field]['type']) && $field_settings[$field]['type'] != 'file') {
+    if (isset($field_settings[$field]['type'])) {
       $file_data[$field] = Fieldtype::process_field_data($field_settings[$field]['type'], $value, $field_settings[$field], $field);
     } else {
       $file_data[$field] = $value;
@@ -758,7 +716,7 @@ $admin_app->post('/publish', function() use ($admin_app) {
   |
   | We make the assumption that all fields INSIDE the fieldset are editable
   | and all those OUTSIDE should be left alone. So we filter the submission
-  | against the original fieldset and and wipe out empty fields to keep page
+  | against the original fieldset and and wipe out empty fields to keep page 
   | variables clean. Not present = null = consistent data types = happy devs.
   |
   */
@@ -768,7 +726,7 @@ $admin_app->post('/publish', function() use ($admin_app) {
 
   foreach ($field_settings as $field => $settings) {
     $current_field = array_get($form_data['yaml'], $field, false);
-
+    
     if ( ! $current_field || $current_field === '' || Helper::isEmptyArray($current_field)) {
       unset($file_data[$field]);
     }
@@ -780,7 +738,7 @@ $admin_app->post('/publish', function() use ($admin_app) {
     unset($file_data['status']);
   }
 
-
+  
   /*
   |--------------------------------------------------------------------------
   | Prep data & run hook
@@ -789,9 +747,9 @@ $admin_app->post('/publish', function() use ($admin_app) {
   | Set up an array of useful data for the hook and then run that sucker.
   |
   */
-
+   
   $publish_data = array('yaml' => $file_data, 'content' => $form_data['content'], 'file' => $file);
-
+  
   $publish_data = Hook::run('control_panel', 'publish', 'replace', $publish_data, $publish_data);
 
   /*
@@ -805,7 +763,7 @@ $admin_app->post('/publish', function() use ($admin_app) {
 
   $file_content = File::buildContent($publish_data['yaml'], $publish_data['content']);
 
-  File::put(Path::assemble(BASE_PATH, $publish_data['file']), $file_content);
+  File::put(Path::assemble(BASE_PATH, $file), $file_content);
 
   /*
   |--------------------------------------------------------------------------
@@ -827,18 +785,18 @@ $admin_app->post('/publish', function() use ($admin_app) {
       if (Config::getEntryTimestamps()) {
         $new_timestamp = $form_data['meta']['publish-time'];
         $new_datestamp = $form_data['meta']['publish-date'];
-        $new_file = $content_root . "/" . dirname($path) . "/" . $status_prefix .  $new_datestamp . "-" . $new_timestamp . "-" . $new_slug.".".$content_type;
+        $new_file = Path::assemble($content_root, dirname($path), $status_prefix . $new_datestamp . "-" . $new_timestamp . "-" . $new_slug.".".$content_type);
 
       // Without Timestamps
       } else {
         $new_datestamp = $form_data['meta']['publish-date'];
-        $new_file = $content_root . "/" . dirname($path) . "/" . $status_prefix . $new_datestamp . "-" . $new_slug.".".$content_type;
+        $new_file = Path::assemble($content_root, dirname($path), $status_prefix . $new_datestamp . "-" . $new_slug.".".$content_type);
       }
 
     // Numerical Entry
     } elseif ($form_data['type'] == 'number') {
       $new_numeric = $form_data['meta']['publish-numeric'];
-      $new_file = $content_root . "/" . dirname($path) . "/" . $status_prefix . $new_numeric . "." . $new_slug . "." . $content_type;
+      $new_file = Path::assemble($content_root, dirname($path), $status_prefix . $new_numeric . "." . $new_slug . "." . $content_type);
 
     // Pages
     } else {
@@ -852,7 +810,7 @@ $admin_app->post('/publish', function() use ($admin_app) {
         $new_file = $content_root . "/" . dirname($path) . "/" . $status_prefix . $new_slug . "." . $content_type;
       }
     }
-
+      
     // ensure that both variables are coming from the same place
     $file = Path::addStartingSlash($file);
     $new_file = Path::addStartingSlash($new_file);
@@ -887,7 +845,12 @@ $admin_app->post('/publish', function() use ($admin_app) {
     $app->flash('success', Localization::fetch('entry_saved'));
   }
 
-  $app->redirect(Request::post('return'));
+  if (Request::post('continue')) {
+    $path = rtrim(Path::trimSlashes(str_replace(Config::getContentRoot(), '', Path::tidy($file))), '.' . Config::getContentType());
+    $app->redirect($admin_app->urlFor('publish') . '?path=' . $path);
+  } else {
+    $app->redirect(Request::post('return'));
+  }
 
 });
 
@@ -952,7 +915,7 @@ $admin_app->get('/delete/page', function() use ($admin_app) {
     }
 
     if (File::exists($path)) {
-
+      
       /*
       |--------------------------------------------------------------------------
       | Delete Hook
@@ -982,8 +945,10 @@ $admin_app->get('/delete/page', function() use ($admin_app) {
 
 // GET: PUBLISH
 $admin_app->get('/publish', function() use ($admin_app) {
+  
   authenticateForRole('admin');
   doStatamicVersionCheck($admin_app);
+  
   $content_root = Config::getContentRoot();
   $app = \Slim\Slim::getInstance();
 
@@ -1214,8 +1179,8 @@ $admin_app->get('/publish', function() use ($admin_app) {
     $data['return'] = $app->request()->getRootUri() . $custom_return;
   } else {
     $data['return'] = ($data['type'] == 'none')
-                      ? $app->urlFor('pages')."?path=".$folder
-                      : $app->urlFor('entries')."?path=".$folder;
+                      ? $app->urlFor('pages')."?path=".Path::addStartingSlash($folder)
+                      : $app->urlFor('entries')."?path=".Path::addStartingSlash($folder);
   }
 
   $data['templates'] = Theme::getTemplates();
@@ -1223,7 +1188,25 @@ $admin_app->get('/publish', function() use ($admin_app) {
 
   $template_list = array("publish");
   Statamic_View::set_templates(array_reverse($template_list));
+
+  /*
+  |--------------------------------------------------------------------------
+  | Hook: Can Publish
+  |--------------------------------------------------------------------------
+  |
+  | Gives the ability to prevent editing/publishing.
+  |
+  */
+ 
+  $can_edit = Hook::run('control_panel', 'can_publish', 'replace', true, $data);
+
+  if ( ! $can_edit) {
+    $admin_app->redirect($admin_app->urlFor('denied'));
+  }
+
   $admin_app->render(null, array('route' => 'publish', 'app' => $admin_app)+$data);
+
+
 })->name('publish');
 
 
@@ -1259,19 +1242,23 @@ $admin_app->post('/member', function() use ($admin_app) {
   $member_data  = $admin_app->request()->post('member');
   $config       = YAML::parse(File::get(Config::getConfigPath() . '/bundles/member/fields.yaml'));
   $config       = (isset($config['fields']) && is_array($config['fields'])) ? $config['fields'] : array();
-
+    
   // prepare submission
   array_walk_recursive($submission, function(&$item, $key) {
+      // we don't need to special-chars a password
+      if (strpos($key, '[password]') !== 0) {
+          return;
+      }
       $item = htmlspecialchars($item);
   });
-
+    
   // check that everything's as we're expecting
   if (!isset($submission) || !is_array($submission) || !is_array($config)) {
       // something went wrong
       $admin_app->flash('error', Localization::fetch('error_form_submission'));
       $admin_app->redirect($admin_app->request()->getReferrer());
   }
-
+  
   // prepare the submission for validation
   $username           = $submission['username'];
   $original_username  = $member_data['original_name'];
@@ -1282,30 +1269,30 @@ $admin_app->post('/member', function() use ($admin_app) {
 
   // don't need username here anymore
   unset($submission['username']);
-
+    
   // validate username if it was set
   if (!isset($errors['username']) && $username !== $original_username && !Member::isValidUsername($username)) {
       $errors['username'] = Localization::fetch('invalid_username');
   }
-
+    
   // check password
   if (
       !isset($errors['password']) &&
       !isset($errors['password_confirmation']) &&
-      isset($submission['password']) &&
-      isset($submission['password_confirmation']) &&
-      $submission['password'] &&
-      $submission['password_confirmation'] &&
+      isset($submission['password']) && 
+      isset($submission['password_confirmation']) && 
+      $submission['password'] && 
+      $submission['password_confirmation'] && 
       $submission['password'] !== $submission['password_confirmation']
   ) {
       $errors['password'] = Localization::fetch('password_confirmation_does_not_match');
   }
-
+    
   // check that username doesn't already exist
   if (!isset($errors['username']) && $username !== $original_username && Member::exists($username)) {
       $errors['username'] = Localization::fetch('username_already_exists');
   }
-
+    
   // if no errors, make the member object, renaming if necessary
   $member = null;
   if (empty($errors)) {
@@ -1323,26 +1310,26 @@ $admin_app->post('/member', function() use ($admin_app) {
           }
       }
   }
-
+  
   if ($errors) {
       // something isn't valid, no saving needed
       $admin_app->flash('error', Localization::fetch('error_form_submission'));
-
+      
       Session::setFlash('member_old_values', $submission);
       Session::setFlash('member_errors', $errors);
-
+      
       $admin_app->redirect($admin_app->request()->getReferrer());
       return;
   }
-
+    
   // set variables
   foreach ($submission as $key => $value) {
       if ($key == 'password' && $value == '') {
           continue;
       }
-
+      
       $field_config = array_get($config, $key, array());
-
+      
       // only save values if save_value isn't false
       if (array_get($field_config, 'save_value', true)) {
           $member->set($key, $value);
@@ -1350,10 +1337,10 @@ $admin_app->post('/member', function() use ($admin_app) {
           $member->remove($key);
       }
   }
-
+    
   // save member
   $member->save();
-
+  
   // REDIRECT
   $admin_app->flash('success', Localization::fetch('member_saved'));
 
@@ -1400,11 +1387,11 @@ $admin_app->get('/member', function() use ($admin_app) {
   }
 
   $template_list = array("member");
-
+    
   // check for flash data
   $errors = Session::getFlash('member_errors', array());
   $old_values = Session::getFlash('member_old_values', array());
-
+    
   // merge
   $data = $old_values + $data + array('_errors' => $errors, 'new' => $new);
 
@@ -1444,9 +1431,11 @@ $admin_app->get('/account', function() use ($admin_app) {
   authenticateForRole('admin');
   doStatamicVersionCheck($admin_app);
 
-  $template_list = array("account");
-  Statamic_View::set_templates(array_reverse($template_list));
-  $admin_app->render(null, array('route' => 'members', 'app' => $admin_app));
+  $user = Auth::getCurrentMember();
+  $username = $user->get('username');
+
+  $admin_app->redirect($admin_app->urlFor('member').'?name=' . $username);
+
 })->name('account');
 
 
@@ -1505,7 +1494,7 @@ $admin_app->get('/system/security', function() use ($admin_app) {
     }
   }
   $data['users'] = Member::getList();
-
+    
   $admin_app->render(null, array('route' => 'security', 'app' => $admin_app) + $data);
 })->name('security');
 
@@ -1573,6 +1562,8 @@ $admin_app->get('/system/logs', function() use ($admin_app) {
       // we have found at least one valid log
       $data['logs_exist'] = TRUE;
     }
+
+    ksort($data['logs']);
 
     closedir($dir);
 
@@ -1671,6 +1662,21 @@ $admin_app->get('/system/logs', function() use ($admin_app) {
 
   $admin_app->render(null, array('route' => 'logs', 'app' => $admin_app)+$data);
 })->name('logs');
+
+
+// Uploads
+// --------------------------------------------------------
+$admin_app->post('/upload', function() use ($admin_app) {
+
+  authenticateForRole('admin');
+  doStatamicVersionCheck($admin_app);
+
+  $files = _Upload::uploadBatch();
+
+  $admin_app->contentType('application/json');
+  echo json_encode(array('files' => $files));
+
+})->name('upload');
 
 
 

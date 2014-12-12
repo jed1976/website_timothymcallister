@@ -41,8 +41,16 @@ class Hook
             $bundles_path  = APP_PATH . '/core/bundles';
             $pattern       = '/*/hooks.*.php';
             
-            // muuulllllti-gloooobbb
-            self::$hook_files = glob('{'.$bundles_path.$pattern.','.$addons_path.$pattern.'}', GLOB_BRACE);
+            // globbing with a brace doesn't seem to work on some system,
+            // it's not just Windows-based servers, seems to affect some
+            // linux-based ones too
+            $bundles  = glob($bundles_path . $pattern);
+            $addons   = glob($addons_path . $pattern);
+            
+            $bundles  = (empty($bundles)) ? array() : $bundles;
+            $addons   = (empty($addons)) ? array() : $addons;
+            
+            self::$hook_files = array_merge($bundles, $addons);
             
             Debug::markEnd($hash);
         }
