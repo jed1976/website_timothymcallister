@@ -15,14 +15,14 @@ class Plugin_entries extends Plugin
 {
     /**
      * Combines numeric values of all entries found into one combined result
-     *
+     * 
      * @return string
      */
     public function meld()
     {
         // grab common parameters
         $settings = $this->parseCommonParameters();
-
+        
         // grab extra parameters
         $field      = $this->fetchParam('field', null);
         $action     = $this->fetchParam('action', 'sum');
@@ -45,7 +45,7 @@ class Plugin_entries extends Plugin
                 $content_set->limit($limit, $offset);
             }
         }
-
+        
         // get total entries
         $total_entries = $content_set->count();
 
@@ -53,25 +53,25 @@ class Plugin_entries extends Plugin
         if (!$total_entries) {
             return '0';
         }
-
+        
         // total them up
         $total = 0;
         foreach ($content_set->get(false, false) as $content) {
             if (!isset($content[$field]) || !is_numeric($content[$field])) {
                 continue;
             }
-
+            
             $total += $content[$field];
         }
-
+        
         // set output
         $output = $total;
-
+        
         // perform other actions
         if ($action === 'average') {
             $output = $output / $total_entries;
         }
-
+        
         return (!is_null($precision)) ? number_format($output, $precision) : (string) $output;
     }
 
@@ -85,12 +85,9 @@ class Plugin_entries extends Plugin
     {
         // grab common parameters
         $settings = $this->parseCommonParameters();
-
+        
         // grab content set based on the common parameters
         $content_set = $this->getContentSet($settings);
-
-        // grab total entries for setting later
-        $total_entries = $content_set->count();
 
         // limit
         $limit     = $this->fetchParam('limit', null, 'is_numeric');
@@ -106,12 +103,6 @@ class Plugin_entries extends Plugin
                 $content_set->limit($limit, $offset);
             }
         }
-
-        // manually supplement
-        $content_set->supplement(array(
-            'total_found'    => $total_entries,
-            'group_by_date'  => $this->fetchParam("group_by_date", null, null, false, false)
-        ));
 
         // check for results
         if (!$content_set->count()) {
@@ -368,7 +359,7 @@ class Plugin_entries extends Plugin
             'type'        => 'entries',
             'conditions'  => trim($this->fetchParam('conditions', null))
         ));
-
+        
         // prepare if needed
         $parse_content = (bool) preg_match(Pattern::USING_CONTENT, $this->content);
         if ($parse_content) {
@@ -445,7 +436,7 @@ class Plugin_entries extends Plugin
 
         $markers = array();
         foreach ($content as $item) {
-
+            
             $marker = array(
                 'latitude'       => $item['latitude'],
                 'longitude'      => $item['longitude'],
@@ -489,14 +480,21 @@ class Plugin_entries extends Plugin
 
         // determine filters
         $filters = array(
-            'show_hidden' => $this->fetchParam('show_hidden', false, null, true, false),
-            'show_drafts' => $this->fetchParam('show_drafts', false, null, true, false),
-            'since'       => $this->fetchParam('since'),
-            'until'       => $this->fetchParam('until'),
-            'show_past'   => $this->fetchParam('show_past', true, null, true),
-            'show_future' => $this->fetchParam('show_future', false, null, true),
-            'type'        => 'entries',
-            'conditions'  => trim($this->fetchParam('conditions', null, false, false, false))
+            'show_hidden'   => $this->fetchParam('show_hidden', false, null, true, false),
+            'show_drafts'   => $this->fetchParam('show_drafts', false, null, true, false),
+            'since'         => $this->fetchParam('since'),
+            'until'         => $this->fetchParam('until'),
+            'show_past'     => $this->fetchParam('show_past', true, null, true),
+            'show_future'   => $this->fetchParam('show_future', false, null, true),
+            'type'          => 'entries',
+            'conditions'    => trim($this->fetchParam('conditions', null, false, false, false)),
+            'where'         => trim($this->fetchParam('where', null, false, false, false))
+        );
+        
+        // determine supplemental data
+        $supplements = array(
+            'locate_with' => $this->fetchParam('locate_with', null, false, false, false),
+            'center_point' => $this->fetchParam('center_point', null, false, false, false)
         );
 
         // determine other factors
@@ -505,8 +503,9 @@ class Plugin_entries extends Plugin
             'sort_by'       => $this->fetchParam('sort_by', 'order_key'),
             'sort_dir'      => $this->fetchParam('sort_dir')
         );
+        $other['sort'] = $this->fetchParam('sort', $other['sort_by'] . ' ' . $other['sort_dir'], null, false, null);
 
-        return $other + $filters + $folders;
+        return $other + $supplements + $filters + $folders;
     }
 
 
@@ -539,8 +538,19 @@ class Plugin_entries extends Plugin
             // filter
             $content_set->filter($settings);
 
+            // grab total entries for setting later
+            $total_entries = $content_set->count();
+
+            // pre-sort supplement
+            $content_set->supplement(array('total_found' => $total_entries) + $settings);
+
             // sort
-            $content_set->sort($settings['sort_by'], $settings['sort_dir']);
+            $content_set->multisort($settings['sort']);            
+            
+            // post-sort supplement
+            $content_set->supplement(array(
+                'group_by_date' => trim($this->fetchParam("group_by_date", null, null, false, false))
+            ), true);
 
             // store content as blink content for future use
             $this->blink->set($content_hash, $content_set->extract());

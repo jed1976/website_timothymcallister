@@ -1,41 +1,83 @@
 <?php
-class Fieldtype_File extends Fieldtype
+class Fieldtype_file extends Fieldtype
 {
+
 	public function render()
 	{
-		$html = "<div class='file-field-container'>";
-
-		if ($this->field_data) {
-
-			$html .= "<div class='file-exists'>";
-
-			if (File::isImage(Path::fromAsset($this->field_data, true))) {
-				$html .= "<img src='" . Path::toAsset($this->field_data) . "' height='58'>";
-			}
-
-			$html .= "<p>".basename($this->field_data)."</p>";
-			$html .= "<a class='btn btn-small btn-remove-file' href='#'>".Localization::fetch('remove')."</a>";
-			$html .= "<input type='hidden' name='{$this->fieldname}' value='{$this->field_data}' />";
-			$html .= "</div>";
-
-		} else {
-
-			$html .= "<div class='upload-file'>";
-			$html .= "<p><input type='file' name='{$this->fieldname}' tabindex='{$this->tabindex}' value='' /></p>";
-			$html .= "</div>";
-
+		// Let's make sure they set an upload destination
+		if (array_get($this->field_config, 'destination', false) === false) {
+			throw new Exception("You need to set a destination for your File field.");
 		}
 
-		$html .= "</div>";
+		// Normalize the destination
+		$this->destination = trim(array_get($this->field_config, 'destination'), '/') . '/';
 
-		return $html;
+		// Allow a string or an array, but we want an array
+		$has_data = ($this->field_data != '');
+		$this->field_data = Helper::ensureArray($this->field_data);
+
+		// Clean up {{ _site_root }} and lack of leading slash existence
+		foreach ($this->field_data as $i => $file) {
+			$this->field_data[$i] = URL::tidy('/' . str_replace('{{ _site_root }}', '', $file));
+		}
+
+		// Whether or not to allow the browse existing files functionality
+		$allow_browse = array_get($this->field_config, 'browse', true);
+
+		// Resizing config
+		if ($resize = array_get($this->field_config, 'resize')) {
+			$resize['resize'] = true;
+			$resize = http_build_query($resize);
+		}
+
+		// If we're in a subdirectory, prepend it to all the filenames
+		if (($site_root = Config::getSiteRoot()) != '/') {
+			foreach ($this->field_data as $i => $file) {
+				$this->field_data[$i] = URL::assemble($site_root, $file);
+			}
+		}
+
+		// Send data to the view
+		$vars = array(
+			'field_id'     => $this->field_id,
+			'field_name'   => $this->fieldname,
+			'tabindex'     => $this->tabindex,
+			'has_data'     => $has_data,
+			'field_data'   => $this->field_data,
+			'field_config' => $this->field_config,
+			'destination'  => $this->destination,
+			'allow_browse' => $allow_browse,
+			'server_files' => ($allow_browse) ? json_encode($this->tasks->generateModal($this->field_config, $this->destination)) : null,
+			'file_thumb'   => URL::assemble(Config::getSiteRoot(), Config::get('admin_path'), 'themes', Config::get('admin_theme'), '/img/file.png'),
+			'resize'       => $resize
+		);
+		$template = File::get($this->getAddonLocation() . 'views/fieldtype.html');
+
+		return Parse::template($template, $vars);
 	}
+
 
 	public function process()
 	{
-		if ($this->field_data['tmp_name'] !== '') {
-			return File::upload($this->field_data, $this->settings['destination'], true);
+		$data = json_decode($this->field_data);
+
+		// Normalize paths if we are running in a subdirectory
+		if (($site_root = Config::getSiteRoot()) != '/') {
+			foreach ($data as $i => $file) {
+				$data[$i] = preg_replace('#^' . $site_root . '#', '/', $file);
+			}
 		}
+
+		// Turn an array with one key into a string
+		if (count($data) == 1){
+			$data = $data[0];
+		}
+		// Turn an empty array into an empty string
+		elseif (count($data) == 0) {
+			$data = '';
+		}
+
+		return $data;
 	}
 
 }
