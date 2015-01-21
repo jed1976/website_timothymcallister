@@ -22,21 +22,30 @@ class Fieldtype_grid extends Fieldtype
 
         // create header row
         // -------------------------------------------------------------------------
-        $html = "<thead>\n<tr>\n";
+        $html = "<thead><tr>";
         $html .= "<th class='row-count'></th>";
 
         // Set Width
         foreach ($this->field_config['fields'] as $key => $cell_field_config) {
             $width = array_get($cell_field_config, 'width', 'auto');
-            $html .= "<th style='width:{$width}'>" . array_get($cell_field_config, 'display', Slug::prettify($key)) . "</th>\n";
+            $html .= "<th style='width:{$width}'>";
+                $html .= array_get($cell_field_config, 'display', Slug::prettify($key));
+
+                $instructions = array_get($cell_field_config, 'instructions');
+                
+                if ($instructions) {
+                    $html .= "<small>" . htmlspecialchars($instructions) . "</small>";
+                }
+
+            $html .= "</th>";
         }
 
-        $html .= "</tr>\n</thead>\n";
+        $html .= "</tr></thead>";
 
 
         // create grid rows
         // -------------------------------------------------------------------------
-        $html .= "<tbody>\n";
+        $html .= "<tbody>";
 
         # rows to render
         if ($starting_rows && $starting_rows > $min_rows) {

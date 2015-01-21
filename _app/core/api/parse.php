@@ -1,6 +1,5 @@
 <?php
 
-use \erusev\ParsedownExtra;
 use \Michelf\MarkdownExtra;
 use \Michelf\SmartyPants;
 use \Michelf\SmartyPantsTypographer;

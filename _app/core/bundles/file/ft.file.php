@@ -47,8 +47,8 @@ class Fieldtype_file extends Fieldtype
 			'field_config' => $this->field_config,
 			'destination'  => $this->destination,
 			'allow_browse' => $allow_browse,
-			'server_files' => ($allow_browse) ? json_encode($this->tasks->generateModal($this->field_config, $this->destination)) : null,
-			'file_thumb'   => URL::assemble(Config::getSiteRoot(), Config::get('admin_path'), 'themes', Config::get('admin_theme'), '/img/file.png'),
+			'browse_url'   => URL::assemble(Config::getSiteRoot(), Config::get('admin_path') . '.php/files?config=' . urlencode(Helper::encrypt(serialize($this->field_config)))),
+			'file_thumb'   => $this->tasks->defaultFileThumbnail(),
 			'resize'       => $resize
 		);
 		$template = File::get($this->getAddonLocation() . 'views/fieldtype.html');

@@ -13,7 +13,7 @@ class Plugin_nav extends Plugin
         $max_depth        = $this->fetchParam('max_depth', 1, 'is_numeric');
         $include_entries  = $this->fetchParam('include_entries', false, false, true);
         $folders_only     = $this->fetchParam('folders_only', true, false, true);
-        $include_content  = $this->fetchParam('include_content', false, false, true);
+        $include_content  = $this->fetchParam('include_content', true, false, true);
         $show_hidden      = $this->fetchParam('show_hidden', false, null, true);
 
         // add in left-/ if not present

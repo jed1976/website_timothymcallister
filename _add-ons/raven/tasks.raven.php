@@ -20,9 +20,10 @@ class Tasks_raven extends Tasks
 		$formset  = $this->getFormset($formset_name);
 		$formsets = $this->getFormsets();
 		$fields   = Helper::prettifyZeroIndexes(array_get($formset, 'control_panel:fields', $this->getFieldNames($files)));
+		$edit     = array_get($formset, 'control_panel:edit');
 		$metrics  = $this->buildMetrics(array_get($formset, 'control_panel:metrics'), $files);
 
-		return compact('files', 'fields', 'formsets', 'formset', 'metrics', 'spam');
+		return compact('files', 'fields', 'edit', 'formsets', 'formset', 'metrics', 'spam');
 	}
 
 	public function getFormsetSpamData($formset_name)
@@ -98,6 +99,9 @@ class Tasks_raven extends Tasks
 		$files = array();
 		foreach ($matches as $file) {
 
+			// Ignore page.md
+			if ($file->getFilename() == 'page.md') continue;
+
 			$file_data = Parse::yaml($file->getContents());
 			$file_data['datestamp'] = date(array_get($this->config, 'datestamp_format', "m/d/Y"), $file->getMTime());
 			
@@ -108,6 +112,8 @@ class Tasks_raven extends Tasks
 				'extension' => $file->getExtension(),
 				'datestamp' => $file->getMTime()
 			);
+
+			$meta['edit_path'] = Path::trimSlashes(Path::trimFileSystemFromContent(substr($meta['path'], 0, -1 - strlen($meta['extension']))));
 
 			$data = array('meta' => $meta, 'fields' => $file_data);
 			$files[] = $data;

@@ -8,7 +8,7 @@
  * @author  Fred LeBlanc <fred@statamic.com>
  *
  * @copyright  2012-2014
- * @link       http://statamic.com/docs/core-template-tags/entries
+ * @link       http://statamic.com/learn/documentation/tags/entries
  * @license    http://statamic.com/license-agreement
  */
 class Plugin_entries extends Plugin
@@ -339,11 +339,10 @@ class Plugin_entries extends Plugin
         $folders = $this->fetchParam('folder', ltrim($this->fetchParam('from', URL::getCurrent()), "/"));
 
         if ($this->fetchParam('taxonomy', false, null, true, null)) {
-            $taxonomy_parts  = Taxonomy::getCriteria(URL::getCurrent());
-            $taxonomy_type   = $taxonomy_parts[0];
-            $taxonomy_slug   = Config::get('_taxonomy_slugify') ? Slug::humanize($taxonomy_parts[1]) : urldecode($taxonomy_parts[1]);
+            $taxonomy  = Taxonomy::getCriteria(URL::getCurrent());
+            $taxonomy_slug   = Config::get('_taxonomy_slugify') ? Slug::humanize($taxonomy['slug']) : urldecode($taxonomy['slug']);
 
-            $content_set = ContentService::getContentByTaxonomyValue($taxonomy_type, $taxonomy_slug, $folders);
+            $content_set = ContentService::getContentByTaxonomyValue($taxonomy['type'], $taxonomy_slug, $folders);
         } else {
             $content_set = ContentService::getContentByFolders($folders);
         }
@@ -475,8 +474,15 @@ class Plugin_entries extends Plugin
      */
     private function parseCommonParameters()
     {
+        $current_folder = URL::getCurrent();
+        
+        // Strip taxonomy segments because they don't reflect physical folder locations
+        if (Taxonomy::isTaxonomyUrl($current_folder)) {
+            $current_folder = URL::stripTaxonomy($current_folder);
+        }
+        
         // determine folder
-        $folders = array('folders' => $this->fetchParam('folder', $this->fetchParam('folders', ltrim($this->fetchParam('from', URL::getCurrent()), "/"))));
+        $folders = array('folders' => $this->fetchParam(array('folder', 'folders'), $current_folder));
 
         // determine filters
         $filters = array(
@@ -526,11 +532,10 @@ class Plugin_entries extends Plugin
         } else {
             // no blink content exists, get data the hard way
             if ($settings['taxonomy']) {
-                $taxonomy_parts  = Taxonomy::getCriteria(URL::getCurrent());
-                $taxonomy_type   = $taxonomy_parts[0];
-                $taxonomy_slug   = Config::get('_taxonomy_slugify') ? Slug::humanize($taxonomy_parts[1]) : urldecode($taxonomy_parts[1]);
+                $taxonomy  = Taxonomy::getCriteria(URL::getCurrent());
+                $taxonomy_slug   = Config::get('_taxonomy_slugify') ? Slug::humanize($taxonomy['slug']) : urldecode($taxonomy['slug']);
 
-                $content_set = ContentService::getContentByTaxonomyValue($taxonomy_type, $taxonomy_slug, $settings['folders']);
+                $content_set = ContentService::getContentByTaxonomyValue($taxonomy['type'], $taxonomy_slug, $settings['folders']);
             } else {
                 $content_set = ContentService::getContentByFolders($settings['folders']);
             }

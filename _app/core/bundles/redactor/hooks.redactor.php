@@ -7,8 +7,9 @@ class Hooks_redactor extends Hooks
 
     public function redactor__upload()
     {
-        $destination = Request::get('path');
-        $files = _Upload::uploadBatch($destination, 'file');
+        $this->authCheck();
+
+        $files = _Upload::uploadBatch(Request::get('path'), 'file');
         $return = array('filelink' => $files[0]['path']);
 
         echo stripslashes(json_encode($return));
@@ -16,9 +17,7 @@ class Hooks_redactor extends Hooks
 
     public function redactor__fetch_images()
     {
-        if (!Auth::getCurrentMember()) {
-            exit("Invalid Request");
-        }
+        $this->authCheck();
 
         $dir = Path::tidy(ltrim(Request::get('path'), '/').'/');
         $image_list = glob($dir."*.{jpg,jpeg,gif,png}", GLOB_BRACE);
@@ -39,9 +38,7 @@ class Hooks_redactor extends Hooks
 
     public function redactor__fetch_files()
     {
-        if (!Auth::getCurrentMember()) {
-            exit("Invalid Request");
-        }
+        $this->authCheck();
 
         $dir = Path::tidy(ltrim(Request::get('path'), '/').'/');
         $file_list = glob($dir."*.*", GLOB_BRACE);
@@ -60,5 +57,19 @@ class Hooks_redactor extends Hooks
         }
 
         echo json_encode($files);
+    }
+
+    function authCheck($role = 'admin')
+    {
+        $app = \Slim\Slim::getInstance();
+        $user = Auth::getCurrentMember();
+
+        if ($user) {
+            if ($user->hasRole($role)) {
+                return true;
+            }
+        }
+
+        exit("Invalid Request");
     }
 }

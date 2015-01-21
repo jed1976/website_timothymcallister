@@ -4,7 +4,7 @@ class Plugin_raven extends Plugin {
 
 	public $meta = array(
 		'name'       => 'Raven',
-		'version'    => '2.0.2',
+		'version'    => '2.1.0',
 		'author'     => 'Statamic',
 		'author_url' => 'http://statamic.com'
 	);
@@ -34,8 +34,25 @@ class Plugin_raven extends Plugin {
 		$error_return = $this->fetchParam('error_return', URL::getCurrent());
 		$multipart    = ($this->fetchParam('files', false)) ? "enctype='multipart/form-data'" : '';
 
+		$old_values = array();
+
+		// Fetch the content if in edit mode
+		if ($edit = $this->fetchParam('edit')) {
+			$old_values = Content::get($edit, false, false);
+
+			// Throw exception if there's an invalid URL
+			if (count($old_values) == 0) {
+				throw new FatalException('Invalid URL for editing');
+			}
+
+			$entry_hash = Helper::encrypt($edit);
+		}
+
+		// Merge old values
+		$old_values = array_merge($this->flash->get('old_values', array()), $old_values);
+
 		// Sanitize data before returning it for display
-		$old_values = array_map('htmlspecialchars', $this->flash->get('old_values', array()));
+		$old_values = array_map_deep($old_values, 'htmlspecialchars');
 
 		// Set old values to re-populate the form
 		$data = array();
@@ -72,6 +89,10 @@ class Plugin_raven extends Plugin {
 		$html .= "<input type='hidden' name='hidden[return]' value='{$return}' />\n";
 		$html .= "<input type='hidden' name='hidden[error_return]' value='{$error_return}' />\n";
 
+		if ($edit) {
+			$html .= "<input type='hidden' name='hidden[edit]' value='{$entry_hash}' />\n";
+		}
+
 		/*
 		|--------------------------------------------------------------------------
 		| Hook: Form Begin
@@ -98,7 +119,7 @@ class Plugin_raven extends Plugin {
 
 		$html .= "</form>";
 
-		return Parse::Template($html, $data);
+		return Parse::template($html, $data, array('statamic_view', 'callback'), $this->context);
 
 	}
 
