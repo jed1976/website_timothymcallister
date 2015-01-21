@@ -50,6 +50,41 @@ class Fieldtype_suggest extends Fieldtype
 
         /*
         |--------------------------------------------------------------------------
+        | Array from a page
+        |--------------------------------------------------------------------------
+        |
+        | Fetch an array from another page. Like hardcoding the options, but it's
+        | managed through the content.
+        |
+        */
+
+        if (isset($this->field_config['array'])) {
+
+            $config = $this->field_config['array'];
+
+            $url = array_get($config, 'from');
+            $field = array_get($config, 'field');
+
+            $content = ContentService::getContentByURL($url)->extract();
+            $content = $content[0];
+            $values = array_get($content, $field);
+
+            // Grid-style, associative array?
+            if (is_array(reset($values))) {
+                $key = array_get($config, 'key');
+                $vs = array();
+                foreach ($values as $k => $v) {
+                    $vs[] = array_get($v, $key);
+                }
+                $values = $vs;
+            }            
+
+            $suggestions = array_merge($suggestions, $values);
+
+        }
+
+        /*
+        |--------------------------------------------------------------------------
         | Entries & Pages
         |--------------------------------------------------------------------------
         |
@@ -165,7 +200,7 @@ class Fieldtype_suggest extends Fieldtype
         | needed if allow blank is true.
         |
         */
-       
+
         if ($max_items === null && $multiple === false) {
             $max_items = 1;
         }
@@ -229,7 +264,7 @@ class Fieldtype_suggest extends Fieldtype
         // If we're forcing lowercase taxonomies (which we are by default), save them as lower too
         if (array_get($settings, 'taxonomy', false) && Config::get('taxonomy_force_lowercase', false)) {
             $this->field_data = Helper::ensureArray($this->field_data);
-            
+
             foreach ($this->field_data as $key => $value) {
                 $this->field_data[$key] = strtolower($value);
             }

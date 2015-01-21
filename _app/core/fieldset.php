@@ -58,6 +58,11 @@ class statamic_fieldset
           $fields['fields'] = array_merge($fields['fields'], $meta['fields']);
         }
 
+        // Order fields by 'field_order'
+        if (isset($meta['field_order'])) {
+          $fields['fields'] = array_merge(array_flip($meta['field_order']), $fields['fields']);
+        }
+
         $fieldset_names[] = $name;
       }
     }

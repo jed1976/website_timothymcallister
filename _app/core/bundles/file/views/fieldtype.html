@@ -2,7 +2,7 @@
 	id="{{ field_id }}"
 	class="file-field-container empty"
 	data-config='{
-		{{ if allow_browse }}"serverFilesModal": {{ server_files }},{{ /if }}
+		{{ if allow_browse }}"browse": "{{ browse_url }}",{{ /if }}
 		"acceptedFiles": "{{ field_config:allowed }}.{{ value }}{{ if !last }}, {{ /if }}{{ /field_config:allowed }}",
 		"maxFiles": {{ field_config:max_files or "null" }},
 		"fileThumb": "{{ field_config:file_thumb or file_thumb }}"
@@ -24,7 +24,7 @@
 
 	<div class="existing-files"></div>
 
-	<input type="hidden" name="{{ field_name }}" class="file-values" />
+	<input type="hidden" name="{{ field_name }}" class="file-values" value="" />
 
 	{{# Don't output a script in the Grid. #}}
 	{{ if field_id != "rename_me" }}

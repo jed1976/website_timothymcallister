@@ -919,3 +919,24 @@ body .redactor-box-fullscreen {
   font-size: 12px;
   text-transform: uppercase;
 }
+
+/*
+  GRID FIELD
+*/
+
+.grid td.cell-redactor {
+  padding: 0;
+  .redactor-toolbar {
+    background: none;
+    border-radius: 0;
+    border: none;
+  }
+  .redactor-editor {
+    padding: 10px;
+    box-shadow: none !important;
+    border: none;
+    border-top: 1px solid #eaeaea;
+
+  }
+
+}

@@ -124,6 +124,7 @@ class Plugin_transform extends Plugin
         $pixelate  = $this->fetchParam('pixelate', false, 'is_numeric');
         $greyscale = $this->fetchParam(array('greyscale', 'grayscale'), false, false, true);
         $watermark = $this->fetchParam('watermark', false, false, false, false);
+        $invert    = $this->fetchParam('invert', false, false, true);
 
 
         /*
@@ -158,7 +159,8 @@ class Plugin_transform extends Plugin
             'blur'      => $blur,
             'pixelate'  => $pixelate,
             'greyscale' => $greyscale,
-            'modified'  => $last_modified
+            'modified'  => $last_modified,
+            'invert'    => $invert
         );
 
         // Start with a 1 character action flag
@@ -274,6 +276,10 @@ class Plugin_transform extends Plugin
 
         if ($pixelate) {
             $image->pixelate($pixelate);
+        }
+
+        if ($invert) {
+            $image->invert();
         }
 
         // Positioning options via ordered pipe settings:

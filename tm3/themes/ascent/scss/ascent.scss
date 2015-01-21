@@ -42,6 +42,7 @@ $linkActiveColor: $orange;
 @import 'replicator';
 @import 'table';
 @import 'file';
+@import 'revisions';
 @import 'metrics';
 @import 'third-party';
   @import 'vendor/picker/default';
@@ -439,6 +440,13 @@ h1, h2, h3, h4, h5, h6 {
     padding-right: 5px;
     position: relative;
     top: 2px;
+  }
+  &.-gray {
+    @include gradient(lighten(#b8b8b8, 5%), darken(#b8b8b8, 5%));
+    border: 1px solid darken(#b8b8b8, 8%);
+    &:hover {
+      @include gradient(#b8b8b8, darken(#b8b8b8, 10%));
+    }
   }
 }
 
@@ -1185,6 +1193,10 @@ code textarea {
     @include gradient(#fff, $inputBackground);
     padding: 8px 10px;
     font-size: 16px;
+    vertical-align: top;
+    small {
+      font-size: 12px;
+    }
   }
 
   tbody tr td {padding:10px;}
@@ -1196,9 +1208,8 @@ code textarea {
   .cell-text input, .cell-date input, .cell-time input {
     @include border-radius(0);
     @include border-box;
-    border:1px solid rgba(0,0,0,.15);
-    box-shadow: inset 0px 1px 2px rgba(0,0,0,.1);
-    padding:.5em 10px;
+    border: none;
+    padding: 0;
     width:100%;
   }
   .cell-date, .cell-time {
@@ -1213,12 +1224,12 @@ code textarea {
     }
     &:hover .icon, :hover .ss-icon {opacity:1;}
   }
+  td small.above, td small.below {
+    display: none;
+  }
   .cell-textarea textarea, .cell-markitup textarea {
     @include border-box;
-    border:1px solid rgba(0,0,0,.15);
-    box-shadow: inset 0px 1px 2px rgba(0,0,0,.1);
-    padding:.5em 10px;
-    min-height:50px;
+    border: none;
     width:100%;
   }
   .grid-delete-row {
@@ -1240,7 +1251,7 @@ code textarea {
     color:#ddd;
     text-shadow:0px 1px 0px #fff;
     font-family: $defaultFont;
-    font-size:24px;
+    font-size: 21px;
     font-weight:lighter;
     padding:2px !important;
     text-align:center;
@@ -1976,5 +1987,59 @@ code textarea {
     .drop-area { width: 40%; }
     padding-left: 40%;
   }
+
+}
+
+
+// tooltip
+// ----------------------------------------------------------------------------
+
+.ui-tooltip {
+  float: left;
+  max-width: 300px;
+  padding: 10px;
+  background: white;
+  @include border-radius(2px);
+  @include border-box;
+  box-shadow: 0px 1px 2px rgba(0,0,0,.1);
+  border: 1px solid $borderColor;
+
+  &:before, &:after {
+    content: '';
+    border: 6px solid transparent;
+    border-bottom-color: white;
+    position: absolute;
+    top: -12px;
+    left: 10px;
+    z-index: 2;
+  }
+
+  &:after {
+    border-bottom-color: darken($borderColor, 10);
+    z-index: 1;
+    top: -13px;
+  }
+}
+
+.ui-helper-hidden-accessible { display: none; }
+
+
+// static file generator
+// ----------------------------------------------------------------------------
+
+.static-file-list {
+
+  .status {
+    padding-bottom: 0;
+  }
+
+  .ss-icon { 
+    display: inline-block;
+    font-size: 16px;
+    margin: 2px 0 0 0;
+    color: #aaa;
+  }
+
+  .success .ss-icon { color: $green; }
 
 }

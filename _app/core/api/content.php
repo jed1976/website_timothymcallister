@@ -124,4 +124,32 @@ class Content
         
         return self::$fetched_content[$url_hash];
     }
+    
+    
+    /**
+     * Finds content by path
+     * 
+     * @param string  $path  Path to use to look for content
+     * @return array|false
+     */
+    public static function find($path)
+    {
+        $hash = Debug::markStart('content', 'finding');
+        
+        // ensure it starts with /
+        $path = Path::tidy('/' . $path);
+        
+        ContentService::loadCache();
+        $urls = ContentService::$cache['urls'];
+        
+        foreach ($urls as $url => $data) {
+            if ($data['path'] === $path) {
+                return Content::get($url, false, false);
+            }
+        }
+        
+        Debug::markEnd($hash);
+        
+        return false;
+    }
 }
