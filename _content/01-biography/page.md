@@ -3,16 +3,16 @@ page_icon: biography
 page_id: biography
 theme: dark
 title: Biography
-artwork: '{{ _site_root }}assets/img/tim-7.jpg'
+artwork: /assets/img/tim-7.jpg
 _fieldset: biography
 _template: biography
 pdfs:
   - 
     label: Short Biography
-    pdf: '{{ _site_root }}assets/docs/Timothy-McAllister-Biography-Short.docx'
+    pdf: /assets/docs/Timothy-McAllister-Biography-Short.docx
   - 
     label: Full Biography
-    pdf: '{{ _site_root }}assets/docs/Timothy-McAllister-Biography-Full.docx'
+    pdf: /assets/docs/Timothy-McAllister-Biography-Full.docx
 vertical_position: top
 horizontal_position: right
 quote_position: left
