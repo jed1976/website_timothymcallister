@@ -4,6 +4,11 @@ class Hooks_markitup extends Hooks
 
 	public function control_panel__add_to_head()
 	{
+
+		if (URL::getCurrent() != '/publish' || URL::getCurrent() != '/member') {
+			return;
+		}
+
 		$config = array(
 			'max_files'   => 1,
 			// these will get changed by JS
@@ -11,6 +16,7 @@ class Hooks_markitup extends Hooks
 			'destination' => 'UPLOAD_PATH', 
 			'browse'      => false
 		);
+
 		$fieldtype = Fieldtype::render_fieldtype('file', 'markituploader', $config, null, null, 'markituploader', 'markituploader');
 
 		$template = File::get($this->getAddonLocation() . 'views/modal.html');

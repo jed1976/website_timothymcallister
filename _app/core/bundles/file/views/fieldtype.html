@@ -1,5 +1,5 @@
 <div
-	id="{{ field_id }}"
+	id="%%field_id%%"
 	class="file-field-container empty"
 	data-config='{
 		{{ if allow_browse }}"browse": "{{ browse_url }}",{{ /if }}
@@ -10,8 +10,8 @@
 
 	<div
 		class="drop-area"
-		data-id="{{ field_id }}"
-		data-destination="upload?destination={{ destination }}&amp;id={{ field_id }}{{ if resize }}&amp;{{ resize }}{{ /if }}"
+		data-id="%%field_id%%"
+		data-destination="upload?destination={{ destination }}&amp;id=%%field_id%%{{ if resize }}&amp;{{ resize }}{{ /if }}"
 	>
 		<div class="helper-text placeholder"><span class="ss-icon">importfile</span> {{ localization fetch="upload_file" }}</div>
 		<div class="helper-text drop-text"><span class="ss-icon">down</span> {{ localization fetch="drop_your_file" }}!</div>
@@ -24,12 +24,12 @@
 
 	<div class="existing-files"></div>
 
-	<input type="hidden" name="{{ field_name }}" class="file-values" value="" />
+	<input type="hidden" name="%%field_name%%" class="file-values" value="" />
 
 	{{# Don't output a script in the Grid. #}}
 	{{ if field_id != "rename_me" }}
 	<script>
-		$('#{{ field_id }}').statamicFile({
+		$('#%%field_id%%').statamicFile({
 			existingFiles: {{ if has_data }}[
 				{{ field_data }}
 					{
