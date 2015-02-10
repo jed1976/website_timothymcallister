@@ -19,6 +19,9 @@
       var content_type = "<?php echo Config::getContentType(); ?>";
   </script>
   <script type="text/javascript" src="<?php echo Path::tidy(Config::getSiteRoot().'/'.$app->config['theme_path'])?>js/ascent.min.js?v=1.8.2"></script>
+  <script type="text/javascript">
+	  Statamic.triggerUrl = "<?php echo URL::prependSiteRoot('TRIGGER'); ?>";
+  </script>
   <?php echo Hook::run('control_panel', 'add_to_head', 'cumulative') ?>
 </head>
 <body id="<?php echo $route; ?>">

@@ -10,7 +10,10 @@ class Hooks_redactor extends Hooks
         $this->authCheck();
 
         $files = _Upload::uploadBatch(Request::get('path'), 'file');
-        $return = array('filelink' => $files[0]['path']);
+        $return = array(
+	        'filename' => $files[0]['name'],
+	        'filelink' => $files[0]['path']
+        );
 
         echo stripslashes(json_encode($return));
     }
@@ -28,7 +31,8 @@ class Hooks_redactor extends Hooks
                 $image = Path::toAsset($image);
                 $images[] = array(
                     'thumb' => $image,
-                    'image' => $image
+                    'image' => $image,
+	                'title' => basename($image)
                 );
             }
         }

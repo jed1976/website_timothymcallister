@@ -26,6 +26,10 @@ function isCurlEnabled()
 
 function doStatamicVersionCheck($app)
 {
+  if ( ! extension_loaded('mcrypt')) {
+	  throw new FatalException('You must have the mcrypt PHP extension installed.');
+  }
+
   // default values
   $app->config['latest_version_url'] = '';
   $app->config['latest_version']   = '';

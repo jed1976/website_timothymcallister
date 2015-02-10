@@ -201,7 +201,7 @@ class File
      * @return boolean
      */
     public static function inBasePath($path) {
-        return stripos($path, BASE_PATH);
+        return stripos($path, BASE_PATH) !== false;
     }
 
     /**

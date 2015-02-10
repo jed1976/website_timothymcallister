@@ -1232,6 +1232,10 @@ code textarea {
     border: none;
     width:100%;
   }
+  .cell-text:hover, .cell-date:hover, .cell-time:hover, .cell-textarea:hover {
+    background: lighten($inputBackground, 3);
+    input, textarea { background: lighten($inputBackground, 3); }
+  }
   .grid-delete-row {
     display: none;
     vertical-align: middle;
@@ -1983,11 +1987,15 @@ code textarea {
     width: 100%;
   }
 
-  .max-files-reached {
-    .drop-area { width: 40%; }
-    padding-left: 40%;
+  .existing-files {
+    text-align: center;
   }
 
+  .file-field-container .existing-files .dz-preview {
+    display: inline-block;
+    margin-left: 0;
+    float: none;
+  }
 }
 
 
