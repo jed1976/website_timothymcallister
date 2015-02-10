@@ -4,6 +4,16 @@ class Fieldtype_file extends Fieldtype
 
 	public function render()
 	{
+		// Generate a hash unique to this field's config and data
+		$hash = Helper::makeHash($this->field_config, $this->field_data);
+
+		// If we've already saved the output, grab it from blink's cache 
+		// and avoid further processing.
+		if ($this->blink->exists($hash)) {
+			$html = $this->blink->get($hash);
+			return $this->renderFieldReplacements($html);
+		}
+
 		// Let's make sure they set an upload destination
 		if (array_get($this->field_config, 'destination', false) === false) {
 			throw new Exception("You need to set a destination for your File field.");
@@ -51,9 +61,27 @@ class Fieldtype_file extends Fieldtype
 			'file_thumb'   => $this->tasks->defaultFileThumbnail(),
 			'resize'       => $resize
 		);
+
+		// Get the view template from the file
 		$template = File::get($this->getAddonLocation() . 'views/fieldtype.html');
 
-		return Parse::template($template, $vars);
+		// Parse it
+		$html = Parse::template($template, $vars);
+
+		// Save it to cache for other similar fields
+		$this->blink->set($hash, $html);
+
+		// Output!
+		return $this->renderFieldReplacements($html);
+	}
+
+
+	private function renderFieldReplacements($html)
+	{
+		$html = str_replace('%%field_name%%', $this->fieldname, $html);
+		$html = str_replace('%%field_id%%', $this->field_id, $html);
+
+		return $html;
 	}
 
 

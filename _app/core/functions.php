@@ -143,6 +143,16 @@ function array_map_deep($array, $callback)
     return $new;
 }
 
+function array_flatten(array $array) {
+    $return = array();
+
+    array_walk_recursive($array, function($a) use (&$return) {
+        $return[] = $a;
+    });
+
+    return $return;
+}
+
 /**
  * Dump the given value and kill the script.
  *

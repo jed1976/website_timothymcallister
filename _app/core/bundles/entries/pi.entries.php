@@ -57,7 +57,16 @@ class Plugin_entries extends Plugin
         // total them up
         $total = 0;
         foreach ($content_set->get(false, false) as $content) {
-            if (!isset($content[$field]) || !is_numeric($content[$field])) {
+            if (!isset($content[$field])) {
+                continue;
+            }
+
+            // contains a comma? *might* be a number... strip them out.
+            if (strpos($content[$field], ',')) {
+                $content[$field] = str_replace(',', '', $content[$field]);
+            }
+
+            if (!is_numeric($content[$field])) {
                 continue;
             }
             
@@ -482,7 +491,7 @@ class Plugin_entries extends Plugin
         }
         
         // determine folder
-        $folders = array('folders' => $this->fetchParam(array('folder', 'folders'), $current_folder));
+        $folders = array('folders' => $this->fetchParam(array('folder', 'folders', 'from'), $current_folder));
 
         // determine filters
         $filters = array(

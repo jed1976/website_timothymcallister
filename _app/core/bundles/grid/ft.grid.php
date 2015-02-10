@@ -115,6 +115,11 @@ class Fieldtype_grid extends Fieldtype
             $default  = array_get($cell_field_config, 'default', '');
             $name     = $this->field . '][' . $index . '][' . $cell_field_name;
 
+            // This makes the config a little different from "real" fields
+            // If a fieldtype is leveraging caching, one of these fields will throw it off.
+            // Making this a bit more unique will prevent that.
+            $cell_field_config['grid_placeholder_row'] = true;
+
             $row .= "<td class='cell-{$celltype}' data-default='{$default}'>" . Fieldtype::render_fieldtype($celltype, $name, $cell_field_config, $default, null, '[yaml]', 'rename_me') . "</td>";
         }
         $row .= "</tr>\n";

@@ -334,26 +334,16 @@ class Helper
      */
     public static function makeHash()
     {
-        $hash = Debug::markStart('math', 'hashing');
-        $args = func_get_args();
-        $data = array();
-        
-        // loop through arguments, adding flattened versions to $data
-        foreach ($args as $arg) {
-            if (is_array($arg)) {
-                array_push($data, join('|', $arg));
-            } elseif (is_bool($arg)) {
-                array_push($data, ($arg) ? 'true' : 'false');
-            } else {
-                array_push($data, $arg);
-            }
-        }
-        
+        $mark = Debug::markStart('math', 'hashing');
+
+        $data = array_flatten(func_get_args());
+
         // return a hash of the flattened $data array
-        $result = md5(join('%', $data));
-        Debug::markEnd($hash);
+        $hash = md5(join('%', $data));
+
+        Debug::markEnd($mark);
         
-        return $result;
+        return $hash;
     }
 
 

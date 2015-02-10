@@ -180,7 +180,8 @@ class Fieldtype_suggest extends Fieldtype
 
             $member_set = MemberService::getMembers();
             $member_set->filter(array(
-                'role'   => array_get($config, 'role')
+                'role'   => array_get($config, 'role'),
+                'conditions'  => trim(array_get($config, 'conditions'))
             ));
             $members = $member_set->get();
 
@@ -217,8 +218,10 @@ class Fieldtype_suggest extends Fieldtype
             'dropdownParent' => 'body'
         ));
 
+        $required_str = ($this->is_required) ? 'required' : '';
+
         $html = "<div id='$this->field_id' class='suggest-field-container' data-config='$options'>";
-        $html .= "<select name='{$this->fieldname}{$multiple_array_holder}' tabindex='{$this->tabindex}' $multiple_string $placeholder_string class='suggest'>\n";
+        $html .= "<select {$required_str} name='{$this->fieldname}{$multiple_array_holder}' tabindex='{$this->tabindex}' $multiple_string $placeholder_string class='suggest'>\n";
 
         $is_indexed = (array_values($suggestions) === $suggestions);
 
