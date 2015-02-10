@@ -57,7 +57,7 @@ class Fieldtype_file extends Fieldtype
 			'field_config' => $this->field_config,
 			'destination'  => $this->destination,
 			'allow_browse' => $allow_browse,
-			'browse_url'   => URL::assemble(Config::getSiteRoot(), Config::get('admin_path') . '.php/files?config=' . urlencode(Helper::encrypt(serialize($this->field_config)))),
+			'browse_url'   => URL::assemble(Config::getSiteRoot(), Config::get('admin_path') . '.php/files?config=' . rawurlencode(Helper::encrypt(serialize($this->field_config)))),
 			'file_thumb'   => $this->tasks->defaultFileThumbnail(),
 			'resize'       => $resize
 		);
@@ -96,8 +96,8 @@ class Fieldtype_file extends Fieldtype
 			}
 		}
 
-		// Turn an array with one key into a string
-		if (count($data) == 1){
+		// Turn an array with one key into a string unless we want to force it into an array
+		if (count($data) == 1 && !array_get($this->settings, 'force_array', false)){
 			$data = $data[0];
 		}
 		// Turn an empty array into an empty string

@@ -44,7 +44,9 @@ class Parse
         // check for parser, create if needed
         if (!isset(self::$parsers['markdown'])) {
             if (strtolower(Config::get('markdown_parser', 'standard')) === "parsedown") {
-                self::$parsers['markdown'] = new ParsedownExtra();
+                $parser = new ParsedownExtra();
+	            $parser->setUrlsLinked(Config::get('markdown:convert_urls_to_links', true));
+
             } else {
                 $parser = new MarkdownExtra;
 
@@ -54,9 +56,9 @@ class Parse
                 $parser->predef_abbr       = Config::get('markdown:predefined_abbreviations', array());
                 $parser->code_class_prefix = Config::get('markdown:code_class_prefix', '');
                 $parser->code_attr_on_pre  = Config::get('markdown:code_attr_on_pre', false);
-
-                self::$parsers['markdown'] = $parser;
             }
+
+            self::$parsers['markdown'] = $parser;
         }
 
         // parse for markdown

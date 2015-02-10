@@ -17,7 +17,7 @@ class Tasks_file extends Tasks
 		);
 		$template = File::get($this->getAddonLocation() . 'views/modal.html');
 
-		return Parse::template($template, $vars);
+		return Parse::contextualTemplate($template, $vars, Config::getAll());
 	}
 
 

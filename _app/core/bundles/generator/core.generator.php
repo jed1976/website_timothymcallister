@@ -148,6 +148,19 @@ class Core_generator extends Core
 		return array('success' => true);
 	}
 
+	/**
+	 * Generates all the static things all at once
+	 */
+	public function generateAllTheThings() {
+		$files = $this->generateFileList();
+
+		foreach ($files['files'] as $file) {
+		    $this->generatePage(array_get($file, 'url'));
+		}
+
+		$this->copyAssets();
+	}
+
 
 	/**
 	 * Gets data from the Cache

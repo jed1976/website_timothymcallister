@@ -4,8 +4,7 @@ class Hooks_markitup extends Hooks
 
 	public function control_panel__add_to_head()
 	{
-
-		if (URL::getCurrent() != '/publish' || URL::getCurrent() != '/member') {
+		if (URL::getCurrent(false) != '/publish' && URL::getCurrent(false) != '/member') {
 			return;
 		}
 

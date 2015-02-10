@@ -14,7 +14,7 @@
 					<div class="file" data-filename="{{ value }}">
 						<img 
 							src="{{ default_thumbnail }}" 
-							{{ if image }}data-src="/TRIGGER/file/render_thumbnail?path={{ value }}"{{ /if }} 
+							{{ if image }}data-src="{{ _site_root }}TRIGGER/file/render_thumbnail?path={{ value }}"{{ /if }}
 							alt="" width="125" height="125" 
 						/>
 						<div class="filename"><a href="{{ value }}" target="_blank" title="{{ value }}">{{ display_name }}</a></div>

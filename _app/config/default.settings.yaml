@@ -20,7 +20,7 @@ _theme_cache_bust: false
 _transform_destination: assets/img/resized
 _allow_php: false
 _yaml_mode: loose
-_markdown_parser: parsedown
+_markdown_parser: standard
 _parse_order:
   - content
   - tags

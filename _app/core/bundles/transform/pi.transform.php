@@ -312,6 +312,6 @@ class Plugin_transform extends Plugin
             throw new Exception('Could not write new images. Try checking your file permissions.');
         }
 
-        return File::cleanURL($new_image_path);
+	    return File::cleanURL(URL::prependSiteRoot($new_image_path));
     }
 }

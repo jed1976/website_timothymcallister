@@ -355,7 +355,7 @@ class Helper
      */
     public static function encrypt($string)
     {
-        return trim(base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, substr(Cookie::getSecretKey(), 0, 32), $string, MCRYPT_MODE_ECB, mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB), MCRYPT_RAND))));
+	    return Encryption::encrypt($string);
     }
 
 
@@ -367,7 +367,7 @@ class Helper
      */
     public static function decrypt($string)
     {
-        return trim(mcrypt_decrypt(MCRYPT_RIJNDAEL_256, substr(Cookie::getSecretKey(), 0, 32), base64_decode($string), MCRYPT_MODE_ECB, mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB), MCRYPT_RAND)));
+	    return Encryption::decrypt($string);
     }
 
 
