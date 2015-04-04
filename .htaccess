@@ -35,6 +35,21 @@ RewriteRule ^.*/?\.git+ - [F,L]
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)\/(\?.*)?$ $1$2 [R=301,L]
 
+# ------------------------------------------------------------------------------
+# Custom
+# ------------------------------------------------------------------------------
+# Redirect old urls to new ones
+RewriteRule ^/?(applause/(.*))$ applause [R=301,L]
+RewriteRule ^/?(discography(.*))$ recordings [R=301,L]
+RewriteRule ^/?(schedule(.*))$ performances [R=301,L]
+
+# Redirect /performances
+RewriteCond %{QUERY_STRING} !year [NC]
+RewriteCond %{TIME_YEAR} ^(.*)
+RewriteRule ^/?(performances)$ $1?year=%1 [R=301,L]
+
+# Redirect /recordings/* to recordings
+RewriteRule ^/?(recordings/(.*))$ recordings [R=301,L]
 
 # ------------------------------------------------------------------------------
 # Remove the Index File
@@ -42,4 +57,3 @@ RewriteRule ^(.*)\/(\?.*)?$ $1$2 [R=301,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php [QSA,L]
-
