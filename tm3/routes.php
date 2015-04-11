@@ -853,7 +853,8 @@ $admin_app->post('/publish', function () use ($admin_app) {
   $return = Request::post('return');
 
   if (Request::post('continue')) {
-    $path = rtrim(Path::trimSlashes(str_replace(Config::getContentRoot(), '', Path::tidy($file))), '.' . Config::getContentType());
+    $path = Path::trimSlashes(str_replace(Config::getContentRoot(), '', Path::tidy($file)));
+    $path = preg_replace('/\.' . Config::getContentType() . '$/', '', $path);
     $redirect_url = $admin_app->urlFor('publish') . '?path=' . $path;
     if (strpos(Request::getReferrer(), 'return=')) { // maintain the 'return' in the URL
       $return_uri = substr($return, strlen($app->request()->getRootUri()));

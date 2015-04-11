@@ -130,7 +130,7 @@ class _Upload
             $height  = Request::get('height', null);
             $ratio   = Request::get('ratio', true);
             $upsize  = Request::get('upsize', false);
-            $quality = Request::get('quality', '75'); 
+            $quality = Request::get('quality', Config::get('transform_quality'));
         }
   
         // If $files[$id][0] exists, it means there's an array of images.
