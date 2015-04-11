@@ -1776,10 +1776,6 @@ code textarea {
 .input-location {
   overflow: hidden;
 
-  & > label {
-    float: left;
-  }
-
   .map {
     -webkit-transition-property: height;
     -moz-transition-property: height;
@@ -1800,6 +1796,12 @@ code textarea {
     border: 1px solid #ccc;
     position: relative;
     z-index: 10; // magic number to prevent zoom buttons from overlapping redactor fullscreen mode
+  }
+
+  .below {
+    display: block;
+    clear: both;
+    padding-top: 5px;
   }
 
   .entry {

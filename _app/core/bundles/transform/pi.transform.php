@@ -90,7 +90,7 @@ class Plugin_transform extends Plugin
         $pos_x  = $this->fetchParam('pos_x', 0, 'is_numeric');
         $pos_y  = $this->fetchParam('pos_y', 0, 'is_numeric');
 
-        $quality = $this->fetchParam('quality', '75', 'is_numeric');
+        $quality = $this->fetchParam('quality', Config::get('transform_quality'), 'is_numeric');
 
 
         /*

@@ -18,6 +18,7 @@ _content_type: markdown
 _enable_smartypants: true
 _theme_cache_bust: false
 _transform_destination: assets/img/resized
+_transform_quality: 100
 _allow_php: false
 _yaml_mode: loose
 _markdown_parser: standard

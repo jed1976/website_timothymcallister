@@ -77,7 +77,7 @@ class Fieldtype_suggest extends Fieldtype
                     $vs[] = array_get($v, $key);
                 }
                 $values = $vs;
-            }            
+            }
 
             $suggestions = array_merge($suggestions, $values);
 
@@ -240,7 +240,7 @@ class Fieldtype_suggest extends Fieldtype
             $value = $is_indexed ? $label : $value; #allows setting custom values and labels
 
             if ($multiple && is_array($field_data) ) {
-                $selected = in_array($value, $field_data) ? " selected " : '';
+                $selected = in_array($value, $field_data, true) ? " selected " : '';
             } else {
                 $selected = $field_data == $value ? " selected " : '';
             }
