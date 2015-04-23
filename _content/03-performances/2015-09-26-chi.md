@@ -1,0 +1,8 @@
+---
+title: Chicago Symphony Orchestra
+event_time: 08:00 PM
+location: Chicago Symphony Center
+latitude: "41.878988"
+longitude: "-87.625065"
+url: http://cso.org/TicketsAndEvents/EventDetails.aspx?eid=7107
+---
