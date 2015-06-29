@@ -10,7 +10,7 @@
       <ul>
         <?php echo Hook::run('control_panel', 'add_to_status_bar', 'cumulative', null, $path); ?>
         <li>
-          <?php print Fieldtype::render_fieldtype('status', 'status', array('display' => 'status'), $status, tabindex());?>
+          <?php print Fieldtype::render_fieldtype('status', 'status', array('display' => 'status'), @$status, tabindex());?>
         </li>
         <li>
           <a href="#" class="faux-submit">
@@ -37,7 +37,7 @@
       <input type="hidden" name="page[original_datestamp]" value="<?php print $original_datestamp ?>" />
       <input type="hidden" name="page[original_timestamp]" value="<?php print $original_timestamp ?>" />
       <input type="hidden" name="page[original_numeric]" value="<?php print $original_numeric ?>" />
-      <input type="hidden" name="return" value="<?php print $return ?>" />
+      <input type="hidden" name="return" value="<?php print @$return ?>" />
 
       <?php if (isset($new)): ?>
         <input type="hidden" name="page[new]" value="1" />

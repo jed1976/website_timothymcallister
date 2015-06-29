@@ -18,7 +18,7 @@ class Fieldtype_grid extends Fieldtype
 
         $max_rows_attr = ($max_rows) ? " data-max-rows='$max_rows'" : '';
         $min_rows_attr = ($min_rows) ? " data-min-rows='$min_rows'" : '';
-        $starting_rows = array_get($this->field_config, 'starting_rows');
+        $starting_rows = array_get($this->field_config, 'starting_rows', 1);
 
         // create header row
         // -------------------------------------------------------------------------
@@ -34,7 +34,15 @@ class Fieldtype_grid extends Fieldtype
                 $instructions = array_get($cell_field_config, 'instructions');
                 
                 if ($instructions) {
-                    $html .= "<small>" . htmlspecialchars($instructions) . "</small>";
+                    if (is_array($instructions)) {
+                        $instructions = htmlspecialchars(array_get($instructions, 'above')) 
+                            . '<br />' 
+                            . array_get($instructions, 'below');
+                    } else {
+                        $instructions = htmlspecialchars($instructions);
+                    }
+
+                    $html .= "<small>" . $instructions . "</small>";
                 }
 
             $html .= "</th>";
@@ -48,12 +56,11 @@ class Fieldtype_grid extends Fieldtype
         $html .= "<tbody>";
 
         # rows to render
-        if ($starting_rows && $starting_rows > $min_rows) {
+        $rows_to_render = 0;
+        if ($starting_rows !== 0 && $starting_rows > $min_rows) {
             $rows_to_render = $starting_rows;
-        } elseif ($min_rows) {
+        } elseif ($min_rows > 0) {
             $rows_to_render = $min_rows;
-        } else {
-            $rows_to_render = 1;
         }
 
         # render the rows

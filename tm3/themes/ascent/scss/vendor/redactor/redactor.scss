@@ -17,21 +17,14 @@
 .redactor-box {
   position: relative;
   overflow: visible;
-  background: #fff;
   margin-bottom: 24px;
 }
-.redactor-box iframe,
 .redactor-box textarea {
   display: block;
   position: relative;
   margin: 0;
   padding: 0;
   width: 100%;
-}
-.redactor-box iframe {
-  border: 1px solid #eee;
-}
-.redactor-box textarea {
   overflow: auto;
   outline: none;
   border: none;
@@ -45,25 +38,31 @@
 .redactor-box textarea:focus {
   outline: none;
 }
+.redactor-editor,
+.redactor-box {
+  background: #fff;
+}
 /*
 	Z-index setup
 */
 .redactor-editor,
 .redactor-box,
 .redactor-box textarea {
-  z-index: auto !important;
+  z-index: auto;
 }
 .redactor-box-fullscreen {
-  z-index: 1052 !important;
+  z-index: 1051;
 }
-.redactor-toolbar,
+.redactor-toolbar {
+  z-index: 100;
+}
 .redactor-dropdown {
-  z-index: 1050 !important;
+  z-index: 1052;
 }
 #redactor-modal-overlay,
 #redactor-modal-box,
 #redactor-modal {
-  z-index: 1051 !important;
+  z-index: 1053;
 }
 /*
 	Resize
@@ -91,6 +90,12 @@ body .redactor-box-fullscreen {
   width: 100%;
 }
 /*
+	Utils
+*/
+.body-redactor-hidden {
+  overflow: hidden;
+}
+/*
 	Editor
 */
 .redactor-editor {
@@ -107,6 +112,9 @@ body .redactor-box-fullscreen {
 }
 .redactor-editor:focus {
   outline: none;
+}
+.toolbar-fixed-box + .redactor-editor {
+  padding-top: 32px !important;
 }
 /*
 	Placeholder
@@ -197,6 +205,10 @@ body .redactor-box-fullscreen {
   background-color: #ccc;
   color: #444;
 }
+.redactor-toolbar li a:focus {
+  background: #000;
+  color: #fff;
+}
 .redactor-toolbar li a.redactor-btn-image {
   width: 14px;
   height: 14px;
@@ -218,6 +230,12 @@ body .redactor-box-fullscreen {
   outline: none;
   background-color: transparent !important;
   cursor: default;
+}
+/*
+	CodeMirror
+*/
+.redactor-box .CodeMirror {
+  display: none;
 }
 /*
 	Icons
@@ -339,7 +357,7 @@ body .redactor-box-fullscreen {
 */
 .redactor-toolbar-tooltip {
   position: absolute;
-  z-index: 100;
+  z-index: 1054;
   text-align: center;
   top: 0;
   left: 0;
@@ -382,6 +400,10 @@ body .redactor-box-fullscreen {
   background-color: #1f78d8;
   color: #fff !important;
   text-decoration: none;
+}
+.redactor-dropdown a.selected {
+  background-color: #000;
+  color: #fff;
 }
 /*
 	IMAGE BOX
@@ -538,6 +560,7 @@ body .redactor-box-fullscreen {
   overflow-y: auto;
 }
 #redactor-modal {
+  outline: 0;
   position: relative;
   margin: auto;
   margin-bottom: 20px;
@@ -647,7 +670,7 @@ body .redactor-box-fullscreen {
   padding-left: 0;
   list-style: none;
   max-height: 250px;
-  overflow-x: scroll;
+  overflow-x: auto;
 }
 #redactor-modal #redactor-modal-list li {
   border-bottom: 1px solid #ddd;
@@ -818,9 +841,6 @@ body .redactor-box-fullscreen {
 .redactor-editor hr {
   margin-bottom: 15px;
 }
-.redactor-editor iframe {
-  width: auto;
-}
 .redactor-editor blockquote {
   margin-left: 1.6em !important;
   padding-left: 0;
@@ -839,6 +859,12 @@ body .redactor-box-fullscreen {
   padding: 0;
   padding-left: 2em;
   border: none;
+}
+.redactor-editor ol ol li {
+  list-style-type: lower-alpha;
+}
+.redactor-editor ol ol ol li {
+  list-style-type: lower-roman;
 }
 .redactor-editor dl dt {
   font-weight: bold;
@@ -887,7 +913,7 @@ body .redactor-box-fullscreen {
 .redactor-editor h5,
 .redactor-editor h6 {
   font-weight: bold;
-  color: #0000;
+  color: #000;
   padding: 0;
   background: none;
   text-rendering: optimizeLegibility;
@@ -919,24 +945,95 @@ body .redactor-box-fullscreen {
   font-size: 12px;
   text-transform: uppercase;
 }
-
-/*
-  GRID FIELD
-*/
-
-.grid td.cell-redactor {
-  padding: 0;
-  .redactor-toolbar {
-    background: none;
-    border-radius: 0;
-    border: none;
-  }
-  .redactor-editor {
-    padding: 10px;
-    box-shadow: none !important;
-    border: none;
-    border-top: 1px solid #eaeaea;
-
-  }
-
+.redactor-box-contrast .redactor-editor {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+}
+.redactor-box-contrast .redactor-editor h1,
+.redactor-box-contrast .redactor-editor h2,
+.redactor-box-contrast .redactor-editor h3,
+.redactor-box-contrast .redactor-editor h4,
+.redactor-box-contrast .redactor-editor h5,
+.redactor-box-contrast .redactor-editor h6,
+.redactor-box-contrast .redactor-editor blockquote,
+.redactor-box-contrast .redactor-editor a {
+  color: #fff;
+}
+.redactor-box-contrast .redactor-editor pre {
+  background: none;
+}
+.redactor-box-contrast .redactor-editor table td,
+.redactor-box-contrast .redactor-editor table th {
+  border-color: #fff;
+}
+.redactor-box-contrast .redactor-toolbar {
+  background: #000;
+  box-shadow: none;
+}
+.redactor-box-contrast .redactor-toolbar li a {
+  color: #fff;
+}
+.redactor-box-contrast .redactor-toolbar li a:active,
+.redactor-box-contrast .redactor-toolbar li a.redactor-act {
+  outline: none;
+  background-color: #fff;
+  color: #000;
+}
+.redactor-dropdown-contrast {
+  background: #000;
+  box-shadow: none;
+  border: 1px solid #fff;
+}
+.redactor-dropdown-contrast a {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+.redactor-modal-contrast {
+  background: #000;
+  color: #fff;
+}
+.redactor-modal-contrast #redactor-modal-close:hover {
+  color: #fff;
+}
+.redactor-modal-contrast footer button {
+  background-color: #000;
+  color: #fff;
+}
+.redactor-modal-contrast footer button:hover {
+  color: #000;
+  background: #fff;
+}
+.redactor-modal-contrast #redactor-modal-list li {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+.redactor-modal-contrast #redactor-modal-list a {
+  color: #fff;
+}
+.redactor-modal-contrast #redactor-modal-list a:hover {
+  background-color: #fff;
+}
+.redactor-modal-contrast #redactor-modal-tabber a {
+  border-color: #fff;
+  color: #fff;
+}
+.redactor-modal-contrast #redactor-modal-tabber a:hover,
+.redactor-modal-contrast #redactor-modal-tabber a.active {
+  background-color: #fff;
+  border-color: #fff;
+  color: #000;
+}
+.redactor-modal-contrast #redactor-droparea {
+  border-color: #fff;
+}
+.redactor-modal-contrast #redactor-droparea.drag-hover,
+.redactor-modal-contrast #redactor-droparea.drag-drop {
+  background: none;
+}
+.redactor-modal-contrast #redactor-droparea-placeholder {
+  color: #fff;
+}
+.redactor-voice-label {
+  display: none;
 }
