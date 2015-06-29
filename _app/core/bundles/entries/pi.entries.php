@@ -118,7 +118,10 @@ class Plugin_entries extends Plugin
             return Parse::template($this->content, array('no_results' => true));
         }
 
-        return Parse::tagLoop($this->content, $content_set->get(), false, $this->context);
+        // should content get parsed?
+        $include_content = $this->fetchParam('include_content', true, false, true);
+
+        return Parse::tagLoop($this->content, $content_set->get($include_content), true, $this->context);
     }
 
 
@@ -563,7 +566,9 @@ class Plugin_entries extends Plugin
             
             // post-sort supplement
             $content_set->supplement(array(
-                'group_by_date' => trim($this->fetchParam("group_by_date", null, null, false, false))
+                'date_offset'   => $this->fetchParam('date_offset', null, null, false, false),
+                'group_by_date' => trim($this->fetchParam("group_by_date", null, null, false, false)
+                )
             ), true);
 
             // store content as blink content for future use

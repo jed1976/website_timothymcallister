@@ -187,7 +187,7 @@ class Plugin_transform extends Plugin
             // Method checks to see if folder exists before creating it
             Folder::make($destination);
 
-            $stripped_image_path = Path::tidy($destination . '/' . basename($stripped_image_path));
+            $stripped_image_path = Path::tidy($destination . '/' . urlencode(basename($stripped_image_path)));
         }
 
         // Reassembled filename with all flags filtered and delimited

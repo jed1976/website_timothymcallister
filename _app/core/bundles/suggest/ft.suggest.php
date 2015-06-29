@@ -154,12 +154,14 @@ class Fieldtype_suggest extends Fieldtype
             $taxonomy_set->contextualize($folder);
             $taxonomies = $taxonomy_set->get();
 
+            $taxonomy_opts = array();
 
-            foreach ($taxonomies as $key => $value) {
-                $taxonomies[$key] = $value['name'];
+            foreach ($taxonomies as $taxonomy) {
+                $taxonomy = $taxonomy['name'];
+                $taxonomy_opts[$taxonomy] = $taxonomy;
             }
 
-            $suggestions = array_merge($suggestions, $taxonomies);
+            $suggestions = array_merge($suggestions, $taxonomy_opts);
         }
 
         /*

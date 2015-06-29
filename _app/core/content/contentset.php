@@ -869,7 +869,8 @@ class ContentSet
             'total_found'         => (isset($given_context['total_found']))         ? $given_context['total_found']         : null,
             'group_by_date'       => (isset($given_context['group_by_date']))       ? $given_context['group_by_date']       : null,
             'inherit_folder_data' => (isset($given_context['inherit_folder_data'])) ? $given_context['inherit_folder_data'] : true,
-            'merge_with_data'     => (isset($given_context['merge_with_data']))     ? $given_context['merge_with_data']     : true
+            'merge_with_data'     => (isset($given_context['merge_with_data']))     ? $given_context['merge_with_data']     : true,
+            'date_offset'         => (isset($given_context['date_offset']))         ? $given_context['date_offset']         : null
         );
 
         // set up helper variables
@@ -923,14 +924,23 @@ class ContentSet
             
             // group by date
             if ($context['group_by_date'] && $data['datestamp']) {
-                $formatted_date = Date::format($context['group_by_date'], $data['datestamp']);
-                
+
+                if (!empty($context['date_offset'])) {
+                    $formatted_date = Date::format($context['group_by_date'], strtotime($context['date_offset'], $data['datestamp']));
+
+                } else {
+                    $formatted_date = Date::format($context['group_by_date'], $data['datestamp']);
+
+                }
+
+
                 if ($formatted_date !== $last_date) {
                     $last_date            = $formatted_date;
                     $data['grouped_date'] = $formatted_date;
                 } else {
                     $data['grouped_date'] = '';
                 }
+                
             }
 
             // loop through content to add data for variables that are arrays
