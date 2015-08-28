@@ -14,7 +14,16 @@ enable_scrim: "1"
 quotes:
   - 
     quote: /quotes/zachary-lewis
+  - 
+    quote: /quotes/kwon-ji-youn
+  - 
+    quote: /quotes/john-adams
+  - 
+    quote: /quotes/hugo-shirley
+  - 
+    quote: /quotes/review-of-prism-quartet
 ---
+
 
 
 
