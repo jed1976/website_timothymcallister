@@ -1803,6 +1803,20 @@ $admin_app->get('/file/delete', function() use ($admin_app){
 
 })->name('delete_file');
 
+$admin_app->get('/url/unique', function() use($admin_app) {
+
+  $folder = Request::get('folder');
+  $url    = Request::get('url');
+  $path   = URL::assemble($folder, $url);
+
+  $data = array('exists' => Content::exists(Path::resolve($path)));
+
+  $response = $admin_app->response();
+  $response['Content-Type'] = 'application/json';
+  $response->body(json_encode($data));
+
+});
+
 
 
 

@@ -47,7 +47,7 @@
         <div class="page-wrapper">
           <?php if (isset($page['children']) && (sizeof($page['children'])> 0)): ?>
             <button class="toggle-children">
-              <span class="ss-icon">downright</span>
+              <span class="ss-icon">directdown</span>
             </button>
           <?php endif; ?>
           <div class="page-primary">
@@ -127,8 +127,13 @@
   <ul class="subpages">
   <?php foreach ($folder as $page):?>
   <?php if (CP_Helper::is_page_visible($page)): ?>
-  <li class="page">
+  <li class="page" data-url="<?php echo $page['url'] ?>">
     <div class="page-wrapper">
+      <?php if (array_get($page, 'children', 0) > 0): ?>
+        <button class="toggle-children">
+          <span class="ss-icon">directdown</span>
+        </button>
+      <?php endif; ?>
       <div class="page-primary">
 
       <!-- PAGE TITLE -->

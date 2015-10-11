@@ -337,6 +337,18 @@ class ContentSet
                                 } elseif (!in_array($values, $field)) {
                                     throw new Exception("Does not fit condition", 0);
                                 }
+
+                            } elseif ($instructions['type'] == "has_all") {
+
+                                if (array_diff($values, $field)) {
+                                    throw new Exception("Does not fit condition", 0);
+                                }
+
+                            } elseif ($instructions['type'] == "has_none") {
+
+                                if (empty(array_diff($values, $field))) {
+                                    throw new Exception("Does not fit condition", 0);
+                                }
                                 
                             // greater than or equal to comparisons
                             } elseif ($instructions['type'] == "greater than or equal to") {

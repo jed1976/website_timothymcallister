@@ -300,6 +300,10 @@ h1, h2, h3, h4, h5, h6 {
   overflow:hidden;
   .status-block {
     float: left;
+    text-overflow: ellipsis;
+    max-width: 50%;
+    white-space: nowrap;
+    overflow: hidden;
   }
   ul {
     @include reset-list;
@@ -1385,9 +1389,12 @@ code textarea {
   }
   .page-primary {
     float:left;
+    text-overflow: ellipsis;
+    max-width: 50%;
+    white-space: nowrap;
+    overflow: hidden;
   }
   .page-extras {
-    float:right;
     text-align:right;
     a {
       line-height: 50px;

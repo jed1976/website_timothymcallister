@@ -43,7 +43,7 @@ class Hooks_member extends Hooks
         $return = Request::get('return', Config::getSiteRoot());
         Auth::logout();
 
-        URL::redirect(URL::assemble(Config::getSiteRoot(), $return));
+        URL::redirect($return);
     }
 
 
@@ -168,25 +168,31 @@ class Hooks_member extends Hooks
         } else {
             // set new member roles
             $member->set('roles', Helper::ensureArray($this->fetchConfig('new_member_roles', array(), null, false, false)));
-            
-            // save member
-            $member->save();
-            
-            // trigger a hook
-            $this->runHook('register', 'call', null, $member);
 
-            // user saved
-            $this->flash->set('register_success', 'Member created.');
-            
-            if ($auto_login) {
-                Auth::login($username, $password);
+            if ($this->runHook('pre_process', 'replace', true, $member)) {
+                // save member
+                $member->save();
+                
+                // trigger a hook
+                $this->runHook('register', 'call', null, $member);
+
+                // user saved
+                $this->flash->set('register_success', 'Member created.');
+                
+                if ($auto_login) {
+                    Auth::login($username, $password);
+                }
+                
+                // run hook
+                $this->runHook('registration_complete', null, null, $member);
+                
+                // redirect to member home
+                URL::redirect($return);
+            } else {
+                $this->runHook('registration_failure', null, null, $member);
+
+                $this->flash->set('register_failure', 'Member creation failed.');
             }
-            
-            // run hook
-            $this->runHook('registration_complete', null, null, $member);
-            
-            // redirect to member home
-            URL::redirect($return);
         }
     }
 

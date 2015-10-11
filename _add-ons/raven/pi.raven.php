@@ -4,7 +4,7 @@ class Plugin_raven extends Plugin {
 
 	public $meta = array(
 		'name'       => 'Raven',
-		'version'    => '2.1.0',
+		'version'    => '2.1.1',
 		'author'     => 'Statamic',
 		'author_url' => 'http://statamic.com'
 	);
@@ -121,6 +121,20 @@ class Plugin_raven extends Plugin {
 
 		return Parse::template($html, $data, array('statamic_view', 'callback'), $this->context);
 
+	}
+
+	/**
+	 * Allows you to output data from the submission
+	 *
+	 * @return string
+	 **/
+	public function submission()
+	{
+		if ( ! $this->flash->exists('submission')) {
+			return;
+		}
+
+		return Parse::contextualTemplate($this->content, $this->flash->get('submission'), $this->context);
 	}
 
 	/**

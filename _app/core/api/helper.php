@@ -464,4 +464,28 @@ class Helper
         // didn't find any matches, must be false
         return false;
     }
+
+    public static function createPaginationData($count, $limit)
+    {
+        $q_strings  = URL::sanitize($_GET);
+        $p_var      = Config::getPaginationVariable();
+        $page       = Request::get($p_var, 1);
+
+        $current_page = (int) min(max(1, $page), max(1, $page));
+
+        $data = array();
+        $data['current_page']       = $current_page;
+        $data['total_items']        = (int) max(0, $count);
+        $data['items_per_page']     = (int) max(1, $limit);
+        $data['total_pages']        = (int) ceil($count / $limit);
+        $data['current_first_item'] = (int) min((($page - 1) * $limit) + 1, $count);
+        $data['current_last_item']  = (int) min($data['current_first_item'] + $limit - 1, $count);
+        $data['offset']             = (int) (($current_page - 1) * $limit);
+        $data['previous_page']      = ($current_page > 1) ? '?' . http_build_query(array_merge($q_strings, array($p_var => $current_page - 1))) : FALSE;
+        $data['next_page']          = ($current_page < $data['total_pages']) ? '?' . http_build_query(array_merge($q_strings, array($p_var => $current_page + 1))) : FALSE;
+        $data['first_page']         = ($current_page === 1) ? FALSE : '?' . http_build_query(array_merge($q_strings, array($p_var => 1)));
+        $data['last_page']          = ($current_page >= $data['total_pages']) ? FALSE : '?' . http_build_query(array_merge($q_strings, array($p_var => $data['total_pages'])));
+
+        return $data;
+    }
 }

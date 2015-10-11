@@ -278,8 +278,9 @@ class Statamic
 
         // current path
         // note: not using API because it's not ready yet
-        $uri     = $_SERVER['REQUEST_URI'];
-        $query   = $_SERVER['QUERY_STRING'];
+        $uri     = array_get($_SERVER, 'REQUEST_URI');
+        $query   = array_get($_SERVER, 'QUERY_STRING');
+
         $current = ($query) ? str_replace("?" . $query, "", $uri) : $uri;
 
         // loop through configured vanity URLs
