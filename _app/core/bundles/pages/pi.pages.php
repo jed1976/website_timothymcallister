@@ -133,21 +133,7 @@ class Plugin_pages extends Plugin
         // count the content available
         $count = $content_set->count();
 
-        $pagination_variable = Config::getPaginationVariable();
-        $page                = Request::get($pagination_variable, 1);
-
-        $data                       = array();
-        $data['total_items']        = (int) max(0, $count);
-        $data['items_per_page']     = (int) max(1, $limit);
-        $data['total_pages']        = (int) ceil($count / $limit);
-        $data['current_page']       = (int) min(max(1, $page), max(1, $page));
-        $data['current_first_item'] = (int) min((($page - 1) * $limit) + 1, $count);
-        $data['current_last_item']  = (int) min($data['current_first_item'] + $limit - 1, $count);
-        $data['previous_page']      = ($data['current_page'] > 1) ? "?{$pagination_variable}=" . ($data['current_page'] - 1) : FALSE;
-        $data['next_page']          = ($data['current_page'] < $data['total_pages']) ? "?{$pagination_variable}=" . ($data['current_page'] + 1) : FALSE;
-        $data['first_page']         = ($data['current_page'] === 1) ? FALSE : "?{$pagination_variable}=1";
-        $data['last_page']          = ($data['current_page'] >= $data['total_pages']) ? FALSE : "?{$pagination_variable}=" . $data['total_pages'];
-        $data['offset']             = (int) (($data['current_page'] - 1) * $limit);
+        $data = Helper::createPaginationData($count, $limit);
 
         return Parse::template($this->content, $data);
     }

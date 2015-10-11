@@ -8,6 +8,18 @@
         <span class="folder"><?php echo $identifier ?></span>
       </div>
       <ul>
+        <?php if (! isset($new)): ?>
+        <li>
+          <a href="<?php echo Url::fromPath($path) ?>" target="_blank">
+              <span class="ss-icon">eye</span>
+              <?php if ($type == "none"): ?>
+                <?php echo Localization::fetch('view_page')?>
+              <?php else: ?>
+                <?php echo Localization::fetch('view_entry')?>
+              <?php endif ?>
+            </a>
+        </li>
+        <?php endif ?>
         <?php echo Hook::run('control_panel', 'add_to_status_bar', 'cumulative', null, $path); ?>
         <li>
           <?php print Fieldtype::render_fieldtype('status', 'status', array('display' => 'status'), @$status, tabindex());?>

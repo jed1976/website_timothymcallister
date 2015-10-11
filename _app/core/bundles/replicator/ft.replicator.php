@@ -130,7 +130,9 @@ class Fieldtype_replicator extends Fieldtype
 		foreach ($fields as $field_name => $field) {
 			$key = "[yaml][{$this->field}][%%replicator_index%%]";
 			$id = $field_name . '_%%replicator_index%%';
-			$type = array_get($field, 'type', 'text');
+			
+			$type  = array_get($field, 'type', 'text');
+			$value = array_get($field, 'default');
 
 			$field['display'] = array_get($field, 'display', Slug::prettify($field_name));
 
@@ -141,7 +143,7 @@ class Fieldtype_replicator extends Fieldtype
 			$fieldtypes[] = array(
 				'type' => $type,
 				'field_name' => $key,
-				'fieldtype' => Fieldtype::render_fieldtype($type, $field_name, $field, null, null, $key, $id)
+				'fieldtype' => Fieldtype::render_fieldtype($type, $field_name, $field, $value, null, $key, $id)
 			);
 		}
 

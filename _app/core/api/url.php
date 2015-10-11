@@ -242,4 +242,10 @@ class URL
 
         return implode($segments, '/');
     }
+
+    public static function fromPath($path)
+    {
+        $url = Path::clean('/'.$path);
+        return preg_replace('/\/page$/', '', $url);
+    }
 }

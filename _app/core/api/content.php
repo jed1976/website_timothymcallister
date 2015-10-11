@@ -26,8 +26,9 @@ class Content
         $folder        = (is_null($folder)) ? '' : $folder;
         $content_path  = Config::getContentRoot() . "/{$folder}";
         $content_type  = Config::getContentType();
+        $path          = Path::tidy("{$content_path}/{$slug}.{$content_type}");
 
-        return file_exists("{$content_path}/{$slug}.{$content_type}");
+        return File::exists($path);
     }
 
 

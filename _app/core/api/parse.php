@@ -326,6 +326,26 @@ class Parse
                     "value" => explode("|", $value)
                 );
             }
+        } else if (strstr($value, "&")) {
+            if (substr($value, 0, 1) == "!") {
+                $item = array(
+                    "kind" => "comparison",
+                    "type" => "has_none",
+                    "value" => explode("&", substr($value, 4))
+                );
+            } elseif (substr($value, 0, 2) == "! ") {
+                $item = array(
+                    "kind" => "comparison",
+                    "type" => "has_none",
+                    "value" => explode("&", substr($value, 4))
+                );
+            } else {
+                $item = array(
+                    "kind" => "comparison",
+                    "type" => "has_all",
+                    "value" => explode("&", $value)
+                );
+            }
         } else {
             if (substr($value, 0, 4) == "not ") {
                 $item = array(

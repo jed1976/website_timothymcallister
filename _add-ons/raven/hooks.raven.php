@@ -159,6 +159,24 @@ class Hooks_raven extends Hooks {
 
 		/*
 		|--------------------------------------------------------------------------
+		| Add Files to POST
+		|--------------------------------------------------------------------------
+		|
+		| Files are people too. Well, no, but they should at least be considered
+		| fields, right? Treating files as fields will make our job easier.
+		|
+		*/
+
+		foreach ($_FILES as $name => $file) {
+			if ($file['success']) {
+				// Set their submission value to true for now.
+				// This will get updated when/if the file is actually uploaded.
+				$submission[$name] = true;
+			}
+		}
+
+		/*
+		|--------------------------------------------------------------------------
 		| Grab formset and collapse settings
 		|--------------------------------------------------------------------------
 		|
@@ -201,6 +219,22 @@ class Hooks_raven extends Hooks {
 		$referrer         = Request::getReferrer();
 		$return           = array_get($hidden, 'return', $referrer);
 		$error_return     = array_get($hidden, 'error_return', $referrer);
+
+		/*
+		|--------------------------------------------------------------------------
+		| Honeypot
+		|--------------------------------------------------------------------------
+		|
+		| Spam sucks. Let's catch them. If the honeypot field is in the submission
+		| we'll just stop right here.
+		|
+		*/
+
+		$honeypot_field = array_get($config, 'honeypot', 'honeypot');
+
+		if (array_get($submission, $honeypot_field)) {
+			URL::redirect(URL::format($return));
+		}
 
 		/*
 		|--------------------------------------------------------------------------
@@ -279,7 +313,9 @@ class Hooks_raven extends Hooks {
 			$upload_destination = array_get($config, 'upload_destination');
 
 			foreach ($files as $name => $file) {
-				$submission[$name] = File::upload($file, $upload_destination);
+				if ($file['success']) {
+					$submission[$name] = File::upload($file, $upload_destination);
+				}
 			}
 		}
 
@@ -366,7 +402,7 @@ class Hooks_raven extends Hooks {
 		$yaml = YAML::parseFile($content['_file']);
 
 		// MERGE!@#!
-		$submission = array_merge($submission, $yaml);
+		$submission = array_merge($yaml, $submission);
 
 		// Update the entry
 		$file_content = File::buildContent($submission, '');
@@ -376,6 +412,9 @@ class Hooks_raven extends Hooks {
 		if (array_get($config, 'send_notification_email', false) === true) {
 			$this->sendEmails($submission, $config, 'update');
 		}
+
+		// Save data to flash for use in raven:submission
+		$this->flash->set('submission', $submission);
 	}
 
 	private function completeNew($submission, $config, $formset_name)
@@ -409,6 +448,9 @@ class Hooks_raven extends Hooks {
 		if ( ! $is_spam && array_get($config, 'send_notification_email', false) === true) {
 			$this->sendEmails($submission, $config);
 		}
+
+		// Save data to flash for use in raven:submission
+		$this->flash->set('submission', $submission);
 	}
 
 	/**
@@ -598,9 +640,11 @@ class Hooks_raven extends Hooks {
 		|
 		|
 		*/
+
+		$globals = Config::getAll();
 		
-		array_walk_recursive($attributes, function(&$value, $key) use ($submission) {
-			$value = Parse::template($value, $submission);
+		array_walk_recursive($attributes, function(&$value, $key) use ($submission, $globals) {
+			$value = Parse::contextualTemplate($value, $submission, $globals);
 		});
 
 		$attributes['email_handler']     = array_get($config, 'email_handler', null);
