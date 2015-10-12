@@ -77,7 +77,12 @@ body.checked { overflow: hidden; }
 
 body.checked #menu-toggle::before { content: "\e610"; }
 
-body.checked #menu { width: 320px; }
+body.checked #menu { width: 100%; }
+
+@media (min-width: 415px)
+{
+    body.checked #menu { width: 320px; }
+}
 
 @media (min-width: 768px)
 {
