@@ -1,5 +1,5 @@
 ---
-title: 'PRISM Quartet and So Percussion: Color Theory Concert'
+title: 'PRISM Quartet and So Percussion: Color Theory Concert #1'
 event_time: 07:30 PM
 location: Kimmel Center
 latitude: "39.946716"
