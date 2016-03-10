@@ -7,23 +7,23 @@ artwork: /assets/img/tim-7.jpg
 _fieldset: biography
 _template: biography
 pdfs:
-  - 
+  -
     label: Short Biography
     pdf: /assets/docs/Timothy-McAllister-Biography-Short.docx
-  - 
+  -
     label: Full Biography
     pdf: /assets/docs/Timothy-McAllister-Biography-Full.docx
 vertical_position: top
 horizontal_position: right
 quote_position: left
 quotes:
-  - 
+  -
     quote: /quotes/review-of-prism-quartet
-  - 
+  -
     quote: /quotes/leone-buyse
-  - 
+  -
     quote: /quotes/michael-segell
-  - 
+  -
     quote: /quotes/jean-marie-londeix
 background_color: '#0F0F0F'
 enable_scrim: "1"
@@ -42,9 +42,9 @@ With the PRISM Quartet, he has appeared with the Pacific Symphony, Boston Modern
 
 McAllister has performed with notable big bands, and in many regional music theater and studio orchestra touring productions, having appeared with numerous entertainers including Broadway icon Patti LuPone. He has also performed behind such jazz greats as saxophonists Jimmy Heath, Rick Margitza, Dave Liebman and trumpeteer Ed Sarath. Since joining PRISM, he has premiered several jazz compositions by composer/performers Greg Osby, Tim Ries, Matt Levy, Tim Berne, and has collaborated with guitarist/composer Ben Monder and drummer Anthony Pinciotti. Upcoming activities in 2014 include crossover projects between PRISM and jazz saxophonists/composers Dave Liebman, Greg Osby, Steve Lehman, Rudresh Mahanthappa, Miguel Zenon and Tim Ries.
 
-A dedicated teacher, McAllister is the newly-appointed Associate Professor of Saxophone at The University of Michigan School of Music, Theatre and Dance, following the legacies of Larry Teal and Donald Sinta, and held the same post at Northwestern University, succeeding the legendary Frederick Hemke, where he also served as Co-Director of the inaugural Institute for New Music from 2012-2014.  Other faculty positions have included Arizona State University’s Herberger Institute School of Music, The University of Arizona School of Music, and SUNY Potsdam’s Crane School of Music. He spends his summers as a distinguished Valade Fellow/Instructor of Saxophone for the Interlochen Center for the Arts.  He has given clinics and recitals at many of the nation’s elite universities and conservatories, and in 2003, he was invited by French virtuoso Claude Delangle to serve as a Guest Professor at the famed Conservatoire National Superieur de Musique in Paris. In 2013, he was a co-founding faculty member of the annual American Saxophone Academy held at the Eastman School of Music, and he is the first American saxophonist to serve as an instructor at the European University for Saxophone in Gap, France in 2015. 
+A dedicated teacher, McAllister is the newly-appointed Associate Professor of Saxophone at The University of Michigan School of Music, Theatre and Dance, following the legacies of Larry Teal and Donald Sinta, and held the same post at Northwestern University, succeeding the legendary Frederick Hemke, where he also served as Co-Director of the inaugural Institute for New Music from 2012-2014.  Other faculty positions have included Arizona State University’s Herberger Institute School of Music, The University of Arizona School of Music, and SUNY Potsdam’s Crane School of Music. He spends his summers as a distinguished Valade Fellow/Instructor of Saxophone for the Interlochen Center for the Arts.  He has given clinics and recitals at many of the nation’s elite universities and conservatories, and in 2003, he was invited by French virtuoso Claude Delangle to serve as a Guest Professor at the famed Conservatoire National Superieur de Musique in Paris. In 2013, he was a co-founding faculty member of the annual American Saxophone Academy held at the Eastman School of Music, and he is the first American saxophonist to serve as an instructor at the European University for Saxophone in Gap, France in 2015.
 
 He holds the Doctor of Musical Arts and other degrees in music education, conducting and performance from The University of Michigan where he studied saxophone with Donald Sinta and conducting with H. Robert Reynolds. He is the only saxophonist to ever receive the School of Music’s most distinguished performance award—the Albert A. Stanley Medal. Alongside composer Derek Bermel, acclaimed countertenor David Daniels, tenor Nicholas Phan and New York Metropolitan Opera coach Howard Watkins, McAllister has been honored with the Paul C. Boylan Award from the Michigan School of Music Alumni Society for his significant contributions to the field of music.
 
 Timothy McAllister is a Conn-Selmer artist, and plays Selmer (Paris) saxophones exclusively. He is also a D’Addario
-Woodwind Artist, assisting with research and design for the D’Addario Co, and endorses the RICO Reserve Classic saxophone reeds and Ishimori Ligatures.
+Woodwind Artist, assisting with research and design for the D’Addario Co, and endorses the RICO Reserve Classic saxophone reeds and Ishimori Ligatures..
