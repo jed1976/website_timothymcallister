@@ -48,5 +48,3 @@ He holds the Doctor of Musical Arts and other degrees in music education, conduc
 
 Timothy McAllister is a Conn-Selmer artist, and plays Selmer (Paris) saxophones exclusively. He is also a D’Addario
 Woodwind Artist, assisting with research and design for the D’Addario Co, and endorses the RICO Reserve Classic saxophone reeds and Ishimori Ligatures.
-
-Test
