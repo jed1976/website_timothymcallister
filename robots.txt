@@ -1,5 +1,3 @@
 User-agent: *
-
 Sitemap: http://timothymcallister.com/sitemap
-
 Host: http://timothymcallister.com
