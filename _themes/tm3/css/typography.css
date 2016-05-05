@@ -42,6 +42,11 @@ strong { font-weight: 700; }
     margin: 0;
 }
 
+p
+{
+    line-height: 1.35em;
+}
+
 .title
 {
     font-size: 1.25em;
