@@ -85,7 +85,7 @@ _allow_php: false
 _yaml_mode: loose
 
 # Choose the markdown parser to use (standard | parsedown)
-_markdown_parser: parsedown
+_markdown_parser: standard
 
 # Choose whether you want your content (e.g. Markdown, Textile...) or your tags parsed first
 _parse_order:
