@@ -11,7 +11,7 @@ body,
     -webkit-font-smoothing: antialiased;
 }
 
-.quote { font-family: Courier; }
+.quote { font-family: 'Roboto Slab', Courier; }
 
 /* Resets */
 a { text-decoration: none; }
