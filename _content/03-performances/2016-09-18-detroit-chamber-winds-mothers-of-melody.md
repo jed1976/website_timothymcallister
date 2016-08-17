@@ -1,5 +1,5 @@
 ---
-title: 'Detroit Chamber Winds: "Mothers of Melody"'
+title: 'Detroit Chamber Winds & Strings: "Mothers of Melody"'
 event_time: 03:00 PM
 location: Birmingham Unitarian Church
 latitude: "42.5688365"
