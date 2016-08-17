@@ -1,5 +1,5 @@
 ---
-title: Soloist with the Orchestre National de Lyon (Adams Concerto-French Premiere)
+title: Soloist with the Orchestre National de Lyon at Philharmonie de Paris; John Adams Concerto
 event_time: 06:00 PM
 location: Philharmonie de Paris
 latitude: "48.891785"
