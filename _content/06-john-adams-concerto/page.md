@@ -7,13 +7,13 @@ theme: dark
 title: John Adams Concerto
 _fieldset: adams-concerto
 _template: adams-concerto
-artwork: '{{ _site_root }}assets/img/tim-adams.jpg'
+artwork: /assets/img/tim-adams.jpg
 vertical_position: top
 horizontal_position: left
 quote_position: right
 background_color: '#0F0F0F'
 enable_scrim: "1"
-name: Andrew C. Elsesser
+name: Grant Chaput
 role: Booking Manager
 organization: IMG Artists
 address_1: Carnegie Hall Tower
@@ -65,5 +65,6 @@ interview_links:
     interview_link: /links/soundnotion-128-up-there
   - 
     interview_link: /links/sax-and-the-city-noir
+email: gchaput@imgartists.com
 ---
 Composed in 2013 for, and dedicated to, Tim McAllister, John Adams’ new concerto for alto saxophone and orchestra is a major addition to the instrument’s repertoire. Inspired by classic studio recordings from the fifties and sixties by Charlie Parker, Stan Getz and Cannonball Adderley, as well as McAllister's celebrated work in the composer's earlier work, "City Noir," the new concerto pushes the limits of the instruments technical and expressive powers, while providing an exciting 'tour de force' for the entire orchestra. In the first commercial release of the work, Tim McAllister joins the Saint Louis Symphony under David Robertson (info below), which is coupled with the aforementioned "City Noir." The work is available through Boosey & Hawkes.
