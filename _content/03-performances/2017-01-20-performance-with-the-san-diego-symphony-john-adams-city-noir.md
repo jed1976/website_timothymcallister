@@ -1,5 +1,5 @@
 ---
-title: Performance with the San Diego Symphony; John Adams "City Noir"
+title: Performances with the San Diego Symphony; John Adams "City Noir"
 event_time: 08:00 PM
 location: San Diego Symphony
 latitude: "32.718063"
