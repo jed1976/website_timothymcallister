@@ -6,6 +6,7 @@ horizontal_position: center
 quote_position: left
 background_color: '#ffffff'
 page_stylesheet: news
+enable_scrim: "1"
 ---
 I'm very excited to announce upcoming recording projects with three of the world's top orchestras to be released during 2017/2018 year! 
 
