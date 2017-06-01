@@ -1,5 +1,5 @@
 ---
-title: Performances and HD Broadcast with the Berliner Philharmoniker; John Adams "City Noir"
+title: Performance with the Berliner Philharmoniker; John Adams "City Noir"
 event_time: 08:00 PM
 location: Berliner Philharmonie
 latitude: "52.5100319"
