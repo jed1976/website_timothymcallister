@@ -5,4 +5,5 @@ location: Cleveland Institute Of Music
 latitude: "41.512432"
 longitude: "-81.608787"
 ---
-Music of Ames, Biedenbender, Stephenson, Schynder, Bruch and more!
+Music of Ames, Biedenbender, Stephenson, Schynder, Bruch and more!<br>
+Kathryn Goodson, piano; Randy Hawes, bass trombone
