@@ -5,5 +5,6 @@ location: Chicago Symphony Center
 latitude: "41.8789789"
 longitude: "-87.62459139999999"
 ---
-January 18-20<b>
-Bernstein: Symphonic Dances from West Side Story; Rafael Payare, conductor.
+January 18-20<br>
+Bernstein: Symphonic Dances from West Side Story<br>
+Rafael Payare, conductor.
