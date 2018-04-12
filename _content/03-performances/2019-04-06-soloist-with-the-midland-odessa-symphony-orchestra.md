@@ -1,5 +1,5 @@
 ---
-title: Soloist with the Midland-Odessa Symphony Orchestra
+title: Soloist with the Midland-Odessa Symphony Orchestra; Kenneth Fuchs "Rush"
 event_time: 07:30 PM
 location: Wagner Noel Performing Arts Center
 latitude: "31.9700713"
