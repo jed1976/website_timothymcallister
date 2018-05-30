@@ -1,9 +1,9 @@
 ---
 title: Soloist with Croatian Radiotelevision Symphony Orchestra; WSC Zagreb
-event_time: 12:00 PM
-location: Zagreb
-latitude: "45.8150108"
-longitude: "15.981918899999982"
+event_time: 08:00 PM
+location: Vatroslav Lisinski
+latitude: "45.8010157"
+longitude: "15.980101999999988"
 ---
 John ADAMS - Saxophone Concerto <br>
 Pierre Andres Valade, conductor
