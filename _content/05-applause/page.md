@@ -22,7 +22,10 @@ quotes:
     quote: /quotes/hugo-shirley
   - 
     quote: /quotes/review-of-prism-quartet
+  - 
+    quote: /quotes/charlotte-sun
 ---
+
 
 
 
