@@ -4,7 +4,7 @@ enable_map: true
 page_id: home
 page_stylesheet: home
 title: Home
-artwork: '{{ _site_root }}assets/img/tim-4.jpg'
+artwork: /assets/img/tim-4.jpg
 _fieldset: home
 _template: home
 vertical_position: center
@@ -27,9 +27,12 @@ quotes:
     quote: /quotes/hugo-shirley
   - 
     quote: /quotes/zachary-lewis
+  - 
+    quote: /quotes/bertrand-hainaut
 background_color: '#ffffff'
 enable_scrim: "1"
 ---
+
 
 
 
