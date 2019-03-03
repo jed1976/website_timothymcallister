@@ -4,4 +4,4 @@ artwork: /assets/img/recordings/IMG_9679.jpg
 producer: /producers/deutsche-grammophon
 sample: ""
 ---
-Coming soon on Deutsche Grammophon!
+Coming soon (March 2019) on Deutsche Grammophon!
