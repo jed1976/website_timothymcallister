@@ -73,7 +73,7 @@
     /* Prevent elements to be highlighted on tap */
     -webkit-tap-highlight-color: rgba(0,0,0,0);
 
-     Put the scroller into the HW Compositing layer right from the start
+    /* Put the scroller into the HW Compositing layer right from the start */
     -webkit-transform: translateZ(0);
     -moz-transform: translateZ(0);
     -ms-transform: translateZ(0);
