@@ -1,2 +1,2 @@
 # Website for Timothy McAllister, Concert Saxophonist
-Developed with PHP using the Statamic CMS.
+Developed with PHP using the [Statamic CMS](https://statamic.com).
