@@ -1,14 +1,11 @@
-<footer>
-    <div class="row pad">
-        <div class="col-1-2">
-            {{ theme:partial src="mailing-list-form" }}
-        </div>
-        <div class="col-1-2 pad-vertical">
-            <div id="social-links">
-                {{ entries:listing conditions="slug:!prism-quartet" folder="social-links" show_hidden="true" }}
-                <a class="button light social" data-icon="{{ page_icon }}" href="{{ social_url }}" target="_blank" title="Visit the {{ title }} page">{{ title }}</a>
-                {{ /entries:listing }}
-            </div>
-        </div>
-    </div>
+<footer class="bg-black content-center flex flex-wrap p-8 shadow-md space-y-10 text-neutral-100">
+  {{ theme:partial src="mailing-list-form" }}
+  <div class="content-center flex gap-x-4 justify-center md:w-auto ml-auto w-full">
+    {{ entries:listing conditions="slug:!prism-quartet" folder="social-links" show_hidden="true" }}
+      <a class="hover:text-cyan-500 transition-colors" href="{{ social_url }}" target="_blank" title="Visit the {{ title }} page">
+        {{ theme:partial src="icons/{{ page_icon }}" }}
+        <span class="sr-only">{{ title }}</span>
+      </a>
+    {{ /entries:listing }}
+  </div>
 </footer>

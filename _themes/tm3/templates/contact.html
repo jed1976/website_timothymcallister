@@ -1,23 +1,10 @@
-<div class="row">
-    <div class="hero scrim">
-        {{ entries:listing conditions="slug:school" folder="contact" show_hidden="true" }}
-        <div class="tile pad">
-            <h2 class="display-1 pad-vertical">{{ title }}</h2>
-
-            {{ theme:partial src="vcard" use_context="true" }}
-        </div>
-        {{ /entries:listing }}
-    </div>
+{{ entries:listing folder="contact" show_hidden="true" }}
+<div class="bg-cover bg-no-repeat h-[90vh] shadow-md sticky top-0 transform-gpu z-10" style="background-image: url({{ artwork }});">
+  <div class="absolute bg-gradient-to-b bottom-0 flex flex-col from-0% from-transparent left-0 p-8 right-0 space-y-4 text-neutral-100 to-black/75">
+    <h2 class="font-medium font-serif italic text-3xl">
+      {{ title }}
+    </h2>
+    {{ theme:partial src="vcard" use_context="true" }}
+  </div>
 </div>
-
-<div class="row">
-    {{ entries:listing conditions="slug:summer" folder="contact" show_hidden="true" }}
-    <div class="hero scrim" style="background-image: url({{ artwork }}); background-position: left center;">
-        <div class="tile pad right">
-            <h2 class="display-1 pad-vertical">{{ title }}</h2>
-
-            {{ theme:partial src="vcard" use_context="true" }}
-        </div>
-    </div>
-    {{ /entries:listing }}
-</div>
+{{ /entries:listing }}

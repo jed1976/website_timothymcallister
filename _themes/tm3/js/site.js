@@ -1,71 +1,66 @@
-new TM.Module({
-    el: {
-        mailingListForm: document.getElementById('mailing-list-form')
-    },
+// Variables
+const $menuOpen = document.getElementById("menu-open");
+const $menuClose = document.getElementById("menu-close");
 
-    callbacks: {
-        onBeforeUnload: function() {
-            if (this.actionLinkEnabled) {
-                return;
-            }
+// Functions
+function toggleQuotes() {
+  let currentQuoteIndex = 0;
+  let quoteTimerID;
+  const opacityClass = "group-[.hero]:opacity-0";
+  const quotes = document.querySelectorAll("#hero .quote");
+  const quoteInterval = 8000;
 
-            this.el.body.removeClass('fadein');
-        },
+  function toggle() {
+    quotes[currentQuoteIndex].classList.toggle(opacityClass);
 
-        onLoad: function() {
-            this.el.body.addClass('fadein');
-            TM.util.toggleLogoOpacity();
-        },
+    currentQuoteIndex++;
 
-        onReady: function() {
-            TM.util.updateScreenSizeClass();
-            TM.util.loadFastClick();
-        },
+    if (currentQuoteIndex === quotes.length)
+        currentQuoteIndex = 0;
 
-        onScroll: function(event) {
-            TM.util.toggleLogoOpacity(event);
-        },
+    quotes[currentQuoteIndex].classList.toggle(opacityClass);
 
-        onTouchMove: function(event) {
-            if (event.target.hasClass('scrollable')) {
-                event.preventDefault();
-            }
-        },
+    setTimeout(toggle, quoteInterval);
+  }
 
-        onWindowResize: function(event) {
-            TM.util.updateScreenSizeClass();
-        }
-    },
+  if (quotes.length === 0) return;
 
-    events: {
-        body: {
-            click: function(event) {
-                var target = event.target;
+  quotes[currentQuoteIndex].classList.toggle(opacityClass);
 
-                if (target.nodeName !== 'A' && this.el.body.hasClass('checked')) {
-                    this.el.body.toggleClass('checked');
-                }
+  quoteTimerID = setTimeout(toggle, quoteInterval);
 
-                if (target.nodeName === 'A') {
-                    this.actionLinkEnabled = target.getAttribute('data-actionlink');
-                }
-            }
-        },
+  window.addEventListener("unload", function unload() {
+    window.removeEventListener("unload", unload, false);
+    window.clearTimeout(quoteTimerID);
+  });
+}
 
-        mailingListForm: {
-            submit: {
-                action: window.location.href,
-                callback: function(form, request) {
-                    form.innerHTML = TM.util.queryHTML(request.responseText, '#' + form.id).innerHTML;
-                }
-            }
-        },
+// Events
+document.addEventListener("DOMContentLoaded", e => {
+  document.documentElement.classList.remove("no-js");
+  document.documentElement.classList.add("group/js");
+  TM.util.updateScreenSizeClass();
+  toggleQuotes();
+});
 
-        menuToggle: {
-            click: function(event) {
-                event.preventDefault();
-                this.el.body.toggleClass('checked');
-            }
-        }
-    }
+$menuClose.addEventListener("click", e => {
+  $menuOpen.focus();
+  document.documentElement.classList.remove("display-menu");
+});
+
+$menuOpen.addEventListener("click", e => {
+  $menuClose.focus();
+  document.documentElement.classList.add("display-menu");
+});
+
+window.addEventListener("beforeunload", e => {
+  document.body.classList.add("opacity-0");
+});
+
+window.addEventListener("load", e => {
+  document.body.classList.remove("opacity-0");
+});
+
+window.addEventListener("resize", e => {
+  TM.util.updateScreenSizeClass();
 });

@@ -1,5 +1,7 @@
 #live-excerpts { background: #EDEDED; }
 
+.image { margin-bottom: 2rem; }
+
 @media (min-width: 768px)
 {
     #live-excerpts .col-1-2:first-child

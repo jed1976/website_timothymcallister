@@ -10,7 +10,6 @@ vertical_position: top
 horizontal_position: right
 quote_position: left
 background_color: '#191817'
-enable_scrim: "1"
 quotes:
   - 
     quote: /quotes/zachary-lewis
@@ -25,6 +24,11 @@ quotes:
   - 
     quote: /quotes/charlotte-sun
 ---
+
+
+
+
+
 
 
 

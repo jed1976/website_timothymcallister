@@ -28,27 +28,3 @@ fields:
       center: Center
       right: Right
     type: radio
-
-  quote_position:
-    default: left
-    options:
-      left: Left
-      center: Center
-      right: Right
-    type: radio
-
-  background_color:
-    default: '#ffffff'
-    local_storage_key: 'background_color'
-    select_on_page: true
-    show_initial: true
-    show_input: true
-    show_selection_palette: true
-    starting_color: '#ffffff'
-    palette:
-    type: color
-
-  enable_scrim:
-    instructions: Checking this enables a dark gradient to appear above the hero image. This is useful for brighter images.
-    default: false
-    type: checkbox

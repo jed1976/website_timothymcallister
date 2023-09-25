@@ -1,15 +1,49 @@
 ---
 page_icon: premieres
 page_id: premieres
-page_stylesheet: premieres
-theme: dark
 title: Premieres
-artwork: '{{ _site_root }}assets/img/tim-8.jpg'
+artwork: /assets/img/4.9.22-1948-20220509164851.jpg
 _fieldset: premieres
 _template: premieres
-vertical_position: center
+vertical_position: bottom
 horizontal_position: left
-quote_position: left
-background_color: '#0D1F48'
-enable_scrim: true
+quotes:
+  - 
+    quote: /quotes/brian-mccollum-and-mark-stryker
+  - 
+    quote: /quotes/charles-downey
+  - 
+    quote: /quotes/zachary-lewis
+  - 
+    quote: /quotes/charlotte-sun
+  - 
+    quote: /quotes/john-adams
 ---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

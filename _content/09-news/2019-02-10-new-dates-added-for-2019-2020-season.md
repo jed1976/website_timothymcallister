@@ -8,4 +8,4 @@ background_color: '#ffffff'
 page_stylesheet: news
 enable_scrim: "1"
 ---
-Tim's 2019-2020 Season includes featured and debut solo appearances with the Buffalo Philharmonic Orchestra, Seattle Symphony, and the New York Philharmonic, as well as return engagements with the St. Louis Symphony Orchestra. Click on 'Performances' for more details.
+Tim's 2019-2020 Season includes featured and debut solo appearances with the Buffalo Philharmonic Orchestra, "The President's Own" United States Marine Band, Seattle Symphony, and the New York Philharmonic, as well as return engagements with the St. Louis Symphony Orchestra. Click on 'Performances' for more details.

@@ -1,32 +1,28 @@
-<main id="content" role="main" style="background-color: {{ background_color }};">
-    <div class="center-layout pad">
-        <h2 class="display-1">{{ title }}</h2>
-
-        {{ if photos_title }}
-        <div class="pad-vertical">
-            {{ if downloads }}
-                {{ downloads }}
-                {{ if index|%:2 == 1 and index > 1 }}</div>{{ /if }}
-                {{ if index|%:2 == 1 }}<div class="row">{{ /if }}
-                    <div class="col-1-2">
-                        <img alt="" src="{{ transform src="{ photo_download }" quality="100" width="{ download_small_size }" }}" />
-
-                        <div class="text-center pad-half-vertical">
-                            <a class="button inline" data-actionlink="true" href="/TRIGGER/download/download?file={{ transform src="{ photo_download }" quality="100" width="{ download_medium_size }" }}" title="Download a low resolution version of this photo">Low</a>
-
-                            <a class="button inline" data-actionlink="true" href="/TRIGGER/download/download?file={{ transform src="{ photo_download }" quality="100" width="{ download_large_size }" }}" title="Download a high resolution version of this photo">High</a>
-                        </div>
-                    </div>
-                {{ /downloads }}
-            {{ /if }}
-            </div>
-        </div>
-        {{ /if }}
-
-        {{ get_content from="biography" }}
-        <div class="pad-vertical">
-            {{ theme:partial light="true" src="biography-downloads" use_context="true" }}
-        </div>
-        {{ /get_content }}
+<div class="bg-zinc-900 text-neutral-100">
+  <div class="container flex flex-col mx-auto px-8 py-16 space-y-16">
+    <h2 class="font-medium italic font-serif text-4xl tracking-wide">
+      {{ title }}
+    </h2>
+    {{ if photos_title }}
+    <div class="flex flex-col md:gap-4 md:grid md:grid-cols-2 md:space-y-0 space-y-8">
+    {{ if downloads }}
+      {{ downloads }}
+      {{ if photo_download }}
+      <figure class="flex flex-col space-y-2">
+        <img alt="" class="aspect-video object-cover" src="{{ transform src="{ photo_download }" quality="100" width="{ download_small_size }" }}" />
+        <figcaption class="flex gap-x-16 justify-center text-cyan-500 transition-colors">
+          <a class="hover:text-neutral-100" href="/TRIGGER/download/download?file={{ transform src="{ photo_download }" quality="100" width="{ download_medium_size }" }}" title="Download a low resolution version of this photo">Low</a>
+          <a class="hover:text-neutral-100" href="/TRIGGER/download/download?file={{ transform src="{ photo_download }" quality="100" width="{ download_large_size }" }}" title="Download a high resolution version of this photo">High</a>
+        </figcaption>
+      </figure>
+      {{ /if }}        
+      {{ /downloads }}
+    {{ /if }}
     </div>
-</main>
+    {{ get_content from="biography" }}
+    
+    {{ theme:partial light="true" src="biography-downloads" use_context="true" }}    
+    {{ /get_content }}
+    {{ /if }}        
+  </div>
+</div>

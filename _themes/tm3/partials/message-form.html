@@ -1,31 +1,29 @@
 {{ raven:form attr="id:message-form" formset="messages" }}
-    {{ if {raven:has_errors} }}
-    {{ raven:errors }}
-        {{ missing }}
-        {{ if index == 1 }}<div class="form-error pad-half">All fields are required</div>{{ /if }}
-        {{ /missing }}
+  {{ if {raven:has_errors} }}
+  {{ raven:errors }}
+    {{ missing }}
+    {{ if index == 1 }}<div class="form-error pad-half">All fields are required</div>{{ /if }}
+    {{ /missing }}
 
-        {{ invalid }}
-        {{ if index == 1 }}<div class="form-error pad-half">All fields must be valid</div>{{ /if }}
-        {{ /invalid }}
-    {{ /raven:errors }}
-    {{ /if }}
+    {{ invalid }}
+    {{ if index == 1 }}<div class="form-error pad-half">All fields must be valid</div>{{ /if }}
+    {{ /invalid }}
+  {{ /raven:errors }}
+  {{ /if }}
 
-    {{ if {raven:success} }}
-    <div class="text-center">
-        <h3 class="headline">{{ thank_you_message }}</h3>
+  {{ if {raven:success} }}
+  <div class="text-center">
+    <h3 class="headline">{{ thank_you_message }}</h3>
+  </div>
+  {{ else }}
+    <div class="row">
+      <input class="expand margin-half-vertical" name="name" placeholder="Name" required type="text" value="{{ value:name }}">
+      <input class="expand" name="email" placeholder="Email" required type="email" value="{{ value:email }}">
+      <textarea class="expand margin-half-vertical" cols="40" name="message" placeholder="Message" required rows="5">{{ value:message }}</textarea>
+
+      <div class="text-center">
+          <input class="button link" name="message-submit-button" type="submit" value="Send Message">
+      </div>
     </div>
-    {{ else }}
-        <div class="row">
-            <input class="expand margin-half-vertical" name="name" placeholder="Name" required type="text" value="{{ value:name }}">
-
-            <input class="expand" name="email" placeholder="Email" required type="email" value="{{ value:email }}">
-
-            <textarea class="expand margin-half-vertical" cols="40" name="message" placeholder="Message" required rows="5">{{ value:message }}</textarea>
-
-            <div class="text-center">
-                <input class="button link" name="message-submit-button" type="submit" value="Send Message">
-            </div>
-        </div>
-    {{ /if }}
+  {{ /if }}
 {{ /raven:form }}

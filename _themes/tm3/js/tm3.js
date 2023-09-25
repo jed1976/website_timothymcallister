@@ -442,17 +442,6 @@ TM.util.getWindowSize = function() {
     return TM.util.getSizeBasedOnWidth(window.innerWidth);
 };
 
-TM.util.loadFastClick = function() {
-    if (TM.util.getScreenSize() > 1) return;
-
-    var script = document.createElement('script');
-    script.addEventListener('load', function() {
-        FastClick.attach(document.body);
-    });
-    script.src = '/_themes/tm3/js/libs/fastclick.min.js';
-    document.body.appendChild(script);
-};
-
 TM.util.mergeObjects = function(a, b, c) {
     for (c in b)
         b.hasOwnProperty(c) && ((typeof a[c])[0] == 'o' ? TM.util.mergeObjects(a[c], b[c]) : a[c] = b[c]);
@@ -463,22 +452,6 @@ TM.util.queryHTML = function(html, selector) {
     root.innerHTML = html;
 
     return root.querySelector(selector);
-};
-
-TM.util.toggleLogoOpacity = function() {
-    var targetY = 20,
-        y = Math.abs(this.y) || window.pageYOffset,
-        logo = document.getElementById('logo');
-
-    if (y >= targetY && logo.hasClass('solid') === false) {
-        logo.addClass('solid');
-        return;
-    }
-
-    if (y < targetY && logo.hasClass('solid')) {
-        logo.removeClass('solid');
-        return;
-    }
 };
 
 TM.util.updateScreenSizeClass = function() {

@@ -1,15 +1,13 @@
-{{ theme:partial src="hero" use_context="true" }}
+<div class="bg-slate-950 text-neutral-100">
+  <div class="container flex flex-col mx-auto px-8 py-16 space-y-8">
+    <h2 class="font-medium italic font-serif text-4xl tracking-wide">
+      {{ title }}
+    </h2>
 
-<div id="content" style="background-color: {{ background_color }};">
-    <main class="center-layout pad" role="main">
-        <h2 class="display-1">{{ title }}</h2>
+    <div class="flex flex-col leading-relaxed space-y-6">
+      {{ content|widont }}
+    </div>
 
-        <div class="pad-vertical">
-            <div class="body-1">{{ content|widont }}</div>
-
-            <div class="pad-vertical">
-                {{ theme:partial src="biography-downloads" use_context="true" }}
-            </div>
-        </div>
-    </main>
+    {{ theme:partial src="biography-downloads" use_context="true" }}
+  </div>
 </div>

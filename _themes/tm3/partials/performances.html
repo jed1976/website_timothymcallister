@@ -1,9 +1,10 @@
 <div id="map">
-    <div id="map-canvas"></div>
-
-    <ol class="list dark-borders scrollable" id="performance-list">
-        {{ entries:listing folder="performances" limit="{limit}" show_future="true" show_hidden="true" since="{since}" until="{until}" sort_dir="asc" }}
-        <li>{{ theme:partial src="performance" use_context="true" }}</li>
-        {{ /entries:listing }}
-    </ol>
+  <div id="map-canvas"></div>
+  <ol class="md:absolute bg-neutral-100 md:border md:border-neutral-400 md:bottom-4 md:left-4 md:overflow-scroll md:top-4 md:w-80 md:rounded-lg shadow-xl sticky top-4 z-10" id="performance-list">
+  {{ entries:listing folder="performances" limit="{limit}" show_future="true" show_hidden="true" since="{since}" until="{until}" sort_dir="asc" }}
+    <li>
+      {{ theme:partial src="performance" use_context="true" }}
+    </li>
+  {{ /entries:listing }}
+  </ol>
 </div>

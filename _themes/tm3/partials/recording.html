@@ -3,7 +3,7 @@
         <div class="col-1-2">
             <div class="row">
                 {{ if recording_url }}<a href="{{ recording_url }}" title="{{ publisher_title }}" target="_blank">{{ /if }}
-                    <img alt="{{ title }}" class="center" src="{{ artwork }}">
+                    <img alt="{{ title }}" class="center image" src="{{ artwork }}">
                 {{ if recording_url }}</a>{{ /if }}
 
                 {{ if show_sample && sample }}
@@ -22,36 +22,36 @@
                     <tbody>
                         {{ if datestamp }}
                         <tr>
-                            <th class="body-1 secondary-text">Release Date</th>
+                            <th class="body-1 secondary-text"><strong>Release Date</strong></th>
                             <td class="body-1 primary-text text-right width-50">{{ datestamp format="{{ _date_format }}" }}</td>
                         </tr>
                         {{ /if }}
                         {{ if producer }}
                         <tr>
-                            <th class="body-1 secondary-text">Producer</th>
+                            <th class="body-1 secondary-text"><strong>Producer</strong></th>
                             <td class="body-1 primary-text text-right width-50">{{ entries:listing conditions="url:{producer}" folder="producers" limit="1" show_hidden="true" }}{{ title }}{{ /entries:listing }}</td>
                         </tr>
                         {{ /if }}
                         {{ if catalog_number }}
                         <tr>
-                            <th class="body-1 secondary-text">Catalog Number</th>
+                            <th class="body-1 secondary-text"><strong>Catalog Number</strong></th>
                             <td class="body-1 primary-text text-right width-50">{{ catalog_number }}</td>
                         </tr>
                         {{ /if }}
                     </tbody>
                 </table>
                 {{ /if }}
+
+                <div class="text-center">
+                    {{ if recording_url and show_more_information }}
+                    <a class="button" href="{{ recording_url }}" target="_blank" title="{{ publisher_title }}">More Information</a>
+                    {{ /if }}
+            
+                    {{ if show_learn_more }}
+                    <a class="button link" href="/recordings">All Recordings</a>
+                    {{ /if }}
+                </div>
             </div>
         </div>
-    </div>
-
-    <div class="text-center">
-        {{ if recording_url and show_more_information }}
-        <a class="button" href="{{ recording_url }}" target="_blank" title="{{ publisher_title }}">More Information</a>
-        {{ /if }}
-
-        {{ if show_learn_more }}
-        <a class="button link" href="/recordings">All Recordings</a>
-        {{ /if }}
-    </div>
+    </div>    
 </article>

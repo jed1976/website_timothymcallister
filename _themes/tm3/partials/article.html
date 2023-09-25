@@ -1,13 +1,24 @@
-<article>
-    <h4 class="headline"><a class="link" href="{{ url }}">{{ title }}</a></h4>
-
-    <time class="body-1 dt-start" datetime="{{ datestamp format="{{ _datetime_format }}" }}">{{ datestamp format="{{ _date_format }}" }}</time>
-    {{ if truncate }}
-    {{ content|markdown|truncate:480 }}
-    <div class="text-center">
-        <a class="button" href="{{ url }}" title="Read the full article">Full Article</a>
+<article class="flex flex-col space-y-6">
+  <div class="flex flex-col space-y-2">
+    <h3 class="font-medium font-serif leading-relaxed text-3xl">
+      {{ title }}
+    </h3>
+    <time class="dt-start font-normal italic text-neutral-500" datetime="{{ datestamp format="{{ _datetime_format }}" }}">
+      {{ datestamp format="{{ _date_format }}" }}
+    </time>
+  </div>
+  {{ if truncate }}
+    <div class="flex flex-col leading-relaxed prose prose-a:text-cyan-400 hover:prose-a:text-neutral-950 prose-a:underline-offset-2 space-y-6">
+      {{ content|markdown|truncate:480 }}
     </div>
-    {{ else }}
+    <div class="">
+      <a class="text-cyan-500 href="{{ url }}" title="Read the full article">
+        Full Article
+      </a>
+    </div>
+  {{ else }}
+    <div class="flex flex-col leading-relaxed prose prose-a:text-cyan-400 hover:prose-a:text-neutral-950 prose-a:underline-offset-2 space-y-6">
     {{ content|markdown }}
-    {{ /if }}
-</article>
+    </div>
+  {{ /if }}
+  </article>

@@ -1,42 +1,52 @@
-<article class="h-event{{ if datestamp|in_future }} future{{ /if }}{{ if datestamp|is_today }} today{{ /if }}" data-latitude="{{ latitude }}" data-longitude="{{ longitude }}">
-
-    <div class="row">
-        <div class="event-headlines col-3-4 no-pad">
-            <h4 class="title p-name">{{ title }}</h4>
-
-            {{ if location }}
-            <div class="row p-location">
-                <a class="p-name u-url subhead link" href="http://www.google.com/maps/place/{{ location|urlencode }}/@{{ latitude }},{{ longitude }},17z" target="_blank">{{ location }}</a>
-            </div>
-            {{ /if }}
-        </div>
-
-        <div class="float-right">
-            <div class="calendar col-1-4 no-pad">
-                <time class="dt-start" datetime="{{ datestamp format="Y-m-d h:i" }} {{ time }}">
-                    <span class="month">{{ datestamp format="M" }}</span>
-                    <span class="day">{{ datestamp format="j" }}</span>
-                    <span class="year">{{ datestamp format="Y" }}</span>
-                </time>
-            </div>
-
-            {{ if event_time }}
-            <span class="time">{{ event_time format="{{ _time_format }}" }}</span>
-            {{ /if }}
-        </div>
+<article class="border-t border-neutral-400 cursor-pointer group text-neutral-900 h-event{{ if datestamp|is_today }} bg-neutral-400{{ /if }}" data-latitude="{{ latitude }}" data-longitude="{{ longitude }}">
+  <div class="flex gap-4 group-[.active]:bg-neutral-300 p-4">
+    <div class="flex flex-1 flex-col space-y-2">
+      <h3 class="font-medium font-serif italic leading-snug p-name text-lg">
+        {{ title }}
+      </h3>
+      {{ if location }}
+      <div class="leading-snug p-location">
+        <a class="group-[.active]:text-cyan-700 p-name text-cyan-500 u-url" href="http://www.google.com/maps/place/{{ location|urlencode }}/@{{ latitude }},{{ longitude }},17z" target="_blank">
+          {{ location }}
+        </a>
+      </div>
+      {{ /if }}
+    </div>
+    <div class="flex flex-col space-y-1">
+      <time class="bg-neutral-100 border border-neutral-400 dt-start flex flex-col overflow-hidden p-1 rounded-lg shadow-sm w-16" datetime="{{ datestamp format="Y-m-d h:i" }} {{ time }}">
+        <span class="block font-medium month text-center text-xs text-red-600 tracking-wider uppercase">
+          {{ datestamp format="M" }}
+        </span>
+        <span class="block day font-bold text-center text-3xl">
+          {{ datestamp format="j" }}
+        </span>
+        <span class="block text-center text-xs year">
+          {{ datestamp format="Y" }}
+        </span>
+      </time>
+      {{ if event_time }}
+      <span class="block font-bold text-center text-xs time">
+        {{ event_time format="{{ _time_format }}" }}
+      </span>
+      {{ /if }}
     </div>
 
-    {{ if content }}
-    <div class="body-1 p-summary">
-        {{ content }}
+    <!-- {{ if content }}
+    <div class="p-summary">
+      {{ content }}
     </div>
     {{ /if }}
 
     {{ if performance_url }}
-    <a class="button block link u-url margin-half-vertical" href="{{ performance_url }}" target="_blank">More Information</a>
+    <a class="u-url" href="{{ performance_url }}" target="_blank">
+      More Information
+    </a>
     {{ /if }}
 
-	{{ if ticket_information_url }}
-    <a class="button block link u-url margin-half-vertical" href="{{ ticket_information_url }}" target="_blank">Ticket Information</a>
-    {{ /if }}
+    {{ if ticket_information_url }}
+    <a class="u-url" href="{{ ticket_information_url }}" target="_blank">
+      Ticket Information
+    </a>
+    {{ /if }} -->
+  </div>
 </article>

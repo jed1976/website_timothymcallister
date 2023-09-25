@@ -1,6 +1,6 @@
 ---
 title: |
-  New York Philharmonic; John Adams's "City Noir"
+  **Postponed**New York Philharmonic; John Adams's "City Noir"
 event_time: 08:00 PM
 location: David Geffen Hall
 latitude: "40.7729088"

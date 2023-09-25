@@ -13,10 +13,10 @@ horizontal_position: left
 quote_position: right
 background_color: '#0F0F0F'
 enable_scrim: "1"
-name: Aileen Rohwer
-role: Executive Director
-organization: Great Lakes Performing Artist Associates
-state: MI
+name: Martha Woods
+role: President
+organization: Jonathan Wentworth Associates Ltd.
+state: MD
 booking_title: Booking Information
 message_form_content: Inquire about booking engagements
 thank_you_message: Your message has been sent.
@@ -61,7 +61,10 @@ interview_links:
     interview_link: /links/soundnotion-128-up-there
   - 
     interview_link: /links/sax-and-the-city-noir
-email: glpaadirector@greatlakespaa.org
-unit: 734.665.4029
+email: email@Jwentworth.com
+unit: 301-277-8205
+address_1: 6118 40th Avenue
+city: Hyattsville
+zip_code: 20782-3012
 ---
 Composed in 2013 for, and dedicated to, Tim McAllister, John Adams’ new concerto for alto saxophone and orchestra is a major addition to the instrument’s repertoire. Inspired by classic studio recordings from the fifties and sixties by Charlie Parker, Stan Getz and Cannonball Adderley, as well as McAllister's celebrated work in the composer's earlier work, "City Noir," the new concerto pushes the limits of the instruments technical and expressive powers, while providing an exciting 'tour de force' for the entire orchestra. In the first commercial release of the work, Tim McAllister joins the Saint Louis Symphony under David Robertson (info below), which is coupled with the aforementioned "City Noir." The work is available through Boosey & Hawkes.

@@ -25,3 +25,4 @@ hide: true
 
 include:
   - hidden
+  - hero

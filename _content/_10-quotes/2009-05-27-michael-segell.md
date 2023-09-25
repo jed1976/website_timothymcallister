@@ -1,6 +1,5 @@
 ---
 title: Michael Segell
-source: Author and Editor, New York Daily News
-adams_press: 0
+source: Award-Winning Author and Contributing Editor, Esquire Magazine
 ---
 "One of America's bright young stars in teaching and in performing...exceptionally gifted."

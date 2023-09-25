@@ -1,17 +1,15 @@
-{{ theme:partial src="hero" use_context="true" }}
-
-<main id="content" role="main" style="background-color: {{ background_color }};">
-    <div class="center-layout" id="articles">
-        <div class="row pad">
-            <h2 class="display-1">{{ title }}</h2>
-
-            <div class="row quotes">
-                {{ entries:listing conditions="adams_press:!1" folder="quotes" show_hidden="true" sort_by="date" sort_dir="desc" }}
-                    <div class="col-1-2 pad-vertical">
-                        {{ theme:partial src="quote" use_context="true" }}
-                    </div>
-                {{ /entries:listing }}
-            </div>
-        </div>
+<div class="bg-stone-900 text-neutral-100">
+  <div class="container flex flex-col mx-auto px-8 py-16 space-y-16">
+    <h2 class="font-medium italic font-serif text-4xl tracking-wide">
+      {{ title }}
+    </h2>
+    
+    <div class="flex flex-col md:gap-16 md:grid md:grid-cols-2 md:space-y-0 space-y-16">
+    {{ entries:listing conditions="adams_press:!1" folder="quotes" show_hidden="true" sort_by="date" sort_dir="desc" }}
+      <div class="applause group">
+        {{ theme:partial src="quote" use_context="true" }}
+      </div>
+    {{ /entries:listing }}    
     </div>
-</main>
+  </div>
+</div>

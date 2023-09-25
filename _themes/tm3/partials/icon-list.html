@@ -1,1 +1,5 @@
-{{ entries:listing conditions="url:{category}" folder="premiere-categories" limit="1" show_hidden="true" }} data-icon={{ icon }}{{ /entries:listing }}
+{{ entries:listing conditions="url:{category}" folder="premiere-categories" limit="1" show_hidden="true" }}
+  <span class="pt-2 self-start text-neutral-500">
+    {{ theme:partial src="icons/{{ icon }}" }}
+  </span>
+{{ /entries:listing }}

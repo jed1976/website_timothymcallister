@@ -1,32 +1,32 @@
-<div class="row">
-    <p class="subhead">Get news and updates</p>
+<div class="flex flex-col md:w-80 space-y-2 w-full">
+  <h4 class="font-bold">Get news and updates</h4>
 
-    {{ raven:form attr="id:mailing-list-form" formset="mailing-list" }}
-        {{ if {raven:has_errors} }}
-        {{ raven:errors }}
-            {{ missing }}
-            {{ if index == 1 }}<div class="form-error pad-half">All fields are required</div>{{ /if }}
-            {{ /missing }}
+  {{ raven:form attr="id:mailing-list-form" formset="mailing-list" }}
+    {{ if {raven:has_errors} }}
+    {{ raven:errors }}
+      {{ missing }}
+      {{ if index == 1 }}
+        <p class="text-red-500">All fields are required</p>
+      {{ /if }}
+      {{ /missing }}
 
-            {{ invalid }}
-            {{ if index == 1 }}<div class="form-error pad-half">All fields must be valid</div>{{ /if }}
-            {{ /invalid }}
-        {{ /raven:errors }}
-        {{ /if }}
+      {{ invalid }}
+      {{ if index == 1 }}
+        <p class="text-red-500">All fields must be valid</p>
+      {{ /if }}
+      {{ /invalid }}
+    {{ /raven:errors }}
+    {{ /if }}
 
-        {{ if {raven:success} }}
-            <div class="pad-half-vertical">
-                <h3 class="headline">Thank you.</h3>
-            </div>
-        {{ else }}
-            <div class="row">
-                <div class="col-3-4">
-                    <input class="expand margin-half-vertical" name="email" placeholder="Email" required type="email" value="{{ value:email }}">
-                </div>
-                <div class="col-1-4">
-                    <input class="button light margin-half-vertical" name="message-submit-button" type="submit" value="Sign Up">
-                </div>
-            </div>
-        {{ /if }}
-    {{ /raven:form }}
+    {{ if {raven:success} }}
+      <p class="">Thank you!</p>      
+    {{ else }}
+      <div class="content-center flex gap-x-2">
+        <input class="bg-neutral-800 flex-1 p-2 placeholder:text-neutral-400 rounded-lg" name="email" placeholder="Email" required type="email" value="{{ value:email }}">
+        <button class="p-2 text-cyan-500" name="submit" type="submit">
+          Sign Up
+        </button>
+      </div>
+    {{ /if }}
+  {{ /raven:form }}
 </div>

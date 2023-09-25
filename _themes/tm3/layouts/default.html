@@ -1,49 +1,41 @@
 <!DOCTYPE html>
-<html class="no-js{{ if theme }} {{ theme }}{{ /if }}" dir="ltr" id="{{ page_id }}" lang="en">
-    <head>
-	<!-- WF -->
-        <!-- Styles -->
-        {{ theme:css tag="true" }}
-        {{ if enable_map }}{{ theme:css src="map" tag="true" }}{{ /if }}
-        {{ if page_stylesheet }}{{ theme:css src="{ page_stylesheet }" tag="true" }}{{ /if }}
-        <style type="text/css">
-        .hero-mask::after, .hero-mask::before { border-bottom: 20px solid {{ background_color }}; }
-        </style>
+<html class="group no-js{{ if theme }} {{ theme }}{{ /if }}" dir="ltr" id="{{ page_id }}" lang="en">
+  <head>
+    <!-- Styles -->
+    {{ theme:css tag="true" }}
+    {{ theme:css src="site.css" tag="true" }}
+    {{ if page_stylesheet }}{{ theme:css src="{ page_stylesheet }" tag="true" }}{{ /if }}
+    {{ theme:partial src="meta" }}
+    {{ theme:partial src="favicons" }}
+    <script src="/_themes/tm3/js/site.js" type="module"></script>
+    <title>
+      {{ if segment_1 }}{{ title }} - {{ /if }}{{ _site_name }}
+    </title>
+  </head>
+  <body class="bg-neutral-950 duration-200 group-[.display-menu]:overflow-hidden opacity-0 transition-opacity">
+    {{ if enable_analytics }}
+    {{ theme:partial src="google-analytics" }}
+    {{ /if}}
 
-        {{ theme:partial src="no-js" }}
+    {{ theme:partial src="header" }}
+    {{ theme:partial src="menu" }}
+    {{ theme:partial src="hero"}}
 
-        {{ theme:partial src="typekit" }}
+    <div class="relative transform-gpu z-20" id="site-wrapper">
+      <div class="scroller">
+        <main class="relative" role="main">
+          {{ layout_content }}
+        </main>
+      </div>
+      {{ theme:partial src="footer" }}
+    </div>
 
-        {{ theme:partial src="meta" }}
-
-        {{ theme:partial src="favicons" }}
-
-        <title>{{ _site_name }}{{ if segment_1 }} – {{ title }}{{ /if }}</title>
-    </head>
-    <body style="background-color: {{ background_color }};">
-        {{ if enable_analytics }}
-        {{ theme:partial src="google-analytics" }}
-        {{ /if}}
-
-        <div class="fixed-hero" style="background-image: url({{ artwork }}); background-position: {{ vertical_position }} {{ horizontal_position }};"></div>
-
-        {{ theme:partial src="header" }}
-        {{ theme:partial src="menu" }}
-
-        <div id="site-wrapper">
-            <div class="scroller">
-                {{ layout_content }}
-                {{ theme:partial src="footer" }}
-            </div>
-        </div>
-
-        <!-- Scripts -->
-        {{ theme:js tag="true" }}
-        {{ if enable_map }}{{ theme:js src="map" tag="true" }}{{ /if }}
-        {{ if enable_audio }}{{ theme:js src="audio" tag="true" }}{{ /if }}
-        {{ if enable_blur }}{{ theme:js src="libs/stackblur.min.js" tag="true" }}{{ /if }}
-		{{ if enable_promises }}{{ theme:js src="libs/promise.min.js" tag="true" }}{{ /if }}
-		{{ theme:js src="site.js" tag="true" }}
-        {{ if page_js }}{{ theme:js src="{ page_js }" tag="true" }}{{ /if }}
-    </body>
+    <!-- Scripts -->
+    {{ theme:js tag="true" }}
+    {{ if enable_map }}{{ theme:js src="map" tag="true" }}{{ /if }}
+    {{ if enable_audio }}{{ theme:js src="audio" tag="true" }}{{ /if }}
+    {{ if enable_blur }}{{ theme:js src="libs/stackblur.min.js" tag="true" }}{{ /if }}
+    {{ if enable_promises }}{{ theme:js src="libs/promise.min.js" tag="true" }}{{ /if }}
+    {{ if page_js }}{{ theme:js src="{ page_js }" tag="true" }}{{ /if }}
+  </body>
 </html>

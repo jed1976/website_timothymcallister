@@ -1,41 +1,47 @@
-<div class="row">
-    <div class="col-1-2">
-        {{ theme:partial enable_scrim="{{ enable_scrim }}" src="hero" use_context="true" }}
+<div class="bg-neutral-950 text-neutral-100">
+  <div class="container flex flex-col mx-auto px-8 py-16 space-y-16">
+    <h2 class="font-medium italic font-serif text-4xl tracking-wide">
+      {{ title }}
+    </h2>
+    <div class="flex flex-col lg:w-1/2 md:w-2/3 md:mx-auto space-y-10">
+      <ul class="flex flex-col space-y-4 text-neutral-500">
+        {{ entries:listing folder="premiere-categories" show_hidden="true" }}
+        <li class="border-b border-neutral-500 flex gap-x-6 last:border-0 pb-2">
+          {{ theme:partial src="icons/{{ icon }}" }}
+          <span class="flex-1">
+            {{ title }}
+          </span>
+        </li>
+        {{ /entries:listing }}
+      </ul>
+      <div class="flex flex-col space-y-12">
+        {{ entries:listing folder="premieres" group_by_date="Y" show_hidden="true" sort_by="date" sort_dir="desc" }}
+
+        {{ if grouped_date }}
+          {{ if !first }}
+            </ul>
+          </article>
+          {{ endif }}
+        <article>
+          <h3 class="font-medium font-serif italic mb-8 pb-2 text-3xl">
+            {{ grouped_date }}
+          </h3>
+
+          <ul class="flex flex-col space-y-6">
+          {{ endif }}
+            <li class="flex gap-x-6">
+              {{ theme:partial src="icon-list" use_context="true" }}
+              <div class="flex flex-col flex-1 space-y-1">
+                <h4 class="font-bold leading-snug text-lg">{{ title }}</h4>
+                <h5 class="">{{ composer }}</h5>
+              </div>
+            </li>
+        {{ if last }}
+          </ul>
+        </article>
+        {{ endif }}
+        {{ /entries:listing }}
+      </div>
     </div>
-    <div class="col-1-2" style="background-color: {{ background_color }};">
-        <main class="pad" id="content" role="main">
-            <h2 class="display-1">{{ title }}</h2>
-
-            <div class="row">
-                <div class="row pad-vertical">
-                    <ul class="list light-borders" id="legend">
-                        {{ entries:listing folder="premiere-categories" show_hidden="true" }}
-                        <li class="body-1 pad-half-icon-left row" data-icon="{{ icon }}">{{ title }}</li>
-                        {{ /entries:listing }}
-                    </ul>
-                </div>
-
-                <div id="timeline">
-                    {{ entries:listing folder="premieres" group_by_date="Y" show_hidden="true" sort_by="date" sort_dir="desc" }}
-
-                    {{ if grouped_date }}
-                        {{ if !first }}
-                                </ul>
-                        {{ endif }}
-                    <h2 class="pad-vertical headline">{{ grouped_date }}</h2>
-
-                    <ul class="list light-borders">
-                    {{ endif }}
-                        <li class="pad-icon-left row" {{ theme:partial src="icon-list" use_context="true" }}>
-                            <h4 class="title">{{ title }}</h4>
-                            <h5 class="subhead">{{ composer }}</h5>
-                        </li>
-                    {{ if last }}
-                    </ul>
-                    {{ endif }}
-                    {{ /entries:listing }}
-                </div>
-            </div>
-        </main>
-    </div>
+  </div>
 </div>

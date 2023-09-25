@@ -111,8 +111,7 @@ _enable_static_pipeline: false
 # a matching URL, we'll merge the environment-specific config from _config/environments
 _environments:
   dev:
-    - '*.dev'
-    - 'tm.joedakroub.webfactional.com'
+    - '*.localhost'    
   live:
     - 'timothymcallister.com'
 

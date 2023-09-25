@@ -164,7 +164,7 @@ var loadScroller = function() {
         });
 
         scroller.on('scroll', updateBackgroundImages);
-        scroller.on('scroll', toggleLogoOpacity);
+        scroller.on('scroll', TM.util.toggleLogoOpacity);
 
         setTimeout(function() {
             scroller.refresh();
