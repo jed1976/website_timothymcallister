@@ -1,6 +1,6 @@
-<article class="border-t border-neutral-400 cursor-pointer group text-neutral-900 h-event{{ if datestamp|is_today }} bg-neutral-400{{ /if }}" data-latitude="{{ latitude }}" data-longitude="{{ longitude }}">
+<article class="border-b border-neutral-400 cursor-pointer group text-neutral-900 h-event{{ if datestamp|is_today }} bg-neutral-400{{ /if }}" data-latitude="{{ latitude }}" data-longitude="{{ longitude }}">
   <div class="flex gap-4 group-[.active]:bg-neutral-300 p-4">
-    <div class="flex flex-1 flex-col space-y-2">
+    <div class="flex flex-1 flex-col order-2 space-y-2">
       <h3 class="font-medium font-serif italic leading-snug p-name text-lg">
         {{ title }}
       </h3>
@@ -12,8 +12,8 @@
       </div>
       {{ /if }}
     </div>
-    <div class="flex flex-col space-y-1">
-      <time class="bg-neutral-100 border border-neutral-400 dt-start flex flex-col overflow-hidden p-1 rounded-lg shadow-sm w-16" datetime="{{ datestamp format="Y-m-d h:i" }} {{ time }}">
+    <div class="flex flex-col order-1 space-y-1">
+      <time class="bg-neutral-100 border border-neutral-400 dt-start flex flex-col overflow-hidden p-1 rounded-lg w-14" datetime="{{ datestamp format="Y-m-d h:i" }} {{ time }}">
         <span class="block font-medium month text-center text-xs text-red-600 tracking-wider uppercase">
           {{ datestamp format="M" }}
         </span>

@@ -23,7 +23,9 @@ function toggleQuotes() {
     setTimeout(toggle, quoteInterval);
   }
 
-  if (quotes.length === 0) return;
+  if (quotes.length === 0) {
+    return;
+  }
 
   quotes[currentQuoteIndex].classList.toggle(opacityClass);
 
@@ -39,7 +41,7 @@ function toggleQuotes() {
 document.addEventListener("DOMContentLoaded", e => {
   document.documentElement.classList.remove("no-js");
   document.documentElement.classList.add("group/js");
-  TM.util.updateScreenSizeClass();
+  // TM.util.updateScreenSizeClass();
   toggleQuotes();
 });
 
@@ -59,8 +61,4 @@ window.addEventListener("beforeunload", e => {
 
 window.addEventListener("load", e => {
   document.body.classList.remove("opacity-0");
-});
-
-window.addEventListener("resize", e => {
-  TM.util.updateScreenSizeClass();
 });

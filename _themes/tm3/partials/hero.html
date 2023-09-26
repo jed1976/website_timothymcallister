@@ -1,5 +1,5 @@
 {{ if last_segment != "contact" and last_segment != "recordings" }}
-<div class="bg-cover bg-no-repeat group h-[90vh] hero sticky top-0" id="hero" style="background-image: url({{ artwork }}); background-position: {{ vertical_position }} {{ horizontal_position }};">
+<div class="bg-cover bg-no-repeat group h-fill hero sticky top-0" id="hero" style="background-image: url({{ artwork }}); background-position: {{ vertical_position }} {{ horizontal_position }};">
   {{ if quotes }}
       {{ quotes sort_by="random" }}
       {{ entries:listing conditions="url:{quote}" folder="quotes" limit="1" show_hidden="true" }}

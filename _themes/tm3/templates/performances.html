@@ -4,8 +4,8 @@
       {{ title }}
     </h2>
   </div>
-  <div class="relative" id="map-wrapper">
-    <select class="absolute bg-neutral-100 font-bold px-4 py-3 right-4 rounded-lg shadow-md text-lg text-neutral-900 top-4 z-10" id="year-selector">
+  <div class="relative">
+    <select class="absolute bg-neutral-100 block border-neutral-400 font-bold pl-4 right-4 rounded-lg shadow-md text-neutral-900 text-xl top-4 z-10" id="year-selector">
     {{ entries:listing folder="performances" group_by_date="Y" show_future="true" show_hidden="true" }}
     {{ if grouped_date }}
       <option value="?year={{ grouped_date }}">

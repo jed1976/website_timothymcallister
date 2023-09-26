@@ -8,6 +8,9 @@
     {{ theme:partial src="meta" }}
     {{ theme:partial src="favicons" }}
     <script src="/_themes/tm3/js/site.js" type="module"></script>
+    {{ if enable_map }}
+    <script src="/_themes/tm3/js/map.js" type="module"></script>
+    {{ /if }}
     <title>
       {{ if segment_1 }}{{ title }} - {{ /if }}{{ _site_name }}
     </title>
@@ -21,18 +24,11 @@
     {{ theme:partial src="menu" }}
     {{ theme:partial src="hero"}}
 
-    <div class="relative transform-gpu z-20" id="site-wrapper">
-      <div class="scroller">
-        <main class="relative" role="main">
-          {{ layout_content }}
-        </main>
-      </div>
-      {{ theme:partial src="footer" }}
-    </div>
+    <main class="relative transform-gpu z-20" id="site-wrapper">
+      {{ layout_content }}
+    </main>
 
     <!-- Scripts -->
-    {{ theme:js tag="true" }}
-    {{ if enable_map }}{{ theme:js src="map" tag="true" }}{{ /if }}
     {{ if enable_audio }}{{ theme:js src="audio" tag="true" }}{{ /if }}
     {{ if enable_blur }}{{ theme:js src="libs/stackblur.min.js" tag="true" }}{{ /if }}
     {{ if enable_promises }}{{ theme:js src="libs/promise.min.js" tag="true" }}{{ /if }}

@@ -5,7 +5,7 @@ page_id: performances
 title: Performances
 _fieldset: performances
 _template: performances
-vertical_position: top
+vertical_position: center
 horizontal_position: left
 artwork: /assets/img/DSC_1185.jpg
 quotes:
@@ -20,6 +20,7 @@ quotes:
   - 
     quote: /quotes/scott-cantrell
 ---
+
 
 
 

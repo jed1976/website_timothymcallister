@@ -7,7 +7,7 @@ title: Home
 artwork: /assets/img/DSC04618a-20230427165443.jpg
 _fieldset: home
 _template: home
-vertical_position: top
+vertical_position: center
 horizontal_position: right
 quote_position: left
 quotes:
@@ -37,6 +37,9 @@ quotes:
     quote: /quotes/j-kosman
 background_color: '#ffffff'
 ---
+
+
+
 
 
 
