@@ -1,9 +1,13 @@
 <article class="lg:grid lg:grid-cols-2 lg:space-x-8 lg:space-y-0 space-y-8" id="{{ slug }}">
-  <div class="aspect-square bg-cover content-center flex justify-center" style="background-image: url('{{ artwork }}');">
+  <div class="flex flex-col relative">
+    <img alt="" class="aspect-square w-full" loading="lazy" src="{{ artwork }}">
     {{ if show_sample && sample }}
-    <button class="bg-white/30 content-center flex h-16 hover:opacity-75 justify-center rounded-full self-center transition-opacity w-16" data-url="{{ sample }}">
+    <noscript>
+      <audio class="w-full" controls preload="none" src="{{ sample }}"></audio>
+    </noscript>
+    <button class="absolute bg-white/90 bottom-0 content-center flex h-16 hover:opacity-75 justify-center left-0 m-auto right-0 rounded-full self-center text-cyan-500 top-0 transition-opacity w-16" data-url="{{ sample }}">
       <span class="sr-only">
-        Play
+        Play sample
       </span>
       <span class="-mr-1 self-center">
         {{ theme:partial src="icons/play" }}
