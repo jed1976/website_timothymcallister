@@ -11,6 +11,7 @@ module.exports = {
     extend: {
       height: {
         "fill": "calc(100vh - 2.8125rem)",
+        "min-h-fill": "calc(100vh - 2.8125rem)",
       },
       textShadow: {
         DEFAULT: "0 0 2px rgba(0, 0, 0, .9)",

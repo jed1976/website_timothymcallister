@@ -23,7 +23,7 @@
           </article>
           {{ endif }}
         <article>
-          <h3 class="font-medium font-serif italic mb-8 pb-2 text-3xl">
+          <h3 class="font-bold mb-8 pb-2 text-3xl">
             {{ grouped_date }}
           </h3>
 
@@ -32,8 +32,12 @@
             <li class="flex gap-x-6">
               {{ theme:partial src="icon-list" use_context="true" }}
               <div class="flex flex-col flex-1 space-y-1">
-                <h4 class="font-bold leading-snug text-lg">{{ title }}</h4>
-                <h5 class="">{{ composer }}</h5>
+                <h4 class="font-bold font-serif italic leading-snug text-lg">
+                  {{ title }}
+                </h4>
+                <h5>
+                  {{ composer }}
+                </h5>
               </div>
             </li>
         {{ if last }}

@@ -1,59 +1,59 @@
-new TM.Module({
-	audioPlayer: null,
+// new TM.Module({
+// 	audioPlayer: null,
 
-	currentPlayButton: null,
+// 	currentPlayButton: null,
 
-	playingClass: 'playing',
+// 	playingClass: 'playing',
 
-	playSampleLabel: 'play',
+// 	playSampleLabel: 'play',
 
-	stopSampleLabel: 'stop',
+// 	stopSampleLabel: 'stop',
 
-	callbacks: {
-		onReady: function() {
-			this.audioPlayer = new TM.AudioPlayer();
-		}
-	},
+// 	callbacks: {
+// 		onReady: function() {
+// 			this.audioPlayer = new TM.AudioPlayer();
+// 		}
+// 	},
 
-	events: {
-        body: {
-            click: function(event) {
-				var target = event.target;
+// 	events: {
+//         body: {
+//             click: function(event) {
+// 				var target = event.target;
 
-				if (target.hasClass('sample') === false) return;
+// 				if (target.hasClass('sample') === false) return;
 
-				event.preventDefault();
+// 				event.preventDefault();
 
-				this.toggleRecordingPlayback(target);
-			}
-		}
-	},
+// 				this.toggleRecordingPlayback(target);
+// 			}
+// 		}
+// 	},
 
-	togglePlayButtonLabel: function(button) {
-	    button.setAttribute('data-icon', button.hasClass(this.playingClass) ? this.playSampleLabel : this.stopSampleLabel);
-	    button.toggleClass(this.playingClass);
-	},
+// 	togglePlayButtonLabel: function(button) {
+// 	    button.setAttribute('data-icon', button.hasClass(this.playingClass) ? this.playSampleLabel : this.stopSampleLabel);
+// 	    button.toggleClass(this.playingClass);
+// 	},
 
-	toggleRecordingPlayback: function(el) {
-	    if (this.currentPlayButton) {
-	        this.togglePlayButtonLabel(this.currentPlayButton);
-			this.audioPlayer.stop();
-	    }
+// 	toggleRecordingPlayback: function(el) {
+// 	    if (this.currentPlayButton) {
+// 	        this.togglePlayButtonLabel(this.currentPlayButton);
+// 			this.audioPlayer.stop();
+// 	    }
 
-	    var listItem = el.findParentNodeWithName('article');
+// 	    var listItem = el.findParentNodeWithName('article');
 
-	    if (el === this.currentPlayButton) {
-	        this.currentPlayButton = null;
-	        return;
-	    }
+// 	    if (el === this.currentPlayButton) {
+// 	        this.currentPlayButton = null;
+// 	        return;
+// 	    }
 
-	    this.currentPlayButton = el;
+// 	    this.currentPlayButton = el;
 
-	    if (el.hasClass(this.playingClass))
-	        this.audioPlayer.stop();
-	    else
-	        this.audioPlayer.play(listItem.getAttribute('id'));
+// 	    if (el.hasClass(this.playingClass))
+// 	        this.audioPlayer.stop();
+// 	    else
+// 	        this.audioPlayer.play(listItem.getAttribute('id'));
 
-	    this.togglePlayButtonLabel(el);
-	}
-});
+// 	    this.togglePlayButtonLabel(el);
+// 	}
+// });

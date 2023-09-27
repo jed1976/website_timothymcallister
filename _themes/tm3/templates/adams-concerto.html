@@ -1,73 +1,89 @@
-<main id="content" role="main" style="background-color: {{ background_color }};">
-    <div class="center-layout pad">
-        <div class="headline intro">
-            {{ content|widont }}
-        </div>
+<div class="bg-neutral-900 text-neutral-100">
+  <div class="flex flex-col lg:w-1/2 md:w-2/3 mx-auto px-8 py-16 space-y-16">
+    <h2 class="font-medium italic font-serif text-4xl tracking-wide">
+      {{ title }}
+    </h2>
 
-        {{ if booking_title }}
-        <h2 class="display-1">{{ booking_title }}</h2>
-
-        <div class="row pad-vertical">
-            <div class="col-1-2">
-                {{ theme:partial src="vcard" use_context="true" }}
-            </div>
-            <div class="col-1-2">
-                {{ theme:partial src="message-form" use_context="true" }}
-            </div>
-        </div>
-        {{ /if }}
-
-        {{ if video_title }}
-        <h2 class="display-1">{{ video_title }}</h2>
-
-        <div class="pad-vertical">
-            {{ theme:partial src="video" use_context="true" }}
-        </div>
-        {{ /if }}
-
-        {{ if recording_title }}
-        <h2 class="display-1">{{ recording_title }}</h2>
-
-        <div class="pad-vertical">
-            {{ entries:listing conditions="slug:john-adams-city-noirsaxophone-concerto-david-robertsonst-louis-symphony" folder="recordings" limit="1" show_hidden="true" sort_by="datestamp" sort_dir="desc" }}
-                {{ theme:partial show_details="true" show_more_information="true" show_sample="true" src="recording" use_context="true" }}
-            {{ /entries:listing }}
-        </div>
-        {{ /if }}
-
-        {{ if interview_links }}
-        <h2 class="display-1">{{ interviews_title|specialchars }}</h2>
-
-        <div class="pad-vertical">
-            <table>
-                <tbody>
-                    {{ interview_links }}
-                    {{ entries:listing conditions="url:{interview_link}" folder="links" limit="1" show_hidden="true" }}
-                    <tr>
-                        <th class="body-1 secondary-text">
-                            &ldquo;{{ title }}&rdquo;</h3> &mdash; {{ if source }}<em><small>{{ source }}{{ /if }}{{ if month_year}}{{ if source and month_year }}, {{ /if }}{{ month_year }}{{ /if }}</small></em>
-                        </th>
-                        <td>
-                            <a class="button float-right" href="{{ link|specialchars }}" target="_blank">Visit Site</a>
-                        </td>
-                    </tr>
-                    {{ /entries:listing }}
-                    {{ /interview_links }}
-                </tbody>
-            </table>
-        </div>
-        {{ /if }}
-
-        {{ if critics_title }}
-        <h2 class="display-1">{{ critics_title }}</h2>
-
-        <div class="row quotes">
-            {{ entries:listing conditions="adams_press:1" folder="quotes" show_hidden="true" sort_by="date" sort_dir="desc" }}
-                <div class="col-1-2 pad-vertical">
-                    {{ theme:partial src="quote" use_context="true" }}
-                </div>
-            {{ /entries:listing }}
-        </div>
-        {{ /if }}
+    <div class="flex flex-col font-serif italic leading-loose text-xl">
+      {{ content|widont }}
     </div>
-</main>
+
+    {{ if booking_title }}
+    <div class="flex flex-col space-y-8">
+      <h3 class="font-medium font-serif italic text-3xl">
+        {{ booking_title }}
+      </h3>
+
+      {{ theme:partial src="vcard" use_context="true" }}
+    </div>
+    {{ /if }}
+
+    {{ if video_title }}
+    <div class="flex flex-col space-y-8">
+      <h3 class="font-medium font-serif italic text-3xl">
+        {{ video_title }}
+      </h3>
+
+      {{ theme:partial src="video" use_context="true" }}
+    </div>
+    {{ /if }}
+
+    {{ if recording_title }}
+    <div class="flex flex-col space-y-8">
+      <h3 class="font-medium font-serif italic text-3xl">
+        {{ recording_title }}
+      </h3>
+
+      {{ entries:listing conditions="slug:john-adams-city-noirsaxophone-concerto-david-robertsonst-louis-symphony" folder="recordings" limit="1" show_hidden="true" sort_by="datestamp" sort_dir="desc" }}
+        {{ theme:partial show_details="true" show_more_information="true" show_sample="true" src="recording" use_context="true" }}
+      {{ /entries:listing }}
+    </div>
+    {{ /if }}
+
+    {{ if interview_links }}
+    <div class="flex flex-col space-y-8">
+      <h3 class="font-medium font-serif italic text-3xl">
+        {{ interviews_title|specialchars }}
+      </h3>
+
+      <ul>
+        {{ interview_links }}
+          {{ entries:listing conditions="url:{interview_link}" folder="links" limit="1" show_hidden="true" }}
+          <li class="border-b border-b-neutral-700 flex flex-col last:border-transparent leading-relaxed py-2">
+            <h4 class="font-normal font-serif italic">
+              <a class="hover:text-neutral-100 text-cyan-500 transition-colors" href="{{ link|specialchars }}" target="_blank">
+                &ldquo;{{ title }}&rdquo;
+              </a>
+            </h4>
+            {{ if source }}
+            <span>
+              {{ source }}
+            {{ /if }}
+            {{ if month_year}}
+              {{ if source and month_year }}, {{ /if }}
+              {{ month_year }}
+            {{ /if }}
+            </span>
+          </li>
+          {{ /entries:listing }}
+        {{ /interview_links }}
+        </tbody>
+      </ul>
+    </div>
+    {{ /if }}
+
+    {{ if critics_title }}
+    <div class="flex flex-col space-y-8">
+      <h3 class="font-medium font-serif italic text-3xl">
+        {{ critics_title }}
+      </h3>
+
+      <div class="flex flex-col lg:gap-16 lg:grid lg:grid-cols-2 lg:space-y-0 space-y-16">
+      {{ entries:listing conditions="adams_press:1" folder="quotes" show_hidden="true" sort_by="date" sort_dir="desc" }}
+        {{ theme:partial src="quote" use_context="true" }}
+      {{ /entries:listing }}
+      </div>
+    </div>
+    {{ /if }}
+  </div>
+</div>

@@ -1,7 +1,7 @@
 <article class="border-b border-neutral-400 cursor-pointer group text-neutral-900 h-event{{ if datestamp|is_today }} bg-neutral-400{{ /if }}" data-latitude="{{ latitude }}" data-longitude="{{ longitude }}">
   <div class="flex gap-4 group-[.active]:bg-neutral-300 p-4">
-    <div class="flex flex-1 flex-col order-2 space-y-2">
-      <h3 class="font-medium font-serif italic leading-snug p-name text-lg">
+    <div class="flex flex-1 flex-col order-2 space-y-1">
+      <h3 class="font-bold font-serif italic leading-snug p-name text-lg">
         {{ title }}
       </h3>
       {{ if location }}

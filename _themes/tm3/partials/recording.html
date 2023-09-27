@@ -1,57 +1,70 @@
-<article id="{{ slug }}">
-    <div class="row">
-        <div class="col-1-2">
-            <div class="row">
-                {{ if recording_url }}<a href="{{ recording_url }}" title="{{ publisher_title }}" target="_blank">{{ /if }}
-                    <img alt="{{ title }}" class="center image" src="{{ artwork }}">
-                {{ if recording_url }}</a>{{ /if }}
+<article class="lg:grid lg:grid-cols-2 lg:space-x-8 lg:space-y-0 space-y-8" id="{{ slug }}">
+  <div class="aspect-square bg-cover content-center flex justify-center" style="background-image: url('{{ artwork }}');">
+    {{ if show_sample && sample }}
+    <button class="bg-white/30 content-center flex h-16 hover:opacity-75 justify-center rounded-full self-center transition-opacity w-16" data-url="{{ sample }}">
+      <span class="sr-only">
+        Play
+      </span>
+      <span class="-mr-1 self-center">
+        {{ theme:partial src="icons/play" }}
+      </span>
+    </button>
+    {{ /if }}
+  </div>
+  <div class="flex flex-col leading-relaxed space-y-6">
+    <h3 class="font-medium font-serif italic text-2xl">
+      {{ title|widont }}
+    </h3>
 
-                {{ if show_sample && sample }}
-                <a class="button border center light sample" data-actionlink="true" data-icon="play" href="{{ sample }}">Play</a>
-                {{ /if }}
-            </div>
-        </div>
-        <div class="col-1-2">
-            <div class="pad-half-horizontal">
-                <h3 class="headline">{{ title|widont }}</h3>
+    {{ content }}
 
-                {{ content }}
+    {{ if show_details }}
+    <table>
+      <tbody>
+        {{ if datestamp }}
+        <tr class="border-b border-b-neutral-700">
+          <th class="font-bold py-2 text-left">
+            Release date
+          </th>
+          <td class="text-right">
+            {{ datestamp format="{{ _date_format }}" }}
+          </td>
+        </tr>
+        {{ /if }}
+        {{ if producer }}
+        <tr class="border-b border-b-neutral-700">
+          <th class="font-bold py-2 text-left">
+            Producer
+          </th>
+          <td class="text-right">
+            {{ entries:listing conditions="url:{producer}" folder="producers" limit="1" show_hidden="true" }}{{ title }}{{ /entries:listing }}
+          </td>
+        </tr>
+        {{ /if }}
+        {{ if catalog_number }}
+        <tr>
+          <th class="font-bold py-2 text-left">
+            Catalog Number
+          </th>
+          <td class="text-right">
+            {{ catalog_number }}
+          </td>
+        </tr>
+        {{ /if }}
+      </tbody>
+    </table>
+    {{ /if }}
 
-                {{ if show_details }}
-                <table class="margin-vertical">
-                    <tbody>
-                        {{ if datestamp }}
-                        <tr>
-                            <th class="body-1 secondary-text"><strong>Release Date</strong></th>
-                            <td class="body-1 primary-text text-right width-50">{{ datestamp format="{{ _date_format }}" }}</td>
-                        </tr>
-                        {{ /if }}
-                        {{ if producer }}
-                        <tr>
-                            <th class="body-1 secondary-text"><strong>Producer</strong></th>
-                            <td class="body-1 primary-text text-right width-50">{{ entries:listing conditions="url:{producer}" folder="producers" limit="1" show_hidden="true" }}{{ title }}{{ /entries:listing }}</td>
-                        </tr>
-                        {{ /if }}
-                        {{ if catalog_number }}
-                        <tr>
-                            <th class="body-1 secondary-text"><strong>Catalog Number</strong></th>
-                            <td class="body-1 primary-text text-right width-50">{{ catalog_number }}</td>
-                        </tr>
-                        {{ /if }}
-                    </tbody>
-                </table>
-                {{ /if }}
+    {{ if recording_url and show_more_information }}
+    <a class="hover:text-neutral-100 text-cyan-500 transition-colors" href="{{ recording_url }}" target="_blank" title="{{ publisher_title }}">
+      More Information
+    </a>
+    {{ /if }}
 
-                <div class="text-center">
-                    {{ if recording_url and show_more_information }}
-                    <a class="button" href="{{ recording_url }}" target="_blank" title="{{ publisher_title }}">More Information</a>
-                    {{ /if }}
-            
-                    {{ if show_learn_more }}
-                    <a class="button link" href="/recordings">All Recordings</a>
-                    {{ /if }}
-                </div>
-            </div>
-        </div>
-    </div>    
+    {{ if show_learn_more }}
+    <a class="hover:text-neutral-950 text-cyan-500 text-xl transition-colors" href="/recordings">
+      All Recordings
+    </a>
+    {{ /if }}
+  </div>
 </article>
