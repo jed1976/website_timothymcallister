@@ -4,10 +4,9 @@
   </h2>
   <ul class="flex flex-col md:space-y-64 space-y-32" id="recordings-list">
   {{ entries:listing folder="recordings" show_hidden="true" sort_by="date" sort_dir="desc" }}
-    <li>
+    <li data-image="{{ artwork }}">
       {{ theme:partial show_details="true" show_more_information="true" show_sample="true" src="recording" use_context="true" }}
     </li>
   {{ /entries:listing }}
   </ul>
 </div>
-{{ theme:partial src="audio-player" }}

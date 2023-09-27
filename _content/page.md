@@ -1,5 +1,5 @@
 ---
-enable_audio: true
+enable_audio_player: true
 enable_map: true
 page_id: home
 title: Home

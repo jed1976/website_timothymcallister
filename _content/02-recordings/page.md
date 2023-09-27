@@ -1,4 +1,5 @@
 ---
+enable_audio_player: true
 page_icon: recordings
 page_id: recordings
 page_js: recordings
