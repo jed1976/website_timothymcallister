@@ -1,65 +1,58 @@
 ---
-enable_audio: true
 page_icon: saxophone
 page_id: adams-concerto
-page_js: adams-concerto
-theme: dark
 title: John Adams Concerto
 _fieldset: adams-concerto
 _template: adams-concerto
 artwork: /assets/img/tim-adams.jpg
 vertical_position: top
 horizontal_position: left
-quote_position: right
-background_color: '#0F0F0F'
-enable_scrim: "1"
 name: Martha Woods
 role: President
 organization: Jonathan Wentworth Associates Ltd.
 state: MD
 booking_title: Booking Information
 message_form_content: Inquire about booking engagements
-thank_you_message: Your message has been sent.
 video_url: //www.youtube.com/embed/ChiynCzpuYQ
 video_title: The Premiere
 recording_title: The Recording
 interviews_title: 'Interviews & Features'
 quotes:
-  - 
+  -
     quote: /quotes/john-adams
-  - 
+  -
     quote: /quotes/william-robin
-  - 
+  -
     quote: /quotes/david-nice
-  - 
+  -
     quote: /quotes/anne-midgette
-  - 
+  -
     quote: /quotes/murray-black
-  - 
+  -
     quote: /quotes/corinna-da-fonseca-wollheim
-  - 
+  -
     quote: /quotes/hugo-shirley
-  - 
+  -
     quote: /quotes/matthew-wright
 critics_title: The Critics Speak
 interview_links:
-  - 
+  -
     interview_link: /links/classical-saxophone-in-proms-spotlight
-  - 
+  -
     interview_link: /links/tim-mcallister-on-john-adams-new-saxophone-concerto
-  - 
+  -
     interview_link: /links/concerto-a-400-year-old-recipe-that-still-cooks
-  - 
+  -
     interview_link: /links/timothy-mcallister-deconstructs-john-adams-saxophone-concerto
-  - 
+  -
     interview_link: /links/classical-saxophone-an-outlier-is-annointed-by-john-adams-concerto
-  - 
+  -
     interview_link: /links/john-adams-talks-jazz-q-and-a
-  - 
+  -
     interview_link: /links/john-adams-new-concerto-uses-saxophone-as-more-than-a-special-effect
-  - 
+  -
     interview_link: /links/soundnotion-128-up-there
-  - 
+  -
     interview_link: /links/sax-and-the-city-noir
 email: email@Jwentworth.com
 unit: 301-277-8205
