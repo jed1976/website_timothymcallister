@@ -1,9 +1,7 @@
-<main class="center-layout pad" id="content">
-    <ul class="list" id="recordings-list">
-        {{ entries:listing folder="recordings" show_hidden="true" sort_by="date" sort_dir="desc" }}
-        <li class="grid-pad recording">
-            {{ theme:partial show_details="true" show_more_information="true" show_sample="true" src="recording" use_context="true" }}
-        </li>
-        {{ /entries:listing }}
-    </ul>
-</main>
+<ul class="" id="recordings-list">
+{{ entries:listing folder="recordings" show_hidden="true" sort_by="date" sort_dir="desc" }}
+  <li class="">
+    {{ theme:partial show_details="true" show_more_information="true" show_sample="true" src="recording" use_context="true" }}
+  </li>
+{{ /entries:listing }}
+</ul>
