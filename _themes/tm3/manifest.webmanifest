@@ -1,0 +1,9 @@
+{
+  "display": "standalone",
+  "icons": [
+    { "src": "/_themes/tm3/img/icon-192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "/_themes/tm3/img/icon-512.png", "type": "image/png", "sizes": "512x512" }
+  ],
+  "name": "Timothy McAllister",
+  "start_url": "/"
+}
