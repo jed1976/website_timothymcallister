@@ -1969,6 +1969,10 @@ select {
   color: rgb(220 38 38 / var(--tw-text-opacity));
 }
 
+.text-inherit {
+  color: inherit;
+}
+
 .opacity-0 {
   opacity: 0;
 }
@@ -2081,8 +2085,21 @@ select {
   color: rgb(10 10 10 / var(--tw-text-opacity));
 }
 
+.hover\:text-cyan-400:hover {
+  --tw-text-opacity: 1;
+  color: rgb(34 211 238 / var(--tw-text-opacity));
+}
+
 .hover\:opacity-75:hover {
   opacity: 0.75;
+}
+
+.hover\:opacity-90:hover {
+  opacity: 0.9;
+}
+
+.hover\:opacity-80:hover {
+  opacity: 0.8;
 }
 
 .group.hero .group-\[\.hero\]\:absolute {
@@ -2131,6 +2148,10 @@ select {
 
 .group.hero .group-\[\.hero\]\:to-black\/75 {
   --tw-gradient-to: rgb(0 0 0 / 0.75) var(--tw-gradient-to-position);
+}
+
+.group.hero .group-\[\.hero\]\:to-black\/80 {
+  --tw-gradient-to: rgb(0 0 0 / 0.8) var(--tw-gradient-to-position);
 }
 
 .group.hero .group-\[\.hero\]\:p-8 {

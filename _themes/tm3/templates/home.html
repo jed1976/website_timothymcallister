@@ -40,14 +40,7 @@
             {{ composer }}
           </h5>
         </div>
-        <button class="bg-black/20 content-center flex h-16 hover:opacity-75 justify-center rounded-full self-center transition-opacity w-16" data-url="{{ sample }}">
-          <span class="sr-only">
-            Play
-          </span>
-          <span class="-mr-1 self-center">
-            {{ theme:partial src="icons/play" }}
-          </span>
-        </button>
+        {{ theme:partial src="audio-button" use_context="true" }}
     </li>
     {{ /entries:listing }}
     </ul>
