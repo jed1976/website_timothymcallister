@@ -1,6 +1,6 @@
 <article class="lg:grid lg:grid-cols-2 lg:space-x-8 lg:space-y-0 space-y-8" id="{{ slug }}">
   <div class="aspect-square flex flex-col relative">
-    <img alt="" class="aspect-square w-full" loading="lazy" src="{{ artwork }}">
+    <img alt="" class="aspect-square shadow-md w-full" loading="lazy" src="{{ artwork }}">
     {{ if show_sample && sample }}
     <noscript>
       <audio class="w-full" controls preload="none" src="{{ sample }}"></audio>
@@ -21,7 +21,7 @@
     <table>
       <tbody>
         {{ if datestamp }}
-        <tr class="border-b border-b-neutral-700">
+        <tr class="border-b border-b-inherit">
           <th class="font-bold py-2 text-left">
             Release date
           </th>
@@ -31,7 +31,7 @@
         </tr>
         {{ /if }}
         {{ if producer }}
-        <tr class="border-b border-b-neutral-700">
+        <tr class="border-b border-b-inherit">
           <th class="font-bold py-2 text-left">
             Producer
           </th>

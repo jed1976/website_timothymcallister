@@ -1,15 +1,13 @@
-{{ if last_segment != "contact" and last_segment != "recordings" }}
-<div class="bg-cover bg-no-repeat group h-[90vh] hero sticky top-0" id="hero" style="background-image: url('{{ artwork }}'); background-position: {{ vertical_position }} {{ horizontal_position }};">
-  {{ if quotes }}
-      {{ quotes sort_by="random" }}
-      {{ entries:listing conditions="url:{quote}" folder="quotes" limit="1" show_hidden="true" }}
-          {{ theme:partial src="quote" use_context="true" }}
-      {{ /entries:listing }}
-      {{ /quotes }}
-  {{ else }}
-      {{ entries:listing conditions="adams_press:!1" folder="quotes" limit="{ random_quote_total }" show_hidden="true" sort_by="random" }}
-          {{ theme:partial src="quote" use_context="true" }}
-      {{ /entries:listing }}
-  {{ /if }}
-</div>
+<div class="bg-cover bg-no-repeat group h-[90vh] hero sticky top-0" data-image="{{ artwork }}" id="hero" style="background-image: url('{{ artwork }}'); background-position: {{ vertical_position }} {{ horizontal_position }};">
+{{ if quotes }}
+  {{ quotes sort_by="random" }}
+  {{ entries:listing conditions="url:{quote}" folder="quotes" limit="1" show_hidden="true" }}
+    {{ theme:partial src="quote" use_context="true" }}
+  {{ /entries:listing }}
+  {{ /quotes }}
+{{ else }}
+  {{ entries:listing conditions="adams_press:!1" folder="quotes" limit="{ random_quote_total }" show_hidden="true" sort_by="random" }}
+    {{ theme:partial src="quote" use_context="true" }}
+  {{ /entries:listing }}
 {{ /if }}
+</div>

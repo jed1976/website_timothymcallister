@@ -1,11 +1,10 @@
-<div class="md:w-2/3 mx-auto px-8 py-32 space-y-16 text-neutral-100">
-  <h2 class="font-medium italic font-serif text-4xl tracking-wide">
-    {{ title }}
-  </h2>
-  <ul class="flex flex-col md:space-y-64 space-y-32" id="recordings-list">
+<div class="bg-black/50">
+  <ul class="flex flex-col" id="recordings-list">
   {{ entries:listing folder="recordings" show_hidden="true" sort_by="date" sort_dir="desc" }}
-    <li data-image="{{ artwork }}">
-      {{ theme:partial show_details="true" show_more_information="true" show_sample="true" src="recording" use_context="true" }}
+    <li class="py-16" data-image="{{ artwork }}">
+      <div class="md:w-2/3 mx-auto px-8 self-center text-neutral-100">
+        {{ theme:partial show_details="true" show_more_information="true" show_sample="true" src="recording" use_context="true" }}
+      </div>
     </li>
   {{ /entries:listing }}
   </ul>
