@@ -7,7 +7,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "css": "npx tailwindcss -o ./_themes/tm3/css/site.css --watch",
+    "css": "npx tailwindcss -i ./_themes/tm3/css/tm3.css -o ./_themes/tm3/css/site.css --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

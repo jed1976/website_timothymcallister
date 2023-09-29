@@ -7,7 +7,7 @@
   <ul class="flex-1 font-serif italic list-none text-neutral-100 text-lg">
   {{ nav from="/" include_content="true" max_depth="1" }}
     <li>
-      <a{{ if page_url == url }} aria-selected="true"{{ /if }} class="aria-selected:fill-cyan-500 aria-selected:pointer-events-none aria-selected:text-cyan-500 aria-selected:hover:bg-transparent aria-selected:hover:cursor-default content-center fill-neutral-100 flex gap-x-6 hover:bg-neutral-700 px-4 py-3" href="{{ url }}">
+      <a{{ if page_url == url }} aria-selected="true"{{ /if }} class="aria-selected:fill-cyan-500 aria-selected:pointer-events-none aria-selected:text-cyan-500 aria-selected:hover:bg-transparent aria-selected:hover:cursor-default content-center fill-neutral-100 flex gap-x-6 hover:bg-cyan-500 px-4 py-3" href="{{ url }}">
         {{ theme:partial src="icons/{{ page_icon }}" }}
         {{ title }}
       </a>
@@ -15,7 +15,7 @@
   {{ /nav }}
   {{ entries:listing conditions="slug:prism-quartet" folder="social-links" show_hidden="true" }}
     <li>
-      <a class="content-center flex gap-x-6 hover:bg-neutral-700 px-4 py-3" href="{{ social_url }}" target="_blank" title="Visit the {{ title }} page">
+      <a class="content-center flex gap-x-6 hover:bg-cyan-500 px-4 py-3" href="{{ social_url }}" target="_blank" title="Visit the {{ title }} page">
         {{ theme:partial src="icons/{{ page_icon }}" }}
         {{ title }}
       </a>

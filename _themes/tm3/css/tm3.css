@@ -1,37 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .gm-style
 {
-    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-weight: 400;
-    text-rendering: optimizeLegibility;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
+  @apply font-serif;
 }
 
 .gm-style-iw .link,
 .gm-style-iw .link:link,
-.gm-style-iw .link:visited { color: #03a9f4; }
+.gm-style-iw .link:visited {
+  @apply text-cyan-500;
+}
 
 @media (min-width: 739px)
 {
-    .gm-style-iw + div { display: none; }
+  .gm-style-iw + div {
+    @apply hidden;
+  }
 
-    .gm-style-iw { left: 21px !important; }
+  .gm-style-iw {
+    @apply left-5;
+  }
 
-    .gm-style-iw .h-event .p-summary,
-    .gm-style-iw .h-event .button { display: block; }
+  .gm-style-iw .h-event .p-summary,
+  .gm-style-iw .h-event .button {
+    @apply block;
+  }
 
-    .gm-style-iw .h-event
-    {
-        border: 0;
-        font-size: 15px;
-        margin-bottom: 0;
-        padding: 0;
-    }
+  .gm-style-iw .h-event {
+    @apply border-none;
+    @apply text-sm;
+    @apply mb-0;
+    @apply p-0;
+  }
 
-    .gm-style-iw .h-event dt.p-name,
-    .gm-style-iw .h-event .p-location
-    {
-        font-size: 18px;
-        line-height: 24px;
-    }
+  .gm-style-iw .h-event dt.p-name,
+  .gm-style-iw .h-event .p-location {
+    @apply text-lg;
+    @apply leading-snug;
+  }
 }
