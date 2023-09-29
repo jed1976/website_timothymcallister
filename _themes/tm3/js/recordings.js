@@ -6,13 +6,23 @@ const $siteWrapper = document.getElementById("site-wrapper");
 
 // Constants
 const heroClasses = ["blur-3xl"];
+const orientationMedia = window.matchMedia("(orientation: landscape)");
 const recordingsList = Array.from($recordings);
 const scrollTop = 64;
-const threshold = 0.25;
 
 // Variables
+let observer = null;
 
 // Functions
+function createObserver() {
+  const threshold = screen.orientation.angle === 0 ? 0.5 : 0.25;
+  if (observer) observer.disconnect();
+  observer = new IntersectionObserver(observeIntersection, { threshold });
+  recordingsList.forEach(($recordingListItem) => {
+    observer.observe($recordingListItem);
+  });
+}
+
 function observeIntersection(entries, observer) {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
@@ -22,17 +32,15 @@ function observeIntersection(entries, observer) {
   });
 }
 
-// Constants
-const observer = new IntersectionObserver(observeIntersection, {
-  threshold
-});
-
-// Config
-recordingsList.forEach(($recordingListItem) => {
-  observer.observe($recordingListItem);
-});
-
 // Events
+document.addEventListener("DOMContentLoaded", event => {
+  createObserver();
+});
+
+orientationMedia.addEventListener("change", event => {
+  createObserver();
+});
+
 window.addEventListener("scroll", event => {
   if (document.scrollingElement.scrollTop < scrollTop) {
     $hero.style.backgroundImage = `url('${$hero.dataset.image}')`;
