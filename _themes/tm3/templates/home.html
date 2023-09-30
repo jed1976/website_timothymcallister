@@ -1,19 +1,36 @@
-<div class="bg-neutral-100 lg:h-min-h-fill lg:sticky lg:top-8">
+<div class="bg-neutral-100">
   <div class="container flex flex-col md:flex-row md:gap-8 md:space-y-0 mx-auto pb-8 pt-16 px-8 space-y-16">
     <div class="flex flex-col md:flex-1 space-y-8">
       <h2 class="font-medium italic font-serif text-4xl tracking-wide">
-        Latest Recording
+        Latest Recordings
       </h2>
-      {{ entries:listing folder="recordings" limit="1" show_hidden="true" sort_by="datestamp" sort_dir="desc" }}
-        {{ theme:partial src="recording" show_details="true" show_learn_more="true" show_sample="true" split_layout="true" use_context="true" }}
+      <div class="flex flex-col gap-4 lg:grid-cols-3 md:grid md:grid-cols-2 md:space-y-0 space-y-2">
+      {{ entries:listing folder="recordings" limit="6" show_hidden="true" sort_by="datestamp" sort_dir="desc" }}
+        <article>
+          <a class="flex flex-col space-y-2" href="/recordings#{{ slug }}">
+            <img alt="" class="aspect-square hover:opacity-75 shadow-md transition-opacity" loading="lazy" src="{{ artwork }}">
+            <h3 class="font-serif italic text-sm">{{ title }}</h3>
+          </a>
+        </article>
+        <!-- {{ theme:partial src="recording" show_details="true" show_learn_more="true" show_sample="true" split_layout="true" use_context="true" }} -->
       {{ /entries:listing }}
+      </div>
     </div>
-    <div class="flex flex-col lg:flex-initial lg:w-1/3 md:border-l md:border-neutral-400 md:pl-8 md:flex-1 space-y-8">
+    <div class="flex flex-col lg:flex-initial lg:w-1/3 md:border-l md:border-neutral-400 md:pl-8 md:flex-1 overflow-hidden space-y-8">
       <h2 class="font-medium italic font-serif text-4xl tracking-wide">
         Recent News
       </h2>
-      {{ entries:listing folder="news" limit="1" sort_by="datestamp" sort_dir="desc" }}
-        {{ theme:partial src="article" truncate="true" use_context="true" }}
+      {{ entries:listing folder="news" limit="6" sort_by="datestamp" sort_dir="desc" }}
+      <article class="flex flex-col space-y-1">
+        <h3 class="font-serif italic leading-snug md:text-base text-lg">
+          <a class="hover:text-neutral-950 text-cyan-500 transition-colors" href="/news#{{ slug }}">
+            {{ title }}
+          </a>
+        </h3>
+        <time class="dt-start font-normal italic text-neutral-500" datetime="{{ datestamp format="{{ _datetime_format }}" }}">
+          {{ datestamp format="{{ _date_format }}" }}
+        </time>
+      </article>
       {{ /entries:listing }}
     </div>
   </div>

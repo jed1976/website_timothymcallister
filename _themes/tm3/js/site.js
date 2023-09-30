@@ -38,27 +38,16 @@ function toggleQuotes() {
 }
 
 // Events
-document.addEventListener("DOMContentLoaded", e => {
-  document.documentElement.classList.remove("no-js");
-  document.documentElement.classList.add("group/js");
-  // TM.util.updateScreenSizeClass();
-  toggleQuotes();
-});
-
-$menuClose.addEventListener("click", e => {
+$menuClose.addEventListener("click", event => {
   $menuOpen.focus();
   document.documentElement.classList.remove("display-menu");
 });
 
-$menuOpen.addEventListener("click", e => {
+$menuOpen.addEventListener("click", event => {
   $menuClose.focus();
   document.documentElement.classList.add("display-menu");
 });
 
-window.addEventListener("beforeunload", e => {
-  document.body.classList.add("opacity-0");
-});
-
-window.addEventListener("load", e => {
-  document.body.classList.remove("opacity-0");
+window.addEventListener("load", event => {
+  toggleQuotes();
 });

@@ -1,4 +1,4 @@
-<article class="flex flex-col space-y-6" id="{{ url }}">
+<article class="flex flex-col space-y-6" id="{{ slug }}">
   <div class="flex flex-col space-y-2">
     <h3 class="font-serif italic leading-snug text-3xl">
       {{ title }}
@@ -11,7 +11,7 @@
   <div class="flex flex-col leading-relaxed prose prose-a:text-cyan-500 hover:prose-a:text-neutral-950 prose-a:underline-offset-2 space-y-6">
     {{ content|markdown|truncate:750 }}
   </div>
-  <a class="hover:text-neutral-950 self-start text-cyan-500 text-xl" href="/news#{{url}}" title="Read the full article">
+  <a class="hover:text-neutral-950 self-start text-cyan-500 text-xl transition-colors" href="/news#{{url}}" title="Read the full article">
     Full Article
   </a>
   {{ else }}

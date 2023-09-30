@@ -1,7 +1,7 @@
 <div class="bg-black/50">
   <ul class="flex flex-col" id="recordings-list">
   {{ entries:listing folder="recordings" show_hidden="true" sort_by="date" sort_dir="desc" }}
-    <li class="py-24" data-image="{{ artwork }}">
+    <li class="py-24" data-image="{{ artwork }}" id="{{ slug }}">
       <div class="md:w-2/3 mx-auto px-8 self-center text-neutral-100">
         {{ theme:partial show_details="true" show_more_information="true" show_sample="true" src="recording" use_context="true" }}
       </div>

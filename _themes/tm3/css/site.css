@@ -1844,6 +1844,11 @@ select {
   line-height: 1.75rem;
 }
 
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
@@ -1935,10 +1940,6 @@ select {
 .text-red-600 {
   --tw-text-opacity: 1;
   color: rgb(220 38 38 / var(--tw-text-opacity));
-}
-
-.opacity-0 {
-  opacity: 0;
 }
 
 .shadow-md {
@@ -2085,6 +2086,10 @@ select {
 .hover\:text-neutral-950:hover {
   --tw-text-opacity: 1;
   color: rgb(10 10 10 / var(--tw-text-opacity));
+}
+
+.hover\:opacity-75:hover {
+  opacity: 0.75;
 }
 
 .group.hero .group-\[\.hero\]\:absolute {
@@ -2282,6 +2287,11 @@ select {
     padding-left: 2rem;
   }
 
+  .md\:text-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
   .md\:text-lg {
     font-size: 1.125rem;
     line-height: 1.75rem;
@@ -2293,16 +2303,12 @@ select {
 }
 
 @media (min-width: 1024px) {
-  .lg\:sticky {
-    position: sticky;
-  }
-
-  .lg\:top-8 {
-    top: 2rem;
-  }
-
   .lg\:grid {
     display: grid;
+  }
+
+  .lg\:min-h-fill {
+    min-height: calc(100vh - 2.8125rem);
   }
 
   .lg\:w-1\/2 {
@@ -2319,6 +2325,10 @@ select {
 
   .lg\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .lg\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .lg\:gap-16 {

@@ -6,23 +6,13 @@ const $siteWrapper = document.getElementById("site-wrapper");
 
 // Constants
 const heroClasses = ["blur-3xl"];
+const threshold = 0.25;
+const observer = new IntersectionObserver(observeIntersection, { threshold });
 const orientationMedia = window.matchMedia("(orientation: landscape)");
 const recordingsList = Array.from($recordings);
 const scrollTop = 64;
 
-// Variables
-let observer = null;
-
 // Functions
-function createObserver() {
-  const threshold = screen.orientation.angle === 0 ? 0.5 : 0.25;
-  if (observer) observer.disconnect();
-  observer = new IntersectionObserver(observeIntersection, { threshold });
-  recordingsList.forEach(($recordingListItem) => {
-    observer.observe($recordingListItem);
-  });
-}
-
 function observeIntersection(entries, observer) {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
@@ -34,11 +24,9 @@ function observeIntersection(entries, observer) {
 
 // Events
 document.addEventListener("DOMContentLoaded", event => {
-  createObserver();
-});
-
-orientationMedia.addEventListener("change", event => {
-  createObserver();
+  recordingsList.forEach(($recordingListItem) => {
+    observer.observe($recordingListItem);
+  });
 });
 
 window.addEventListener("scroll", event => {
