@@ -4,7 +4,7 @@
 
 .gm-style
 {
-  @apply font-serif;
+  @apply font-sans;
 }
 
 .gm-style-iw .link,
@@ -13,31 +13,21 @@
   @apply text-cyan-500;
 }
 
-@media (min-width: 739px)
-{
-  .gm-style-iw + div {
-    @apply hidden;
-  }
+.gm-style-iw .h-event dt.p-name,
+.gm-style-iw .h-event .p-location {
+  @apply text-base;
+}
 
-  .gm-style-iw {
-    @apply left-5;
-  }
+.gm-style-iw .group.active .group-\[\.active\]\:bg-neutral-300 {
+  @apply bg-transparent;
+}
 
-  .gm-style-iw .h-event .p-summary,
-  .gm-style-iw .h-event .button {
-    @apply block;
-  }
+.gm-style-iw .active.border-b {
+  @apply border-0;
+}
 
-  .gm-style-iw .h-event {
-    @apply border-none;
-    @apply text-sm;
-    @apply mb-0;
-    @apply p-0;
-  }
-
-  .gm-style-iw .h-event dt.p-name,
-  .gm-style-iw .h-event .p-location {
-    @apply text-lg;
-    @apply leading-snug;
-  }
+.gm-style-iw .p-summary,
+.gm-style-iw .u-url {
+  @apply block;
+  @apply text-base;
 }

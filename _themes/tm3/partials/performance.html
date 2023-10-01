@@ -1,5 +1,5 @@
-<article class="border-b border-neutral-400 cursor-pointer group text-neutral-900 h-event{{ if datestamp|is_today }} bg-neutral-400{{ /if }}" data-latitude="{{ latitude }}" data-longitude="{{ longitude }}">
-  <div class="flex gap-4 group-[.active]:bg-neutral-300 p-4">
+<article class="border-b border-neutral-400 cursor-pointer flex flex-col group space-y-2 text-neutral-900 h-event" data-latitude="{{ latitude }}" data-longitude="{{ longitude }}">
+  <div class="flex gap-4 group-[.active]:bg-neutral-300 p-4{{ if datestamp|is_today }} bg-neutral-300{{ /if }}">
     <div class="flex flex-1 flex-col order-2 space-y-1">
       <h3 class="font-serif italic leading-snug p-name text-lg">
         {{ title }}
@@ -30,23 +30,21 @@
       </span>
       {{ /if }}
     </div>
-
-    <!-- {{ if content }}
-    <div class="p-summary">
-      {{ content }}
-    </div>
-    {{ /if }}
-
-    {{ if performance_url }}
-    <a class="u-url" href="{{ performance_url }}" target="_blank">
-      More Information
-    </a>
-    {{ /if }}
-
-    {{ if ticket_information_url }}
-    <a class="u-url" href="{{ ticket_information_url }}" target="_blank">
-      Ticket Information
-    </a>
-    {{ /if }} -->
   </div>
+
+  <div class="hidden px-4 p-summary">
+    {{ content }}
+  </div>
+
+  {{ if performance_url }}
+  <a class="hidden px-4 u-url" href="{{ performance_url }}" target="_blank">
+    More Information
+  </a>
+  {{ /if }}
+
+  {{ if ticket_information_url }}
+  <a class="hidden px-4 u-url" href="{{ ticket_information_url }}" target="_blank">
+    Ticket Information
+  </a>
+  {{ /if }}
 </article>

@@ -1,8 +1,8 @@
-<div class="flex flex-col h-fill md:flex-row overflow-hidden" id="map">
+<div class="flex flex-col h-fill md:flex-row overflow-hidden" id="performances-map">
   <ol class="bg-neutral-100 border-neutral-400 border-t h-1/2 md:border-r md:h-auto md:order-1 md:w-80 order-2 overflow-scroll" id="performance-list">
   {{ entries:listing folder="performances" limit="{limit}" show_future="true" show_hidden="true" since="{since}" until="{until}" sort_dir="asc" }}
     <li>
-      {{ theme:partial src="performance" use_context="true" }}
+      {{ theme:partial src="performance" list="true" use_context="true" }}
     </li>
   {{ /entries:listing }}
   </ol>
