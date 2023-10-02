@@ -32,7 +32,7 @@
   {{ /if }}
   {{ if email }}
   <dd>
-    <a class="email text-cyan-500" href="mailto:{{ email|obfuscate }}">{{ email|obfuscate }}</a>
+    <a class="email focus:ring-2 outline-none ring-cyan-500 ring-inset text-cyan-500" href="mailto:{{ email|obfuscate }}">{{ email|obfuscate }}</a>
   </dd>
   {{ /if }}
 </dl>

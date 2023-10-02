@@ -7,7 +7,7 @@
       <div class="flex flex-col gap-4 lg:grid-cols-3 md:grid md:grid-cols-2 md:space-y-0 space-y-2">
       {{ entries:listing folder="recordings" limit="6" show_hidden="true" sort_by="datestamp" sort_dir="desc" }}
         <article>
-          <a class="flex flex-col space-y-2" href="/recordings#{{ slug }}">
+          <a class="flex flex-col focus:ring-2 outline-none ring-cyan-500 ring-offset-2 space-y-2" href="/recordings#{{ slug }}">
             <img alt="" class="aspect-square hover:opacity-75 shadow-md transition-opacity" loading="lazy" src="{{ artwork }}">
             <h3 class="font-serif italic text-sm">{{ title }}</h3>
           </a>
@@ -23,7 +23,7 @@
       {{ entries:listing folder="news" limit="6" sort_by="datestamp" sort_dir="desc" }}
       <article class="flex flex-col space-y-1">
         <h3 class="font-serif italic leading-snug md:text-base text-lg">
-          <a class="hover:text-neutral-950 text-cyan-500 transition-colors" href="/news#{{ slug }}">
+          <a class="focus:ring-2 outline-none ring-cyan-500 ring-inset hover:text-neutral-950 text-cyan-500 transition-colors" href="/news#{{ slug }}">
             {{ title }}
           </a>
         </h3>

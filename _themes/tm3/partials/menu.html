@@ -1,13 +1,13 @@
 <aside class="bg-neutral-950 bottom-0 fixed flex flex-col overflow-x-hidden overflow-y-auto right-0 shadow-md top-0 transition-transform translate-x-80 group-[.display-menu]:translate-x-0 w-80 z-40" id="menu">
   <header class="bg-gradient-to-b flex from-50% from-neutral-950 sticky top-0 z-10">
-    <button class="block ml-auto p-3 text-neutral-100" id="menu-close">
+    <button class="block mb-1 ml-auto p-3 focus:ring-2 outline-none ring-cyan-500 ring-inset text-neutral-100" id="menu-close">
       {{ theme:partial src="icons/close" }}
     </button>
   </header>
   <ul class="flex-1 font-serif italic list-none text-neutral-100 text-lg">
   {{ nav from="/" include_content="true" max_depth="1" }}
     <li>
-      <a{{ if page_url == url }} aria-selected="true"{{ /if }} class="aria-selected:fill-cyan-500 aria-selected:pointer-events-none aria-selected:text-cyan-500 aria-selected:hover:bg-transparent aria-selected:hover:cursor-default content-center fill-neutral-100 flex gap-x-6 hover:bg-cyan-500 px-4 py-3" href="{{ url }}">
+      <a{{ if page_url == url }} aria-selected="true"{{ /if }} class="aria-selected:fill-cyan-500 aria-selected:pointer-events-none aria-selected:text-cyan-500 aria-selected:hover:bg-transparent aria-selected:hover:cursor-default content-center fill-neutral-100 flex gap-x-6 focus:ring-2 hover:bg-cyan-500 outline-none px-4 py-3 ring-cyan-500 ring-inset" href="{{ url }}">
         {{ theme:partial src="icons/{{ page_icon }}" }}
         {{ title }}
       </a>
@@ -15,16 +15,16 @@
   {{ /nav }}
   {{ entries:listing conditions="slug:prism-quartet" folder="social-links" show_hidden="true" }}
     <li>
-      <a class="content-center flex gap-x-6 hover:bg-cyan-500 px-4 py-3" href="{{ social_url }}" target="_blank" title="Visit the {{ title }} page">
+      <a class="content-center flex gap-x-6 focus:ring-2 hover:bg-cyan-500 outline-none px-4 py-3 ring-cyan-500 ring-inset" href="{{ social_url }}" target="_blank" title="Visit the {{ title }} page">
         {{ theme:partial src="icons/{{ page_icon }}" }}
         {{ title }}
       </a>
     </li>
   {{ /entries:listing }}
   </ul>
-  <footer class="bg-gradient-to-t bottom-0 content-center flex from-50% from-neutral-950 gap-x-4 justify-center p-3 sticky text-neutral-100 z-10">
+  <footer class="bg-gradient-to-t bottom-0 content-center flex from-50% from-neutral-950 gap-x-4 p-3 sticky text-neutral-100 z-10">
   {{ entries:listing conditions="slug:!prism-quartet" folder="social-links" show_hidden="true" }}
-    <a class="hover:text-cyan-500 transition-colors" href="{{ social_url }}" target="_blank" title="{{ title }}">
+    <a class="focus:ring-2 hover:text-cyan-500 outline-none ring-cyan-500 ring-inset transition-colors" href="{{ social_url }}" target="_blank" title="{{ title }}">
       {{ theme:partial src="icons/{{ page_icon }}" }}
       <span class="sr-only">
         {{ title }}

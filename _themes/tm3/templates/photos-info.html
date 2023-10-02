@@ -11,8 +11,8 @@
       <figure class="flex flex-col space-y-2">
         <img alt="" class="aspect-video object-cover" src="{{ transform src="{ photo_download }" quality="100" width="{ download_small_size }" }}" />
         <figcaption class="flex gap-x-16 justify-center text-cyan-500 transition-colors">
-          <a class="hover:text-neutral-100" href="/TRIGGER/download/download?file={{ transform src="{ photo_download }" quality="100" width="{ download_medium_size }" }}" title="Download a low resolution version of this photo">Low</a>
-          <a class="hover:text-neutral-100" href="/TRIGGER/download/download?file={{ transform src="{ photo_download }" quality="100" width="{ download_large_size }" }}" title="Download a high resolution version of this photo">High</a>
+          <a class="focus:ring-2 hover:text-neutral-100 outline-none ring-cyan-500 ring-inset" href="/TRIGGER/download/download?file={{ transform src="{ photo_download }" quality="100" width="{ download_medium_size }" }}" title="Download a low resolution version of this photo">Low</a>
+          <a class="focus:ring-2 hover:text-neutral-100 outline-none ring-cyan-500 ring-inset" href="/TRIGGER/download/download?file={{ transform src="{ photo_download }" quality="100" width="{ download_large_size }" }}" title="Download a high resolution version of this photo">High</a>
         </figcaption>
       </figure>
       {{ /if }}

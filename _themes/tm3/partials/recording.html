@@ -55,13 +55,13 @@
     {{ /if }}
 
     {{ if recording_url and show_more_information }}
-    <a class="hover:text-neutral-100 text-cyan-500 transition-colors" href="{{ recording_url }}" target="_blank" title="{{ publisher_title }}">
+    <a class="focus:ring-2 hover:text-neutral-100 outline-none ring-cyan-500 ring-inset text-cyan-500 transition-colors" href="{{ recording_url }}" target="_blank" title="{{ publisher_title }}">
       More Information
     </a>
     {{ /if }}
 
     {{ if show_learn_more }}
-    <a class="hover:text-neutral-950 text-cyan-500 text-xl transition-colors" href="/recordings">
+    <a class="focus:ring-2 hover:text-neutral-950 outline-none ring-cyan-500 ring-inset text-cyan-500 text-xl transition-colors" href="/recordings">
       All Recordings
     </a>
     {{ /if }}
