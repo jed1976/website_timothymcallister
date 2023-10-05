@@ -1,4 +1,5 @@
 ---
+enable_audio_player: true
 page_icon: saxophone
 page_id: adams-concerto
 title: John Adams Concerto

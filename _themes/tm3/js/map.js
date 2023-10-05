@@ -131,6 +131,7 @@ function selectFirstEvent() {
 }
 
 function updateYearSelectorValue(year = new Date.getFullYear()) {
+  if (!$yearSelector) return;
   $yearSelector.value = year;
 }
 
@@ -167,7 +168,9 @@ window.addEventListener("scroll", event => {
   centerAndPanMap();
 });
 
-$yearSelector.addEventListener("change", event => {
-  location.hash = $performancesMap.id;
-  location.search = event.target.value;
-});
+if ($yearSelector) {
+  $yearSelector.addEventListener("change", event => {
+    location.hash = $performancesMap.id;
+    location.search = event.target.value;
+  });
+}
