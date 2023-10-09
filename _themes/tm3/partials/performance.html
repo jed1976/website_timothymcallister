@@ -1,5 +1,5 @@
-<article class="border-b border-neutral-400 cursor-pointer flex flex-col group space-y-2 text-neutral-900 h-event" data-latitude="{{ latitude }}" data-longitude="{{ longitude }}">
-  <div class="flex gap-4 group-[.active]:bg-neutral-300 p-4{{ if datestamp|is_today }} bg-neutral-300{{ /if }}">
+<article class="{{ if datestamp|in_future }}future {{ /if }}{{ if datestamp|is_today }} today {{ /if }}border-b border-neutral-400 cursor-pointer flex flex-col group space-y-2 text-neutral-900 h-event" data-latitude="{{ latitude }}" data-longitude="{{ longitude }}">
+  <div class="flex gap-4 group-[.active]:bg-neutral-300 p-4">
     <div class="flex flex-1 flex-col order-2 space-y-1">
       <h3 class="font-serif italic leading-snug p-name text-lg">
         {{ title }}

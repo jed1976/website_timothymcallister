@@ -115,19 +115,24 @@ function initialize() {
   googleMap.mapTypes.set(mapTypeID, customMapType);
 
   addMarkers();
+  selectFirstEvent();
 }
 
 function selectFirstEvent() {
-  const eventElement = $performanceList.querySelector(".h-event.today") ||
+  const $eventElement = $performanceList.querySelector(".h-event.today") ||
     $performanceList.querySelector(".h-event.future") ||
     $performanceList.querySelector(".h-event:first-child");
 
-  if (eventElement === null) {
+  if ($eventElement === null) {
     return;
   }
 
-  $performanceList.scrollTop = eventElement.getPosition()[1] - $performanceList.getPosition()[1];
-  eventElement.click();
+  $eventElement.scrollIntoView({ block: "start", inline: "center" });
+  $eventElement.click();
+
+  if (!location.hash) {
+    window.scrollTo(0, 0);
+  }
 }
 
 function updateYearSelectorValue(year = new Date.getFullYear()) {
